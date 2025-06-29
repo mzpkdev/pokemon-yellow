@@ -43,7 +43,7 @@ KeyItemFlags:
 	dbit TRUE  ; DOME_FOSSIL
 	dbit TRUE  ; HELIX_FOSSIL
 	dbit TRUE  ; SECRET_KEY
-	dbit TRUE  ; CHEAT_CANDY
+	dbit FALSE ; CHEAT_CANDY
 	dbit TRUE  ; BIKE_VOUCHER
 	dbit FALSE ; X_ACCURACY
 	dbit FALSE ; LEAF_STONE
