@@ -65,11 +65,11 @@ OakSpeech:
 	ld [wItemQuantity], a
 	call AddItemToInventory
 ; Cheat Candy ; If wanted in PC at start of game
-	ld a, CHEAT_CANDY
-	ld [wCurItem], a
-	ld a, 1
-	ld [wItemQuantity], a
-	call AddItemToInventory
+;	ld a, CHEAT_CANDY
+;	ld [wCurItem], a
+;	ld a, 1
+;	ld [wItemQuantity], a
+;	call AddItemToInventory
 
 	ld a, [wDefaultMap]
 	ld [wDestinationMap], a
