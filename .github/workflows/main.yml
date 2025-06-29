@@ -22,6 +22,7 @@ jobs:
       - name: Install rgbds
         working-directory: rgbds
         run: |
+          sudo apt-get update
           sudo make install
 
       - name: Remove rgbds
