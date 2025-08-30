@@ -55,10 +55,8 @@ jobs:
           name: pokemon-yellow-build
           path: |
             *.gbc
-            *.map
-            *.sym
           if-no-files-found: error
-          retention-days: 90
+          retention-days: 3
           overwrite: true
 
       - name: Create GitHub Release
