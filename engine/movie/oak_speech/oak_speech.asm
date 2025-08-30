@@ -79,31 +79,9 @@ OakSpeech:
 	ld a, [wStatusFlags6]
 	bit BIT_DEBUG_MODE, a
 	jp nz, .skipSpeech
-.MenuCursorLoop ; difficulty menu
-	ld hl, DifficultyText
-  	rst _PrintText
-  	call DifficultyChoice
-	ld a, [wCurrentMenuItem]
+.MenuCursorLoop ; difficulty menu - hardcoded to normal
+	xor a ; set a to 0 (normal difficulty)
 	ld [wDifficulty], a
-	cp 0 ; normal
-	jr z, .SelectedNormalMode
-	cp 1 ; hard
-	jr z, .SelectedHardMode
-	; space for more game modes down the line
-.SelectedNormalMode
-	ld hl, NormalModeText
-	rst _PrintText
-	jp .YesNoNormalHard
-.SelectedHardMode
-	ld hl, HardModeText
-	rst _PrintText
-.YesNoNormalHard ; Give the player a brief description of each game mode and make sure that's what they want
-  	call YesNoNormalHardChoice
-	ld a, [wCurrentMenuItem]
-	cp 0
-	jr z, .doneLoop
-	jp .MenuCursorLoop ; If player says no, back to difficulty selection
-.doneLoop
    	call ClearScreen ; clear the screen before resuming normal intro
 
 	; Gender Menu
@@ -278,15 +256,7 @@ IntroduceRivalText:
 OakSpeechText3:
 	text_far _OakSpeechText3
 	text_end
-NormalModeText:
-	text_far _NormalModeText
-	text_end
-HardModeText:
-	text_far _HardModeText
-	text_end
-DifficultyText:
-	text_far _DifficultyText
-	text_end
+; difficulty-related text strings removed - difficulty is now hardcoded to normal
 BoyGirlText:
     text_far _BoyGirlText
     text_end
@@ -358,43 +328,7 @@ IntroDisplayPicCenteredOrUpperRight:
 	ldh [hStartTileID], a
 	predef_jump CopyUncompressedPicToTilemap
 
-; displays difficulty choice
-DifficultyChoice::
-	call SaveScreenTilesToBuffer1
-	call InitDifficultyTextBoxParameters
-	jr DisplayDifficultyChoice
-
-InitDifficultyTextBoxParameters::
-  	ld a, DIFFICULTY_MENU
-	ld [wTwoOptionMenuID], a
-	coord hl, 5, 5
-	lb bc, 6, 6 ; Cursor Pos
-	ret
-	
-DisplayDifficultyChoice::
-	ld a, TWO_OPTION_MENU
-	ld [wTextBoxID], a
-	call DisplayTextBoxID
-	jp LoadScreenTilesFromBuffer1
-
-; display yes/no choice
-YesNoNormalHardChoice::
-	call SaveScreenTilesToBuffer1
-	call InitYesNoNormalHardTextBoxParameters
-	jr DisplayYesNoNormalHardChoice
-
-InitYesNoNormalHardTextBoxParameters::
-  	ld a, YES_NO_MENU
-	ld [wTwoOptionMenuID], a
-	coord hl, 7, 5
-	lb bc, 6, 8 ; Cursor Pos
-	ret
-	
-DisplayYesNoNormalHardChoice::
-	ld a, TWO_OPTION_MENU
-	ld [wTextBoxID], a
-	call DisplayTextBoxID
-	jp LoadScreenTilesFromBuffer1
+; difficulty-related functions removed - difficulty is now hardcoded to normal
 
 ; displays boy/girl choice
 BoyGirlChoice::
