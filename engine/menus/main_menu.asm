@@ -48,9 +48,6 @@ MainMenu:
 	ld de, NewGameText
 	call PlaceString
 .next2
-	coord hl, $00, $11
-	ld de, VersionText
-	call PlaceString
 
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
@@ -190,11 +187,6 @@ NewGameText:
 	db   "NEW GAME"
 	next "OPTION@"
 
-VersionText:
-	db " "
-	db "Version"
-	db " 1.5.9"
-	db "@"
 
 DisplayContinueGameInfo:
 	xor a
