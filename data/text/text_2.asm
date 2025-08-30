@@ -1330,9 +1330,7 @@ _HookedMonAttackedText::
 	cont "attacked!"
 	prompt
 
-_DifficultyText::
-    text "Select Difficulty"
-    done
+; difficulty-related text removed - difficulty is now hardcoded to normal
 
 ;_AreYouSureText::
 ;	text "Are you sure?"

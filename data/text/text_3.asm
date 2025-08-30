@@ -446,16 +446,7 @@ _NotEnoughMemoryText::
 	line "Version memory."
 	done
 
-_NormalModeText::
-	text "Normal #MON"
-	line "rules."
-	done
-
-_HardModeText::
-	text "Set mode, no items"
-	line "in battle and gym"
-	cont "level caps apply."
-	done
+; difficulty-related text removed - difficulty is now hardcoded to normal
 
 _OakSpeechText1::
 	text "Hello there!"
