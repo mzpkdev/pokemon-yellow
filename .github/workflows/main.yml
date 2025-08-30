@@ -50,6 +50,32 @@ jobs:
             return 1
           fi
 
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pokemon-yellow-build
+          path: |
+            *.gbc
+            *.map
+            *.sym
+          if-no-files-found: error
+          retention-days: 90
+          overwrite: true
+
+      - name: Create GitHub Release
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            *.gbc
+            *.map
+            *.sym
+          name: Pokemon Yellow Build ${{ github.sha }}
+          tag_name: build-${{ github.run_number }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Discord webhook
         if: ${{ github.event_name == 'push' && github.repository_owner == 'pret' }}
         env:
