@@ -28,8 +28,6 @@ BluesHouseDaisySittingText:
 	jr nz, .got_town_map
 	CheckEvent EVENT_GOT_POKEDEX
 	jr nz, .give_town_map
-	ld hl, BluesHouseDaisyRivalAtLabText
-	rst _PrintText
 	jr .done
 
 .give_town_map
@@ -59,9 +57,6 @@ BluesHouseDaisySittingText:
 .done
 	rst TextScriptEnd
 
-BluesHouseDaisyRivalAtLabText:
-	text_far _BluesHouseDaisyRivalAtLabText
-	text_end
 
 BluesHouseDaisyOfferMapText:
 	text_far _BluesHouseDaisyOfferMapText
