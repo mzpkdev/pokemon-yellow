@@ -392,6 +392,19 @@ _OaksLabOakThatWasMyDreamText::
 	line "# BALLs!@"
 	text_end
 
+_OaksLabOakGiveRunningShoes::
+	text "Oh, and one more"
+	line "thing. Take these"
+	cont "RUNNING SHOES."
+
+	para "Press and hold the"
+	line "B Button to run"
+	cont "much faster!"
+
+	para "I'll be seeing you"
+	line "later!"
+	done
+
 _OaksLabRivalLeaveItAllToMeText::
 	text "<RIVAL>: Alright"
 	line "Gramps! Leave it"

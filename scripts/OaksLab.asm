@@ -579,6 +579,9 @@ OaksLabOakGivesPokedexScript:
 	ld a, TEXT_OAKSLAB_OAK_THAT_WAS_MY_DREAM
 	ldh [hTextID], a
 	call DisplayTextID
+	call Delay3
+	ld hl, OaksLabOakGiveRunningShoes
+	call PrintText
 	ld a, OAKSLAB_RIVAL
 	ldh [hSpriteIndex], a
 	ld a, SPRITE_FACING_RIGHT
@@ -734,8 +737,9 @@ OaksLab_TextPointers:
 	dw_const OaksLabOakGotPokedexText,                  TEXT_OAKSLAB_OAK_GOT_POKEDEX
 	dw_const OaksLabOakThatWasMyDreamText,              TEXT_OAKSLAB_OAK_THAT_WAS_MY_DREAM
 	dw_const OaksLabRivalLeaveItAllToMeText,            TEXT_OAKSLAB_RIVAL_LEAVE_IT_ALL_TO_ME
-	dw_const OaksLabPikachuDislikesPokeballsText1,      TEXT_OAKSLAB_PIKACHU_DISLIKES_POKEBALLS1
-	dw_const OaksLabPikachuDislikesPokeballsText2,      TEXT_OAKSLAB_PIKACHU_DISLIKES_POKEBALLS2
+ dw_const OaksLabPikachuDislikesPokeballsText1,      TEXT_OAKSLAB_PIKACHU_DISLIKES_POKEBALLS1
+ dw_const OaksLabPikachuDislikesPokeballsText2,      TEXT_OAKSLAB_PIKACHU_DISLIKES_POKEBALLS2
+ dw_const OaksLabOakGiveRunningShoes,               TEXT_OAKSLAB_OAK_GIVE_RUNNING_SHOES
 
 OaksLab_TextPointers2:
 	dw OaksLabRivalText
@@ -1166,6 +1170,10 @@ OaksLabOakThatWasMyDreamText:
 	lb bc, POKE_BALL,5
 	call GiveItem
 	rst TextScriptEnd
+
+OaksLabOakGiveRunningShoes:
+	text_far _OaksLabOakGiveRunningShoes
+	text_end
 
 OaksLabRivalLeaveItAllToMeText:
 	text_far _OaksLabRivalLeaveItAllToMeText
