@@ -140,8 +140,7 @@ OverworldLoopLessDelay::
 	jp OverworldLoop
 
 .noDirectionButtonsPressed
-	; // todo: restore running shoes
-	;call SwitchRunningToWalkingSprites
+	call SwitchRunningToWalkingSprites
 	call UpdateSprites
 	ld hl, wMiscFlags
 	res BIT_TURNING, [hl]
@@ -274,34 +273,33 @@ OverworldLoopLessDelay::
 ; Make you surf at bike speed
 	ld a, [wWalkBikeSurfState]
 	cp a, $02
-	jr z, .notRunning
+	jr z, .speedUp
 ; Add running shoes
-; // todo: restore running shoes
-;ld a, [hJoyHeld] ; Check what buttons are being pressed
-;and B_BUTTON ; Are you holding B?
-;jr nz, .checkIfWalking ; If you aren't holding B, skip ahead to step normally.
+	ld a, [hJoyHeld] ; Check what buttons are being pressed
+	and B_BUTTON ; Are you holding B?
+	jr nz, .checkIfWalking ; If you aren't holding B, skip ahead to step normally.
 ; running sprites
 ; if reached here then player is not running, so check if we need to update sprites
-;ld a, [wWalkBikeSurfState]
-;and a ; WALKING?
-;jr nz, .skipDecrement ; if not walking, no need to update sprites
-;ld hl, wStatusFlags6
-;bit BIT_RUNNING, [hl]
-;jr z, .notRunning ; if wasn't running, no need to update sprites
-;res BIT_RUNNING, [hl]
-;call LoadWalkingPlayerSpriteGraphics
-;jr .skipDecrement
-;.checkIfWalking
-;ld a, [wWalkBikeSurfState]
-;and a ; WALKING?
-;jr nz, .speedUp ; if not walking, no need to update sprites
-;ld hl, wStatusFlags6
-;bit BIT_RUNNING, [hl]
-;jr nz, .speedUp ; if already running, no need to update sprites
-;set BIT_RUNNING, [hl]
-;call LoadRunningPlayerSpriteGraphics
-;.speedUp
-;call DoBikeSpeedup ; Make you go faster if you were holding B
+	ld a, [wWalkBikeSurfState]
+	and a ; WALKING?
+	jr nz, .skipDecrement ; if not walking, no need to update sprites
+	ld hl, wStatusFlags6
+	bit BIT_RUNNING, [hl]
+	jr z, .notRunning ; if wasn't running, no need to update sprites
+	res BIT_RUNNING, [hl]
+	call LoadWalkingPlayerSpriteGraphics
+	jr .skipDecrement
+.checkIfWalking
+	ld a, [wWalkBikeSurfState]
+	and a ; WALKING?
+	jr nz, .speedUp ; if not walking, no need to update sprites
+	ld hl, wStatusFlags6
+	bit BIT_RUNNING, [hl]
+	jr nz, .speedUp ; if already running, no need to update sprites
+	set BIT_RUNNING, [hl]
+	call LoadRunningPlayerSpriteGraphics
+.speedUp
+	call DoBikeSpeedup ; Make you go faster if you were holding B
 .notRunning
 	ld a,[wNoSprintSteps]  ; Load the value from wNoSpriteSteps into register a
 	cp 0    ; Compare the value in a with 0
@@ -923,21 +921,20 @@ LoadPlayerSpriteGraphics::
 	jp LoadWalkingPlayerSpriteGraphics
 
 SwitchRunningToWalkingSprites: ; marcelnote - running sprites
-; // todo: restore running shoes
-;	ld a, [wWalkBikeSurfState]
-;	and a ; WALKING?
-;	ret nz ; if not walking, do nothing
-;	ld hl, wStatusFlags6
-;	bit BIT_RUNNING, [hl]
-;	ret z ; if wasn't running, do nothing
-;	res BIT_RUNNING, [hl]
-;	jp LoadWalkingPlayerSpriteGraphics
+	ld a, [wWalkBikeSurfState]
+	and a ; WALKING?
+	ret nz ; if not walking, do nothing
+	ld hl, wStatusFlags6
+	bit BIT_RUNNING, [hl]
+	ret z ; if wasn't running, do nothing
+	res BIT_RUNNING, [hl]
+	jp LoadWalkingPlayerSpriteGraphics
 
 IsBikeRidingAllowed::
 ; The bike can be used on Route 23 and Indigo Plateau,
 ; or maps with tilesets in BikeRidingTilesets.
 ; Return carry if biking is allowed.
-
+	
 	ld a, [wCurMapTileset]
 	ld b, a
 	ld hl, BikeRidingTilesets
@@ -1865,24 +1862,23 @@ LoadWalkingPlayerSpriteGraphics::
 	jr LoadPlayerSpriteGraphicsCommon
 
 LoadRunningPlayerSpriteGraphics::
-; // todo: restore running shoes
 ; new sprite copy stuff
-;	xor a
-;	ld [wd473], a
-;	ld b, BANK(RedRunSprite)
-;	ld de, RedRunSprite
-;	ld a, [wPlayerGender]
-;	and a
-;	jr z, .ContinueLoadSprites1
-;	cp a, 2
-;	jr z, .AreEnby1
-;	ld de, GreenRunSprite
-;	jr .ContinueLoadSprites1
-;.AreEnby1
-;	ld de, YellowRunSprite
-;.ContinueLoadSprites1
-;	ld hl, vNPCSprites
-;	jr LoadPlayerSpriteGraphicsCommon
+	xor a
+	ld [wd473], a
+	ld b, BANK(RedRunSprite)
+	ld de, RedRunSprite
+	ld a, [wPlayerGender]
+	and a
+	jr z, .ContinueLoadSprites1
+	cp a, 2
+	jr z, .AreEnby1
+	ld de, GreenRunSprite
+	jr .ContinueLoadSprites1
+.AreEnby1
+	ld de, YellowRunSprite
+.ContinueLoadSprites1
+	ld hl, vNPCSprites
+	jr LoadPlayerSpriteGraphicsCommon
 
 LoadSurfingPlayerSpriteGraphics2::
 	ld a, [wd473]
