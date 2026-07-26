@@ -6478,9 +6478,7 @@ LoadEnemyMonData:
 	jr .storeDVs
 ; random DVs for wild mon
 .wildMon
-	call BattleRandom
-	ld b, a
-	call BattleRandom
+	callfar GeneratePerfectShinyDVs
 .storeDVs
 	ld hl, wEnemyMonDVs
 	ld [hli], a

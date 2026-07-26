@@ -111,6 +111,13 @@ _AddPartyMon::
 	jr nz, .copyEnemyMonData
 
 ; Not wild.
+	ld a, [wMonDataLocation]
+	cp $80 ; in-game trade
+	jr z, .generateVanillaDVs
+	callfar GeneratePerfectShinyDVs
+	jr .next4
+
+.generateVanillaDVs
 	call Random ; generate random IVs
 	ld b, a
 	call Random

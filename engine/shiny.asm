@@ -3,6 +3,46 @@ DEF SHINY_DEF_DV EQU 10
 DEF SHINY_SPD_DV EQU 10
 DEF SHINY_SPC_DV EQU 10
 
+GeneratePerfectShinyDVs:
+; Generate DVs with an exact 255 / 65536 chance of being shiny.
+; Return Attack/Defense in a and Speed/Special in b.
+;
+; Roll shininess separately from the DVs so the eight DV combinations that
+; are naturally shiny do not increase the configured rate.
+
+	call Random
+	and a
+	jr nz, .not_shiny
+	call Random
+	cp $ff
+	jr nz, .shiny
+
+.not_shiny
+	call Random
+	ld c, a
+	call Random
+	ld b, a
+
+	; Attack can be 2, 3, 6, 7, 10, 11, 14, or 15.
+	cp (SHINY_SPD_DV << 4) | SHINY_SPC_DV
+	jr nz, .done
+	ld a, c
+	and $f
+	cp SHINY_DEF_DV
+	jr nz, .done
+	ld a, c
+	and SHINY_ATK_MASK << 4
+	jr nz, .not_shiny
+
+.done
+	ld a, c
+	ret
+
+.shiny
+	ld a, (SHINY_DEF_DV << 4) | SHINY_DEF_DV
+	ld b, (SHINY_SPD_DV << 4) | SHINY_SPC_DV
+	ret
+
 IsMonShiny:
 ; Check whether the DVs at de satisfy the Generation II shiny condition.
 ; Return nz if shiny and z if not shiny.
