@@ -30,6 +30,17 @@ SetPal_Battle:
 	ld de, wPalPacket
 	ld bc, $10
 	rst _CopyData
+	ld hl, wShinyMonFlag
+	res 0, [hl]
+	ld a, [wBattleMonSpecies]
+	and a
+	jr z, .get_player_palette
+	ld de, wBattleMonDVs
+	callfar IsMonShiny
+	jr z, .get_player_palette
+	ld hl, wShinyMonFlag
+	set 0, [hl]
+.get_player_palette
 	ld hl, wBattleMonSpecies
 	ld a, [hl]
 	and a
@@ -40,10 +51,24 @@ SetPal_Battle:
 	call AddNTimes
 .asm_71ef9
 	call DeterminePaletteIDBack
-	ld b, a
+	ld e, a
+	push de
+	ld hl, wShinyMonFlag
+	res 0, [hl]
+	ld a, [wEnemyMonSpecies2]
+	and a
+	jr z, .get_enemy_palette
+	ld de, wEnemyMonDVs
+	callfar IsMonShiny
+	jr z, .get_enemy_palette
+	ld hl, wShinyMonFlag
+	set 0, [hl]
+.get_enemy_palette
 	ld hl, wEnemyMonSpecies2
 	call DeterminePaletteIDFront
 	ld c, a
+	ld b, d
+	pop de
 	ld hl, wPalPacket + 1
 	ld a, [wPlayerHPBarColor]
 	add PAL_GREENBAR
@@ -53,11 +78,13 @@ SetPal_Battle:
 	add PAL_GREENBAR
 	ld [hli], a
 	inc hl
-	ld a, b
+	ld a, e
 	ld [hli], a
-	inc hl
+	ld a, d
+	ld [hli], a
 	ld a, c
-	ld [hl], a
+	ld [hli], a
+	ld [hl], b
 	ld hl, wPalPacket
 	ld de, BlkPacket_Battle
 	ld a, SET_PAL_BATTLE
@@ -75,20 +102,30 @@ SetPal_StatusScreen:
 	ld de, wPalPacket
 	ld bc, $10
 	rst _CopyData
+	ld hl, wShinyMonFlag
+	res 0, [hl]
+	ld de, wLoadedMonDVs
+	callfar IsMonShiny
+	jr z, .not_shiny
+	ld hl, wShinyMonFlag
+	set 0, [hl]
+.not_shiny
 	ld a, [wCurPartySpecies]
 	cp NUM_POKEMON_INDEXES + 1
 	jr c, .pokemon
 	ld a, $1 ; not pokemon
 .pokemon
 	call DeterminePaletteIDOutOfBattle
-	push af
+	ld c, a
+	ld b, d
 	ld hl, wPalPacket + 1
 	ld a, [wStatusScreenHPBarColor]
 	add PAL_GREENBAR
 	ld [hli], a
 	inc hl
-	pop af
-	ld [hl], a
+	ld a, c
+	ld [hli], a
+	ld [hl], b
 	ld hl, wPalPacket
 	ld de, BlkPacket_StatusScreen
 	ret
@@ -329,8 +366,12 @@ BadgeBlkDataLengths:
 	db 6     ; Earth Badge
 
 DeterminePaletteIDFront:
+	ld d, 0
 	ld a, [hl]
+	jr DeterminePaletteID
 DeterminePaletteIDOutOfBattle:
+	ld d, 0
+DeterminePaletteID:
 	ld [wPokedexNum], a
 	and a ; is the mon index 0?
 	ld a, [wTrainerClass]
@@ -341,6 +382,9 @@ GetMonPalID:
 	predef IndexToPokedex
 	pop bc
 	ld a, [wPokedexNum]
+	ld hl, wShinyMonFlag
+	bit 0, [hl]
+	jr nz, GetShinyMonPalID
 	ld hl, MonsterPalettes
 GetPalID:
 	ld e, a
@@ -361,9 +405,21 @@ GetPalID:
 	ret
 .cont
 	ld a, [hl]
+	ld d, 0
+	ret
+
+GetShinyMonPalID:
+	ld hl, ShinyMonsterPalettes
+	add a
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hli]
+	ld d, [hl]
 	ret
 
 DeterminePaletteIDBack:
+	ld d, 0
 	ld a, [hl]
 	ld [wPokedexNum], a
 	and a
@@ -843,14 +899,16 @@ InitGBCPalettes:
 			pop hl
 		ENDC
 
-		ld a, [hli]
+		ld c, [hl]
+		inc hl
+		ld b, [hl]
 		inc hl
 
 		IF index < NUM_ACTIVE_PALS - 1
 			push hl
 		ENDC
 
-		call GetGBCBasePalAddress
+		call GetGBCBasePalAddress16
 		ld a, e
 		ld [wGBCBasePalPointers + index * 2], a
 		ld a, d
@@ -883,10 +941,14 @@ InitGBCPalettes:
 GetGBCBasePalAddress::
 ; Input: a = palette ID
 ; Output: de = palette address
+	ld c, a
+	ld b, 0
+GetGBCBasePalAddress16:
+; Input: bc = 9-bit palette ID
+; Output: de = palette address
 	push hl
-	ld l, a
-	xor a
-	ld h, a
+	ld l, c
+	ld h, b
 	add hl, hl
 	add hl, hl
 	add hl, hl
