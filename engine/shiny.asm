@@ -3,6 +3,8 @@ DEF SHINY_DEF_DV EQU 10
 DEF SHINY_SPD_DV EQU 10
 DEF SHINY_SPC_DV EQU 10
 
+SECTION "Shiny Engine", ROMX
+
 GeneratePerfectShinyDVs:
 ; Generate DVs with an exact 255 / 65536 chance of being shiny.
 ; Return Attack/Defense in d and Speed/Special in e.
