@@ -6479,6 +6479,8 @@ LoadEnemyMonData:
 ; random DVs for wild mon
 .wildMon
 	callfar GeneratePerfectShinyDVs
+	ld a, d
+	ld b, e
 .storeDVs
 	ld hl, wEnemyMonDVs
 	ld [hli], a

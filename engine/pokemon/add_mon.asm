@@ -115,6 +115,8 @@ _AddPartyMon::
 	cp $80 ; in-game trade
 	jr z, .generateVanillaDVs
 	callfar GeneratePerfectShinyDVs
+	ld a, d
+	ld b, e
 	jr .next4
 
 .generateVanillaDVs
