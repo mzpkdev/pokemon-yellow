@@ -70,7 +70,7 @@ PrintBeginningBattleText:
 	and a
 	jr z, .noSilphScope
 	callfar LoadEnemyMonData
-	jr .notPokemonTower
+	jp .notPokemonTower
 .noSilphScope
 	ld hl, EnemyAppearedText
 	rst _PrintText
