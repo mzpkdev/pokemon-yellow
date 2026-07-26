@@ -42,7 +42,18 @@ jobs:
       - name: Make
         if: ${{ github.repository_owner != 'pret' }}
         run: |
-          make -j$(nproc)
+          set +e
+          make -j$(nproc) 2>&1 | tee build.log
+          status=${PIPESTATUS[0]}
+          set -e
+          if (( status != 0 )); then
+            diagnostic=$(tail -n 40 build.log)
+            diagnostic=${diagnostic//'%'/'%25'}
+            diagnostic=${diagnostic//$'\n'/'%0A'}
+            diagnostic=${diagnostic//$'\r'/'%0D'}
+            echo "::error title=Build failed::$diagnostic"
+            exit "$status"
+          fi
           if ! git diff-index --quiet HEAD --; then
             echo 'Uncommitted changes detected:'
             git diff-index HEAD --
