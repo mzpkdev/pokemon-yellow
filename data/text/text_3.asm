@@ -446,7 +446,21 @@ _ExpressionText::
 ;	line "Version memory."
 ;	done
 
-; difficulty-related text removed - difficulty is now hardcoded to normal
+_NormalModeText::
+	text "Normal #MON"
+	line "rules."
+	done
+
+_HardModeText::
+	text "Forced SET mode,"
+	line "no items allowed"
+	cont "in trainer"
+	cont "battles, gym"
+	cont "level caps, and"
+	cont "all opponent's"
+	cont "#MON will have"
+	cont "maximum DVs."
+	done
 
 _OakSpeechText1::
 	text "Hello there!"

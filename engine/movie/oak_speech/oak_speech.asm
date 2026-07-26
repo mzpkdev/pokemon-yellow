@@ -79,10 +79,25 @@ OakSpeech:
 	ld a, [wStatusFlags6]
 	bit BIT_DEBUG_MODE, a
 	jp nz, .skipSpeech
-.MenuCursorLoop ; difficulty menu - hardcoded to normal
-	xor a ; set a to 0 (normal difficulty)
+.MenuCursorLoop
+	ld hl, DifficultyText
+	rst _PrintText
+	call DifficultyChoice
+	ld a, [wCurrentMenuItem]
 	ld [wDifficulty], a
-   	call ClearScreen ; clear the screen before resuming normal intro
+	and a
+	jr z, .selectedNormalMode
+	ld hl, HardModeText
+	jr .confirmDifficulty
+.selectedNormalMode
+	ld hl, NormalModeText
+.confirmDifficulty
+	rst _PrintText
+	call YesNoNormalHardChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .MenuCursorLoop
+	call ClearScreen ; clear the screen before resuming normal intro
 
 	; Gender Menu
 	ld hl, BoyGirlText  ; added to the same file as the other oak text
@@ -256,7 +271,15 @@ IntroduceRivalText:
 OakSpeechText3:
 	text_far _OakSpeechText3
 	text_end
-; difficulty-related text strings removed - difficulty is now hardcoded to normal
+NormalModeText:
+	text_far _NormalModeText
+	text_end
+HardModeText:
+	text_far _HardModeText
+	text_end
+DifficultyText:
+	text_far _DifficultyText
+	text_end
 BoyGirlText:
     text_far _BoyGirlText
     text_end
@@ -328,7 +351,27 @@ IntroDisplayPicCenteredOrUpperRight:
 	ldh [hStartTileID], a
 	predef_jump CopyUncompressedPicToTilemap
 
-; difficulty-related functions removed - difficulty is now hardcoded to normal
+DifficultyChoice::
+	call SaveScreenTilesToBuffer1
+	ld a, DIFFICULTY_MENU
+	ld [wTwoOptionMenuID], a
+	hlcoord 5, 5
+	lb bc, 6, 6
+	ld a, TWO_OPTION_MENU
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	jp LoadScreenTilesFromBuffer1
+
+YesNoNormalHardChoice::
+	call SaveScreenTilesToBuffer1
+	ld a, YES_NO_MENU
+	ld [wTwoOptionMenuID], a
+	hlcoord 7, 5
+	lb bc, 6, 8
+	ld a, TWO_OPTION_MENU
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	jp LoadScreenTilesFromBuffer1
 
 ; displays boy/girl choice
 BoyGirlChoice::
