@@ -535,6 +535,7 @@ INCLUDE "engine/overworld/select_button_functionality.asm"
 INCLUDE "engine/menus/multi_choice_menu.asm"
 INCLUDE "engine/menus/text_multi_button_prompt.asm"
 INCLUDE "engine/gfx/animated_tiles_code.asm"
+INCLUDE "engine/shiny.asm"
 
 
 SECTION "Move Descriptions", ROMX

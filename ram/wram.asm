@@ -2363,7 +2363,12 @@ wPlayerGender::
 	; $02 = enby
 		ds 1
 
-	ds 23
+wShinyMonFlag::
+	; bit 0: select a shiny palette
+	; bit 1: sparkle animation is for the enemy side
+	ds 1
+
+	ds 22
 ENDU
 
 wObtainedHiddenItemsFlags:: flag_array MAX_HIDDEN_ITEMS
