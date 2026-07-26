@@ -785,7 +785,8 @@ wOverrideSimulatedJoypadStatesMask:: db
 UNION
 wTradedPlayerMonSpecies:: db
 wTradedEnemyMonSpecies:: db
-	ds 2
+wTradedPlayerMonShiny:: db
+wTradedEnemyMonShiny:: db
 wTradedPlayerMonOT:: ds NAME_LENGTH
 wTradedPlayerMonOTID:: dw
 wTradedEnemyMonOT:: ds NAME_LENGTH

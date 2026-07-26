@@ -90,6 +90,8 @@ EvolveMon:
 	jr .done
 
 EvolutionSetWholeScreenPalette:
+	ld de, wLoadedMonDVs
+	callfar SetShinyPaletteFlag
 	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
 	jp RunPaletteCommand
 

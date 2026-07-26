@@ -773,6 +773,18 @@ TradeCenter_Trade:
 	ld [wTradedPlayerMonOTID], a
 	ld a, [hl]
 	ld [wTradedPlayerMonOTID + 1], a
+	ld hl, wPartyMon1DVs
+	ld a, [wTradingWhichPlayerMon]
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	ld d, h
+	ld e, l
+	callfar IsMonShiny
+	ld a, 0
+	jr z, .gotPlayerShinyFlag
+	inc a
+.gotPlayerShinyFlag
+	ld [wTradedPlayerMonShiny], a
 	ld a, [wTradingWhichEnemyMon]
 	ld hl, wEnemyMonOT
 	call SkipFixedLengthTextEntries
@@ -789,6 +801,18 @@ TradeCenter_Trade:
 	ld [wTradedEnemyMonOTID], a
 	ld a, [hl]
 	ld [wTradedEnemyMonOTID + 1], a
+	ld hl, wEnemyMon1DVs
+	ld a, [wTradingWhichEnemyMon]
+	ld bc, wEnemyMon2 - wEnemyMon1
+	call AddNTimes
+	ld d, h
+	ld e, l
+	callfar IsMonShiny
+	ld a, 0
+	jr z, .gotEnemyShinyFlag
+	inc a
+.gotEnemyShinyFlag
+	ld [wTradedEnemyMonShiny], a
 	ld a, [wTradingWhichPlayerMon]
 	ld [wWhichPokemon], a
 	ld hl, wPartySpecies

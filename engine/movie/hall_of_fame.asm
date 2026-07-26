@@ -116,6 +116,19 @@ HoFShowMonOrPlayer:
 	call LoadFrontSpriteByMonIndex
 	predef LoadMonBackPic
 .next1
+	ld hl, wShinyMonFlag
+	res 0, [hl]
+	ld a, [wHoFMonOrPlayer]
+	and a
+	jr nz, .setPalette
+	ld hl, wPartyMon1DVs
+	ld a, [wHoFPartyMonIndex]
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	ld d, h
+	ld e, l
+	callfar SetShinyPaletteFlag
+.setPalette
 	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
 	ld c, 0
 	call RunPaletteCommand

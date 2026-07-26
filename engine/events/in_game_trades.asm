@@ -212,6 +212,26 @@ InGameTrade_PrepareTradeData:
 	ld de, wTradedPlayerMonOTID
 	ld bc, $2
 	call InGameTrade_CopyData
+	ld hl, wPartyMon1DVs
+	ld bc, wPartyMon2 - wPartyMon1
+	ld a, [wWhichPokemon]
+	call AddNTimes
+	ld d, h
+	ld e, l
+	callfar IsMonShiny
+	ld a, 0
+	jr z, .got_player_shiny_flag
+	inc a
+.got_player_shiny_flag
+	ld [wTradedPlayerMonShiny], a
+	xor a
+	ld [wTradedEnemyMonShiny], a
+	ld a, [wInGameTradeGiveMonSpecies]
+	cp NO_MON
+	jr nz, .got_trade_dvs
+	ld a, [wTradedPlayerMonShiny]
+	ld [wTradedEnemyMonShiny], a
+.got_trade_dvs
 	call Random
 	ld hl, hRandomAdd
 	ld de, wTradedEnemyMonOTID

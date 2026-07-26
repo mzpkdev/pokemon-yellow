@@ -242,6 +242,8 @@ Trade_ShowPlayerMon:
 	ld b, HIGH(vBGMap0)
 	call CopyScreenTileBufferToVRAM
 	call ClearScreen
+	ld a, [wTradedPlayerMonShiny]
+	callfar SetShinyPaletteFlagFromBoolean
 	ld a, [wTradedPlayerMonSpecies]
 	call Trade_LoadMonSprite
 	ld a, $7e
@@ -363,6 +365,8 @@ Trade_ShowEnemyMon:
 	call Trade_CopyTileMapToVRAM
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
+	ld a, [wTradedEnemyMonShiny]
+	callfar SetShinyPaletteFlagFromBoolean
 	ld a, [wTradedEnemyMonSpecies]
 	call Trade_LoadMonSprite
 	ld a, TRADE_BALL_POOF_ANIM

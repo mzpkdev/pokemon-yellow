@@ -92,6 +92,8 @@ LeaguePCShowMon:
 	ld de, wNameBuffer
 	ld bc, NAME_LENGTH
 	rst _CopyData
+	ld hl, wShinyMonFlag
+	res 0, [hl] ; saved Hall of Fame entries do not contain DVs
 	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
 	ld c, 0
 	call RunPaletteCommand

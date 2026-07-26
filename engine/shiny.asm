@@ -32,6 +32,25 @@ IsMonShiny:
 	xor a
 	ret
 
+SetShinyPaletteFlag:
+; Set palette-selection bit 0 according to the DVs at de.
+	ld hl, wShinyMonFlag
+	res 0, [hl]
+	call IsMonShiny
+	ret z
+	ld hl, wShinyMonFlag
+	set 0, [hl]
+	ret
+
+SetShinyPaletteFlagFromBoolean:
+; Set palette-selection bit 0 according to a (zero = normal).
+	ld hl, wShinyMonFlag
+	res 0, [hl]
+	and a
+	ret z
+	set 0, [hl]
+	ret
+
 PlayEnemyShinySparkle:
 	ld de, wEnemyMonDVs
 	call IsMonShiny

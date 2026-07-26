@@ -89,6 +89,10 @@ SetPal_Battle:
 	ld de, BlkPacket_Battle
 	ld a, SET_PAL_BATTLE
 	ld [wDefaultPaletteCommand], a
+	ld hl, wShinyMonFlag
+	res 0, [hl]
+	ld hl, wPalPacket
+	ld de, BlkPacket_Battle
 	ret
 
 SetPal_TownMap:
@@ -126,6 +130,8 @@ SetPal_StatusScreen:
 	ld a, c
 	ld [hli], a
 	ld [hl], b
+	ld hl, wShinyMonFlag
+	res 0, [hl]
 	ld hl, wPalPacket
 	ld de, BlkPacket_StatusScreen
 	ret
@@ -268,6 +274,7 @@ SetPal_PokemonWholeScreen:
 	ld bc, $10
 	rst _CopyData
 	pop bc
+	ld d, 0
 	ld a, c
 	cp 1
 	ld a, PAL_BLACK
@@ -278,7 +285,11 @@ SetPal_PokemonWholeScreen:
 	jr z, .next
 	call DeterminePaletteIDOutOfBattle
 .next
-	ld [wPalPacket + 1], a
+	ld hl, wPalPacket + 1
+	ld [hli], a
+	ld [hl], d
+	ld hl, wShinyMonFlag
+	res 0, [hl]
 	ld hl, wPalPacket
 	ld de, BlkPacket_WholeScreen
 	ret

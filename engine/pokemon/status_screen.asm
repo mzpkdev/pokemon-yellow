@@ -204,6 +204,12 @@ StatusScreen:
 	ld e, l
 	coord hl, 9, 1
 	call PlaceString ; Pokémon name
+	ld de, wLoadedMonDVs
+	callfar IsMonShiny
+	jr z, .notShiny
+	coord hl, 8, 1
+	ld [hl], $c9 ; dedicated shiny sparkle tile
+.notShiny
 	ld hl, OTPointers
 	call .GetStringPointer
 	ld d, h
