@@ -114,9 +114,13 @@ _AddPartyMon::
 	ld a, [wMonDataLocation]
 	cp $80 ; in-game trade
 	jr z, .generateVanillaDVs
+	push hl
+	push de
 	callfar GeneratePerfectShinyDVs
 	ld a, d
 	ld b, e
+	pop de
+	pop hl
 	jr .next4
 
 .generateVanillaDVs
