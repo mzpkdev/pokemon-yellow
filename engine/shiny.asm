@@ -31,3 +31,114 @@ IsMonShiny:
 .not_shiny
 	xor a
 	ret
+
+PlayEnemyShinySparkle:
+	ld de, wEnemyMonDVs
+	call IsMonShiny
+	ret z
+	ld hl, wShinyMonFlag
+	set 1, [hl]
+	jr PlayShinySparkleAnimation
+
+PlayPlayerShinySparkle:
+	ld de, wBattleMonDVs
+	call IsMonShiny
+	ret z
+	ld hl, wShinyMonFlag
+	res 1, [hl]
+
+PlayShinySparkleAnimation:
+	ldh a, [rBGP]
+	push af
+	ld a, %00011011
+	ldh [rBGP], a
+	ld c, 4
+	rst _DelayFrames
+	pop af
+	ldh [rBGP], a
+
+	ld b, 12
+.frame_loop
+	dec b
+	jr z, .finish
+	ld c, (ShinySparkleCoordsEnd - ShinySparkleCoords) / 3 + 1
+	ld a, [wShinyMonFlag]
+	bit 1, a
+	ld de, ShinySparkleCoords
+	jr z, .got_coords
+	ld de, EnemyShinySparkleCoords
+.got_coords
+	ld hl, wShadowOAM
+.sparkle_loop
+	dec c
+	jr z, .delay
+	ld a, [de]
+	cp b
+	jr c, .inactive
+	sub b
+	cp 4
+	jr nc, .inactive
+	push bc
+	ld b, a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, $c9 + 3
+	sub b
+	ld [hli], a
+	xor a
+	ld [hli], a
+	pop bc
+	jr .sparkle_loop
+
+.inactive
+	inc de
+	inc de
+	inc de
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	jr .sparkle_loop
+
+.delay
+	push bc
+	ld c, 2
+	rst _DelayFrames
+	ld a, SFX_PRESS_AB
+	rst _PlaySound
+	pop bc
+	jr .frame_loop
+
+.finish
+	xor a
+	ld hl, wShadowOAM
+	ld bc, 4 * ((ShinySparkleCoordsEnd - ShinySparkleCoords) / 3)
+	jp FillMemory
+
+ShinySparkleCoords:
+	db $0b, 70, 48
+	db $0a, 75, 60
+	db $09, 86, 64
+	db $08, 99, 60
+	db $07, 103, 48
+	db $06, 99, 36
+	db $05, 86, 30
+	db $04, 75, 36
+ShinySparkleCoordsEnd:
+
+EnemyShinySparkleCoords:
+	db $0b, 70 - 48, 48 + 80
+	db $0a, 75 - 48, 60 + 80
+	db $09, 86 - 48, 64 + 80
+	db $08, 99 - 48, 60 + 80
+	db $07, 103 - 48, 48 + 80
+	db $06, 99 - 48, 36 + 80
+	db $05, 86 - 48, 30 + 80
+	db $04, 75 - 48, 36 + 80
+EnemyShinySparkleCoordsEnd:

@@ -1552,6 +1552,7 @@ EnemySendOutFirstMon:
 	ldh [hStartTileID], a
 	hlcoord 15, 6
 	predef AnimateSendingOutMon
+	callfar PlayEnemyShinySparkle
 	ld a, [wEnemyMonSpecies2]
 	call PlayCry
 	call DrawEnemyHUDAndHPBar
@@ -1935,6 +1936,7 @@ SendOutMon:
 	ld [wCurPartySpecies], a
 	call PlayCry
 .done
+	callfar PlayPlayerShinySparkle
 	call PrintEmptyString
 	jp SaveScreenTilesToBuffer1
 

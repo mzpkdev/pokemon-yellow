@@ -24,6 +24,7 @@ PrintBeginningBattleText:
 	ld a, [wEnemyMonSpecies2]
 	call PlayCry
 .continue
+	callfar PlayEnemyShinySparkle
 	ld hl, WildMonAppearedText
 	ld a, [wMoveMissed]
 	and a

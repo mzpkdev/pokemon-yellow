@@ -8,6 +8,7 @@ HpBarAndStatusGraphics:: INCBIN "gfx/font/font_battle_extra.2bpp"
 HpBarAndStatusGraphicsEnd::
 
 EXPBarGraphics::  INCBIN "gfx/battle/exp_bar.2bpp"
+ShinySparkleGraphics:: INCBIN "gfx/battle/shiny_sparkle.2bpp"
 EXPBarGraphicsEnd::
 
 BattleHudTiles1: INCBIN "gfx/battle/battle_hud_1.1bpp"
