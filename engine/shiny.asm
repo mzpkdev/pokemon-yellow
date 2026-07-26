@@ -6,7 +6,7 @@ DEF SHINY_SPC_DV EQU 10
 SECTION "Shiny Engine", ROMX
 
 GeneratePerfectShinyDVs:
-; Generate DVs with an exact 255 / 65536 chance of being shiny.
+; Generate DVs with a 1 / 2 chance of being shiny for testing.
 ; Return Attack/Defense in d and Speed/Special in e.
 ; The far-call trampoline preserves de but clobbers af and bc on return.
 ;
@@ -14,11 +14,8 @@ GeneratePerfectShinyDVs:
 ; are naturally shiny do not increase the configured rate.
 
 	call Random
-	and a
-	jr nz, .not_shiny
-	call Random
-	cp $ff
-	jr nz, .shiny
+	and 1
+	jr z, .shiny
 
 .not_shiny
 	call Random
