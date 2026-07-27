@@ -124,215 +124,172 @@ SpecialTrainerMoves:
 	db 0
 
 	db KOGA, 1
-	db 1, 1, TOXIC
-	db 1, 2, DOUBLE_TEAM
-	db 1, 3, CONFUSE_RAY
-	db 2, 1, SLUDGE
-	db 2, 2, MEGA_DRAIN
-	db 2, 3, THUNDERBOLT
-	db 3, 1, FIRE_BLAST
-	db 3, 2, AMNESIA
-	db 3, 3, EXPLOSION
-	db 4, 1, GLARE
-	db 4, 2, WRAP
-	db 4, 3, EARTHQUAKE
-	db 5, 1, DOUBLE_TEAM
-	db 5, 2, PSYCHIC_M
-	db 5, 3, CONFUSION
+	db 1, 2, TOXIC
+	db 1, 3, BITE
+	db 2, 1, ACID_ARMOR
+	db 2, 3, MEGA_DRAIN
+	db 3, 1, SURF
+	db 3, 2, ICE_BEAM
+	db 3, 4, SLUDGE
+	db 4, 1, SOLARBEAM
+	db 4, 2, DOUBLE_TEAM
+	db 4, 3, TOXIC
 	db 0
 
 	db KOGA, 2
 	db 1, 1, TOXIC
-	db 1, 2, DOUBLE_TEAM
-	db 1, 3, CONFUSE_RAY
-	db 2, 1, SLUDGE
+	db 1, 2, CONFUSE_RAY
+	db 1, 4, BITE
 	db 2, 2, MEGA_DRAIN
-	db 2, 3, THUNDERBOLT
-	db 3, 1, FIRE_BLAST
-	db 3, 2, AMNESIA
-	db 3, 3, EXPLOSION
-	db 4, 1, GLARE
-	db 4, 2, WRAP
-	db 4, 3, EARTHQUAKE
-	db 5, 1, DOUBLE_TEAM
-	db 5, 2, PSYCHIC_M
-	db 5, 3, CONFUSION
+	db 2, 4, ACID_ARMOR
+	db 3, 2, SURF
+	db 3, 3, ICE_BEAM
+	db 4, 2, SLUDGE
+	db 4, 3, THUNDERBOLT
+	db 5, 1, SOLARBEAM
+	db 5, 2, DOUBLE_TEAM
+	db 5, 3, TOXIC
 	db 0
 
 	db KOGA, 3
-	db 1, 1, GLARE
-	db 1, 2, EARTHQUAKE
-	db 1, 3, WRAP
-	db 2, 1, CONFUSE_RAY
-	db 2, 2, TOXIC
-	db 2, 3, DOUBLE_TEAM
-	db 3, 1, SLUDGE
-	db 3, 2, SELFDESTRUCT
-	db 3, 3, THUNDERBOLT
-	db 4, 1, BLIZZARD
-	db 4, 2, SURF
-	db 4, 3, SKULL_BASH
-	db 5, 1, EXPLOSION
-	db 5, 2, TOXIC
-	db 5, 3, MEGA_DRAIN
-	db 6, 1, PSYCHIC_M
-	db 6, 2, DOUBLE_TEAM
-	db 6, 3, HYPER_BEAM
+	db 1, 1, FLY
+	db 1, 2, TOXIC
+	db 1, 3, DOUBLE_TEAM
+	db 1, 4, CONFUSE_RAY
+	db 2, 3, MEGA_DRAIN
+	db 2, 4, MINIMIZE
+	db 3, 1, SURF
+	db 3, 3, BLIZZARD
+	db 3, 4, REFLECT
+	db 4, 2, FIRE_BLAST
+	db 4, 3, THUNDERBOLT
+	db 4, 4, SLUDGE
+	db 5, 2, EARTHQUAKE
+	db 5, 3, ROCK_SLIDE
+	db 6, 1, DOUBLE_TEAM
+	db 6, 4, LEECH_LIFE
 	db 0
-
 	db BLAINE, 1
-	db 1, 1, FIRE_SPIN
-	db 1, 2, TAKE_DOWN
-	db 1, 3, SWIFT
-	db 2, 1, DIG
-	db 2, 2, NIGHT_SHADE
-	db 2, 3, REFLECT
-	db 3, 1, BODY_SLAM
-	db 3, 2, HORN_DRILL
-	db 3, 3, FIRE_BLAST
-	db 4, 1, FLAMETHROWER
-	db 4, 2, AGILITY
+	db 2, 1, FIRE_BLAST
+	db 2, 2, WING_ATTACK
+	db 2, 3, SLASH
+	db 2, 4, SEISMIC_TOSS
+	db 3, 1, FIRE_BLAST
+	db 3, 2, CONFUSE_RAY
+	db 3, 3, SOLARBEAM
+	db 4, 1, FIRE_BLAST
+	db 4, 2, DOUBLE_EDGE
 	db 4, 3, DIG
 	db 5, 1, FIRE_BLAST
-	db 5, 2, CONFUSE_RAY
-	db 5, 3, PSYCHIC_M
+	db 5, 2, PSYCHIC_M
+	db 5, 3, CONFUSE_RAY
+	db 5, 4, THUNDERPUNCH
 	db 0
-
 	db BLAINE, 2
-	db 1, 1, FIRE_BLAST
-	db 1, 2, DIG
-	db 1, 3, DOUBLE_EDGE
-	db 2, 1, FLAMETHROWER
-	db 2, 2, REFLECT
-	db 2, 3, CONFUSE_RAY
-	db 3, 1, SURF
-	db 3, 2, THUNDERBOLT
-	db 3, 3, TAKE_DOWN
-	db 4, 1, FIRE_SPIN
-	db 4, 2, GROWTH
-	db 4, 3, BODY_SLAM
+	db 1, 2, AGILITY
+	db 1, 3, SOLARBEAM
+	db 1, 4, HORN_DRILL
+	db 2, 4, DIG
+	db 3, 2, FIRE_BLAST
+	db 3, 3, EARTHQUAKE
+	db 3, 4, SWORDS_DANCE
+	db 4, 2, CONFUSE_RAY
+	db 4, 3, SOLARBEAM
 	db 5, 1, FIRE_BLAST
-	db 5, 2, SWORDS_DANCE
-	db 5, 3, EARTHQUAKE
-	db 6, 1, PSYCHIC_M
-	db 6, 2, CONFUSE_RAY
-	db 6, 3, FIRE_BLAST
-	db 0
-
-	db SABRINA, 1 
-	db 1, 1, PSYCHIC_M
-	db 1, 2, SURF
-	db 1, 3, THUNDER_WAVE
-	db 2, 1, THUNDERBOLT
-	db 2, 2, MIMIC
-	db 2, 3, PSYCHIC_M
-	db 3, 1, LOVELY_KISS
-	db 3, 2, ICE_BEAM
-	db 3, 3, METRONOME
-	db 4, 1, HYPNOSIS
-	db 4, 2, MEGA_PUNCH
-	db 4, 3, PSYCHIC_M
-	db 5, 1, THUNDER_WAVE
 	db 5, 2, DIG
-	db 5, 3, PSYCHIC_M
-	db 0
-
-	db SABRINA, 2
-	db 1, 1, PSYCHIC_M
-	db 1, 2, SURF
-	db 1, 3, THUNDER_WAVE
-	db 2, 1, THUNDERBOLT
-	db 2, 2, MIMIC
-	db 2, 3, PSYCHIC_M
-	db 3, 1, LOVELY_KISS
-	db 3, 2, ICE_BEAM
-	db 3, 3, METRONOME
-	db 4, 1, HYPNOSIS
-	db 4, 2, MEGA_PUNCH
-	db 4, 3, PSYCHIC_M
-	db 5, 1, THUNDER_WAVE
-	db 5, 2, DIG
-	db 5, 3, PSYCHIC_M
-	db 0
-
-	db SABRINA, 3
-	db 1, 1, PSYCHIC_M
-	db 1, 2, NIGHT_SHADE
-	db 1, 3, HYPNOSIS
-	db 2, 1, SURF
-	db 2, 2, BODY_SLAM
-	db 2, 3, FLAMETHROWER
-	db 3, 1, THUNDERBOLT
-	db 3, 2, THUNDER_WAVE
-	db 3, 3, PSYCHIC_M
-	db 4, 1, LOVELY_KISS
-	db 4, 2, BLIZZARD
-	db 4, 3, PSYCHIC_M
-	db 5, 1, PSYWAVE
-	db 5, 2, HYPNOSIS
-	db 5, 3, TRI_ATTACK
-	db 6, 1, THUNDER_WAVE
+	db 5, 3, DOUBLE_EDGE
+	db 6, 1, THUNDERPUNCH
 	db 6, 2, PSYCHIC_M
-	db 6, 3, DIG
+	db 6, 3, CONFUSE_RAY
 	db 0
-
+	db SABRINA, 1 ; db $FF, 50, ABRA,  48, HYPNO, 49, MR_MIME, 50, KADABRA,  50, ALAKAZAM, 0
+	db 1, 1, PSYCHIC_M
+	db 2, 2, PSYWAVE
+	db 3, 1, LIGHT_SCREEN
+	db 3, 2, MIMIC
+	db 4, 1, REFLECT
+	db 4, 2, PSYWAVE
+	db 4, 3, PSYCHIC_M
+	db 4, 4, RECOVER
+	db 5, 1, THUNDER_WAVE
+	db 0
+	db SABRINA, 2 ; db $FF, 43, ABRA,  42, MR_MIME, 43, KADABRA,  43, ALAKAZAM, 0
+	db 1, 1, PSYCHIC_M
+	db 2, 1, SUBSTITUTE
+	db 2, 2, MIMIC
+	db 2, 3, SUBSTITUTE
+	db 2, 4, PSYCHIC_M
+	db 3, 1, PSYWAVE
+	db 4, 1, THUNDER_WAVE
+	db 0
+	db SABRINA, 3 ; db $FF, 65, MR_MIME, 64, HYPNO, 64, SLOWBRO, 64, JYNX, 64, GENGAR, 65, ALAKAZAM, 0
+	db 1, 1, THUNDERBOLT
+	db 1, 4, THUNDER_WAVE
+	db 2, 1, SUBSTITUTE
+	db 2, 2, PSYWAVE
+	db 3, 1, SURF
+	db 3, 2, REFLECT
+	db 4, 1, LOVELY_KISS
+	db 4, 2, DREAM_EATER
+	db 4, 3, BUBBLEBEAM
+	db 5, 1, PSYCHIC_M
+	db 5, 3, DOUBLE_TEAM
+	db 5, 4, MEGA_DRAIN
+	db 6, 1, THUNDER_WAVE
+	db 0
 	db GIOVANNI, 1
 	db 1, 1, ROCK_THROW
 	db 1, 2, DIG
 	db 1, 3, SCREECH
-	db 2, 1, RAGE
-	db 2, 2, FIRE_BLAST
-	db 2, 3, HORN_DRILL
-	db 3, 1, MEGA_PUNCH
-	db 3, 2, SUBMISSION
-	db 3, 3, DIZZY_PUNCH
-	db 4, 1, TAKE_DOWN
-	db 4, 2, THUNDERBOLT
-	db 4, 3, BUBBLEBEAM
-	db 0
-
-	
-	db GIOVANNI, 2
-	db 1, 1, HARDEN
-	db 1, 2, CRABHAMMER
-	db 1, 3, GUILLOTINE
+	db 1, 4, TAKE_DOWN
 	db 2, 1, MEGA_PUNCH
 	db 2, 2, SUBMISSION
-	db 2, 3, DIZZY_PUNCH
-	db 3, 1, TOXIC
-	db 3, 2, COUNTER
-	db 3, 3, EARTHQUAKE
-	db 4, 1, DOUBLE_TEAM
-	db 4, 2, SCREECH
-	db 4, 3, EARTHQUAKE
-	db 5, 1, THUNDERBOLT
-	db 5, 2, ICE_BEAM
-	db 5, 3, FIRE_BLAST
+	db 3, 1, BONE_CLUB
+	db 3, 2, HEADBUTT
+	db 3, 3, CUT
+	db 4, 1, TAKE_DOWN
+	db 4, 2, BUBBLEBEAM
+	db 4, 3, THUNDERBOLT
 	db 0
-
-	
-	db GIOVANNI, 3
+	db GIOVANNI, 2
+	db 1, 1, CRABHAMMER
+	db 1, 2, CUT
+	db 1, 3, BODY_SLAM
+	db 2, 1, ICE_PUNCH
+	db 2, 2, ROCK_SLIDE
+	db 2, 3, SUBMISSION
+	db 3, 1, DIG
+	db 3, 3, ROCK_SLIDE
+	db 4, 1, EARTHQUAKE
+	db 4, 2, ROCK_SLIDE
+	db 4, 3, EXPLOSION
+	db 5, 1, SLASH
+	db 5, 2, BUBBLEBEAM
+	db 5, 3, THUNDERBOLT
+	db 0
+	db GIOVANNI, 3 ; 53, DUGTRIO, 54, NIDOQUEEN, 55, PERSIAN,  54, NIDOKING, 55, RHYDON
 	db 1, 1, EARTHQUAKE
-	db 1, 2, SELFDESTRUCT
-	db 1, 3, EXPLOSION
-	db 2, 1, SLASH
-	db 2, 2, THUNDERBOLT
-	db 2, 3, HYPER_BEAM
-	db 3, 1, DOUBLE_EDGE
+	db 1, 2, SLASH
+	db 1, 3, FISSURE
+	db 1, 4, ROCK_SLIDE
+	db 2, 1, EARTHQUAKE
+	db 2, 2, ICE_BEAM
+	db 2, 3, THUNDERBOLT
+	db 2, 4, BODY_SLAM
+	db 3, 1, SLASH
 	db 3, 2, HYPER_BEAM
-	db 3, 3, BODY_SLAM
-	db 4, 1, BLIZZARD
-	db 4, 2, THUNDER
-	db 4, 3, SLUDGE
-	db 5, 1, ICE_BEAM
-	db 5, 2, THUNDER
-	db 5, 3, BODY_SLAM
-	db 6, 1, SUBMISSION
-	db 6, 2, THUNDERBOLT
-	db 6, 3, ROCK_SLIDE
+	db 3, 3, BUBBLEBEAM
+	db 3, 4, THUNDERBOLT
+	db 4, 1, EARTHQUAKE
+	db 4, 2, BLIZZARD
+	db 4, 3, THUNDER
+	db 4, 4, SLUDGE
+	db 5, 1, ROCK_SLIDE
+	db 5, 2, EARTHQUAKE
+	db 5, 3, SUBMISSION
+	db 5, 4, THUNDERBOLT
 	db 0
 
-	
 	db LORELEI, 1
 	db 1, 1, SURF
 	db 1, 2, REST
