@@ -2526,13 +2526,15 @@ ItemUseTMHM:
 	callfar CheckIfMoveIsKnown ; check if the pokemon already knows the move
 	jr c, .chooseMon
 	predef LearnMove ; teach move
+	ld a, b
+	and a
+	jr z, .moveNotLearned
 	ld a, [wWhichPokemon]
 	ld d, a
 	pop af
 	ld [wCurItem], a
 	pop af
 	ld [wWhichPokemon], a
-	ret
 
 	ld a, [wWhichPokemon]
 	push af
@@ -2557,6 +2559,13 @@ ItemUseTMHM:
 	call IsItemHM
 	ret c
 	jp RemoveUsedItem
+
+.moveNotLearned
+	pop af
+	ld [wCurItem], a
+	pop af
+	ld [wWhichPokemon], a
+	ret
 
 BootedUpTMText:
 	text_far _BootedUpTMText

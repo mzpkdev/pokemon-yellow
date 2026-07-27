@@ -353,9 +353,19 @@ MapSpecificPikachuExpression:
 	ld hl, .Emotions
 	add hl, bc
 	ld a, [hl]
+	ld e, a
+	xor a
+	ld [wd49c], a
+	ld a, e
 	jr .play_emotion
 
 .mood_based_emotion
+	ld a, [wPikachuMood]
+	cp 99
+	jr nc, .use_normal_emotion
+	ldpikaemotion a, PikachuEmotion25
+	jr .play_emotion
+.use_normal_emotion
 	and a
 	ret
 
