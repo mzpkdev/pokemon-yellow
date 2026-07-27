@@ -2119,7 +2119,7 @@ wPikachuHappiness:: db
 wPikachuMood:: db
 wd472:: db
 wd473:: db
-	ds 1
+wPikachuCompanionStepCounter:: db
 wd475:: db
 	ds 4
 wd47a:: db

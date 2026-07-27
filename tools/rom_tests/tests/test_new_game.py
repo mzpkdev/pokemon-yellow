@@ -14,6 +14,7 @@ def test_new_game_reaches_bedroom_overworld(emulator: Emulator) -> None:
 
     assert emulator.read("wPikachuHappiness") == 30
     assert emulator.read("wPikachuMood") == 0
+    assert emulator.read("wPikachuCompanionStepCounter") == 0
     assert emulator.read("wCurMap") == 0x26
     assert (emulator.read("wYCoord"), emulator.read("wXCoord")) == (6, 3)
     emulator.assert_screen_matches(
