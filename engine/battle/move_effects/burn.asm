@@ -27,7 +27,7 @@ BurnEffect_:
 	ld c, 30
 	rst _DelayFrames
 	callfar PlayCurrentMoveAnimation
-	jr .printBurned
+	jr PrintBurned
 .didntAffect
 	ld c, 50
 	rst _DelayFrames
@@ -63,7 +63,7 @@ BurnSideEffect_:
 	ld h, d
 	ld l, e
 	call BurnEffect_.applyBurn
-.printBurned
+PrintBurned:
 	ld hl, BurnedText2
 	jpfar PrintText
 
