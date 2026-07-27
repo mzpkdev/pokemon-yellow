@@ -32,6 +32,25 @@ jobs:
             exit 1
           fi
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ROM test dependencies
+        run: python -m pip install pyboy==2.7.0 pillow pytest
+
+      - name: Run ROM tests
+        run: python -m pytest tools/rom_tests/tests
+
+      - name: Upload ROM test failures
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rom-test-failures
+          path: test-results/
+          if-no-files-found: ignore
+
       - name: Stage release files
         if: github.event_name == 'push'
         run: |
