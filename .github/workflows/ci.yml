@@ -19,7 +19,9 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Audit trainer data
-        run: python tools/audit/trainers.py
+        run: |
+          python -m unittest discover -s tools/audit -p "test_*.py" -v
+          python tools/audit/trainers.py --baseline docs/trainer-manifest.json
 
       - name: Set up build dependencies
         uses: ./.github/actions/setup-build

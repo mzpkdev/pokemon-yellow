@@ -1,0 +1,44 @@
+import json
+import unittest
+from pathlib import Path
+from unittest.mock import Mock
+
+import trainers
+
+
+class TrainerAuditTests(unittest.TestCase):
+    def test_topology_detects_party_count_drift(self):
+        manifest = {"classes": [{"constant_key": "BROCK", "party_count": 2}]}
+        baseline = {"classes": [{"constant_key": "BROCK", "party_count": 1}]}
+        path = Mock()
+        path.read_text.return_value = json.dumps(baseline)
+        self.assertTrue(trainers.compare_topology(manifest, path))
+
+    def test_missing_special_moves_end_marker_fails(self):
+        path = Mock()
+        path.read_text.return_value = (
+            "SpecialTrainerMoves:\n"
+            "\tdb BROCK, 1\n"
+            "\tdb 1, 1, TACKLE\n"
+            "\tdb 0\n"
+        )
+        _, errors = trainers.parse_special_moves(
+            path, {"BROCK": [{"pokemon": [{"species": "ONIX", "level": 12}]}]}
+        )
+        self.assertTrue(any("final db -1" in error for error in errors))
+
+    def test_bad_reference_fails(self):
+        refs = [{
+            "path": "data/maps/objects/Gym.asm",
+            "line": 1,
+            "class": "BROCK",
+            "party_ids": [2],
+        }]
+        errors = trainers.validate_references(
+            refs, {"BROCK": [{"pokemon": []}]}, Path(".")
+        )
+        self.assertTrue(any("outside 1..1" in error for error in errors))
+
+
+if __name__ == "__main__":
+    unittest.main()

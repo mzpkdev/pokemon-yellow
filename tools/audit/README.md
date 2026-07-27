@@ -14,4 +14,17 @@ python tools/audit/trainers.py --manifest trainer-manifest.json
 
 The audit checks party sizes and levels, trainer class/party references in
 `special_moves.asm`, party-slot and move-slot bounds, duplicate records, and
-duplicate slot overrides. It does not modify trainer data.
+duplicate slot overrides. It also checks the authoritative trainer-class order,
+class-indexed table lengths, direct map-object and script references, and the
+known dynamic rival selector ranges. It does not modify trainer data.
+
+To reject inserted, deleted, or reordered trainer records, compare class order
+and per-class party counts with a previously reviewed manifest:
+
+```sh
+python tools/audit/trainers.py --baseline trainer-manifest-baseline.json
+```
+
+The topology check deliberately allows party composition and levels to change.
+Dynamic script selectors are listed as explicit contracts in `trainers.py`;
+update those contracts when selector arithmetic changes.
