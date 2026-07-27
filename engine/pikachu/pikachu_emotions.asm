@@ -372,6 +372,14 @@ MapSpecificPikachuExpression:
 	ld a, [wPikachuMood]
 	cp 99
 	jr nc, .use_normal_emotion
+	cp 50
+	ld b, 75 percent + 1
+	jr c, .roll_mood_shock
+	ld b, 35 percent + 1
+.roll_mood_shock
+	call Random
+	cp b
+	jr nc, .use_normal_emotion
 	ldpikaemotion a, PikachuEmotion25
 	jr .play_emotion
 .use_normal_emotion
