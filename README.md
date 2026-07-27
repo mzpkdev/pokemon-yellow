@@ -2,6 +2,25 @@
 
 <img width="707" height="659" alt="STATIC" src="https://github.com/user-attachments/assets/65b224f5-5846-4bbc-89d3-19a91dff1cd9" />
 
+## Running CI locally
+
+Install [act](https://github.com/nektos/act) and Docker, make sure Docker is
+running, then run:
+
+```console
+python tools/run_ci.py
+```
+
+This runs the `build` job from `.github/workflows/ci.yml` as a pull request,
+including the ROM build and headless gameplay tests. To simulate a push to
+`main`, including staging and uploading the build artifact to act's local
+artifact server, run:
+
+```console
+python tools/run_ci.py --event push -- --artifact-server-path .act-artifacts
+```
+
+Any arguments after `--` are passed directly to act.
 
 My love of hacks and hacking came from Playing Red++ and Blue Kaizo. 
 Small binary edits to disassembly have come a long way and I am greatful I found those 2 hacks many moons ago!

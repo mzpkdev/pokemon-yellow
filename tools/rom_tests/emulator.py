@@ -43,6 +43,18 @@ class Emulator:
     def read(self, symbol: str) -> int:
         return self.pyboy.memory[self.symbols[symbol]]
 
+    def write(self, symbol: str, value: int) -> None:
+        if not 0 <= value <= 0xFF:
+            raise ValueError(f"Byte value out of range: {value}")
+        self.pyboy.memory[self.symbols[symbol]] = value
+
+    def bag_contains(self, item: int) -> bool:
+        bag_items = self.symbols["wBagItems"]
+        return any(
+            self.pyboy.memory[bag_items + index * 2] == item
+            for index in range(self.read("wNumBagItems"))
+        )
+
     def tick(self, frames: int = 1) -> None:
         for frame in range(frames):
             if not self.pyboy.tick():
@@ -79,6 +91,9 @@ class Emulator:
     def is_in_bedroom_overworld(self) -> bool:
         game_timer_counting = self.read("wStatusFlags6") & 1
         return self.read("wCurMap") == 0x26 and bool(game_timer_counting)
+
+    def is_in_battle(self) -> bool:
+        return self.read("wIsInBattle") != 0
 
     def save_screenshot(self, filename: str) -> Path:
         path = self.results / filename
