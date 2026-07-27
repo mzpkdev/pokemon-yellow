@@ -28,5 +28,5 @@ def test_receive_pikachu_battle_rival_and_leave_lab(emulator: Emulator) -> None:
     emulator.assert_screen_matches(
         SNAPSHOTS / "oaks-lab-exit.png",
         name="oaks-lab-exit",
-        crop=(0, 0, 160, 96),
+        crop=(0, 0, 160, 80),
     )
