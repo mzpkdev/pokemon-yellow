@@ -311,7 +311,7 @@ SilphCo7FSilphWorkerM1Text:
 .give_lapras
 	ld hl, .HaveThisPokemonText
 	rst _PrintText
-	lb bc, LAPRAS, 15
+	lb bc, LAPRAS, 35
 	call GivePokemon
 	jr nc, .done
 	ld a, [wSimulatedJoypadStatesEnd]

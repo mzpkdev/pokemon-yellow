@@ -162,8 +162,9 @@ Trades may provide bonus counterplay but cannot be the only practical answer.
 Preserve Static-exclusive static encounters. The legendary birds remain level 50
 and Mewtwo remains level 70 in both projects. Static places level 70 Mew in
 Cerulean Cave, while Legacy places it in Pokémon Mansion; retain Static's location
-unless a separate narrative decision changes it. Static's extra S.S. Anne Snorlax
-must also remain.
+unless a separate narrative decision changes it. The S.S. Anne Snorlax interaction
+only displays its Pokédex entry and exists in both projects; it is not a
+Static-exclusive encounter.
 
 Legendary and postgame static encounters are not valid assumptions for main-story
 boss tuning unless their access is unambiguously before that boss.
@@ -174,13 +175,15 @@ Preserve Static's tradeback support and dual trade/level fallback evolutions for
 Kadabra, Graveler, Machoke, and Haunter. Do not copy Legacy's evolution entries
 wholesale.
 
-Review, but do not automatically change:
+The acquisition-level forks are resolved:
 
-- Static fallback level 44 versus Legacy's species-specific levels 38/42.
-- Static Poliwag evolution at level 25 versus Legacy's level 18.
-- Stone availability before each intended boss use.
-- Whether level-44 trade evolutions arrive too late for the flexible
-  Koga/Sabrina segment.
+- Graveler and Machoke use level 38 fallbacks.
+- Kadabra and Haunter use level 42 fallbacks.
+- Poliwag evolves into Poliwhirl at level 18.
+
+Continue to audit stone availability before each intended boss use. The earlier
+trade-evolution fallbacks are deliberate support for the flexible Koga/Sabrina
+segment.
 
 Celadon must continue to sell Fire, Thunder, Water, Leaf, and Moon Stones. Stone
 access is a deliberate team-building feature and should be included when
@@ -277,22 +280,19 @@ These require an explicit design decision or playtest evidence:
    bosses, or only rematches?
 3. Should reusable TMs remain available in hard mode, or is their power accounted
    for entirely through boss design?
-4. Should trade-evolution fallback levels use Static's uniform 44 or Legacy's
-   earlier species-specific levels?
-5. Is Poliwag's level-25 evolution intentional?
-6. Should Legacy's unchosen-fossil gift be restored in Fuchsia, or does Static's
+4. Should Legacy's unchosen-fossil gift be restored in Fuchsia, or does Static's
    existing 151-completion path make it redundant?
-7. Should Mew remain postgame in Cerulean Cave, or return to Legacy's Mansion
+5. Should Mew remain postgame in Cerulean Cave, or return to Legacy's Mansion
    placement?
-8. Which badge-count variants are guaranteed for Erika, Koga, Sabrina, and Blaine
+6. Which badge-count variants are guaranteed for Erika, Koga, Sabrina, and Blaine
    when leaders are challenged out of the nominal order?
-9. What encounter probability qualifies as "common" for a required counter:
+7. What encounter probability qualifies as "common" for a required counter:
    20 percent, 10 percent, or another threshold?
-10. What is the acceptable catch-up distance for a newly obtained Pokémon:
+8. What is the acceptable catch-up distance for a newly obtained Pokémon:
     five levels below cap, one ordinary route of training, or another measure?
-11. Are the level-75 gym rematches and level-85/90 League rematches retained
+9. Are the level-75 gym rematches and level-85/90 League rematches retained
     unchanged, or redesigned after the main-story sweep?
-12. Should the early gift-level changes be adopted directly or tuned after the
+10. Should the early gift-level changes be adopted directly or tuned after the
     final trainer level curve is selected?
 
 ## Completion criteria
