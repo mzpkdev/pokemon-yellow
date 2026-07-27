@@ -165,6 +165,16 @@ MoveSoundTable:
 	db SFX_BATTLE_26,          $f0, $ff ; SUPER_FANG
 	db SFX_NOT_VERY_EFFECTIVE, $01, $ff ; SLASH
 	db SFX_BATTLE_2C,          $d8, $04 ; SUBSTITUTE
+	db SFX_BATTLE_1F,          $80, $04 ; X_SCISSOR
+	db SFX_BATTLE_0F,          $80, $10 ; SHADOW_BALL
+	db SFX_BATTLE_2A,          $f0, $10 ; DRAGONBREATH
+	db SFX_BATTLE_36,          $f0, $20 ; ROCK_TOMB
+	db SFX_BATTLE_1D,          $00, $80 ; MUD_SHOT
+	db SFX_BATTLE_2C,          $00, $80 ; WATER_PULSE
+	db SFX_BATTLE_0E,          $f0, $20 ; ICICLE_SPEAR
+	db SFX_BATTLE_32,          $08, $e0 ; BULLET_SEED
+	db SFX_HEAL_AILMENT,       $00, $80 ; ROOST
+	db SFX_HEAL_AILMENT,       $00, $80 ; SYNTHESIS
 	db SFX_BATTLE_0B,          $00, $80 ; STRUGGLE
 	assert_table_length NUM_ATTACKS
 	db SFX_BATTLE_0B,          $00, $80

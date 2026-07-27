@@ -1746,6 +1746,66 @@ _SubstituteDexEntry::
 	next "<user>"
 	dex
 
+_XScissorDexEntry::
+	text "Slashes the foe"
+	next "with crossed claws"
+	next "like scissors."
+	dex
+
+_ShadowBallDexEntry::
+	text "Hurls a shadowy"
+	next "blob that may"
+	next "reduce SPECIAL."
+	dex
+
+_DragonbreathDexEntry::
+	text "A draconic breath"
+	next "attack that may"
+	next "cause paralysis."
+	dex
+
+_RockTombDexEntry::
+	text "Hurls rocks at the"
+	next "foe and may reduce"
+	next "its SPEED."
+	dex
+
+_MudShotDexEntry::
+	text "Hurls mud at the"
+	next "foe and may reduce"
+	next "its SPEED."
+	dex
+
+_WaterPulseDexEntry::
+	text "Attacks with a"
+	next "pulsing blast that"
+	next "may confuse."
+	dex
+
+_IcicleSpearDexEntry::
+	text "Fires sharp icicles"
+	next "at the foe two to"
+	next "five times."
+	dex
+
+_BulletSeedDexEntry::
+	text "Fires seeds at the"
+	next "foe two to five"
+	next "times."
+	dex
+
+_RoostDexEntry::
+	text "The user rests and"
+	next "restores half of"
+	next "its maximum HP."
+	dex
+
+_SynthesisDexEntry::
+	text "The user restores"
+	next "half of its"
+	next "maximum HP."
+	dex
+
 _StruggleDexEntry::
 	text "A last ditch"
 	next "move only usable"
