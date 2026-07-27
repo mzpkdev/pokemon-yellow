@@ -23,15 +23,27 @@ LOAD_OPP_RE = re.compile(r"^\s*ld\s+a,\s*OPP_([A-Za-z0-9_]+)\s*$", re.IGNORECASE
 LOAD_NUMBER_RE = re.compile(
     r"^\s*ld\s+a,\s*(\$[0-9a-f]+|\d+)\s*$", re.IGNORECASE
 )
+LOAD_RIVAL_STARTER_RE = re.compile(
+    r"^\s*ld\s+a,\s*\[wRivalStarter\]\s*$", re.IGNORECASE
+)
+ADD_NUMBER_RE = re.compile(
+    r"^\s*add\s+(\$[0-9a-f]+|\d+)\s*$", re.IGNORECASE
+)
+STORE_CUR_OPPONENT_RE = re.compile(
+    r"^\s*ld\s+\[wCurOpponent\],\s*a\s*$", re.IGNORECASE
+)
+STORE_TRAINER_NUMBER_RE = re.compile(
+    r"^\s*ld\s+\[wTrainerNo\],\s*a\s*$", re.IGNORECASE
+)
 
 # Dynamic selectors cannot be proven by merely looking for literal `ld a, N`
 # instructions. These contracts document the intended result of their arithmetic
 # and make party-count drift fail the audit.
 DYNAMIC_SELECTOR_CONTRACTS = [
-    ("scripts/PokemonTower2F.asm", "RIVAL2", range(2, 5), "wRivalStarter + 1"),
-    ("scripts/SilphCo7F.asm", "RIVAL2", range(5, 8), "wRivalStarter + 4"),
-    ("scripts/Route22.asm", "RIVAL2", range(8, 11), "wRivalStarter + 7"),
-    ("scripts/ChampionsRoom.asm", "RIVAL3", range(1, 4), "wRivalStarter branches"),
+    ("scripts/PokemonTower2F.asm", "RIVAL2", range(2, 5), 1),
+    ("scripts/SilphCo7F.asm", "RIVAL2", range(5, 8), 4),
+    ("scripts/Route22.asm", "RIVAL2", range(8, 11), 7),
+    ("scripts/ChampionsRoom.asm", "RIVAL3", range(1, 4), 0),
 ]
 
 
@@ -56,6 +68,30 @@ def parse_asm_int(value: str) -> int:
     if value.startswith("$"):
         return int(value[1:], 16)
     return int(value, 10)
+
+
+def has_dynamic_rival_selector(text: str, class_name: str, offset: int) -> bool:
+    """Verify the implemented wRivalStarter selector for a trainer class."""
+    lines = [clean(line) for line in text.splitlines() if clean(line)]
+    for index, line in enumerate(lines):
+        opponent = LOAD_OPP_RE.match(line)
+        if not opponent or key(opponent.group(1)) != key(class_name):
+            continue
+        window = lines[index + 1:index + 8]
+        for store_index, candidate in enumerate(window):
+            if not STORE_CUR_OPPONENT_RE.match(candidate):
+                continue
+            selector = window[store_index + 1:]
+            if len(selector) < 3 or not LOAD_RIVAL_STARTER_RE.match(selector[0]):
+                continue
+            addition = ADD_NUMBER_RE.match(selector[1])
+            if (
+                addition
+                and parse_asm_int(addition.group(1)) == offset
+                and STORE_TRAINER_NUMBER_RE.match(selector[2])
+            ):
+                return True
+    return False
 
 
 def parse_trainer_constants(path: Path) -> list[str]:
@@ -343,18 +379,31 @@ def collect_references(
                     })
                     break
 
-    for relative, class_name, party_range, selector in DYNAMIC_SELECTOR_CONTRACTS:
+    for relative, class_name, party_range, offset in DYNAMIC_SELECTOR_CONTRACTS:
         path = root / relative
         if not path.exists():
             errors.append(f"{path}: dynamic selector contract source is missing")
             continue
+        expected_party_ids = list(range(offset + 1, offset + 4))
+        if list(party_range) != expected_party_ids:
+            errors.append(
+                f"{path}: dynamic selector contract IDs {list(party_range)} "
+                f"do not match wRivalStarter + {offset} ({expected_party_ids})"
+            )
+        if not has_dynamic_rival_selector(
+            path.read_text(encoding="utf-8"), class_name, offset
+        ):
+            errors.append(
+                f"{path}: expected OPP_{class_name} selector "
+                f"wRivalStarter + {offset} stored in wTrainerNo"
+            )
         references.append({
             "kind": "script",
             "path": relative,
             "line": None,
             "class": class_name,
-            "party_ids": list(party_range),
-            "selector": selector,
+            "party_ids": expected_party_ids,
+            "selector": f"wRivalStarter + {offset}",
         })
 
     errors.extend(validate_references(references, classes, root))

@@ -381,7 +381,7 @@ SpecialTrainerMoves:
     db 6, 4, THUNDERBOLT
 	db 0
 
-	
+
 	db LANCE, 1 ; 61, DRAGONITE, 60, GYARADOS, 60, CHARIZARD, 61, AERODACTYL, 62, DRAGONITE
 	db 1, 1, WRAP
 	db 1, 3, THUNDER_WAVE
