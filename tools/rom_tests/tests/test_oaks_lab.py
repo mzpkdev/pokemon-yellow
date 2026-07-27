@@ -27,5 +27,6 @@ def test_receive_pikachu_battle_rival_and_leave_lab(emulator: Emulator) -> None:
     assert (emulator.read("wYCoord"), emulator.read("wXCoord")) == (12, 12)
     emulator.assert_screen_matches(
         SNAPSHOTS / "oaks-lab-exit.png",
-        name="oaks-lab-exit",
+        name="oaks-lab-exit-upper",
+        crop=(0, 0, 160, 80),
     )

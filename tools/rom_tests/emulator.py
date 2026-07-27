@@ -11,6 +11,20 @@ from PIL import Image, ImageChops
 from pyboy import PyBoy
 
 
+def screen_difference(
+    actual: Image.Image,
+    reference: Image.Image,
+    ignored_regions: tuple[tuple[int, int, int, int], ...] = (),
+) -> Image.Image:
+    """Return a full-frame diff after masking explicitly unstable regions."""
+    compared_actual = actual.copy()
+    compared_reference = reference.copy()
+    for region in ignored_regions:
+        compared_actual.paste((0, 0, 0), region)
+        compared_reference.paste((0, 0, 0), region)
+    return ImageChops.difference(compared_actual, compared_reference)
+
+
 class Emulator:
     """A deterministic, headless Game Boy test driver."""
 
@@ -100,7 +114,14 @@ class Emulator:
         self.pyboy.screen.image.save(path)
         return path
 
-    def assert_screen_matches(self, expected: Path, name: str) -> None:
+    def assert_screen_matches(
+        self,
+        expected: Path,
+        name: str,
+        *,
+        crop: tuple[int, int, int, int] | None = None,
+        ignored_regions: tuple[tuple[int, int, int, int], ...] = (),
+    ) -> None:
         actual = self.pyboy.screen.image.convert("RGB")
         if os.environ.get("UPDATE_ROM_SNAPSHOTS") == "1":
             expected.parent.mkdir(parents=True, exist_ok=True)
@@ -108,7 +129,13 @@ class Emulator:
             return
 
         reference = Image.open(expected).convert("RGB")
-        difference = ImageChops.difference(actual, reference)
+        compared_actual = actual.crop(crop) if crop else actual
+        compared_reference = reference.crop(crop) if crop else reference
+        difference = screen_difference(
+            compared_actual,
+            compared_reference,
+            ignored_regions,
+        )
         if difference.getbbox() is None:
             return
 
