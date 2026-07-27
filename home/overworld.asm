@@ -367,6 +367,7 @@ StepCountCheck::
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_MOVEMENT_STATE, a
 	jr nz, .doneStepCounting ; if button presses are being simulated, don't count steps
+	farcall UpdatePikachuCompanionOnStep
 ; step counting
 	ld hl, wStepCounter
 	dec [hl]

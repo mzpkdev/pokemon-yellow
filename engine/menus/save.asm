@@ -257,6 +257,8 @@ SaveSAVtoSRAM2:
 	inc de
 	ld a, [hl]
 	ld [de], a
+	ld a, [wPikachuCompanionStepCounter]
+	ld [sMainData + (wPikachuCompanionStepCounter - wMainDataStart)], a
 	ld hl, sGameData
 	ld bc, sGameDataEnd - sGameData
 	call SAVCheckSum

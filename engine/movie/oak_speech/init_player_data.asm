@@ -16,6 +16,7 @@ InitPlayerData2:
 	ld [wPikachuHappiness], a
 	xor a
 	ld [wPikachuMood], a ; initialize mood
+	ld [wPikachuCompanionStepCounter], a
 
 	ld hl, wPartyCount
 	call InitializeEmptyList

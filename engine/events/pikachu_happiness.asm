@@ -130,3 +130,35 @@ PikachuMoodChanges:
 	db -20 ; Fainted due to poison outside of battle
 	db -16 ; Fainted to an opponent at least 30 levels higher
 	db   0 ; Traded away (handled separately)
+
+UpdatePikachuCompanionOnStep::
+	ld a, [wWalkBikeSurfState]
+	cp BIKING
+	ret z
+	callfar IsStarterPikachuInOurParty
+	ret nc
+
+	ld hl, wPikachuCompanionStepCounter
+	inc [hl]
+	ld a, [hl]
+	and $7
+	call z, .driftMoodTowardNeutral
+
+	ld a, [wPikachuCompanionStepCounter]
+	and a
+	ret nz
+	ld d, PIKAHAPPY_WALKING
+	jp ModifyPikachuHappiness
+
+.driftMoodTowardNeutral
+	ld hl, wPikachuMood
+	ld a, [hl]
+	cp 128
+	ret z
+	jr c, .increaseMood
+	dec [hl]
+	ret
+
+.increaseMood
+	inc [hl]
+	ret
