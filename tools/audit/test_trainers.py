@@ -39,6 +39,26 @@ class TrainerAuditTests(unittest.TestCase):
         )
         self.assertTrue(any("outside 1..1" in error for error in errors))
 
+    def test_hex_script_selectors_are_collected_and_validated(self):
+        root = Path(__file__).resolve().parents[2]
+        constants = trainers.parse_trainer_constants(
+            root / "constants/trainer_constants.asm"
+        )
+        _, classes, party_errors = trainers.parse_parties(
+            root / "data/trainers/parties.asm", constants
+        )
+        references, reference_errors = trainers.collect_references(root, classes)
+        rocket_parties = sorted(
+            reference["party_ids"][0]
+            for reference in references
+            if trainers.key(reference["class"]) == "ROCKET"
+            and 0x2A <= reference["party_ids"][0] <= 0x2F
+        )
+
+        self.assertFalse(party_errors)
+        self.assertFalse(reference_errors)
+        self.assertEqual(rocket_parties, list(range(0x2A, 0x30)))
+
 
 if __name__ == "__main__":
     unittest.main()
