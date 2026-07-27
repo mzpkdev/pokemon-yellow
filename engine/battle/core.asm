@@ -5659,10 +5659,28 @@ AdjustDamageForMoveType:
 	push hl
 	push bc
 	inc hl
+	ldh a, [hWhoseTurn]
+	and a
+	ld a, [wPlayerMoveNum]
+	jr z, .checkFreezeDry
+	ld a, [wEnemyMoveNum]
+.checkFreezeDry
+	cp FREEZE_DRY
+	jr nz, .regularTypeMultiplier
+	dec hl
+	ld a, [hli]
+	cp WATER
+	jr nz, .regularTypeMultiplier
+	ld a, SUPER_EFFECTIVE
+	jr .gotTypeMultiplier
+.regularTypeMultiplier
+	ld a, [hl]
+.gotTypeMultiplier
+	push af
 	ld a, [wDamageMultipliers]
 	and 1 << BIT_STAB_DAMAGE
 	ld b, a
-	ld a, [hl] ; a = damage multiplier
+	pop af ; a = damage multiplier
 	ldh [hMultiplier], a
   and a  ; cp NO_EFFECT
 	jr z, .gotMultiplier
