@@ -20,7 +20,9 @@ POINTER_RE = re.compile(r"^\s*dw\s+([A-Za-z_][A-Za-z0-9_]*)\s*$")
 TRAINER_CONST_RE = re.compile(r"^\s*trainer_const\s+([A-Za-z_][A-Za-z0-9_]*)")
 OBJECT_REF_RE = re.compile(r"\bOPP_([A-Za-z0-9_]+)\s*,\s*(\d+)\s*$")
 LOAD_OPP_RE = re.compile(r"^\s*ld\s+a,\s*OPP_([A-Za-z0-9_]+)\s*$", re.IGNORECASE)
-LOAD_NUMBER_RE = re.compile(r"^\s*ld\s+a,\s*(\d+)\s*$", re.IGNORECASE)
+LOAD_NUMBER_RE = re.compile(
+    r"^\s*ld\s+a,\s*(\$[0-9a-f]+|\d+)\s*$", re.IGNORECASE
+)
 
 # Dynamic selectors cannot be proven by merely looking for literal `ld a, N`
 # instructions. These contracts document the intended result of their arithmetic
@@ -47,6 +49,13 @@ def fields(line: str) -> list[str] | None:
 def key(name: str) -> str:
     name = re.sub(r"Data$", "", name, flags=re.IGNORECASE)
     return re.sub(r"[^A-Za-z0-9]", "", name).upper()
+
+
+def parse_asm_int(value: str) -> int:
+    """Parse the decimal and RGBDS-style hexadecimal literals used by selectors."""
+    if value.startswith("$"):
+        return int(value[1:], 16)
+    return int(value, 10)
 
 
 def parse_trainer_constants(path: Path) -> list[str]:
@@ -329,7 +338,7 @@ def collect_references(
                         "path": path.relative_to(root).as_posix(),
                         "line": index + 1,
                         "class": opponent.group(1),
-                        "party_ids": [int(number.group(1))],
+                        "party_ids": [parse_asm_int(number.group(1))],
                         "selector": "literal",
                     })
                     break

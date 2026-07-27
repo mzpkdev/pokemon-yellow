@@ -5333,15 +5333,15 @@
         "line": 610,
         "pokemon": [
           {
-            "level": 17,
+            "level": 15,
             "species": "EKANS"
           },
           {
-            "level": 17,
+            "level": 16,
             "species": "MEOWTH"
           },
           {
-            "level": 17,
+            "level": 15,
             "species": "KOFFING"
           }
         ]
@@ -5355,16 +5355,12 @@
             "species": "KOFFING"
           },
           {
-            "level": 28,
+            "level": 29,
             "species": "MEOWTH"
           },
           {
             "level": 28,
-            "species": "EKANS"
-          },
-          {
-            "level": 28,
-            "species": "WEEPINBELL"
+            "species": "ARBOK"
           }
         ]
       },
@@ -5373,24 +5369,20 @@
         "line": 612,
         "pokemon": [
           {
-            "level": 30,
+            "level": 33,
             "species": "MEOWTH"
           },
           {
-            "level": 30,
+            "level": 31,
             "species": "ARBOK"
           },
           {
             "level": 30,
-            "species": "WEEZING"
-          },
-          {
-            "level": 30,
-            "species": "VICTREEBEL"
-          },
-          {
-            "level": 30,
             "species": "LICKITUNG"
+          },
+          {
+            "level": 31,
+            "species": "WEEZING"
           }
         ]
       },
@@ -5399,24 +5391,24 @@
         "line": 613,
         "pokemon": [
           {
-            "level": 34,
+            "level": 42,
             "species": "WEEZING"
           },
           {
-            "level": 34,
-            "species": "ARBOK"
-          },
-          {
-            "level": 34,
-            "species": "VICTREEBEL"
-          },
-          {
-            "level": 34,
+            "level": 41,
             "species": "LICKITUNG"
           },
           {
-            "level": 34,
+            "level": 42,
+            "species": "ARBOK"
+          },
+          {
+            "level": 44,
             "species": "MEOWTH"
+          },
+          {
+            "level": 43,
+            "species": "VICTREEBEL"
           }
         ]
       },
@@ -14295,6 +14287,16 @@
     },
     {
       "kind": "script",
+      "path": "scripts/ChampionsRoom.asm",
+      "line": 93,
+      "class": "RIVAL3",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
       "path": "scripts/CinnabarGym.asm",
       "line": 277,
       "class": "BLAINE",
@@ -14335,9 +14337,79 @@
     },
     {
       "kind": "script",
+      "path": "scripts/MtMoonB2F.asm",
+      "line": 335,
+      "class": "ROCKET",
+      "party_ids": [
+        42
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/OaksLab.asm",
+      "line": 352,
+      "class": "RIVAL1",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
       "path": "scripts/PewterGym.asm",
       "line": 137,
       "class": "BROCK",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/PokemonMansionB1F.asm",
+      "line": 226,
+      "class": "ROCKET",
+      "party_ids": [
+        46
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/PokemonTower7F.asm",
+      "line": 158,
+      "class": "ROCKET",
+      "party_ids": [
+        44
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/RocketHideoutB4F.asm",
+      "line": 211,
+      "class": "ROCKET",
+      "party_ids": [
+        43
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/Route1.asm",
+      "line": 86,
+      "class": "PROF_OAK",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/Route22.asm",
+      "line": 25,
+      "class": "RIVAL1",
       "party_ids": [
         2
       ],
@@ -14365,6 +14437,26 @@
     },
     {
       "kind": "script",
+      "path": "scripts/SilphCo11F.asm",
+      "line": 405,
+      "class": "ROCKET",
+      "party_ids": [
+        45
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/SSAnne2F.asm",
+      "line": 95,
+      "class": "RIVAL2",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
       "path": "scripts/VermilionCity_2.asm",
       "line": 60,
       "class": "JENNY",
@@ -14380,6 +14472,16 @@
       "class": "LT_SURGE",
       "party_ids": [
         2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/ViridianGym.asm",
+      "line": 273,
+      "class": "ROCKET",
+      "party_ids": [
+        47
       ],
       "selector": "literal"
     },
