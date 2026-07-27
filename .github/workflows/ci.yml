@@ -2,6 +2,9 @@ name: CI
 
 on:
   pull_request:
+    branches: [main]
+  push:
+    branches: [main]
 
 permissions:
   contents: read
@@ -28,3 +31,23 @@ jobs:
             git diff-index HEAD --
             exit 1
           fi
+
+      - name: Stage release files
+        if: github.event_name == 'push'
+        run: |
+          mkdir release
+          cp pokeyellow.gbc       release/pokemon-yellow.gbc
+          cp pokeyellow.map       release/pokemon-yellow.map
+          cp pokeyellow.sym       release/pokemon-yellow.sym
+          cp pokeyellow_debug.gbc release/pokemon-yellow-debug.gbc
+          cp pokeyellow_debug.map release/pokemon-yellow-debug.map
+          cp pokeyellow_debug.sym release/pokemon-yellow-debug.sym
+
+      - name: Upload build artifacts
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pokemon-yellow-build
+          path: release/
+          if-no-files-found: error
+          retention-days: 3
