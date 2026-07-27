@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: pokemon-yellow-build
           path: release
@@ -27,7 +27,7 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
 
       - name: Create GitHub release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: release/*
           name: Pokemon Yellow (${{ github.run_number }})

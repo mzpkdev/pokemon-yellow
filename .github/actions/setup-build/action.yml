@@ -5,7 +5,7 @@ runs:
   using: composite
   steps:
     - name: Checkout RGBDS
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         path: rgbds
         ref: v0.8.0
