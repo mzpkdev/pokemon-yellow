@@ -727,7 +727,6 @@ SpecialTrainerMoves:
 	db 4, 4, PSYCHIC_M
 	db 5, 1, DOUBLE_TEAM
 	db 5, 2, HYDRO_PUMP
-    	db 5, 3, THUNDERBOLT
     	db 5, 3, FIRE_BLAST
     	db 6, 1, ICE_BEAM
     	db 6, 2, EARTHQUAKE

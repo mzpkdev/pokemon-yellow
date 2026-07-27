@@ -18,6 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Audit trainer data
+        run: python tools/audit/trainers.py
+
       - name: Set up build dependencies
         uses: ./.github/actions/setup-build
 
@@ -52,7 +55,6 @@ jobs:
           if-no-files-found: ignore
 
       - name: Stage release files
-        if: github.event_name == 'push'
         run: |
           mkdir release
           cp pokeyellow.gbc       release/pokemon-yellow.gbc
@@ -63,7 +65,6 @@ jobs:
           cp pokeyellow_debug.sym release/pokemon-yellow-debug.sym
 
       - name: Upload build artifacts
-        if: github.event_name == 'push'
         uses: actions/upload-artifact@v7
         with:
           name: pokemon-yellow-build
