@@ -1249,7 +1249,7 @@
         "pokemon": [
           {
             "level": 29,
-            "species": "NIDORAN_M"
+            "species": "NIDORINA"
           },
           {
             "level": 29,
@@ -1436,24 +1436,24 @@
         "line": 198,
         "pokemon": [
           {
-            "level": 34,
-            "species": "RAICHU"
+            "level": 28,
+            "species": "POLIWHIRL"
           },
           {
-            "level": 34,
-            "species": "VILEPLUME"
+            "level": 28,
+            "species": "CLEFAIRY"
           },
           {
-            "level": 34,
-            "species": "BUTTERFREE"
+            "level": 28,
+            "species": "WEEPINBELL"
           },
           {
-            "level": 34,
-            "species": "CHANSEY"
+            "level": 28,
+            "species": "POLIWHIRL"
           },
           {
-            "level": 34,
-            "species": "LICKITUNG"
+            "level": 28,
+            "species": "MEOWTH"
           }
         ]
       },
@@ -1462,12 +1462,12 @@
         "line": 199,
         "pokemon": [
           {
-            "level": 36,
+            "level": 29,
             "species": "POLIWHIRL"
           },
           {
-            "level": 36,
-            "species": "WIGGLYTUFF"
+            "level": 29,
+            "species": "SEAKING"
           }
         ]
       },
@@ -1476,20 +1476,12 @@
         "line": 200,
         "pokemon": [
           {
-            "level": 37,
-            "species": "NIDORINA"
-          },
-          {
-            "level": 37,
-            "species": "MEOWTH"
-          },
-          {
-            "level": 37,
+            "level": 28,
             "species": "TANGELA"
           },
           {
-            "level": 37,
-            "species": "PIDGEOTTO"
+            "level": 28,
+            "species": "PERSIAN"
           }
         ]
       },
@@ -1498,15 +1490,11 @@
         "line": 201,
         "pokemon": [
           {
-            "level": 38,
-            "species": "VAPOREON"
-          },
-          {
-            "level": 38,
+            "level": 29,
             "species": "POLIWHIRL"
           },
           {
-            "level": 38,
+            "level": 29,
             "species": "SEADRA"
           }
         ]
@@ -1517,7 +1505,7 @@
         "pokemon": [
           {
             "level": 41,
-            "species": "WIGGLYTUFF"
+            "species": "SEAKING"
           },
           {
             "level": 41,
@@ -1584,16 +1572,16 @@
         "line": 209,
         "pokemon": [
           {
-            "level": 38,
-            "species": "GLOOM"
+            "level": 34,
+            "species": "PSYDUCK"
           },
           {
-            "level": 38,
-            "species": "VILEPLUME"
+            "level": 34,
+            "species": "PERSIAN"
           },
           {
-            "level": 38,
-            "species": "NIDORINO"
+            "level": 34,
+            "species": "GOLDUCK"
           }
         ]
       },
@@ -1602,12 +1590,12 @@
         "line": 210,
         "pokemon": [
           {
-            "level": 39,
-            "species": "MAGNETON"
+            "level": 36,
+            "species": "WEEPINBELL"
           },
           {
-            "level": 39,
-            "species": "RAICHU"
+            "level": 36,
+            "species": "POLIWRATH"
           }
         ]
       },
@@ -1616,7 +1604,7 @@
         "line": 211,
         "pokemon": [
           {
-            "level": 33,
+            "level": 38,
             "species": "CLEFABLE"
           }
         ]
@@ -1626,16 +1614,16 @@
         "line": 212,
         "pokemon": [
           {
-            "level": 39,
-            "species": "VICTREEBEL"
-          },
-          {
-            "level": 39,
-            "species": "VILEPLUME"
-          },
-          {
-            "level": 39,
+            "level": 35,
             "species": "TANGELA"
+          },
+          {
+            "level": 35,
+            "species": "PONYTA"
+          },
+          {
+            "level": 35,
+            "species": "SANDSLASH"
           }
         ]
       },
@@ -1644,16 +1632,16 @@
         "line": 214,
         "pokemon": [
           {
-            "level": 30,
+            "level": 40,
             "species": "TENTACRUEL"
           },
           {
-            "level": 30,
+            "level": 40,
             "species": "SEADRA"
           },
           {
-            "level": 30,
-            "species": "SEEL"
+            "level": 40,
+            "species": "DEWGONG"
           }
         ]
       },
@@ -1744,15 +1732,15 @@
         "line": 227,
         "pokemon": [
           {
-            "level": 48,
-            "species": "EXEGGUTOR"
+            "level": 52,
+            "species": "VENUSAUR"
           },
           {
-            "level": 48,
+            "level": 52,
             "species": "LAPRAS"
           },
           {
-            "level": 48,
+            "level": 52,
             "species": "LICKITUNG"
           }
         ]
@@ -1914,15 +1902,11 @@
         "line": 245,
         "pokemon": [
           {
-            "level": 44,
-            "species": "GOLEM"
+            "level": 49,
+            "species": "VULPIX"
           },
           {
-            "level": 44,
-            "species": "PORYGON"
-          },
-          {
-            "level": 44,
+            "level": 49,
             "species": "NINETALES"
           }
         ]
@@ -1932,20 +1916,20 @@
         "line": 246,
         "pokemon": [
           {
-            "level": 44,
-            "species": "FLAREON"
+            "level": 53,
+            "species": "PONYTA"
           },
           {
-            "level": 44,
+            "level": 53,
             "species": "CHARMELEON"
           },
           {
-            "level": 44,
+            "level": 53,
             "species": "VULPIX"
           },
           {
-            "level": 44,
-            "species": "PRIMEAPE"
+            "level": 53,
+            "species": "GROWLITHE"
           }
         ]
       },
@@ -1954,7 +1938,7 @@
         "line": 247,
         "pokemon": [
           {
-            "level": 44,
+            "level": 52,
             "species": "RAPIDASH"
           }
         ]
@@ -1964,12 +1948,12 @@
         "line": 248,
         "pokemon": [
           {
-            "level": 43,
-            "species": "MAGMAR"
+            "level": 50,
+            "species": "CHARMELEON"
           },
           {
-            "level": 43,
-            "species": "VULPIX"
+            "level": 50,
+            "species": "FLAREON"
           }
         ]
       }
@@ -2198,16 +2182,16 @@
         "line": 275,
         "pokemon": [
           {
-            "level": 38,
+            "level": 29,
+            "species": "SHELLDER"
+          },
+          {
+            "level": 29,
             "species": "WEEZING"
           },
           {
-            "level": 38,
-            "species": "GRIMER"
-          },
-          {
-            "level": 38,
-            "species": "KOFFING"
+            "level": 29,
+            "species": "CLOYSTER"
           }
         ]
       },
@@ -2216,12 +2200,12 @@
         "line": 277,
         "pokemon": [
           {
-            "level": 38,
-            "species": "WEEZING"
+            "level": 30,
+            "species": "SANDSLASH"
           },
           {
-            "level": 38,
-            "species": "GRIMER"
+            "level": 30,
+            "species": "MACHOKE"
           }
         ]
       },
@@ -2230,24 +2214,20 @@
         "line": 279,
         "pokemon": [
           {
-            "level": 35,
-            "species": "WEEZING"
+            "level": 34,
+            "species": "SANDSLASH"
           },
           {
-            "level": 35,
-            "species": "VICTREEBEL"
+            "level": 34,
+            "species": "KOFFING"
           },
           {
-            "level": 35,
-            "species": "PINSIR"
+            "level": 34,
+            "species": "SANDSLASH"
           },
           {
-            "level": 35,
-            "species": "HAUNTER"
-          },
-          {
-            "level": 35,
-            "species": "MUK"
+            "level": 34,
+            "species": "GRIMER"
           }
         ]
       },
@@ -2256,15 +2236,15 @@
         "line": 280,
         "pokemon": [
           {
-            "level": 38,
+            "level": 34,
             "species": "KOFFING"
           },
           {
-            "level": 38,
+            "level": 34,
             "species": "GRIMER"
           },
           {
-            "level": 38,
+            "level": 36,
             "species": "WEEZING"
           }
         ]
@@ -2274,12 +2254,12 @@
         "line": 282,
         "pokemon": [
           {
-            "level": 36,
-            "species": "MUK"
+            "level": 29,
+            "species": "GRIMER"
           },
           {
-            "level": 36,
-            "species": "WEEZING"
+            "level": 29,
+            "species": "BEEDRILL"
           }
         ]
       },
@@ -2288,7 +2268,7 @@
         "line": 283,
         "pokemon": [
           {
-            "level": 36,
+            "level": 30,
             "species": "WEEZING"
           }
         ]
@@ -2298,20 +2278,20 @@
         "line": 284,
         "pokemon": [
           {
-            "level": 36,
-            "species": "KOFFING"
+            "level": 28,
+            "species": "GRIMER"
           },
           {
-            "level": 36,
-            "species": "MUK"
+            "level": 28,
+            "species": "CHARMELEON"
           },
           {
-            "level": 36,
-            "species": "WEEZING"
+            "level": 28,
+            "species": "RHYHORN"
           },
           {
-            "level": 36,
-            "species": "VENOMOTH"
+            "level": 28,
+            "species": "GRIMER"
           }
         ]
       },
@@ -2320,15 +2300,15 @@
         "line": 286,
         "pokemon": [
           {
-            "level": 34,
+            "level": 33,
             "species": "WEEZING"
           },
           {
-            "level": 34,
+            "level": 33,
             "species": "KOFFING"
           },
           {
-            "level": 34,
+            "level": 33,
             "species": "WEEZING"
           }
         ]
@@ -2338,7 +2318,7 @@
         "line": 287,
         "pokemon": [
           {
-            "level": 33,
+            "level": 35,
             "species": "MUK"
           }
         ]
@@ -2348,12 +2328,12 @@
         "line": 288,
         "pokemon": [
           {
-            "level": 33,
-            "species": "VOLTORB"
+            "level": 32,
+            "species": "ELECTRODE"
           },
           {
-            "level": 33,
-            "species": "VOLTORB"
+            "level": 32,
+            "species": "MAGNETON"
           }
         ]
       },
@@ -2362,11 +2342,11 @@
         "line": 289,
         "pokemon": [
           {
-            "level": 34,
-            "species": "BEEDRILL"
+            "level": 32,
+            "species": "WEEZING"
           },
           {
-            "level": 34,
+            "level": 32,
             "species": "MUK"
           }
         ]
@@ -2376,24 +2356,20 @@
         "line": 290,
         "pokemon": [
           {
-            "level": 33,
+            "level": 30,
+            "species": "SANDSLASH"
+          },
+          {
+            "level": 30,
+            "species": "KRABBY"
+          },
+          {
+            "level": 30,
             "species": "KOFFING"
           },
           {
-            "level": 33,
-            "species": "WEEZING"
-          },
-          {
-            "level": 33,
-            "species": "GRIMER"
-          },
-          {
-            "level": 33,
-            "species": "VENOMOTH"
-          },
-          {
-            "level": 33,
-            "species": "PARASECT"
+            "level": 30,
+            "species": "KINGLER"
           }
         ]
       },
@@ -2402,16 +2378,16 @@
         "line": 292,
         "pokemon": [
           {
-            "level": 38,
-            "species": "GASTLY"
+            "level": 31,
+            "species": "BEEDRILL"
           },
           {
-            "level": 38,
-            "species": "GRIMER"
+            "level": 31,
+            "species": "WEEZING"
           },
           {
-            "level": 38,
-            "species": "VENOMOTH"
+            "level": 31,
+            "species": "BEEDRILL"
           }
         ]
       },
@@ -2420,15 +2396,15 @@
         "line": 293,
         "pokemon": [
           {
-            "level": 38,
+            "level": 32,
+            "species": "HITMONCHAN"
+          },
+          {
+            "level": 32,
             "species": "GRIMER"
           },
           {
-            "level": 38,
-            "species": "PINSIR"
-          },
-          {
-            "level": 38,
+            "level": 32,
             "species": "KOFFING"
           }
         ]
@@ -2438,11 +2414,11 @@
         "line": 294,
         "pokemon": [
           {
-            "level": 38,
-            "species": "KOFFING"
+            "level": 32,
+            "species": "HITMONLEE"
           },
           {
-            "level": 38,
+            "level": 32,
             "species": "MUK"
           }
         ]
@@ -2496,15 +2472,11 @@
         "line": 302,
         "pokemon": [
           {
-            "level": 41,
-            "species": "GROWLITHE"
+            "level": 48,
+            "species": "FLAREON"
           },
           {
-            "level": 41,
-            "species": "VULPIX"
-          },
-          {
-            "level": 41,
+            "level": 48,
             "species": "NINETALES"
           }
         ]
@@ -2514,8 +2486,8 @@
         "line": 303,
         "pokemon": [
           {
-            "level": 41,
-            "species": "MAGMAR"
+            "level": 51,
+            "species": "RAPIDASH"
           }
         ]
       },
@@ -2524,11 +2496,11 @@
         "line": 304,
         "pokemon": [
           {
-            "level": 37,
+            "level": 54,
             "species": "VULPIX"
           },
           {
-            "level": 37,
+            "level": 54,
             "species": "GROWLITHE"
           }
         ]
@@ -2539,7 +2511,7 @@
         "pokemon": [
           {
             "level": 44,
-            "species": "SANDSLASH"
+            "species": "PRIMEAPE"
           },
           {
             "level": 44,
@@ -2552,7 +2524,7 @@
         "line": 308,
         "pokemon": [
           {
-            "level": 44,
+            "level": 43,
             "species": "NINETALES"
           }
         ]
@@ -2563,11 +2535,11 @@
         "pokemon": [
           {
             "level": 44,
-            "species": "RATICATE"
+            "species": "MACHOKE"
           },
           {
             "level": 44,
-            "species": "WEEZING"
+            "species": "RAPIDASH"
           }
         ]
       }
@@ -2682,16 +2654,16 @@
         "line": 329,
         "pokemon": [
           {
-            "level": 22,
+            "level": 25,
             "species": "GOLDEEN"
           },
           {
-            "level": 22,
+            "level": 25,
             "species": "POLIWAG"
           },
           {
-            "level": 22,
-            "species": "MAGIKARP"
+            "level": 25,
+            "species": "GOLDEEN"
           }
         ]
       },
@@ -2700,11 +2672,11 @@
         "line": 330,
         "pokemon": [
           {
-            "level": 24,
+            "level": 26,
             "species": "TENTACOOL"
           },
           {
-            "level": 24,
+            "level": 26,
             "species": "GOLDEEN"
           }
         ]
@@ -2714,8 +2686,8 @@
         "line": 331,
         "pokemon": [
           {
-            "level": 29,
-            "species": "SEADRA"
+            "level": 28,
+            "species": "SEAKING"
           }
         ]
       },
@@ -2724,20 +2696,20 @@
         "line": 332,
         "pokemon": [
           {
-            "level": 21,
+            "level": 24,
             "species": "POLIWAG"
           },
           {
-            "level": 21,
+            "level": 24,
             "species": "SHELLDER"
           },
           {
-            "level": 21,
+            "level": 24,
             "species": "GOLDEEN"
           },
           {
-            "level": 21,
-            "species": "MAGIKARP"
+            "level": 24,
+            "species": "HORSEA"
           }
         ]
       },
@@ -2746,19 +2718,19 @@
         "line": 334,
         "pokemon": [
           {
-            "level": 38,
-            "species": "SEADRA"
+            "level": 40,
+            "species": "SEAKING"
           },
           {
-            "level": 38,
-            "species": "POLIWHIRL"
+            "level": 40,
+            "species": "GOLDEEN"
           },
           {
-            "level": 38,
-            "species": "GOLDUCK"
+            "level": 40,
+            "species": "SEAKING"
           },
           {
-            "level": 38,
+            "level": 40,
             "species": "SEAKING"
           }
         ]
@@ -2769,7 +2741,7 @@
         "pokemon": [
           {
             "level": 41,
-            "species": "KINGLER"
+            "species": "SHELLDER"
           },
           {
             "level": 41,
@@ -2782,15 +2754,27 @@
         "line": 336,
         "pokemon": [
           {
-            "level": 37,
+            "level": 30,
             "species": "MAGIKARP"
           },
           {
-            "level": 37,
+            "level": 38,
             "species": "GYARADOS"
           },
           {
-            "level": 37,
+            "level": 38,
+            "species": "GYARADOS"
+          },
+          {
+            "level": 38,
+            "species": "GYARADOS"
+          },
+          {
+            "level": 38,
+            "species": "GYARADOS"
+          },
+          {
+            "level": 40,
             "species": "GYARADOS"
           }
         ]
@@ -2800,12 +2784,12 @@
         "line": 337,
         "pokemon": [
           {
-            "level": 43,
+            "level": 40,
             "species": "SEAKING"
           },
           {
-            "level": 43,
-            "species": "GOLDUCK"
+            "level": 40,
+            "species": "TENTACRUEL"
           }
         ]
       },
@@ -2814,11 +2798,15 @@
         "line": 339,
         "pokemon": [
           {
-            "level": 34,
+            "level": 27,
             "species": "MAGIKARP"
           },
           {
-            "level": 34,
+            "level": 27,
+            "species": "MAGIKARP"
+          },
+          {
+            "level": 32,
             "species": "GYARADOS"
           }
         ]
@@ -2844,12 +2832,12 @@
         "line": 345,
         "pokemon": [
           {
-            "level": 38,
+            "level": 43,
             "species": "TENTACRUEL"
           },
           {
-            "level": 38,
-            "species": "SHELLDER"
+            "level": 43,
+            "species": "CLOYSTER"
           }
         ]
       },
@@ -2858,16 +2846,16 @@
         "line": 346,
         "pokemon": [
           {
-            "level": 38,
-            "species": "GOLDEEN"
+            "level": 40,
+            "species": "SEAKING"
           },
           {
-            "level": 38,
+            "level": 40,
             "species": "SEADRA"
           },
           {
-            "level": 38,
-            "species": "STARYU"
+            "level": 40,
+            "species": "STARMIE"
           }
         ]
       },
@@ -2876,12 +2864,12 @@
         "line": 347,
         "pokemon": [
           {
-            "level": 41,
+            "level": 42,
             "species": "POLIWRATH"
           },
           {
-            "level": 41,
-            "species": "POLIWHIRL"
+            "level": 42,
+            "species": "SEADRA"
           }
         ]
       },
@@ -2890,20 +2878,16 @@
         "line": 348,
         "pokemon": [
           {
-            "level": 38,
-            "species": "HORSEA"
+            "level": 41,
+            "species": "SEADRA"
           },
           {
-            "level": 38,
-            "species": "TENTACOOL"
+            "level": 41,
+            "species": "TENTACRUEL"
           },
           {
-            "level": 38,
-            "species": "CLOYSTER"
-          },
-          {
-            "level": 38,
-            "species": "GOLDEEN"
+            "level": 41,
+            "species": "GYARADOS"
           }
         ]
       },
@@ -2913,15 +2897,15 @@
         "pokemon": [
           {
             "level": 41,
-            "species": "GYARADOS"
-          },
-          {
-            "level": 41,
-            "species": "TENTACRUEL"
-          },
-          {
-            "level": 41,
             "species": "SEAKING"
+          },
+          {
+            "level": 41,
+            "species": "SLOWBRO"
+          },
+          {
+            "level": 41,
+            "species": "GOLDUCK"
           }
         ]
       },
@@ -2930,12 +2914,8 @@
         "line": 350,
         "pokemon": [
           {
-            "level": 41,
+            "level": 45,
             "species": "SEADRA"
-          },
-          {
-            "level": 41,
-            "species": "STARMIE"
           }
         ]
       },
@@ -2944,23 +2924,23 @@
         "line": 351,
         "pokemon": [
           {
-            "level": 38,
-            "species": "POLIWHIRL"
+            "level": 40,
+            "species": "TENTACRUEL"
           },
           {
-            "level": 38,
-            "species": "GOLDUCK"
+            "level": 40,
+            "species": "TENTACRUEL"
           },
           {
-            "level": 38,
-            "species": "STARYU"
+            "level": 40,
+            "species": "STARMIE"
           },
           {
-            "level": 38,
+            "level": 40,
             "species": "SEADRA"
           },
           {
-            "level": 38,
+            "level": 40,
             "species": "TENTACRUEL"
           }
         ]
@@ -2970,11 +2950,11 @@
         "line": 353,
         "pokemon": [
           {
-            "level": 41,
-            "species": "DEWGONG"
+            "level": 42,
+            "species": "KINGLER"
           },
           {
-            "level": 41,
+            "level": 42,
             "species": "CLOYSTER"
           }
         ]
@@ -2984,8 +2964,8 @@
         "line": 354,
         "pokemon": [
           {
-            "level": 44,
-            "species": "STARMIE"
+            "level": 45,
+            "species": "GYARADOS"
           }
         ]
       },
@@ -2994,20 +2974,16 @@
         "line": 355,
         "pokemon": [
           {
-            "level": 38,
-            "species": "WARTORTLE"
-          },
-          {
-            "level": 38,
-            "species": "GYARADOS"
-          },
-          {
-            "level": 38,
+            "level": 42,
             "species": "SEADRA"
           },
           {
-            "level": 38,
-            "species": "HORSEA"
+            "level": 42,
+            "species": "GYARADOS"
+          },
+          {
+            "level": 42,
+            "species": "SEADRA"
           }
         ]
       },
@@ -3040,12 +3016,12 @@
         "line": 359,
         "pokemon": [
           {
-            "level": 43,
-            "species": "STARYU"
+            "level": 44,
+            "species": "TENTACRUEL"
           },
           {
-            "level": 43,
-            "species": "WARTORTLE"
+            "level": 44,
+            "species": "BLASTOISE"
           }
         ]
       },
@@ -3054,15 +3030,15 @@
         "line": 360,
         "pokemon": [
           {
-            "level": 42,
+            "level": 44,
             "species": "POLIWHIRL"
           },
           {
-            "level": 42,
-            "species": "GOLDUCK"
+            "level": 44,
+            "species": "KINGLER"
           },
           {
-            "level": 42,
+            "level": 44,
             "species": "SEADRA"
           }
         ]
@@ -3074,16 +3050,16 @@
         "line": 364,
         "pokemon": [
           {
-            "level": 36,
-            "species": "MACHOKE"
+            "level": 28,
+            "species": "MACHOP"
           },
           {
-            "level": 36,
-            "species": "PARASECT"
+            "level": 28,
+            "species": "WIGGLYTUFF"
           },
           {
-            "level": 36,
-            "species": "DUGTRIO"
+            "level": 28,
+            "species": "MACHOP"
           }
         ]
       },
@@ -3092,12 +3068,12 @@
         "line": 365,
         "pokemon": [
           {
-            "level": 36,
-            "species": "PRIMEAPE"
+            "level": 29,
+            "species": "MANKEY"
           },
           {
-            "level": 36,
-            "species": "MUK"
+            "level": 29,
+            "species": "MACHOP"
           }
         ]
       },
@@ -3106,8 +3082,8 @@
         "line": 366,
         "pokemon": [
           {
-            "level": 36,
-            "species": "GOLEM"
+            "level": 31,
+            "species": "MACHOKE"
           }
         ]
       },
@@ -3116,12 +3092,12 @@
         "line": 368,
         "pokemon": [
           {
-            "level": 33,
-            "species": "MANKEY"
+            "level": 31,
+            "species": "PRIMEAPE"
           },
           {
-            "level": 33,
-            "species": "PRIMEAPE"
+            "level": 31,
+            "species": "WIGGLYTUFF"
           }
         ]
       },
@@ -3130,12 +3106,12 @@
         "line": 369,
         "pokemon": [
           {
-            "level": 34,
-            "species": "MACHOP"
+            "level": 32,
+            "species": "MACHOKE"
           },
           {
-            "level": 34,
-            "species": "MACHOKE"
+            "level": 32,
+            "species": "CLEFABLE"
           }
         ]
       },
@@ -3144,8 +3120,8 @@
         "line": 370,
         "pokemon": [
           {
-            "level": 33,
-            "species": "POLIWHIRL"
+            "level": 34,
+            "species": "MACHOKE"
           }
         ]
       },
@@ -3154,20 +3130,20 @@
         "line": 371,
         "pokemon": [
           {
-            "level": 34,
+            "level": 30,
             "species": "MANKEY"
           },
           {
-            "level": 34,
+            "level": 30,
             "species": "PRIMEAPE"
           },
           {
-            "level": 34,
-            "species": "MACHOKE"
+            "level": 30,
+            "species": "CLEFABLE"
           },
           {
-            "level": 34,
-            "species": "MACHOP"
+            "level": 30,
+            "species": "MACHOKE"
           }
         ]
       },
@@ -3176,11 +3152,11 @@
         "line": 372,
         "pokemon": [
           {
-            "level": 34,
+            "level": 32,
             "species": "PRIMEAPE"
           },
           {
-            "level": 34,
+            "level": 32,
             "species": "MACHOKE"
           }
         ]
@@ -3190,15 +3166,15 @@
         "line": 374,
         "pokemon": [
           {
-            "level": 41,
-            "species": "TENTACOOL"
+            "level": 42,
+            "species": "CLOYSTER"
           },
           {
-            "level": 41,
-            "species": "STARYU"
+            "level": 42,
+            "species": "RHYDON"
           },
           {
-            "level": 41,
+            "level": 42,
             "species": "TENTACRUEL"
           }
         ]
@@ -3360,16 +3336,16 @@
         "line": 395,
         "pokemon": [
           {
-            "level": 37,
-            "species": "WIGGLYTUFF"
+            "level": 28,
+            "species": "RATICATE"
           },
           {
-            "level": 37,
-            "species": "PIKACHU"
+            "level": 28,
+            "species": "NINETALES"
           },
           {
-            "level": 37,
-            "species": "RAICHU"
+            "level": 28,
+            "species": "GLOOM"
           }
         ]
       },
@@ -3378,11 +3354,11 @@
         "line": 396,
         "pokemon": [
           {
-            "level": 39,
+            "level": 30,
             "species": "CLEFAIRY"
           },
           {
-            "level": 39,
+            "level": 30,
             "species": "PERSIAN"
           }
         ]
@@ -3392,8 +3368,8 @@
         "line": 398,
         "pokemon": [
           {
-            "level": 42,
-            "species": "DEWGONG"
+            "level": 45,
+            "species": "SEAKING"
           }
         ]
       },
@@ -3403,11 +3379,11 @@
         "pokemon": [
           {
             "level": 40,
-            "species": "SHELLDER"
+            "species": "CLOYSTER"
           },
           {
             "level": 40,
-            "species": "POLIWHIRL"
+            "species": "KINGLER"
           },
           {
             "level": 40,
@@ -3434,11 +3410,11 @@
         "line": 402,
         "pokemon": [
           {
-            "level": 39,
-            "species": "PIDGEOTTO"
+            "level": 35,
+            "species": "GOLDUCK"
           },
           {
-            "level": 39,
+            "level": 35,
             "species": "WIGGLYTUFF"
           }
         ]
@@ -3448,12 +3424,12 @@
         "line": 403,
         "pokemon": [
           {
-            "level": 39,
+            "level": 35,
             "species": "IVYSAUR"
           },
           {
-            "level": 39,
-            "species": "VENUSAUR"
+            "level": 35,
+            "species": "TANGELA"
           }
         ]
       },
@@ -3480,24 +3456,16 @@
         "line": 407,
         "pokemon": [
           {
-            "level": 38,
-            "species": "STARMIE"
+            "level": 43,
+            "species": "GOLDUCK"
           },
           {
-            "level": 38,
-            "species": "POLIWHIRL"
+            "level": 43,
+            "species": "DEWGONG"
           },
           {
-            "level": 38,
+            "level": 43,
             "species": "SEAKING"
-          },
-          {
-            "level": 38,
-            "species": "GOLDEEN"
-          },
-          {
-            "level": 38,
-            "species": "SHELLDER"
           }
         ]
       },
@@ -3506,12 +3474,8 @@
         "line": 408,
         "pokemon": [
           {
-            "level": 38,
-            "species": "GOLDEEN"
-          },
-          {
-            "level": 38,
-            "species": "SEAKING"
+            "level": 46,
+            "species": "LAPRAS"
           }
         ]
       },
@@ -3520,16 +3484,16 @@
         "line": 409,
         "pokemon": [
           {
-            "level": 41,
-            "species": "STARYU"
+            "level": 43,
+            "species": "DRAGONAIR"
           },
           {
-            "level": 41,
-            "species": "STARMIE"
+            "level": 43,
+            "species": "GYARADOS"
           },
           {
-            "level": 41,
-            "species": "TENTACRUEL"
+            "level": 43,
+            "species": "SEADRA"
           }
         ]
       },
@@ -3538,16 +3502,16 @@
         "line": 411,
         "pokemon": [
           {
-            "level": 40,
-            "species": "SEADRA"
+            "level": 43,
+            "species": "BLASTOISE"
           },
           {
-            "level": 40,
+            "level": 43,
             "species": "DEWGONG"
           },
           {
-            "level": 40,
-            "species": "CLOYSTER"
+            "level": 43,
+            "species": "SLOWBRO"
           }
         ]
       }
@@ -3558,20 +3522,20 @@
         "line": 415,
         "pokemon": [
           {
-            "level": 41,
+            "level": 42,
             "species": "KADABRA"
           },
           {
-            "level": 41,
-            "species": "SLOWPOKE"
+            "level": 42,
+            "species": "SLOWBRO"
           },
           {
-            "level": 41,
-            "species": "MR_MIME"
+            "level": 42,
+            "species": "HYPNO"
           },
           {
-            "level": 41,
-            "species": "VENOMOTH"
+            "level": 42,
+            "species": "KADABRA"
           }
         ]
       },
@@ -3580,11 +3544,11 @@
         "line": 416,
         "pokemon": [
           {
-            "level": 42,
+            "level": 43,
             "species": "MR_MIME"
           },
           {
-            "level": 42,
+            "level": 43,
             "species": "KADABRA"
           }
         ]
@@ -3594,15 +3558,15 @@
         "line": 417,
         "pokemon": [
           {
-            "level": 40,
-            "species": "SLOWPOKE"
+            "level": 41,
+            "species": "VENOMOTH"
           },
           {
-            "level": 40,
-            "species": "BUTTERFREE"
+            "level": 41,
+            "species": "JYNX"
           },
           {
-            "level": 40,
+            "level": 41,
             "species": "SLOWBRO"
           }
         ]
@@ -3612,8 +3576,8 @@
         "line": 418,
         "pokemon": [
           {
-            "level": 41,
-            "species": "SLOWBRO"
+            "level": 45,
+            "species": "STARMIE"
           }
         ]
       }
@@ -3642,11 +3606,11 @@
         "line": 424,
         "pokemon": [
           {
-            "level": 32,
+            "level": 29,
             "species": "VOLTORB"
           },
           {
-            "level": 32,
+            "level": 29,
             "species": "ELECTRODE"
           }
         ]
@@ -3658,11 +3622,11 @@
         "line": 428,
         "pokemon": [
           {
-            "level": 29,
+            "level": 37,
             "species": "KADABRA"
           },
           {
-            "level": 29,
+            "level": 37,
             "species": "MR_MIME"
           }
         ]
@@ -3672,20 +3636,20 @@
         "line": 430,
         "pokemon": [
           {
-            "level": 48,
-            "species": "SCYTHER"
+            "level": 51,
+            "species": "POLIWRATH"
           },
           {
-            "level": 48,
-            "species": "HYPNO"
+            "level": 51,
+            "species": "RHYDON"
           },
           {
-            "level": 48,
-            "species": "ELECTABUZZ"
+            "level": 51,
+            "species": "FLAREON"
           },
           {
-            "level": 48,
-            "species": "JYNX"
+            "level": 51,
+            "species": "JOLTEON"
           }
         ]
       },
@@ -3694,20 +3658,20 @@
         "line": 432,
         "pokemon": [
           {
-            "level": 41,
-            "species": "HYPNO"
-          },
-          {
-            "level": 41,
+            "level": 34,
             "species": "BEEDRILL"
           },
           {
-            "level": 41,
-            "species": "KADABRA"
+            "level": 34,
+            "species": "NIDOKING"
           },
           {
-            "level": 41,
+            "level": 34,
             "species": "GOLBAT"
+          },
+          {
+            "level": 34,
+            "species": "HAUNTER"
           }
         ]
       },
@@ -3716,12 +3680,12 @@
         "line": 433,
         "pokemon": [
           {
-            "level": 40,
-            "species": "STARMIE"
+            "level": 37,
+            "species": "TENTACRUEL"
           },
           {
-            "level": 40,
-            "species": "MR_MIME"
+            "level": 37,
+            "species": "MUK"
           }
         ]
       },
@@ -3730,7 +3694,19 @@
         "line": 435,
         "pokemon": [
           {
-            "level": 48,
+            "level": 53,
+            "species": "OMASTAR"
+          },
+          {
+            "level": 53,
+            "species": "ALAKAZAM"
+          },
+          {
+            "level": 53,
+            "species": "RAICHU"
+          },
+          {
+            "level": 53,
             "species": "MR_MIME"
           }
         ]
@@ -3776,12 +3752,12 @@
         "line": 444,
         "pokemon": [
           {
-            "level": 41,
-            "species": "ARBOK"
+            "level": 36,
+            "species": "SANDSLASH"
           },
           {
-            "level": 41,
-            "species": "SANDSLASH"
+            "level": 36,
+            "species": "ARBOK"
           }
         ]
       },
@@ -3790,15 +3766,15 @@
         "line": 445,
         "pokemon": [
           {
-            "level": 42,
-            "species": "NIDORINA"
+            "level": 35,
+            "species": "ARBOK"
           },
           {
-            "level": 42,
-            "species": "SANDSLASH"
+            "level": 35,
+            "species": "NIDOQUEEN"
           },
           {
-            "level": 42,
+            "level": 35,
             "species": "ARBOK"
           }
         ]
@@ -3808,7 +3784,7 @@
         "line": 447,
         "pokemon": [
           {
-            "level": 48,
+            "level": 55,
             "species": "RHYHORN"
           }
         ]
@@ -3818,11 +3794,11 @@
         "line": 448,
         "pokemon": [
           {
-            "level": 47,
+            "level": 53,
             "species": "ARBOK"
           },
           {
-            "level": 47,
+            "level": 53,
             "species": "TAUROS"
           }
         ]
@@ -3832,12 +3808,20 @@
         "line": 450,
         "pokemon": [
           {
-            "level": 47,
-            "species": "HITMONCHAN"
+            "level": 53,
+            "species": "TANGELA"
           },
           {
-            "level": 47,
-            "species": "GOLDUCK"
+            "level": 53,
+            "species": "SANDSLASH"
+          },
+          {
+            "level": 53,
+            "species": "LICKITUNG"
+          },
+          {
+            "level": 53,
+            "species": "ARBOK"
           }
         ]
       },
@@ -3870,11 +3854,11 @@
         "line": 456,
         "pokemon": [
           {
-            "level": 39,
-            "species": "FARFETCHD"
+            "level": 32,
+            "species": "FEAROW"
           },
           {
-            "level": 39,
+            "level": 32,
             "species": "PIDGEOTTO"
           }
         ]
@@ -3884,24 +3868,24 @@
         "line": 457,
         "pokemon": [
           {
-            "level": 35,
+            "level": 28,
             "species": "SPEAROW"
           },
           {
-            "level": 35,
+            "level": 28,
             "species": "DODUO"
           },
           {
-            "level": 35,
-            "species": "DODRIO"
+            "level": 28,
+            "species": "PIDGEY"
           },
           {
-            "level": 35,
-            "species": "FEAROW"
+            "level": 28,
+            "species": "SPEAROW"
           },
           {
-            "level": 35,
-            "species": "PIDGEOTTO"
+            "level": 28,
+            "species": "SPEAROW"
           }
         ]
       },
@@ -3910,19 +3894,19 @@
         "line": 458,
         "pokemon": [
           {
-            "level": 36,
-            "species": "PIDGEY"
-          },
-          {
-            "level": 36,
+            "level": 30,
             "species": "PIDGEOTTO"
           },
           {
-            "level": 36,
-            "species": "SPEAROW"
+            "level": 30,
+            "species": "FEAROW"
           },
           {
-            "level": 36,
+            "level": 30,
+            "species": "PIDGEOTTO"
+          },
+          {
+            "level": 30,
             "species": "FEAROW"
           }
         ]
@@ -3932,7 +3916,7 @@
         "line": 460,
         "pokemon": [
           {
-            "level": 39,
+            "level": 33,
             "species": "FARFETCHD"
           }
         ]
@@ -3942,12 +3926,12 @@
         "line": 461,
         "pokemon": [
           {
-            "level": 39,
-            "species": "PIDGEOTTO"
+            "level": 31,
+            "species": "DODRIO"
           },
           {
-            "level": 39,
-            "species": "BUTTERFREE"
+            "level": 31,
+            "species": "FEAROW"
           }
         ]
       },
@@ -3956,20 +3940,20 @@
         "line": 463,
         "pokemon": [
           {
-            "level": 36,
+            "level": 35,
             "species": "PIDGEOTTO"
           },
           {
-            "level": 36,
+            "level": 35,
             "species": "FARFETCHD"
           },
           {
-            "level": 36,
-            "species": "DODUO"
+            "level": 35,
+            "species": "DODRIO"
           },
           {
-            "level": 36,
-            "species": "FEAROW"
+            "level": 35,
+            "species": "PIDGEOTTO"
           }
         ]
       },
@@ -3978,16 +3962,12 @@
         "line": 464,
         "pokemon": [
           {
-            "level": 38,
+            "level": 36,
             "species": "DODRIO"
           },
           {
-            "level": 38,
-            "species": "PIDGEOTTO"
-          },
-          {
-            "level": 38,
-            "species": "DODUO"
+            "level": 36,
+            "species": "PIDGEOT"
           }
         ]
       },
@@ -3996,11 +3976,11 @@
         "line": 466,
         "pokemon": [
           {
-            "level": 33,
-            "species": "SCYTHER"
+            "level": 34,
+            "species": "PIDGEOTTO"
           },
           {
-            "level": 33,
+            "level": 34,
             "species": "FEAROW"
           }
         ]
@@ -4010,7 +3990,7 @@
         "line": 467,
         "pokemon": [
           {
-            "level": 34,
+            "level": 36,
             "species": "DODRIO"
           }
         ]
@@ -4020,20 +4000,16 @@
         "line": 468,
         "pokemon": [
           {
-            "level": 33,
+            "level": 32,
+            "species": "FARFETCHD"
+          },
+          {
+            "level": 32,
             "species": "DODUO"
           },
           {
-            "level": 33,
-            "species": "PIDGEOTTO"
-          },
-          {
-            "level": 33,
+            "level": 32,
             "species": "FEAROW"
-          },
-          {
-            "level": 33,
-            "species": "SPEAROW"
           }
         ]
       },
@@ -4042,15 +4018,15 @@
         "line": 470,
         "pokemon": [
           {
-            "level": 40,
+            "level": 41,
             "species": "FEAROW"
           },
           {
-            "level": 40,
-            "species": "DODRIO"
+            "level": 41,
+            "species": "FEAROW"
           },
           {
-            "level": 40,
+            "level": 41,
             "species": "PIDGEOT"
           }
         ]
@@ -4096,16 +4072,16 @@
         "line": 475,
         "pokemon": [
           {
-            "level": 38,
-            "species": "PIDGEOTTO"
+            "level": 33,
+            "species": "PIDGEY"
           },
           {
-            "level": 38,
+            "level": 33,
             "species": "DODUO"
           },
           {
-            "level": 38,
-            "species": "PIDGEOT"
+            "level": 33,
+            "species": "PIDGEOTTO"
           }
         ]
       },
@@ -4114,19 +4090,19 @@
         "line": 476,
         "pokemon": [
           {
-            "level": 36,
-            "species": "BUTTERFREE"
+            "level": 31,
+            "species": "FARFETCHD"
           },
           {
-            "level": 36,
-            "species": "GOLBAT"
+            "level": 31,
+            "species": "SPEAROW"
           },
           {
-            "level": 36,
-            "species": "DODUO"
+            "level": 31,
+            "species": "PIDGEY"
           },
           {
-            "level": 36,
+            "level": 31,
             "species": "FEAROW"
           }
         ]
@@ -4136,12 +4112,12 @@
         "line": 477,
         "pokemon": [
           {
-            "level": 39,
-            "species": "PIDGEOTTO"
+            "level": 34,
+            "species": "FEAROW"
           },
           {
-            "level": 39,
-            "species": "DODRIO"
+            "level": 34,
+            "species": "PIDGEOTTO"
           }
         ]
       },
@@ -4150,15 +4126,15 @@
         "line": 478,
         "pokemon": [
           {
-            "level": 38,
-            "species": "VENOMOTH"
+            "level": 32,
+            "species": "PIDGEOTTO"
           },
           {
-            "level": 38,
+            "level": 32,
             "species": "DODUO"
           },
           {
-            "level": 38,
+            "level": 32,
             "species": "FEAROW"
           }
         ]
@@ -4170,11 +4146,11 @@
         "line": 482,
         "pokemon": [
           {
-            "level": 39,
+            "level": 37,
             "species": "HITMONLEE"
           },
           {
-            "level": 39,
+            "level": 37,
             "species": "HITMONCHAN"
           }
         ]
@@ -4185,7 +4161,7 @@
         "pokemon": [
           {
             "level": 31,
-            "species": "POLIWHIRL"
+            "species": "MANKEY"
           },
           {
             "level": 31,
@@ -4208,10 +4184,6 @@
           {
             "level": 32,
             "species": "MACHOKE"
-          },
-          {
-            "level": 32,
-            "species": "MACHAMP"
           }
         ]
       },
@@ -4222,14 +4194,6 @@
           {
             "level": 36,
             "species": "PRIMEAPE"
-          },
-          {
-            "level": 36,
-            "species": "POLIWRATH"
-          },
-          {
-            "level": 36,
-            "species": "MACHAMP"
           }
         ]
       },
@@ -4239,7 +4203,7 @@
         "pokemon": [
           {
             "level": 31,
-            "species": "MACHOKE"
+            "species": "MACHOP"
           },
           {
             "level": 31,
@@ -4247,7 +4211,7 @@
           },
           {
             "level": 31,
-            "species": "POLIWHIRL"
+            "species": "PRIMEAPE"
           }
         ]
       },
@@ -4256,16 +4220,12 @@
         "line": 488,
         "pokemon": [
           {
-            "level": 48,
-            "species": "HITMONLEE"
+            "level": 52,
+            "species": "POLIWRATH"
           },
           {
-            "level": 48,
-            "species": "HITMONCHAN"
-          },
-          {
-            "level": 48,
-            "species": "RHYDON"
+            "level": 52,
+            "species": "MACHOKE"
           }
         ]
       },
@@ -4274,16 +4234,12 @@
         "line": 489,
         "pokemon": [
           {
-            "level": 47,
-            "species": "GOLEM"
+            "level": 53,
+            "species": "MACHOKE"
           },
           {
-            "level": 47,
-            "species": "MACHAMP"
-          },
-          {
-            "level": 47,
-            "species": "KANGASKHAN"
+            "level": 53,
+            "species": "HITMONLEE"
           }
         ]
       },
@@ -4292,16 +4248,16 @@
         "line": 490,
         "pokemon": [
           {
-            "level": 48,
-            "species": "POLIWRATH"
+            "level": 51,
+            "species": "HITMONLEE"
           },
           {
-            "level": 48,
-            "species": "RAICHU"
+            "level": 51,
+            "species": "HITMONCHAN"
           },
           {
-            "level": 48,
-            "species": "PRIMEAPE"
+            "level": 51,
+            "species": "MACHOKE"
           }
         ]
       },
@@ -4310,16 +4266,20 @@
         "line": 492,
         "pokemon": [
           {
-            "level": 50,
-            "species": "PINSIR"
+            "level": 52,
+            "species": "POLIWRATH"
           },
           {
-            "level": 50,
-            "species": "HITMONLEE"
+            "level": 52,
+            "species": "DODRIO"
           },
           {
-            "level": 50,
+            "level": 52,
             "species": "MACHAMP"
+          },
+          {
+            "level": 52,
+            "species": "PINSIR"
           }
         ]
       }
@@ -4425,19 +4385,19 @@
         "line": 513,
         "pokemon": [
           {
-            "level": 26,
-            "species": "GRIMER"
+            "level": 37,
+            "species": "MUK"
           },
           {
-            "level": 26,
+            "level": 37,
             "species": "WEEZING"
           },
           {
-            "level": 26,
-            "species": "KOFFING"
+            "level": 37,
+            "species": "PORYGON"
           },
           {
-            "level": 26,
+            "level": 37,
             "species": "WEEZING"
           }
         ]
@@ -4447,15 +4407,15 @@
         "line": 514,
         "pokemon": [
           {
-            "level": 28,
-            "species": "MAGNEMITE"
+            "level": 38,
+            "species": "MAGNETON"
           },
           {
-            "level": 28,
-            "species": "VOLTORB"
+            "level": 38,
+            "species": "ELECTRODE"
           },
           {
-            "level": 28,
+            "level": 38,
             "species": "MAGNETON"
           }
         ]
@@ -4465,11 +4425,11 @@
         "line": 516,
         "pokemon": [
           {
-            "level": 34,
+            "level": 39,
             "species": "ELECTRODE"
           },
           {
-            "level": 34,
+            "level": 39,
             "species": "WEEZING"
           }
         ]
@@ -4479,8 +4439,8 @@
         "line": 518,
         "pokemon": [
           {
-            "level": 33,
-            "species": "ELECTRODE"
+            "level": 41,
+            "species": "ELECTABUZZ"
           }
         ]
       },
@@ -4489,19 +4449,19 @@
         "line": 520,
         "pokemon": [
           {
-            "level": 32,
+            "level": 36,
             "species": "MAGNETON"
           },
           {
-            "level": 32,
-            "species": "KOFFING"
+            "level": 36,
+            "species": "PORYGON"
           },
           {
-            "level": 32,
+            "level": 36,
             "species": "WEEZING"
           },
           {
-            "level": 32,
+            "level": 36,
             "species": "MAGNEMITE"
           }
         ]
@@ -4511,24 +4471,24 @@
         "line": 522,
         "pokemon": [
           {
-            "level": 32,
+            "level": 35,
             "species": "VOLTORB"
           },
           {
-            "level": 32,
-            "species": "KOFFING"
+            "level": 35,
+            "species": "STARYU"
           },
           {
-            "level": 32,
+            "level": 35,
+            "species": "ELECTRODE"
+          },
+          {
+            "level": 35,
             "species": "MAGNETON"
           },
           {
-            "level": 32,
-            "species": "MAGNEMITE"
-          },
-          {
-            "level": 32,
-            "species": "KOFFING"
+            "level": 35,
+            "species": "STARMIE"
           }
         ]
       },
@@ -4537,11 +4497,11 @@
         "line": 524,
         "pokemon": [
           {
-            "level": 34,
+            "level": 39,
             "species": "ELECTRODE"
           },
           {
-            "level": 34,
+            "level": 39,
             "species": "MUK"
           }
         ]
@@ -4551,12 +4511,8 @@
         "line": 526,
         "pokemon": [
           {
-            "level": 34,
-            "species": "GRIMER"
-          },
-          {
-            "level": 34,
-            "species": "ELECTRODE"
+            "level": 43,
+            "species": "PORYGON"
           }
         ]
       },
@@ -4565,16 +4521,12 @@
         "line": 528,
         "pokemon": [
           {
-            "level": 32,
-            "species": "VOLTORB"
+            "level": 40,
+            "species": "MUK"
           },
           {
-            "level": 32,
-            "species": "KOFFING"
-          },
-          {
-            "level": 32,
-            "species": "MAGNETON"
+            "level": 40,
+            "species": "KABUTOPS"
           }
         ]
       },
@@ -4583,12 +4535,12 @@
         "line": 530,
         "pokemon": [
           {
-            "level": 32,
-            "species": "MAGNEMITE"
+            "level": 40,
+            "species": "WEEZING"
           },
           {
-            "level": 32,
-            "species": "KOFFING"
+            "level": 40,
+            "species": "OMASTAR"
           }
         ]
       },
@@ -4597,15 +4549,15 @@
         "line": 532,
         "pokemon": [
           {
-            "level": 43,
-            "species": "ELECTRODE"
-          },
-          {
-            "level": 43,
+            "level": 45,
             "species": "MAGNETON"
           },
           {
-            "level": 43,
+            "level": 45,
+            "species": "ARCANINE"
+          },
+          {
+            "level": 45,
             "species": "MUK"
           }
         ]
@@ -4615,11 +4567,11 @@
         "line": 534,
         "pokemon": [
           {
-            "level": 44,
-            "species": "ELECTABUZZ"
+            "level": 46,
+            "species": "PORYGON"
           },
           {
-            "level": 44,
+            "level": 46,
             "species": "ELECTRODE"
           }
         ]
@@ -5063,12 +5015,12 @@
         "line": 580,
         "pokemon": [
           {
-            "level": 33,
-            "species": "CUBONE"
+            "level": 39,
+            "species": "MAROWAK"
           },
           {
-            "level": 33,
-            "species": "VOLTORB"
+            "level": 39,
+            "species": "GOLBAT"
           }
         ]
       },
@@ -5077,24 +5029,20 @@
         "line": 581,
         "pokemon": [
           {
-            "level": 34,
+            "level": 35,
             "species": "GOLBAT"
           },
           {
-            "level": 34,
-            "species": "KOFFING"
-          },
-          {
-            "level": 34,
-            "species": "MAGNEMITE"
-          },
-          {
-            "level": 34,
+            "level": 35,
             "species": "RATICATE"
           },
           {
-            "level": 34,
-            "species": "VOLTORB"
+            "level": 35,
+            "species": "GOLBAT"
+          },
+          {
+            "level": 35,
+            "species": "PINSIR"
           }
         ]
       },
@@ -5103,16 +5051,16 @@
         "line": 583,
         "pokemon": [
           {
-            "level": 34,
+            "level": 38,
             "species": "RATICATE"
           },
           {
-            "level": 34,
-            "species": "DROWZEE"
+            "level": 38,
+            "species": "HYPNO"
           },
           {
-            "level": 34,
-            "species": "RATICATE"
+            "level": 38,
+            "species": "MUK"
           }
         ]
       },
@@ -5121,12 +5069,12 @@
         "line": 585,
         "pokemon": [
           {
-            "level": 34,
+            "level": 39,
             "species": "MACHOKE"
           },
           {
-            "level": 34,
-            "species": "DROWZEE"
+            "level": 39,
+            "species": "HYPNO"
           }
         ]
       },
@@ -5135,16 +5083,16 @@
         "line": 586,
         "pokemon": [
           {
-            "level": 34,
-            "species": "MAGNEMITE"
+            "level": 38,
+            "species": "ARBOK"
           },
           {
-            "level": 34,
-            "species": "MUK"
+            "level": 38,
+            "species": "VILEPLUME"
           },
           {
-            "level": 34,
-            "species": "CUBONE"
+            "level": 38,
+            "species": "MAROWAK"
           }
         ]
       },
@@ -5153,8 +5101,8 @@
         "line": 588,
         "pokemon": [
           {
-            "level": 34,
-            "species": "ARBOK"
+            "level": 40,
+            "species": "TAUROS"
           }
         ]
       },
@@ -5163,8 +5111,8 @@
         "line": 589,
         "pokemon": [
           {
-            "level": 34,
-            "species": "PERSIAN"
+            "level": 41,
+            "species": "HYPNO"
           }
         ]
       },
@@ -5173,12 +5121,12 @@
         "line": 591,
         "pokemon": [
           {
-            "level": 33,
-            "species": "ELECTRODE"
+            "level": 39,
+            "species": "MUK"
           },
           {
-            "level": 33,
-            "species": "MACHOKE"
+            "level": 39,
+            "species": "PRIMEAPE"
           }
         ]
       },
@@ -5187,16 +5135,16 @@
         "line": 592,
         "pokemon": [
           {
-            "level": 34,
-            "species": "RATICATE"
-          },
-          {
-            "level": 34,
-            "species": "DROWZEE"
-          },
-          {
-            "level": 34,
+            "level": 38,
             "species": "GOLBAT"
+          },
+          {
+            "level": 38,
+            "species": "VILEPLUME"
+          },
+          {
+            "level": 38,
+            "species": "RATICATE"
           }
         ]
       },
@@ -5205,19 +5153,19 @@
         "line": 594,
         "pokemon": [
           {
-            "level": 34,
+            "level": 37,
             "species": "RATICATE"
           },
           {
-            "level": 34,
+            "level": 37,
             "species": "ARBOK"
           },
           {
-            "level": 34,
-            "species": "KOFFING"
+            "level": 37,
+            "species": "WEEZING"
           },
           {
-            "level": 34,
+            "level": 37,
             "species": "GOLBAT"
           }
         ]
@@ -5227,12 +5175,12 @@
         "line": 595,
         "pokemon": [
           {
-            "level": 34,
-            "species": "SANDSLASH"
+            "level": 39,
+            "species": "MAROWAK"
           },
           {
-            "level": 34,
-            "species": "ELECTRODE"
+            "level": 39,
+            "species": "MAGMAR"
           }
         ]
       },
@@ -5241,12 +5189,12 @@
         "line": 596,
         "pokemon": [
           {
-            "level": 33,
-            "species": "ARBOK"
+            "level": 39,
+            "species": "SANDSLASH"
           },
           {
-            "level": 33,
-            "species": "SANDSLASH"
+            "level": 39,
+            "species": "VILEPLUME"
           }
         ]
       },
@@ -5255,20 +5203,20 @@
         "line": 598,
         "pokemon": [
           {
-            "level": 33,
+            "level": 37,
             "species": "RATICATE"
           },
           {
-            "level": 33,
-            "species": "MAGNEMITE"
+            "level": 37,
+            "species": "TENTACRUEL"
           },
           {
-            "level": 33,
+            "level": 37,
             "species": "GOLBAT"
           },
           {
-            "level": 33,
-            "species": "ARBOK"
+            "level": 37,
+            "species": "RATICATE"
           }
         ]
       },
@@ -5277,16 +5225,16 @@
         "line": 599,
         "pokemon": [
           {
-            "level": 34,
-            "species": "WEEZING"
+            "level": 39,
+            "species": "VICTREEBEL"
           },
           {
-            "level": 34,
+            "level": 39,
             "species": "GOLBAT"
           },
           {
-            "level": 34,
-            "species": "KOFFING"
+            "level": 39,
+            "species": "WEEZING"
           }
         ]
       },
@@ -5295,15 +5243,15 @@
         "line": 601,
         "pokemon": [
           {
-            "level": 34,
-            "species": "DROWZEE"
+            "level": 38,
+            "species": "HYPNO"
           },
           {
-            "level": 34,
+            "level": 38,
             "species": "MUK"
           },
           {
-            "level": 34,
+            "level": 38,
             "species": "MACHOKE"
           }
         ]
@@ -5313,16 +5261,16 @@
         "line": 602,
         "pokemon": [
           {
-            "level": 33,
+            "level": 38,
             "species": "GOLBAT"
           },
           {
-            "level": 33,
-            "species": "GRIMER"
+            "level": 38,
+            "species": "HYPNO"
           },
           {
-            "level": 33,
-            "species": "CUBONE"
+            "level": 38,
+            "species": "RHYHORN"
           }
         ]
       },
@@ -5331,8 +5279,8 @@
         "line": 604,
         "pokemon": [
           {
-            "level": 34,
-            "species": "ELECTRODE"
+            "level": 43,
+            "species": "MACHOKE"
           }
         ]
       },
@@ -5341,20 +5289,24 @@
         "line": 606,
         "pokemon": [
           {
-            "level": 33,
-            "species": "HYPNO"
+            "level": 38,
+            "species": "RATICATE"
           },
           {
-            "level": 33,
-            "species": "MAGNETON"
-          },
-          {
-            "level": 33,
-            "species": "MR_MIME"
-          },
-          {
-            "level": 33,
+            "level": 38,
             "species": "MUK"
+          },
+          {
+            "level": 38,
+            "species": "GOLBAT"
+          },
+          {
+            "level": 38,
+            "species": "MAROWAK"
+          },
+          {
+            "level": 38,
+            "species": "ARBOK"
           }
         ]
       },
@@ -5551,16 +5503,12 @@
         "line": 622,
         "pokemon": [
           {
-            "level": 47,
-            "species": "NIDORINO"
+            "level": 52,
+            "species": "NIDOQUEEN"
           },
           {
-            "level": 47,
+            "level": 52,
             "species": "NIDOKING"
-          },
-          {
-            "level": 47,
-            "species": "TANGELA"
           }
         ]
       },
@@ -5569,16 +5517,20 @@
         "line": 624,
         "pokemon": [
           {
-            "level": 48,
-            "species": "EXEGGUTOR"
+            "level": 52,
+            "species": "CHARIZARD"
           },
           {
-            "level": 48,
-            "species": "CLOYSTER"
+            "level": 52,
+            "species": "MAGNETON"
           },
           {
-            "level": 48,
-            "species": "ARCANINE"
+            "level": 52,
+            "species": "TENTACRUEL"
+          },
+          {
+            "level": 52,
+            "species": "RHYDON"
           }
         ]
       },
@@ -5587,16 +5539,20 @@
         "line": 625,
         "pokemon": [
           {
-            "level": 48,
-            "species": "KINGLER"
+            "level": 53,
+            "species": "NIDOKING"
           },
           {
-            "level": 48,
-            "species": "TENTACRUEL"
+            "level": 53,
+            "species": "CHARIZARD"
           },
           {
-            "level": 48,
-            "species": "BLASTOISE"
+            "level": 53,
+            "species": "VILEPLUME"
+          },
+          {
+            "level": 53,
+            "species": "SLOWBRO"
           }
         ]
       },
@@ -5619,28 +5575,20 @@
         "line": 629,
         "pokemon": [
           {
-            "level": 47,
-            "species": "PIKACHU"
+            "level": 53,
+            "species": "ELECTABUZZ"
           },
           {
-            "level": 47,
-            "species": "CHARIZARD"
+            "level": 53,
+            "species": "SNORLAX"
           },
           {
-            "level": 47,
-            "species": "BLASTOISE"
+            "level": 53,
+            "species": "SLOWBRO"
           },
           {
-            "level": 47,
-            "species": "VENUSAUR"
-          },
-          {
-            "level": 47,
-            "species": "PIDGEOT"
-          },
-          {
-            "level": 47,
-            "species": "ALAKAZAM"
+            "level": 53,
+            "species": "PORYGON"
           }
         ]
       },
@@ -5691,16 +5639,12 @@
         "line": 635,
         "pokemon": [
           {
-            "level": 48,
+            "level": 53,
             "species": "SANDSLASH"
           },
           {
-            "level": 48,
-            "species": "DUGTRIO"
-          },
-          {
-            "level": 48,
-            "species": "CHARIZARD"
+            "level": 53,
+            "species": "MAROWAK"
           }
         ]
       },
@@ -5709,16 +5653,16 @@
         "line": 636,
         "pokemon": [
           {
-            "level": 48,
-            "species": "RHYHORN"
+            "level": 51,
+            "species": "GOLEM"
           },
           {
-            "level": 48,
-            "species": "DITTO"
+            "level": 51,
+            "species": "ELECTRODE"
           },
           {
-            "level": 48,
-            "species": "MAGMAR"
+            "level": 51,
+            "species": "VICTREEBEL"
           }
         ]
       }
@@ -5747,16 +5691,20 @@
         "line": 642,
         "pokemon": [
           {
-            "level": 47,
-            "species": "RHYDON"
+            "level": 53,
+            "species": "DRAGONAIR"
           },
           {
-            "level": 47,
+            "level": 53,
+            "species": "GENGAR"
+          },
+          {
+            "level": 53,
             "species": "TAUROS"
           },
           {
-            "level": 47,
-            "species": "VICTREEBEL"
+            "level": 53,
+            "species": "NIDOQUEEN"
           }
         ]
       },
@@ -5765,16 +5713,20 @@
         "line": 643,
         "pokemon": [
           {
-            "level": 48,
-            "species": "PARASECT"
+            "level": 54,
+            "species": "WIGGLYTUFF"
           },
           {
-            "level": 48,
-            "species": "DEWGONG"
+            "level": 54,
+            "species": "CLEFABLE"
           },
           {
-            "level": 48,
+            "level": 54,
             "species": "CHANSEY"
+          },
+          {
+            "level": 57,
+            "species": "EEVEE"
           }
         ]
       },
@@ -5797,12 +5749,20 @@
         "line": 647,
         "pokemon": [
           {
-            "level": 47,
-            "species": "PERSIAN"
+            "level": 53,
+            "species": "SEADRA"
           },
           {
-            "level": 47,
-            "species": "NINETALES"
+            "level": 53,
+            "species": "DRAGONAIR"
+          },
+          {
+            "level": 53,
+            "species": "VENUSAUR"
+          },
+          {
+            "level": 53,
+            "species": "HYPNO"
           }
         ]
       },
@@ -7147,12 +7107,12 @@
         "line": 765,
         "pokemon": [
           {
-            "level": 40,
-            "species": "DROWZEE"
+            "level": 44,
+            "species": "HAUNTER"
           },
           {
-            "level": 40,
-            "species": "HYPNO"
+            "level": 44,
+            "species": "NINETALES"
           }
         ]
       },
@@ -7161,12 +7121,8 @@
         "line": 766,
         "pokemon": [
           {
-            "level": 40,
-            "species": "HAUNTER"
-          },
-          {
-            "level": 40,
-            "species": "KADABRA"
+            "level": 45,
+            "species": "HYPNO"
           }
         ]
       },
@@ -7175,16 +7131,16 @@
         "line": 767,
         "pokemon": [
           {
-            "level": 41,
-            "species": "GASTLY"
+            "level": 43,
+            "species": "HYPNO"
           },
           {
-            "level": 41,
+            "level": 43,
             "species": "HAUNTER"
           },
           {
-            "level": 41,
-            "species": "GENGAR"
+            "level": 43,
+            "species": "KADABRA"
           }
         ]
       }
