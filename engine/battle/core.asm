@@ -4253,10 +4253,35 @@ CheckForDisobedience:
 	ld [wMonIsDisobedient], a
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jr nz, .checkIfMonIsTraded
+	jr nz, .checkStarterPikachu
 	ld a, $1
 	and a
 	ret
+.checkStarterPikachu
+	ld a, [wWhichPokemon]
+	push af
+	ld a, [wPlayerMonNumber]
+	ld [wWhichPokemon], a
+	callfar IsThisPartymonStarterPikachu_Party
+	pop bc
+	ld a, b
+	ld [wWhichPokemon], a
+	jr nc, .checkIfMonIsTraded
+
+	ld a, [wPikachuHappiness]
+	cp 50
+	ld b, 20 percent + 1
+	jr c, .rollStarterPikachuDisobedience
+	cp 80
+	jr nc, .checkIfMonIsTraded
+	ld b, 10 percent + 1
+.rollStarterPikachuDisobedience
+	call BattleRandom
+	cp b
+	jr nc, .checkIfMonIsTraded
+	ld hl, IgnoredOrdersText
+	rst _PrintText
+	jp .cannotUseMove
 ; compare the mon's original trainer ID with the player's ID to see if it was traded
 .checkIfMonIsTraded
 	ld hl, wPartyMon1OTID
