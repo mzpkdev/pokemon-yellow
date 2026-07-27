@@ -29,4 +29,6 @@ python tools/audit/trainers.py --baseline trainer-manifest-baseline.json
 
 The topology check deliberately allows party composition and levels to change.
 Dynamic script selectors are listed as explicit contracts in `trainers.py`;
-update those contracts when selector arithmetic changes.
+the audit verifies their implemented `wRivalStarter` load, offset, opponent
+class, and `wTrainerNo` store. Update those contracts when selector arithmetic
+changes.

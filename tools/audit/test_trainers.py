@@ -1,4 +1,5 @@
 import json
+import re
 import unittest
 from pathlib import Path
 from unittest.mock import Mock
@@ -58,6 +59,49 @@ class TrainerAuditTests(unittest.TestCase):
         self.assertFalse(party_errors)
         self.assertFalse(reference_errors)
         self.assertEqual(rocket_parties, list(range(0x2A, 0x30)))
+
+    def test_dynamic_rival_contracts_match_script_implementations(self):
+        root = Path(__file__).resolve().parents[2]
+        for relative, class_name, _, offset in trainers.DYNAMIC_SELECTOR_CONTRACTS:
+            with self.subTest(path=relative):
+                text = (root / relative).read_text(encoding="utf-8")
+                self.assertTrue(
+                    trainers.has_dynamic_rival_selector(text, class_name, offset)
+                )
+
+    def test_dynamic_rival_contracts_reject_changed_offsets(self):
+        root = Path(__file__).resolve().parents[2]
+        for relative, class_name, _, offset in trainers.DYNAMIC_SELECTOR_CONTRACTS:
+            with self.subTest(path=relative):
+                text = (root / relative).read_text(encoding="utf-8")
+                changed = re.sub(
+                    r"(?im)(ld\s+a,\s*\[wRivalStarter\]\s*\r?\n"
+                    r"\s*add\s+)(?:\$[0-9a-f]+|\d+)",
+                    r"\g<1>99",
+                    text,
+                    count=1,
+                )
+                self.assertNotEqual(text, changed)
+                self.assertFalse(
+                    trainers.has_dynamic_rival_selector(
+                        changed, class_name, offset
+                    )
+                )
+
+    def test_dynamic_rival_contracts_reject_changed_starter_branch(self):
+        root = Path(__file__).resolve().parents[2]
+        for relative, class_name, _, offset in trainers.DYNAMIC_SELECTOR_CONTRACTS:
+            with self.subTest(path=relative):
+                text = (root / relative).read_text(encoding="utf-8")
+                changed = text.replace(
+                    "ld a, [wRivalStarter]", "ld a, [wGameStage]", 1
+                )
+                self.assertNotEqual(text, changed)
+                self.assertFalse(
+                    trainers.has_dynamic_rival_selector(
+                        changed, class_name, offset
+                    )
+                )
 
 
 if __name__ == "__main__":
