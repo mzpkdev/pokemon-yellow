@@ -290,25 +290,17 @@ SpecialTrainerMoves:
 	db 5, 4, THUNDERBOLT
 	db 0
 
-	db LORELEI, 1
-	db 1, 1, SURF
-	db 1, 2, REST
-	db 1, 3, ICE_BEAM
-	db 2, 1, THUNDER_WAVE
-	db 2, 2, HYDRO_PUMP
-	db 2, 3, PSYCHIC_M
-	db 3, 1, EXPLOSION
-	db 3, 2, BLIZZARD
-	db 3, 3, SPIKE_CANNON
-	db 4, 1, AMNESIA
-	db 4, 2, PSYCHIC_M
-	db 4, 3, EARTHQUAKE
-	db 5, 1, LOVELY_KISS
-	db 5, 2, BODY_SLAM
-	db 5, 3, PSYCHIC_M
-	db 6, 1, SING
-	db 6, 2, THUNDERBOLT
-	db 6, 3, BLIZZARD
+	db LORELEI, 1 ; 56, SLOWBRO, 55, CLOYSTER, 55, DEWGONG,  56, JYNX, 57, LAPRAS
+	db 1, 1, EARTHQUAKE
+	db 1, 2, BLIZZARD
+	db 2, 1, SURF
+	db 2, 3, EXPLOSION
+	db 3, 1, SURF
+	db 3, 2, REST
+	db 4, 2, BUBBLEBEAM
+	db 4, 3, LOVELY_KISS
+	db 5, 1, THUNDERBOLT
+	db 5, 3, SURF
 	db 0
 
     	db LORELEI, 2 
@@ -339,25 +331,15 @@ SpecialTrainerMoves:
     	db 0
 
 	
-	db BRUNO, 1
-	db 1, 1, ROCK_SLIDE
-	db 1, 2, EXPLOSION
-	db 1, 3, EARTHQUAKE
-	db 2, 1, FISSURE
-	db 2, 2, TAKE_DOWN
-	db 2, 3, EXPLOSION
-	db 3, 1, ICE_PUNCH
-	db 3, 2, FIRE_PUNCH
-	db 3, 3, THUNDERPUNCH
-	db 4, 1, HI_JUMP_KICK
-	db 4, 2, MEGA_KICK
-	db 4, 3, STRENGTH
-	db 5, 1, HYPNOSIS
-	db 5, 2, AMNESIA
-	db 5, 3, ICE_BEAM
-	db 6, 1, EARTHQUAKE
-	db 6, 2, KARATE_CHOP
-	db 6, 3, HYPER_BEAM
+	db BRUNO, 1 ; 57, HITMONCHAN, 56, POLIWRATH, 57, HITMONLEE, 56, ONIX, 58, MACHAMP
+	db 1, 3, ICE_PUNCH
+	db 1, 4, THUNDERPUNCH
+	db 2, 1, ICE_BEAM
+	db 3, 1, BODY_SLAM
+	db 4, 1, EXPLOSION
+	db 5, 1, BODY_SLAM
+	db 5, 2, ROCK_SLIDE
+	db 5, 3, EARTHQUAKE
 	db 0
 	
 	db BRUNO, 2 
@@ -388,25 +370,18 @@ SpecialTrainerMoves:
 	db 0
 
 	
-	db AGATHA, 1
-	db 1, 1, FIRE_BLAST
-	db 1, 2, MINIMIZE
-	db 1, 3, BODY_SLAM
-	db 2, 1, SWORDS_DANCE
-	db 2, 2, WRAP
-	db 2, 3, SURF
-	db 3, 1, SLEEP_POWDER
-	db 3, 2, DOUBLE_EDGE
-	db 3, 3, LEECH_SEED
-	db 4, 1, HYPNOSIS
-	db 4, 2, DREAM_EATER
-	db 4, 3, PSYWAVE
-	db 5, 1, GLARE
-	db 5, 2, WRAP
-	db 5, 3, SLUDGE
-	db 6, 1, PSYCHIC_M
-	db 6, 2, MEGA_DRAIN
-	db 6, 3, THUNDER
+	db AGATHA, 1 ; 57, GENGAR, 58, GOLBAT, 57, MAROWAK, 58, ARBOK, 59, GENGAR
+	db 1, 1, MEGA_DRAIN
+	db 2, 1, FLY
+	db 2, 2, TOXIC
+	db 2, 4, DOUBLE_TEAM
+	db 3, 1, SWORDS_DANCE
+	db 3, 2, BODY_SLAM
+	db 3, 3, ROCK_SLIDE
+	db 4, 2, SUBSTITUTE
+	db 5, 1, PSYCHIC_M
+	db 5, 3, MEGA_DRAIN
+	db 5, 4, THUNDER
 	db 0
 
 	db AGATHA, 2 
@@ -437,31 +412,18 @@ SpecialTrainerMoves:
 	db 0
 
 	
-	db LANCE, 1
-	db 1, 1, FIRE_BLAST
-	db 1, 2, THUNDERBOLT
-	db 1, 3, SURF
-	db 1, 4, DRAGON_RAGE
-	db 2, 1, FLAMETHROWER
-	db 2, 2, EARTHQUAKE
-	db 2, 3, FLY
-	db 2, 4, DOUBLE_TEAM
-	db 3, 1, ICE_BEAM
-	db 3, 2, SURF
-	db 3, 3, HYDRO_PUMP
-	db 3, 4, SLAM
-	db 4, 1, THUNDERBOLT
-	db 4, 2, LIGHT_SCREEN
-	db 4, 3, THUNDERPUNCH
-	db 4, 4, THUNDER_WAVE
-	db 5, 1, SKY_ATTACK
-	db 5, 2, ROCK_SLIDE
-	db 5, 3, HYPER_BEAM
-	db 5, 4, EARTHQUAKE
-	db 6, 1, FIRE_BLAST
-	db 6, 2, BLIZZARD
-	db 6, 3, THUNDER_WAVE
-	db 6, 4, HYPER_BEAM
+	db LANCE, 1 ; 61, DRAGONITE, 60, GYARADOS, 60, CHARIZARD, 61, AERODACTYL, 62, DRAGONITE
+	db 1, 1, WRAP
+	db 1, 3, THUNDER_WAVE
+	db 2, 1, FLY
+	db 2, 2, SURF
+	db 2, 3, SLAM
+	db 3, 3, HYPER_BEAM
+	db 3, 4, EARTHQUAKE
+	db 4, 3, EARTHQUAKE
+	db 5, 1, BLIZZARD
+	db 5, 2, FIRE_BLAST
+	db 5, 3, THUNDER
 	db 0
 
 	db LANCE, 2 
@@ -491,85 +453,51 @@ SpecialTrainerMoves:
     	db 6, 4, HYPER_BEAM
 	db 0
 	
-	db RIVAL3, 1 
-	db 1, 1, EARTHQUAKE
-        db 1, 2, SLASH
-	db 1, 3, SWORDS_DANCE
-        db 1, 4, DIG
-	db 2, 1, THUNDER_WAVE
-    	db 2, 2, RECOVER
-    	db 2, 3, PSYCHIC_M
-    	db 2, 4, TRI_ATTACK
-    	db 3, 1, PSYCHIC_M
-	db 3, 2, SELFDESTRUCT
-	db 3, 3, STUN_SPORE
-	db 3, 4, MEGA_DRAIN
-	db 4, 1, EXPLOSION
-	db 4, 2, BLIZZARD
-	db 4, 3, SPIKE_CANNON
-	db 4, 4, ICE_BEAM
-    	db 5, 1, PSYWAVE
-    	db 5, 2, SOLARBEAM
-    	db 5, 3, NIGHT_SHADE
-    	db 5, 4, FIRE_SPIN
-    	db 6, 1, THUNDER_WAVE
-    	db 6, 2, THUNDERBOLT
-    	db 6, 3, PIN_MISSILE
-    	db 6, 4, HEADBUTT
+	db RIVAL3, 1 ; Champion - 63, ALAKAZAM, 60, RHYDON, 61, GYARADOS, 63, ARCANINE, 62, EXEGGUTOR, 65, JOLTEON
+	db 1, 1, THUNDER_WAVE
+	db 1, 4, DOUBLE_TEAM
+	db 2, 3, HORN_DRILL
+	db 2, 4, SUBMISSION
+	db 3, 1, BLIZZARD
+	db 3, 3, FLY
+	db 4, 1, FIRE_BLAST
+	db 4, 2, DIG
+	db 4, 3, REST
+	db 4, 4, HYPER_BEAM
+	db 5, 1, SOFTBOILED
+	db 5, 4, REFLECT
+	db 6, 1, DOUBLE_TEAM
+	db 6, 2, HEADBUTT
 	db 0
 
-	db RIVAL3, 2
-	db 1, 1, EARTHQUAKE
-        db 1, 2, SLASH
-	db 1, 3, SWORDS_DANCE
-        db 1, 4, DIG
-	db 2, 1, THUNDER_WAVE
-    	db 2, 2, RECOVER
-    	db 2, 3, PSYCHIC_M
-    	db 2, 4, TRI_ATTACK
-    	db 3, 1, PSYCHIC_M
-	db 3, 2, SELFDESTRUCT
-	db 3, 3, STUN_SPORE
-	db 3, 4, MEGA_DRAIN
-    	db 4, 1, THUNDER_WAVE
-    	db 4, 2, THUNDERBOLT
-    	db 4, 3, TRI_ATTACK
-    	db 4, 4, SWIFT
-	db 5, 1, EXPLOSION
-	db 5, 2, BLIZZARD
-	db 5, 3, SPIKE_CANNON
-	db 5, 4, ICE_BEAM
-    	db 6, 1, FIRE_BLAST
-    	db 6, 2, BODY_SLAM
-    	db 6, 3, FLAMETHROWER
-    	db 6, 4, DIG
+	db RIVAL3, 2 ; Champion - 62, MAGNETON, 61, DODRIO, 63, ALAKAZAM, 60, SANDSLASH, 62, CLOYSTER, 65, FLAREON
+	db 1, 1, THUNDER_WAVE
+	db 1, 3, REFLECT
+	db 2, 1, DRILL_PECK
+	db 2, 2, HYPER_BEAM
+	db 2, 4, DOUBLE_TEAM
+	db 3, 1, THUNDER_WAVE
+	db 4, 1, ROCK_SLIDE
+	db 4, 2, CUT
+	db 5, 2, EXPLOSION
+	db 5, 3, DOUBLE_TEAM
+	db 6, 1, REFLECT
+	db 6, 2, BODY_SLAM
+	db 6, 3, DIG
 	db 0
 
-	db RIVAL3, 3
+	db RIVAL3, 3 ; Champion - 60, MACHAMP, 61, PIDGEOT, 62, NINETALES, 62, VICTREEBEL, 63, ALAKAZAM, 65, VAPOREON
 	db 1, 1, EARTHQUAKE
-        db 1, 2, SLASH
-	db 1, 3, SWORDS_DANCE
-        db 1, 4, DIG
-	db 2, 1, THUNDER_WAVE
-    	db 2, 2, RECOVER
-    	db 2, 3, PSYCHIC_M
-    	db 2, 4, TRI_ATTACK
-    	db 3, 1, PSYCHIC_M
-	db 3, 2, SELFDESTRUCT
-	db 3, 3, STUN_SPORE
-	db 3, 4, MEGA_DRAIN
-	db 4, 1, PSYWAVE
-    	db 4, 2, SOLARBEAM
-    	db 4, 3, NIGHT_SHADE
-    	db 4, 4, FIRE_SPIN
-    	db 5, 1, THUNDER_WAVE
-    	db 5, 2, THUNDERBOLT
-    	db 5, 3, TRI_ATTACK
-    	db 5, 4, SWIFT
-    	db 6, 1, HYDRO_PUMP
-    	db 6, 2, BLIZZARD
-    	db 6, 3, SKULL_BASH
-    	db 6, 4, ACID_ARMOR
+	db 1, 2, ROCK_SLIDE
+	db 2, 1, TOXIC
+	db 2, 2, HYPER_BEAM
+	db 2, 4, DOUBLE_TEAM
+	db 3, 1, PSYWAVE
+	db 3, 2, SOLARBEAM
+	db 4, 1, MEGA_DRAIN
+	db 5, 1, DOUBLE_TEAM
+	db 6, 1, BLIZZARD
+	db 6, 2, REFLECT
 	db 0
 
 	db RIVAL3, 4 

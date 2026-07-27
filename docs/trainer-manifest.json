@@ -3,7 +3,7 @@
     "trainer_classes": 49,
     "parties": 413,
     "special_move_records": 38,
-    "special_move_overrides": 566
+    "special_move_overrides": 494
   },
   "classes": [
     {
@@ -5931,24 +5931,20 @@
         "line": 654,
         "pokemon": [
           {
-            "level": 56,
-            "species": "ONIX"
-          },
-          {
-            "level": 56,
-            "species": "GOLEM"
-          },
-          {
-            "level": 56,
+            "level": 57,
             "species": "HITMONCHAN"
           },
           {
             "level": 56,
+            "species": "POLIWRATH"
+          },
+          {
+            "level": 57,
             "species": "HITMONLEE"
           },
           {
             "level": 56,
-            "species": "POLIWRATH"
+            "species": "ONIX"
           },
           {
             "level": 58,
@@ -6805,24 +6801,24 @@
         "line": 719,
         "pokemon": [
           {
-            "level": 64,
-            "species": "SANDSLASH"
-          },
-          {
-            "level": 64,
+            "level": 63,
             "species": "ALAKAZAM"
           },
           {
-            "level": 64,
+            "level": 60,
+            "species": "RHYDON"
+          },
+          {
+            "level": 61,
+            "species": "GYARADOS"
+          },
+          {
+            "level": 63,
+            "species": "ARCANINE"
+          },
+          {
+            "level": 62,
             "species": "EXEGGUTOR"
-          },
-          {
-            "level": 65,
-            "species": "CLOYSTER"
-          },
-          {
-            "level": 65,
-            "species": "NINETALES"
           },
           {
             "level": 65,
@@ -6835,23 +6831,23 @@
         "line": 720,
         "pokemon": [
           {
-            "level": 64,
-            "species": "SANDSLASH"
-          },
-          {
-            "level": 64,
-            "species": "ALAKAZAM"
-          },
-          {
-            "level": 64,
-            "species": "EXEGGUTOR"
-          },
-          {
-            "level": 65,
+            "level": 62,
             "species": "MAGNETON"
           },
           {
-            "level": 65,
+            "level": 61,
+            "species": "DODRIO"
+          },
+          {
+            "level": 63,
+            "species": "ALAKAZAM"
+          },
+          {
+            "level": 60,
+            "species": "SANDSLASH"
+          },
+          {
+            "level": 62,
             "species": "CLOYSTER"
           },
           {
@@ -6865,24 +6861,24 @@
         "line": 721,
         "pokemon": [
           {
-            "level": 64,
-            "species": "SANDSLASH"
+            "level": 60,
+            "species": "MACHAMP"
           },
           {
-            "level": 64,
-            "species": "ALAKAZAM"
+            "level": 61,
+            "species": "PIDGEOT"
           },
           {
-            "level": 64,
-            "species": "EXEGGUTOR"
-          },
-          {
-            "level": 65,
+            "level": 62,
             "species": "NINETALES"
           },
           {
-            "level": 65,
-            "species": "MAGNETON"
+            "level": 62,
+            "species": "VICTREEBEL"
+          },
+          {
+            "level": 63,
+            "species": "ALAKAZAM"
           },
           {
             "level": 65,
@@ -6927,12 +6923,8 @@
         "line": 726,
         "pokemon": [
           {
-            "level": 54,
-            "species": "DEWGONG"
-          },
-          {
-            "level": 54,
-            "species": "STARMIE"
+            "level": 56,
+            "species": "SLOWBRO"
           },
           {
             "level": 55,
@@ -6940,14 +6932,14 @@
           },
           {
             "level": 55,
-            "species": "SLOWBRO"
+            "species": "DEWGONG"
           },
           {
             "level": 56,
             "species": "JYNX"
           },
           {
-            "level": 56,
+            "level": 57,
             "species": "LAPRAS"
           }
         ]
@@ -7263,27 +7255,23 @@
         "line": 770,
         "pokemon": [
           {
-            "level": 58,
-            "species": "MUK"
+            "level": 57,
+            "species": "GENGAR"
           },
           {
             "level": 58,
-            "species": "TENTACRUEL"
+            "species": "GOLBAT"
           },
           {
-            "level": 58,
-            "species": "VENUSAUR"
-          },
-          {
-            "level": 58,
-            "species": "HYPNO"
+            "level": 57,
+            "species": "MAROWAK"
           },
           {
             "level": 58,
             "species": "ARBOK"
           },
           {
-            "level": 60,
+            "level": 59,
             "species": "GENGAR"
           }
         ]
@@ -7325,20 +7313,16 @@
         "line": 775,
         "pokemon": [
           {
+            "level": 61,
+            "species": "DRAGONITE"
+          },
+          {
             "level": 60,
             "species": "GYARADOS"
           },
           {
             "level": 60,
             "species": "CHARIZARD"
-          },
-          {
-            "level": 60,
-            "species": "SEADRA"
-          },
-          {
-            "level": 60,
-            "species": "ELECTABUZZ"
           },
           {
             "level": 61,
@@ -8966,605 +8950,594 @@
         {
           "party_slot": 1,
           "move_slot": 1,
-          "move": "SURF",
+          "move": "EARTHQUAKE",
           "line": 294
         },
         {
           "party_slot": 1,
           "move_slot": 2,
-          "move": "REST",
+          "move": "BLIZZARD",
           "line": 295
         },
         {
-          "party_slot": 1,
-          "move_slot": 3,
-          "move": "ICE_BEAM",
+          "party_slot": 2,
+          "move_slot": 1,
+          "move": "SURF",
           "line": 296
         },
         {
           "party_slot": 2,
-          "move_slot": 1,
-          "move": "THUNDER_WAVE",
+          "move_slot": 3,
+          "move": "EXPLOSION",
           "line": 297
         },
         {
-          "party_slot": 2,
-          "move_slot": 2,
-          "move": "HYDRO_PUMP",
+          "party_slot": 3,
+          "move_slot": 1,
+          "move": "SURF",
           "line": 298
         },
         {
-          "party_slot": 2,
-          "move_slot": 3,
-          "move": "PSYCHIC_M",
+          "party_slot": 3,
+          "move_slot": 2,
+          "move": "REST",
           "line": 299
         },
         {
-          "party_slot": 3,
-          "move_slot": 1,
-          "move": "EXPLOSION",
+          "party_slot": 4,
+          "move_slot": 2,
+          "move": "BUBBLEBEAM",
           "line": 300
         },
         {
-          "party_slot": 3,
-          "move_slot": 2,
-          "move": "BLIZZARD",
+          "party_slot": 4,
+          "move_slot": 3,
+          "move": "LOVELY_KISS",
           "line": 301
         },
         {
-          "party_slot": 3,
-          "move_slot": 3,
-          "move": "SPIKE_CANNON",
+          "party_slot": 5,
+          "move_slot": 1,
+          "move": "THUNDERBOLT",
           "line": 302
         },
         {
-          "party_slot": 4,
-          "move_slot": 1,
-          "move": "AMNESIA",
+          "party_slot": 5,
+          "move_slot": 3,
+          "move": "SURF",
           "line": 303
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 2,
-          "move": "PSYCHIC_M",
-          "line": 304
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 3,
-          "move": "EARTHQUAKE",
-          "line": 305
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 1,
-          "move": "LOVELY_KISS",
-          "line": 306
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 2,
-          "move": "BODY_SLAM",
-          "line": 307
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 3,
-          "move": "PSYCHIC_M",
-          "line": 308
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 1,
-          "move": "SING",
-          "line": 309
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 2,
-          "move": "THUNDERBOLT",
-          "line": 310
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 3,
-          "move": "BLIZZARD",
-          "line": 311
         }
       ]
     },
     {
       "class": "LORELEI",
       "party_id": 2,
-      "line": 314,
+      "line": 306,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
           "move": "BODY_SLAM",
-          "line": 315
+          "line": 307
         },
         {
           "party_slot": 1,
           "move_slot": 2,
           "move": "METRONOME",
-          "line": 316
+          "line": 308
         },
         {
           "party_slot": 1,
           "move_slot": 3,
           "move": "LOVELY_KISS",
-          "line": 317
+          "line": 309
         },
         {
           "party_slot": 1,
           "move_slot": 4,
           "move": "BLIZZARD",
-          "line": 318
+          "line": 310
         },
         {
           "party_slot": 2,
           "move_slot": 1,
           "move": "THUNDER_WAVE",
-          "line": 319
+          "line": 311
         },
         {
           "party_slot": 2,
           "move_slot": 2,
           "move": "PSYCHIC_M",
-          "line": 320
+          "line": 312
         },
         {
           "party_slot": 2,
           "move_slot": 3,
           "move": "THUNDER",
-          "line": 321
+          "line": 313
         },
         {
           "party_slot": 2,
           "move_slot": 4,
           "move": "SURF",
-          "line": 322
+          "line": 314
         },
         {
           "party_slot": 3,
           "move_slot": 1,
           "move": "CLAMP",
-          "line": 323
+          "line": 315
         },
         {
           "party_slot": 3,
           "move_slot": 2,
           "move": "ICE_BEAM",
-          "line": 324
+          "line": 316
         },
         {
           "party_slot": 3,
           "move_slot": 3,
           "move": "TOXIC",
-          "line": 325
+          "line": 317
         },
         {
           "party_slot": 3,
           "move_slot": 4,
           "move": "EXPLOSION",
-          "line": 326
+          "line": 318
         },
         {
           "party_slot": 4,
           "move_slot": 1,
           "move": "BLIZZARD",
-          "line": 327
+          "line": 319
         },
         {
           "party_slot": 4,
           "move_slot": 2,
           "move": "ROCK_SLIDE",
-          "line": 328
+          "line": 320
         },
         {
           "party_slot": 4,
           "move_slot": 3,
           "move": "HORN_DRILL",
-          "line": 329
+          "line": 321
         },
         {
           "party_slot": 4,
           "move_slot": 4,
           "move": "HYDRO_PUMP",
-          "line": 330
+          "line": 322
         },
         {
           "party_slot": 5,
           "move_slot": 1,
           "move": "LEECH_SEED",
-          "line": 331
+          "line": 323
         },
         {
           "party_slot": 5,
           "move_slot": 2,
           "move": "EGG_BOMB",
-          "line": 332
+          "line": 324
         },
         {
           "party_slot": 5,
           "move_slot": 3,
           "move": "PSYCHIC_M",
-          "line": 333
+          "line": 325
         },
         {
           "party_slot": 5,
           "move_slot": 4,
           "move": "HEADBUTT",
-          "line": 334
+          "line": 326
         },
         {
           "party_slot": 6,
           "move_slot": 1,
           "move": "CONFUSE_RAY",
-          "line": 335
+          "line": 327
         },
         {
           "party_slot": 6,
           "move_slot": 2,
           "move": "PSYCHIC_M",
-          "line": 336
+          "line": 328
         },
         {
           "party_slot": 6,
           "move_slot": 3,
           "move": "SURF",
-          "line": 337
+          "line": 329
         },
         {
           "party_slot": 6,
           "move_slot": 4,
           "move": "BLIZZARD",
-          "line": 338
+          "line": 330
         }
       ]
     },
     {
       "class": "BRUNO",
       "party_id": 1,
-      "line": 342,
+      "line": 334,
       "moves": [
         {
           "party_slot": 1,
-          "move_slot": 1,
-          "move": "ROCK_SLIDE",
-          "line": 343
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 2,
-          "move": "EXPLOSION",
-          "line": 344
-        },
-        {
-          "party_slot": 1,
           "move_slot": 3,
-          "move": "EARTHQUAKE",
-          "line": 345
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 1,
-          "move": "FISSURE",
-          "line": 346
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 2,
-          "move": "TAKE_DOWN",
-          "line": 347
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 3,
-          "move": "EXPLOSION",
-          "line": 348
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 1,
           "move": "ICE_PUNCH",
-          "line": 349
+          "line": 335
         },
         {
-          "party_slot": 3,
-          "move_slot": 2,
-          "move": "FIRE_PUNCH",
-          "line": 350
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 3,
+          "party_slot": 1,
+          "move_slot": 4,
           "move": "THUNDERPUNCH",
-          "line": 351
+          "line": 336
         },
         {
-          "party_slot": 4,
+          "party_slot": 2,
           "move_slot": 1,
-          "move": "HI_JUMP_KICK",
-          "line": 352
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 2,
-          "move": "MEGA_KICK",
-          "line": 353
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 3,
-          "move": "STRENGTH",
-          "line": 354
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 1,
-          "move": "HYPNOSIS",
-          "line": 355
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 2,
-          "move": "AMNESIA",
-          "line": 356
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 3,
           "move": "ICE_BEAM",
-          "line": 357
+          "line": 337
         },
         {
-          "party_slot": 6,
+          "party_slot": 3,
           "move_slot": 1,
-          "move": "EARTHQUAKE",
-          "line": 358
+          "move": "BODY_SLAM",
+          "line": 338
         },
         {
-          "party_slot": 6,
+          "party_slot": 4,
+          "move_slot": 1,
+          "move": "EXPLOSION",
+          "line": 339
+        },
+        {
+          "party_slot": 5,
+          "move_slot": 1,
+          "move": "BODY_SLAM",
+          "line": 340
+        },
+        {
+          "party_slot": 5,
           "move_slot": 2,
-          "move": "KARATE_CHOP",
-          "line": 359
+          "move": "ROCK_SLIDE",
+          "line": 341
         },
         {
-          "party_slot": 6,
+          "party_slot": 5,
           "move_slot": 3,
-          "move": "HYPER_BEAM",
-          "line": 360
+          "move": "EARTHQUAKE",
+          "line": 342
         }
       ]
     },
     {
       "class": "BRUNO",
       "party_id": 2,
-      "line": 363,
+      "line": 345,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
           "move": "SOFTBOILED",
-          "line": 364
+          "line": 346
         },
         {
           "party_slot": 1,
           "move_slot": 2,
           "move": "PSYCHIC_M",
-          "line": 365
+          "line": 347
         },
         {
           "party_slot": 1,
           "move_slot": 3,
           "move": "ICE_BEAM",
-          "line": 366
+          "line": 348
         },
         {
           "party_slot": 1,
           "move_slot": 4,
           "move": "THUNDERBOLT",
-          "line": 367
+          "line": 349
         },
         {
           "party_slot": 2,
           "move_slot": 1,
           "move": "SLUDGE",
-          "line": 368
+          "line": 350
         },
         {
           "party_slot": 2,
           "move_slot": 2,
           "move": "BODY_SLAM",
-          "line": 369
+          "line": 351
         },
         {
           "party_slot": 2,
           "move_slot": 3,
           "move": "MINIMIZE",
-          "line": 370
+          "line": 352
         },
         {
           "party_slot": 2,
           "move_slot": 4,
           "move": "FIRE_BLAST",
-          "line": 371
+          "line": 353
         },
         {
           "party_slot": 3,
           "move_slot": 1,
           "move": "DOUBLE_TEAM",
-          "line": 372
+          "line": 354
         },
         {
           "party_slot": 3,
           "move_slot": 2,
           "move": "SURF",
-          "line": 373
+          "line": 355
         },
         {
           "party_slot": 3,
           "move_slot": 3,
           "move": "THUNDERBOLT",
-          "line": 374
+          "line": 356
         },
         {
           "party_slot": 3,
           "move_slot": 4,
           "move": "ICE_PUNCH",
-          "line": 375
+          "line": 357
         },
         {
           "party_slot": 4,
           "move_slot": 1,
           "move": "BODY_SLAM",
-          "line": 376
+          "line": 358
         },
         {
           "party_slot": 4,
           "move_slot": 2,
           "move": "JUMP_KICK",
-          "line": 377
+          "line": 359
         },
         {
           "party_slot": 4,
           "move_slot": 3,
           "move": "HI_JUMP_KICK",
-          "line": 378
+          "line": 360
         },
         {
           "party_slot": 4,
           "move_slot": 4,
           "move": "METRONOME",
-          "line": 379
+          "line": 361
         },
         {
           "party_slot": 5,
           "move_slot": 1,
           "move": "ROCK_SLIDE",
-          "line": 380
+          "line": 362
         },
         {
           "party_slot": 5,
           "move_slot": 2,
           "move": "EARTHQUAKE",
-          "line": 381
+          "line": 363
         },
         {
           "party_slot": 5,
           "move_slot": 3,
           "move": "BODY_SLAM",
-          "line": 382
+          "line": 364
         },
         {
           "party_slot": 5,
           "move_slot": 4,
           "move": "SURF",
-          "line": 383
+          "line": 365
         },
         {
           "party_slot": 6,
           "move_slot": 1,
           "move": "EARTHQUAKE",
-          "line": 384
+          "line": 366
         },
         {
           "party_slot": 6,
           "move_slot": 2,
           "move": "HYPER_BEAM",
-          "line": 385
+          "line": 367
         },
         {
           "party_slot": 6,
           "move_slot": 3,
           "move": "ROCK_SLIDE",
-          "line": 386
+          "line": 368
         },
         {
           "party_slot": 6,
           "move_slot": 4,
           "move": "KARATE_CHOP",
-          "line": 387
+          "line": 369
         }
       ]
     },
     {
       "class": "AGATHA",
       "party_id": 1,
-      "line": 391,
+      "line": 373,
       "moves": [
         {
           "party_slot": 1,
+          "move_slot": 1,
+          "move": "MEGA_DRAIN",
+          "line": 374
+        },
+        {
+          "party_slot": 2,
+          "move_slot": 1,
+          "move": "FLY",
+          "line": 375
+        },
+        {
+          "party_slot": 2,
+          "move_slot": 2,
+          "move": "TOXIC",
+          "line": 376
+        },
+        {
+          "party_slot": 2,
+          "move_slot": 4,
+          "move": "DOUBLE_TEAM",
+          "line": 377
+        },
+        {
+          "party_slot": 3,
+          "move_slot": 1,
+          "move": "SWORDS_DANCE",
+          "line": 378
+        },
+        {
+          "party_slot": 3,
+          "move_slot": 2,
+          "move": "BODY_SLAM",
+          "line": 379
+        },
+        {
+          "party_slot": 3,
+          "move_slot": 3,
+          "move": "ROCK_SLIDE",
+          "line": 380
+        },
+        {
+          "party_slot": 4,
+          "move_slot": 2,
+          "move": "SUBSTITUTE",
+          "line": 381
+        },
+        {
+          "party_slot": 5,
+          "move_slot": 1,
+          "move": "PSYCHIC_M",
+          "line": 382
+        },
+        {
+          "party_slot": 5,
+          "move_slot": 3,
+          "move": "MEGA_DRAIN",
+          "line": 383
+        },
+        {
+          "party_slot": 5,
+          "move_slot": 4,
+          "move": "THUNDER",
+          "line": 384
+        }
+      ]
+    },
+    {
+      "class": "AGATHA",
+      "party_id": 2,
+      "line": 387,
+      "moves": [
+        {
+          "party_slot": 1,
+          "move_slot": 1,
+          "move": "PSYCHIC_M",
+          "line": 388
+        },
+        {
+          "party_slot": 1,
+          "move_slot": 2,
+          "move": "LOVELY_KISS",
+          "line": 389
+        },
+        {
+          "party_slot": 1,
+          "move_slot": 3,
+          "move": "REFLECT",
+          "line": 390
+        },
+        {
+          "party_slot": 1,
+          "move_slot": 4,
+          "move": "BLIZZARD",
+          "line": 391
+        },
+        {
+          "party_slot": 2,
           "move_slot": 1,
           "move": "FIRE_BLAST",
           "line": 392
         },
         {
-          "party_slot": 1,
+          "party_slot": 2,
           "move_slot": 2,
-          "move": "MINIMIZE",
+          "move": "THUNDERBOLT",
           "line": 393
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 3,
-          "move": "BODY_SLAM",
-          "line": 394
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 1,
-          "move": "SWORDS_DANCE",
-          "line": 395
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 2,
-          "move": "WRAP",
-          "line": 396
         },
         {
           "party_slot": 2,
           "move_slot": 3,
           "move": "SURF",
+          "line": 394
+        },
+        {
+          "party_slot": 2,
+          "move_slot": 4,
+          "move": "HYPER_BEAM",
+          "line": 395
+        },
+        {
+          "party_slot": 3,
+          "move_slot": 1,
+          "move": "THUNDER_WAVE",
+          "line": 396
+        },
+        {
+          "party_slot": 3,
+          "move_slot": 2,
+          "move": "RECOVER",
           "line": 397
         },
         {
           "party_slot": 3,
-          "move_slot": 1,
-          "move": "SLEEP_POWDER",
+          "move_slot": 3,
+          "move": "PSYCHIC_M",
           "line": 398
         },
         {
           "party_slot": 3,
-          "move_slot": 2,
-          "move": "DOUBLE_EDGE",
+          "move_slot": 4,
+          "move": "TRI_ATTACK",
           "line": 399
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 3,
-          "move": "LEECH_SEED",
-          "line": 400
         },
         {
           "party_slot": 4,
           "move_slot": 1,
-          "move": "HYPNOSIS",
-          "line": 401
+          "move": "SLEEP_POWDER",
+          "line": 400
         },
         {
           "party_slot": 4,
           "move_slot": 2,
-          "move": "DREAM_EATER",
-          "line": 402
+          "move": "DOUBLE_EDGE",
+          "line": 401
         },
         {
           "party_slot": 4,
           "move_slot": 3,
-          "move": "PSYWAVE",
+          "move": "LEECH_SEED",
+          "line": 402
+        },
+        {
+          "party_slot": 4,
+          "move_slot": 4,
+          "move": "SOLARBEAM",
           "line": 403
         },
         {
@@ -9576,7 +9549,7 @@
         {
           "party_slot": 5,
           "move_slot": 2,
-          "move": "WRAP",
+          "move": "EARTHQUAKE",
           "line": 405
         },
         {
@@ -9586,1526 +9559,1105 @@
           "line": 406
         },
         {
-          "party_slot": 6,
-          "move_slot": 1,
-          "move": "PSYCHIC_M",
-          "line": 407
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 2,
-          "move": "MEGA_DRAIN",
-          "line": 408
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 3,
-          "move": "THUNDER",
-          "line": 409
-        }
-      ]
-    },
-    {
-      "class": "AGATHA",
-      "party_id": 2,
-      "line": 412,
-      "moves": [
-        {
-          "party_slot": 1,
-          "move_slot": 1,
-          "move": "PSYCHIC_M",
-          "line": 413
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 2,
-          "move": "LOVELY_KISS",
-          "line": 414
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 3,
-          "move": "REFLECT",
-          "line": 415
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 4,
-          "move": "BLIZZARD",
-          "line": 416
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 1,
-          "move": "FIRE_BLAST",
-          "line": 417
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 2,
-          "move": "THUNDERBOLT",
-          "line": 418
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 3,
-          "move": "SURF",
-          "line": 419
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 4,
-          "move": "HYPER_BEAM",
-          "line": 420
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 1,
-          "move": "THUNDER_WAVE",
-          "line": 421
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 2,
-          "move": "RECOVER",
-          "line": 422
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 3,
-          "move": "PSYCHIC_M",
-          "line": 423
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 4,
-          "move": "TRI_ATTACK",
-          "line": 424
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 1,
-          "move": "SLEEP_POWDER",
-          "line": 425
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 2,
-          "move": "DOUBLE_EDGE",
-          "line": 426
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 3,
-          "move": "LEECH_SEED",
-          "line": 427
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 4,
-          "move": "SOLARBEAM",
-          "line": 428
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 1,
-          "move": "GLARE",
-          "line": 429
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 2,
-          "move": "EARTHQUAKE",
-          "line": 430
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 3,
-          "move": "SLUDGE",
-          "line": 431
-        },
-        {
           "party_slot": 5,
           "move_slot": 4,
           "move": "WRAP",
-          "line": 432
+          "line": 407
         },
         {
           "party_slot": 6,
           "move_slot": 1,
           "move": "CONFUSE_RAY",
-          "line": 433
+          "line": 408
         },
         {
           "party_slot": 6,
           "move_slot": 2,
           "move": "NIGHT_SHADE",
-          "line": 434
+          "line": 409
         },
         {
           "party_slot": 6,
           "move_slot": 3,
           "move": "FLAMETHROWER",
-          "line": 435
+          "line": 410
         },
         {
           "party_slot": 6,
           "move_slot": 4,
           "move": "THUNDERBOLT",
-          "line": 436
+          "line": 411
         }
       ]
     },
     {
       "class": "LANCE",
       "party_id": 1,
-      "line": 440,
+      "line": 415,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
-          "move": "FIRE_BLAST",
-          "line": 441
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 2,
-          "move": "THUNDERBOLT",
-          "line": 442
+          "move": "WRAP",
+          "line": 416
         },
         {
           "party_slot": 1,
           "move_slot": 3,
-          "move": "SURF",
-          "line": 443
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 4,
-          "move": "DRAGON_RAGE",
-          "line": 444
+          "move": "THUNDER_WAVE",
+          "line": 417
         },
         {
           "party_slot": 2,
           "move_slot": 1,
-          "move": "FLAMETHROWER",
-          "line": 445
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 2,
-          "move": "EARTHQUAKE",
-          "line": 446
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 3,
           "move": "FLY",
-          "line": 447
+          "line": 418
         },
         {
           "party_slot": 2,
-          "move_slot": 4,
-          "move": "DOUBLE_TEAM",
-          "line": 448
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 1,
-          "move": "ICE_BEAM",
-          "line": 449
-        },
-        {
-          "party_slot": 3,
           "move_slot": 2,
           "move": "SURF",
-          "line": 450
+          "line": 419
         },
         {
-          "party_slot": 3,
+          "party_slot": 2,
           "move_slot": 3,
-          "move": "HYDRO_PUMP",
-          "line": 451
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 4,
           "move": "SLAM",
-          "line": 452
+          "line": 420
         },
         {
-          "party_slot": 4,
-          "move_slot": 1,
-          "move": "THUNDERBOLT",
-          "line": 453
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 2,
-          "move": "LIGHT_SCREEN",
-          "line": 454
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 3,
-          "move": "THUNDERPUNCH",
-          "line": 455
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 4,
-          "move": "THUNDER_WAVE",
-          "line": 456
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 1,
-          "move": "SKY_ATTACK",
-          "line": 457
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 2,
-          "move": "ROCK_SLIDE",
-          "line": 458
-        },
-        {
-          "party_slot": 5,
+          "party_slot": 3,
           "move_slot": 3,
           "move": "HYPER_BEAM",
-          "line": 459
+          "line": 421
         },
         {
-          "party_slot": 5,
+          "party_slot": 3,
           "move_slot": 4,
           "move": "EARTHQUAKE",
-          "line": 460
+          "line": 422
         },
         {
-          "party_slot": 6,
-          "move_slot": 1,
-          "move": "FIRE_BLAST",
-          "line": 461
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 2,
-          "move": "BLIZZARD",
-          "line": 462
-        },
-        {
-          "party_slot": 6,
+          "party_slot": 4,
           "move_slot": 3,
-          "move": "THUNDER_WAVE",
-          "line": 463
+          "move": "EARTHQUAKE",
+          "line": 423
         },
         {
-          "party_slot": 6,
-          "move_slot": 4,
-          "move": "HYPER_BEAM",
-          "line": 464
+          "party_slot": 5,
+          "move_slot": 1,
+          "move": "BLIZZARD",
+          "line": 424
+        },
+        {
+          "party_slot": 5,
+          "move_slot": 2,
+          "move": "FIRE_BLAST",
+          "line": 425
+        },
+        {
+          "party_slot": 5,
+          "move_slot": 3,
+          "move": "THUNDER",
+          "line": 426
         }
       ]
     },
     {
       "class": "LANCE",
       "party_id": 2,
-      "line": 467,
+      "line": 429,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
           "move": "DRAGON_RAGE",
-          "line": 468
+          "line": 430
         },
         {
           "party_slot": 1,
           "move_slot": 2,
           "move": "FIRE_BLAST",
-          "line": 469
+          "line": 431
         },
         {
           "party_slot": 1,
           "move_slot": 3,
           "move": "HYPER_BEAM",
-          "line": 470
+          "line": 432
         },
         {
           "party_slot": 1,
           "move_slot": 4,
           "move": "DIG",
-          "line": 471
+          "line": 433
         },
         {
           "party_slot": 2,
           "move_slot": 1,
           "move": "THUNDER_WAVE",
-          "line": 472
+          "line": 434
         },
         {
           "party_slot": 2,
           "move_slot": 2,
           "move": "LIGHT_SCREEN",
-          "line": 473
+          "line": 435
         },
         {
           "party_slot": 2,
           "move_slot": 3,
           "move": "THUNDER",
-          "line": 474
+          "line": 436
         },
         {
           "party_slot": 2,
           "move_slot": 4,
           "move": "PSYCHIC_M",
-          "line": 475
+          "line": 437
         },
         {
           "party_slot": 3,
           "move_slot": 1,
           "move": "SELFDESTRUCT",
-          "line": 476
+          "line": 438
         },
         {
           "party_slot": 3,
           "move_slot": 2,
           "move": "EARTHQUAKE",
-          "line": 477
+          "line": 439
         },
         {
           "party_slot": 3,
           "move_slot": 3,
           "move": "REFLECT",
-          "line": 478
+          "line": 440
         },
         {
           "party_slot": 3,
           "move_slot": 4,
           "move": "HYPER_BEAM",
-          "line": 479
+          "line": 441
         },
         {
           "party_slot": 4,
           "move_slot": 1,
           "move": "FLY",
-          "line": 480
+          "line": 442
         },
         {
           "party_slot": 4,
           "move_slot": 2,
           "move": "FIRE_BLAST",
-          "line": 481
+          "line": 443
         },
         {
           "party_slot": 4,
           "move_slot": 3,
           "move": "EARTHQUAKE",
-          "line": 482
+          "line": 444
         },
         {
           "party_slot": 4,
           "move_slot": 4,
           "move": "FLAMETHROWER",
-          "line": 483
+          "line": 445
         },
         {
           "party_slot": 5,
           "move_slot": 1,
           "move": "HYPER_BEAM",
-          "line": 484
+          "line": 446
         },
         {
           "party_slot": 5,
           "move_slot": 2,
           "move": "SUBMISSION",
-          "line": 485
+          "line": 447
         },
         {
           "party_slot": 5,
           "move_slot": 3,
           "move": "EARTHQUAKE",
-          "line": 486
+          "line": 448
         },
         {
           "party_slot": 5,
           "move_slot": 4,
           "move": "ROCK_SLIDE",
-          "line": 487
+          "line": 449
         },
         {
           "party_slot": 6,
           "move_slot": 1,
           "move": "HYDRO_PUMP",
-          "line": 488
+          "line": 450
         },
         {
           "party_slot": 6,
           "move_slot": 2,
           "move": "THUNDER_WAVE",
-          "line": 489
+          "line": 451
         },
         {
           "party_slot": 6,
           "move_slot": 3,
           "move": "BLIZZARD",
-          "line": 490
+          "line": 452
         },
         {
           "party_slot": 6,
           "move_slot": 4,
           "move": "HYPER_BEAM",
-          "line": 491
+          "line": 453
         }
       ]
     },
     {
       "class": "RIVAL3",
       "party_id": 1,
-      "line": 494,
+      "line": 456,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
-          "move": "EARTHQUAKE",
-          "line": 495
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 2,
-          "move": "SLASH",
-          "line": 496
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 3,
-          "move": "SWORDS_DANCE",
-          "line": 497
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 4,
-          "move": "DIG",
-          "line": 498
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 1,
           "move": "THUNDER_WAVE",
-          "line": 499
+          "line": 457
         },
         {
-          "party_slot": 2,
-          "move_slot": 2,
-          "move": "RECOVER",
-          "line": 500
+          "party_slot": 1,
+          "move_slot": 4,
+          "move": "DOUBLE_TEAM",
+          "line": 458
         },
         {
           "party_slot": 2,
           "move_slot": 3,
-          "move": "PSYCHIC_M",
-          "line": 501
+          "move": "HORN_DRILL",
+          "line": 459
         },
         {
           "party_slot": 2,
           "move_slot": 4,
-          "move": "TRI_ATTACK",
-          "line": 502
+          "move": "SUBMISSION",
+          "line": 460
         },
         {
           "party_slot": 3,
           "move_slot": 1,
-          "move": "PSYCHIC_M",
-          "line": 503
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 2,
-          "move": "SELFDESTRUCT",
-          "line": 504
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 3,
-          "move": "STUN_SPORE",
-          "line": 505
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 4,
-          "move": "MEGA_DRAIN",
-          "line": 506
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 1,
-          "move": "EXPLOSION",
-          "line": 507
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 2,
           "move": "BLIZZARD",
-          "line": 508
+          "line": 461
+        },
+        {
+          "party_slot": 3,
+          "move_slot": 3,
+          "move": "FLY",
+          "line": 462
+        },
+        {
+          "party_slot": 4,
+          "move_slot": 1,
+          "move": "FIRE_BLAST",
+          "line": 463
+        },
+        {
+          "party_slot": 4,
+          "move_slot": 2,
+          "move": "DIG",
+          "line": 464
         },
         {
           "party_slot": 4,
           "move_slot": 3,
-          "move": "SPIKE_CANNON",
-          "line": 509
+          "move": "REST",
+          "line": 465
         },
         {
           "party_slot": 4,
           "move_slot": 4,
-          "move": "ICE_BEAM",
-          "line": 510
+          "move": "HYPER_BEAM",
+          "line": 466
         },
         {
           "party_slot": 5,
           "move_slot": 1,
-          "move": "PSYWAVE",
-          "line": 511
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 2,
-          "move": "SOLARBEAM",
-          "line": 512
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 3,
-          "move": "NIGHT_SHADE",
-          "line": 513
+          "move": "SOFTBOILED",
+          "line": 467
         },
         {
           "party_slot": 5,
           "move_slot": 4,
-          "move": "FIRE_SPIN",
-          "line": 514
+          "move": "REFLECT",
+          "line": 468
         },
         {
           "party_slot": 6,
           "move_slot": 1,
-          "move": "THUNDER_WAVE",
-          "line": 515
+          "move": "DOUBLE_TEAM",
+          "line": 469
         },
         {
           "party_slot": 6,
           "move_slot": 2,
-          "move": "THUNDERBOLT",
-          "line": 516
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 3,
-          "move": "PIN_MISSILE",
-          "line": 517
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 4,
           "move": "HEADBUTT",
-          "line": 518
+          "line": 470
         }
       ]
     },
     {
       "class": "RIVAL3",
       "party_id": 2,
-      "line": 521,
+      "line": 473,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
-          "move": "EARTHQUAKE",
-          "line": 522
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 2,
-          "move": "SLASH",
-          "line": 523
+          "move": "THUNDER_WAVE",
+          "line": 474
         },
         {
           "party_slot": 1,
           "move_slot": 3,
-          "move": "SWORDS_DANCE",
-          "line": 524
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 4,
-          "move": "DIG",
-          "line": 525
+          "move": "REFLECT",
+          "line": 475
         },
         {
           "party_slot": 2,
+          "move_slot": 1,
+          "move": "DRILL_PECK",
+          "line": 476
+        },
+        {
+          "party_slot": 2,
+          "move_slot": 2,
+          "move": "HYPER_BEAM",
+          "line": 477
+        },
+        {
+          "party_slot": 2,
+          "move_slot": 4,
+          "move": "DOUBLE_TEAM",
+          "line": 478
+        },
+        {
+          "party_slot": 3,
           "move_slot": 1,
           "move": "THUNDER_WAVE",
-          "line": 526
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 2,
-          "move": "RECOVER",
-          "line": 527
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 3,
-          "move": "PSYCHIC_M",
-          "line": 528
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 4,
-          "move": "TRI_ATTACK",
-          "line": 529
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 1,
-          "move": "PSYCHIC_M",
-          "line": 530
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 2,
-          "move": "SELFDESTRUCT",
-          "line": 531
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 3,
-          "move": "STUN_SPORE",
-          "line": 532
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 4,
-          "move": "MEGA_DRAIN",
-          "line": 533
+          "line": 479
         },
         {
           "party_slot": 4,
           "move_slot": 1,
-          "move": "THUNDER_WAVE",
-          "line": 534
+          "move": "ROCK_SLIDE",
+          "line": 480
         },
         {
           "party_slot": 4,
           "move_slot": 2,
-          "move": "THUNDERBOLT",
-          "line": 535
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 3,
-          "move": "TRI_ATTACK",
-          "line": 536
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 4,
-          "move": "SWIFT",
-          "line": 537
+          "move": "CUT",
+          "line": 481
         },
         {
           "party_slot": 5,
-          "move_slot": 1,
+          "move_slot": 2,
           "move": "EXPLOSION",
-          "line": 538
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 2,
-          "move": "BLIZZARD",
-          "line": 539
+          "line": 482
         },
         {
           "party_slot": 5,
           "move_slot": 3,
-          "move": "SPIKE_CANNON",
-          "line": 540
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 4,
-          "move": "ICE_BEAM",
-          "line": 541
+          "move": "DOUBLE_TEAM",
+          "line": 483
         },
         {
           "party_slot": 6,
           "move_slot": 1,
-          "move": "FIRE_BLAST",
-          "line": 542
+          "move": "REFLECT",
+          "line": 484
         },
         {
           "party_slot": 6,
           "move_slot": 2,
           "move": "BODY_SLAM",
-          "line": 543
+          "line": 485
         },
         {
           "party_slot": 6,
           "move_slot": 3,
-          "move": "FLAMETHROWER",
-          "line": 544
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 4,
           "move": "DIG",
-          "line": 545
+          "line": 486
         }
       ]
     },
     {
       "class": "RIVAL3",
       "party_id": 3,
-      "line": 548,
+      "line": 489,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
           "move": "EARTHQUAKE",
-          "line": 549
+          "line": 490
         },
         {
           "party_slot": 1,
           "move_slot": 2,
-          "move": "SLASH",
-          "line": 550
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 3,
-          "move": "SWORDS_DANCE",
-          "line": 551
-        },
-        {
-          "party_slot": 1,
-          "move_slot": 4,
-          "move": "DIG",
-          "line": 552
+          "move": "ROCK_SLIDE",
+          "line": 491
         },
         {
           "party_slot": 2,
           "move_slot": 1,
-          "move": "THUNDER_WAVE",
-          "line": 553
+          "move": "TOXIC",
+          "line": 492
         },
         {
           "party_slot": 2,
           "move_slot": 2,
-          "move": "RECOVER",
-          "line": 554
-        },
-        {
-          "party_slot": 2,
-          "move_slot": 3,
-          "move": "PSYCHIC_M",
-          "line": 555
+          "move": "HYPER_BEAM",
+          "line": 493
         },
         {
           "party_slot": 2,
           "move_slot": 4,
-          "move": "TRI_ATTACK",
-          "line": 556
+          "move": "DOUBLE_TEAM",
+          "line": 494
         },
         {
           "party_slot": 3,
-          "move_slot": 1,
-          "move": "PSYCHIC_M",
-          "line": 557
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 2,
-          "move": "SELFDESTRUCT",
-          "line": 558
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 3,
-          "move": "STUN_SPORE",
-          "line": 559
-        },
-        {
-          "party_slot": 3,
-          "move_slot": 4,
-          "move": "MEGA_DRAIN",
-          "line": 560
-        },
-        {
-          "party_slot": 4,
           "move_slot": 1,
           "move": "PSYWAVE",
-          "line": 561
+          "line": 495
         },
         {
-          "party_slot": 4,
+          "party_slot": 3,
           "move_slot": 2,
           "move": "SOLARBEAM",
-          "line": 562
+          "line": 496
         },
         {
           "party_slot": 4,
-          "move_slot": 3,
-          "move": "NIGHT_SHADE",
-          "line": 563
-        },
-        {
-          "party_slot": 4,
-          "move_slot": 4,
-          "move": "FIRE_SPIN",
-          "line": 564
+          "move_slot": 1,
+          "move": "MEGA_DRAIN",
+          "line": 497
         },
         {
           "party_slot": 5,
           "move_slot": 1,
-          "move": "THUNDER_WAVE",
-          "line": 565
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 2,
-          "move": "THUNDERBOLT",
-          "line": 566
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 3,
-          "move": "TRI_ATTACK",
-          "line": 567
-        },
-        {
-          "party_slot": 5,
-          "move_slot": 4,
-          "move": "SWIFT",
-          "line": 568
+          "move": "DOUBLE_TEAM",
+          "line": 498
         },
         {
           "party_slot": 6,
           "move_slot": 1,
-          "move": "HYDRO_PUMP",
-          "line": 569
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 2,
           "move": "BLIZZARD",
-          "line": 570
+          "line": 499
         },
         {
           "party_slot": 6,
-          "move_slot": 3,
-          "move": "SKULL_BASH",
-          "line": 571
-        },
-        {
-          "party_slot": 6,
-          "move_slot": 4,
-          "move": "ACID_ARMOR",
-          "line": 572
+          "move_slot": 2,
+          "move": "REFLECT",
+          "line": 500
         }
       ]
     },
     {
       "class": "RIVAL3",
       "party_id": 4,
-      "line": 575,
+      "line": 503,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
           "move": "THUNDER_WAVE",
-          "line": 576
+          "line": 504
         },
         {
           "party_slot": 1,
           "move_slot": 2,
           "move": "RECOVER",
-          "line": 577
+          "line": 505
         },
         {
           "party_slot": 1,
           "move_slot": 3,
           "move": "PSYCHIC_M",
-          "line": 578
+          "line": 506
         },
         {
           "party_slot": 1,
           "move_slot": 4,
           "move": "TRI_ATTACK",
-          "line": 579
+          "line": 507
         },
         {
           "party_slot": 2,
           "move_slot": 1,
           "move": "ROCK_SLIDE",
-          "line": 580
+          "line": 508
         },
         {
           "party_slot": 2,
           "move_slot": 2,
           "move": "EARTHQUAKE",
-          "line": 581
+          "line": 509
         },
         {
           "party_slot": 2,
           "move_slot": 3,
           "move": "BODY_SLAM",
-          "line": 582
+          "line": 510
         },
         {
           "party_slot": 2,
           "move_slot": 4,
           "move": "KARATE_CHOP",
-          "line": 583
+          "line": 511
         },
         {
           "party_slot": 3,
           "move_slot": 1,
           "move": "HYDRO_PUMP",
-          "line": 584
+          "line": 512
         },
         {
           "party_slot": 3,
           "move_slot": 2,
           "move": "THUNDERBOLT",
-          "line": 585
+          "line": 513
         },
         {
           "party_slot": 3,
           "move_slot": 3,
           "move": "BODY_SLAM",
-          "line": 586
+          "line": 514
         },
         {
           "party_slot": 3,
           "move_slot": 4,
           "move": "BLIZZARD",
-          "line": 587
+          "line": 515
         },
         {
           "party_slot": 4,
           "move_slot": 1,
           "move": "TOXIC",
-          "line": 588
+          "line": 516
         },
         {
           "party_slot": 4,
           "move_slot": 2,
           "move": "HYPER_BEAM",
-          "line": 589
+          "line": 517
         },
         {
           "party_slot": 4,
           "move_slot": 3,
           "move": "SKY_ATTACK",
-          "line": 590
+          "line": 518
         },
         {
           "party_slot": 4,
           "move_slot": 4,
           "move": "FLY",
-          "line": 591
+          "line": 519
         },
         {
           "party_slot": 5,
           "move_slot": 1,
           "move": "EGG_BOMB",
-          "line": 592
+          "line": 520
         },
         {
           "party_slot": 5,
           "move_slot": 2,
           "move": "LEECH_SEED",
-          "line": 593
+          "line": 521
         },
         {
           "party_slot": 5,
           "move_slot": 3,
           "move": "RAZOR_LEAF",
-          "line": 594
+          "line": 522
         },
         {
           "party_slot": 5,
           "move_slot": 4,
           "move": "SOFTBOILED",
-          "line": 595
+          "line": 523
         },
         {
           "party_slot": 6,
           "move_slot": 1,
           "move": "FIRE_BLAST",
-          "line": 596
+          "line": 524
         },
         {
           "party_slot": 6,
           "move_slot": 2,
           "move": "BODY_SLAM",
-          "line": 597
+          "line": 525
         },
         {
           "party_slot": 6,
           "move_slot": 3,
           "move": "FLAMETHROWER",
-          "line": 598
+          "line": 526
         },
         {
           "party_slot": 6,
           "move_slot": 4,
           "move": "DIG",
-          "line": 599
+          "line": 527
         }
       ]
     },
     {
       "class": "PROF_OAK",
       "party_id": 1,
-      "line": 602,
+      "line": 530,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
           "move": "HYPER_BEAM",
-          "line": 603
+          "line": 531
         },
         {
           "party_slot": 1,
           "move_slot": 2,
           "move": "EARTHQUAKE",
-          "line": 604
+          "line": 532
         },
         {
           "party_slot": 1,
           "move_slot": 3,
           "move": "BLIZZARD",
-          "line": 605
+          "line": 533
         },
         {
           "party_slot": 1,
           "move_slot": 4,
           "move": "FIRE_BLAST",
-          "line": 606
+          "line": 534
         },
         {
           "party_slot": 2,
           "move_slot": 1,
           "move": "MEGA_DRAIN",
-          "line": 607
+          "line": 535
         },
         {
           "party_slot": 2,
           "move_slot": 2,
           "move": "SOFTBOILED",
-          "line": 608
+          "line": 536
         },
         {
           "party_slot": 2,
           "move_slot": 3,
           "move": "PSYCHIC_M",
-          "line": 609
+          "line": 537
         },
         {
           "party_slot": 2,
           "move_slot": 4,
           "move": "SOLARBEAM",
-          "line": 610
+          "line": 538
         },
         {
           "party_slot": 3,
           "move_slot": 1,
           "move": "DIG",
-          "line": 611
+          "line": 539
         },
         {
           "party_slot": 3,
           "move_slot": 2,
           "move": "FLAMETHROWER",
-          "line": 612
+          "line": 540
         },
         {
           "party_slot": 3,
           "move_slot": 3,
           "move": "BODY_SLAM",
-          "line": 613
+          "line": 541
         },
         {
           "party_slot": 3,
           "move_slot": 4,
           "move": "FIRE_BLAST",
-          "line": 614
+          "line": 542
         },
         {
           "party_slot": 4,
           "move_slot": 1,
           "move": "THUNDERBOLT",
-          "line": 615
+          "line": 543
         },
         {
           "party_slot": 4,
           "move_slot": 2,
           "move": "AMNESIA",
-          "line": 616
+          "line": 544
         },
         {
           "party_slot": 4,
           "move_slot": 3,
           "move": "SELFDESTRUCT",
-          "line": 617
+          "line": 545
         },
         {
           "party_slot": 4,
           "move_slot": 4,
           "move": "PSYCHIC_M",
-          "line": 618
+          "line": 546
         },
         {
           "party_slot": 5,
           "move_slot": 1,
           "move": "DOUBLE_TEAM",
-          "line": 619
+          "line": 547
         },
         {
           "party_slot": 5,
           "move_slot": 2,
           "move": "HYDRO_PUMP",
-          "line": 620
+          "line": 548
         },
         {
           "party_slot": 5,
           "move_slot": 3,
           "move": "FIRE_BLAST",
-          "line": 621
+          "line": 549
         },
         {
           "party_slot": 6,
           "move_slot": 1,
           "move": "ICE_BEAM",
-          "line": 622
+          "line": 550
         },
         {
           "party_slot": 6,
           "move_slot": 2,
           "move": "EARTHQUAKE",
-          "line": 623
+          "line": 551
         },
         {
           "party_slot": 6,
           "move_slot": 3,
           "move": "HORN_DRILL",
-          "line": 624
+          "line": 552
         },
         {
           "party_slot": 6,
           "move_slot": 4,
           "move": "SUBSTITUTE",
-          "line": 625
+          "line": 553
         }
       ]
     },
     {
       "class": "JOY",
       "party_id": 1,
-      "line": 628,
+      "line": 556,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
           "move": "REST",
-          "line": 629
+          "line": 557
         },
         {
           "party_slot": 1,
           "move_slot": 2,
           "move": "DOUBLE_TEAM",
-          "line": 630
+          "line": 558
         },
         {
           "party_slot": 1,
           "move_slot": 3,
           "move": "FISSURE",
-          "line": 631
+          "line": 559
         },
         {
           "party_slot": 1,
           "move_slot": 4,
           "move": "DOUBLE_EDGE",
-          "line": 632
+          "line": 560
         },
         {
           "party_slot": 2,
           "move_slot": 1,
           "move": "REST",
-          "line": 633
+          "line": 561
         },
         {
           "party_slot": 2,
           "move_slot": 2,
           "move": "ICE_BEAM",
-          "line": 634
+          "line": 562
         },
         {
           "party_slot": 2,
           "move_slot": 3,
           "move": "THUNDERPUNCH",
-          "line": 635
+          "line": 563
         },
         {
           "party_slot": 2,
           "move_slot": 4,
           "move": "FIRE_PUNCH",
-          "line": 636
+          "line": 564
         },
         {
           "party_slot": 3,
           "move_slot": 1,
           "move": "RECOVER",
-          "line": 637
+          "line": 565
         },
         {
           "party_slot": 3,
           "move_slot": 2,
           "move": "SURF",
-          "line": 638
+          "line": 566
         },
         {
           "party_slot": 3,
           "move_slot": 3,
           "move": "THUNDER_WAVE",
-          "line": 639
+          "line": 567
         },
         {
           "party_slot": 3,
           "move_slot": 4,
           "move": "PSYCHIC_M",
-          "line": 640
+          "line": 568
         },
         {
           "party_slot": 4,
           "move_slot": 1,
           "move": "TRI_ATTACK",
-          "line": 641
+          "line": 569
         },
         {
           "party_slot": 4,
           "move_slot": 2,
           "move": "BLIZZARD",
-          "line": 642
+          "line": 570
         },
         {
           "party_slot": 4,
           "move_slot": 3,
           "move": "RECOVER",
-          "line": 643
+          "line": 571
         },
         {
           "party_slot": 4,
           "move_slot": 4,
           "move": "THUNDER_WAVE",
-          "line": 644
+          "line": 572
         },
         {
           "party_slot": 5,
           "move_slot": 1,
           "move": "SOFTBOILED",
-          "line": 645
+          "line": 573
         },
         {
           "party_slot": 5,
           "move_slot": 2,
           "move": "REFLECT",
-          "line": 646
+          "line": 574
         },
         {
           "party_slot": 5,
           "move_slot": 3,
           "move": "DREAM_EATER",
-          "line": 647
+          "line": 575
         },
         {
           "party_slot": 5,
           "move_slot": 4,
           "move": "EGG_BOMB",
-          "line": 648
+          "line": 576
         },
         {
           "party_slot": 6,
           "move_slot": 1,
           "move": "SOFTBOILED",
-          "line": 649
+          "line": 577
         },
         {
           "party_slot": 6,
           "move_slot": 2,
           "move": "REFLECT",
-          "line": 650
+          "line": 578
         },
         {
           "party_slot": 6,
           "move_slot": 3,
           "move": "EGG_BOMB",
-          "line": 651
+          "line": 579
         },
         {
           "party_slot": 6,
           "move_slot": 4,
           "move": "THUNDER_WAVE",
-          "line": 652
+          "line": 580
         }
       ]
     },
     {
       "class": "JENNY",
       "party_id": 1,
-      "line": 655,
+      "line": 583,
       "moves": [
         {
           "party_slot": 1,
           "move_slot": 1,
           "move": "TAKE_DOWN",
-          "line": 656
+          "line": 584
         },
         {
           "party_slot": 1,
           "move_slot": 2,
           "move": "MIRROR_MOVE",
-          "line": 657
+          "line": 585
         },
         {
           "party_slot": 1,
           "move_slot": 3,
           "move": "SKY_ATTACK",
-          "line": 658
+          "line": 586
         },
         {
           "party_slot": 1,
           "move_slot": 4,
           "move": "TOXIC",
-          "line": 659
+          "line": 587
         },
         {
           "party_slot": 2,
           "move_slot": 1,
           "move": "SURF",
-          "line": 660
+          "line": 588
         },
         {
           "party_slot": 2,
           "move_slot": 2,
           "move": "EARTHQUAKE",
-          "line": 661
+          "line": 589
         },
         {
           "party_slot": 2,
           "move_slot": 3,
           "move": "ICE_BEAM",
-          "line": 662
+          "line": 590
         },
         {
           "party_slot": 2,
           "move_slot": 4,
           "move": "BODY_SLAM",
-          "line": 663
+          "line": 591
         },
         {
           "party_slot": 3,
           "move_slot": 1,
           "move": "MEGA_DRAIN",
-          "line": 664
+          "line": 592
         },
         {
           "party_slot": 3,
           "move_slot": 2,
           "move": "SLEEP_POWDER",
-          "line": 665
+          "line": 593
         },
         {
           "party_slot": 3,
           "move_slot": 3,
           "move": "MIMIC",
-          "line": 666
+          "line": 594
         },
         {
           "party_slot": 3,
           "move_slot": 4,
           "move": "BIND",
-          "line": 667
+          "line": 595
         },
         {
           "party_slot": 4,
           "move_slot": 1,
           "move": "PSYCHIC_M",
-          "line": 668
+          "line": 596
         },
         {
           "party_slot": 4,
           "move_slot": 2,
           "move": "NIGHT_SHADE",
-          "line": 669
+          "line": 597
         },
         {
           "party_slot": 4,
           "move_slot": 3,
           "move": "SELFDESTRUCT",
-          "line": 670
+          "line": 598
         },
         {
           "party_slot": 4,
           "move_slot": 4,
           "move": "THUNDERBOLT",
-          "line": 671
+          "line": 599
         },
         {
           "party_slot": 5,
           "move_slot": 1,
           "move": "SPORE",
-          "line": 672
+          "line": 600
         },
         {
           "party_slot": 5,
           "move_slot": 2,
           "move": "MEGA_DRAIN",
-          "line": 673
+          "line": 601
         },
         {
           "party_slot": 5,
           "move_slot": 3,
           "move": "RAZOR_LEAF",
-          "line": 674
+          "line": 602
         },
         {
           "party_slot": 5,
           "move_slot": 4,
           "move": "LEECH_LIFE",
-          "line": 675
+          "line": 603
         },
         {
           "party_slot": 6,
           "move_slot": 1,
           "move": "FIRE_SPIN",
-          "line": 676
+          "line": 604
         },
         {
           "party_slot": 6,
           "move_slot": 2,
           "move": "FIRE_BLAST",
-          "line": 677
+          "line": 605
         },
         {
           "party_slot": 6,
           "move_slot": 3,
           "move": "BODY_SLAM",
-          "line": 678
+          "line": 606
         },
         {
           "party_slot": 6,
           "move_slot": 4,
           "move": "DIG",
-          "line": 679
+          "line": 607
         }
       ]
     }
