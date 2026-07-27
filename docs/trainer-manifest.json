@@ -7,247 +7,296 @@
   },
   "classes": [
     {
-      "class": "YoungsterData",
+      "class": "YOUNGSTER",
+      "data_label": "YoungsterData",
       "constant_key": "YOUNGSTER",
       "party_count": 14
     },
     {
-      "class": "BugCatcherData",
+      "class": "BUG_CATCHER",
+      "data_label": "BugCatcherData",
       "constant_key": "BUGCATCHER",
       "party_count": 15
     },
     {
-      "class": "LassData",
+      "class": "LASS",
+      "data_label": "LassData",
       "constant_key": "LASS",
       "party_count": 19
     },
     {
-      "class": "SailorData",
+      "class": "SAILOR",
+      "data_label": "SailorData",
       "constant_key": "SAILOR",
       "party_count": 8
     },
     {
-      "class": "JrTrainerMData",
+      "class": "JR_TRAINER_M",
+      "data_label": "JrTrainerMData",
       "constant_key": "JRTRAINERM",
       "party_count": 10
     },
     {
-      "class": "JrTrainerFData",
+      "class": "JR_TRAINER_F",
+      "data_label": "JrTrainerFData",
       "constant_key": "JRTRAINERF",
       "party_count": 25
     },
     {
-      "class": "PokemaniacData",
+      "class": "POKEMANIAC",
+      "data_label": "PokemaniacData",
       "constant_key": "POKEMANIAC",
       "party_count": 7
     },
     {
-      "class": "SuperNerdData",
+      "class": "SUPER_NERD",
+      "data_label": "SuperNerdData",
       "constant_key": "SUPERNERD",
       "party_count": 12
     },
     {
-      "class": "HikerData",
+      "class": "HIKER",
+      "data_label": "HikerData",
       "constant_key": "HIKER",
       "party_count": 14
     },
     {
-      "class": "BikerData",
+      "class": "BIKER",
+      "data_label": "BikerData",
       "constant_key": "BIKER",
       "party_count": 15
     },
     {
-      "class": "BurglarData",
+      "class": "BURGLAR",
+      "data_label": "BurglarData",
       "constant_key": "BURGLAR",
       "party_count": 9
     },
     {
-      "class": "EngineerData",
+      "class": "ENGINEER",
+      "data_label": "EngineerData",
       "constant_key": "ENGINEER",
       "party_count": 3
     },
     {
-      "class": "JanineData",
+      "class": "JANINE",
+      "data_label": "JanineData",
       "constant_key": "JANINE",
       "party_count": 1
     },
     {
-      "class": "FisherData",
+      "class": "FISHER",
+      "data_label": "FisherData",
       "constant_key": "FISHER",
       "party_count": 11
     },
     {
-      "class": "SwimmerData",
+      "class": "SWIMMER",
+      "data_label": "SwimmerData",
       "constant_key": "SWIMMER",
       "party_count": 15
     },
     {
-      "class": "CueBallData",
+      "class": "CUE_BALL",
+      "data_label": "CueBallData",
       "constant_key": "CUEBALL",
       "party_count": 9
     },
     {
-      "class": "GamblerData",
+      "class": "GAMBLER",
+      "data_label": "GamblerData",
       "constant_key": "GAMBLER",
       "party_count": 7
     },
     {
-      "class": "BeautyData",
+      "class": "BEAUTY",
+      "data_label": "BeautyData",
       "constant_key": "BEAUTY",
       "party_count": 15
     },
     {
-      "class": "PsychicData",
-      "constant_key": "PSYCHIC",
+      "class": "PSYCHIC_TR",
+      "data_label": "PsychicData",
+      "constant_key": "PSYCHICTR",
       "party_count": 4
     },
     {
-      "class": "RockerData",
+      "class": "ROCKER",
+      "data_label": "RockerData",
       "constant_key": "ROCKER",
       "party_count": 2
     },
     {
-      "class": "JugglerData",
+      "class": "JUGGLER",
+      "data_label": "JugglerData",
       "constant_key": "JUGGLER",
       "party_count": 8
     },
     {
-      "class": "TamerData",
+      "class": "TAMER",
+      "data_label": "TamerData",
       "constant_key": "TAMER",
       "party_count": 6
     },
     {
-      "class": "BirdKeeperData",
+      "class": "BIRD_KEEPER",
+      "data_label": "BirdKeeperData",
       "constant_key": "BIRDKEEPER",
       "party_count": 17
     },
     {
-      "class": "BlackbeltData",
+      "class": "BLACKBELT",
+      "data_label": "BlackbeltData",
       "constant_key": "BLACKBELT",
       "party_count": 9
     },
     {
-      "class": "Rival1Data",
+      "class": "RIVAL1",
+      "data_label": "Rival1Data",
       "constant_key": "RIVAL1",
       "party_count": 3
     },
     {
-      "class": "ProfOakData",
+      "class": "PROF_OAK",
+      "data_label": "ProfOakData",
       "constant_key": "PROFOAK",
       "party_count": 1
     },
     {
-      "class": "ChiefData",
+      "class": "CHIEF",
+      "data_label": "ChiefData",
       "constant_key": "CHIEF",
       "party_count": 0
     },
     {
-      "class": "ScientistData",
+      "class": "SCIENTIST",
+      "data_label": "ScientistData",
       "constant_key": "SCIENTIST",
       "party_count": 13
     },
     {
-      "class": "GiovanniData",
+      "class": "GIOVANNI",
+      "data_label": "GiovanniData",
       "constant_key": "GIOVANNI",
       "party_count": 3
     },
     {
-      "class": "RocketData",
+      "class": "ROCKET",
+      "data_label": "RocketData",
       "constant_key": "ROCKET",
       "party_count": 49
     },
     {
-      "class": "CooltrainerMData",
+      "class": "COOLTRAINER_M",
+      "data_label": "CooltrainerMData",
       "constant_key": "COOLTRAINERM",
       "party_count": 10
     },
     {
-      "class": "CooltrainerFData",
+      "class": "COOLTRAINER_F",
+      "data_label": "CooltrainerFData",
       "constant_key": "COOLTRAINERF",
       "party_count": 8
     },
     {
-      "class": "BrunoData",
+      "class": "BRUNO",
+      "data_label": "BrunoData",
       "constant_key": "BRUNO",
       "party_count": 2
     },
     {
-      "class": "BrockData",
+      "class": "BROCK",
+      "data_label": "BrockData",
       "constant_key": "BROCK",
       "party_count": 2
     },
     {
-      "class": "MistyData",
+      "class": "MISTY",
+      "data_label": "MistyData",
       "constant_key": "MISTY",
       "party_count": 2
     },
     {
-      "class": "LtSurgeData",
+      "class": "LT_SURGE",
+      "data_label": "LtSurgeData",
       "constant_key": "LTSURGE",
       "party_count": 2
     },
     {
-      "class": "ErikaData",
+      "class": "ERIKA",
+      "data_label": "ErikaData",
       "constant_key": "ERIKA",
       "party_count": 4
     },
     {
-      "class": "KogaData",
+      "class": "KOGA",
+      "data_label": "KogaData",
       "constant_key": "KOGA",
       "party_count": 3
     },
     {
-      "class": "BlaineData",
+      "class": "BLAINE",
+      "data_label": "BlaineData",
       "constant_key": "BLAINE",
       "party_count": 2
     },
     {
-      "class": "SabrinaData",
+      "class": "SABRINA",
+      "data_label": "SabrinaData",
       "constant_key": "SABRINA",
       "party_count": 3
     },
     {
-      "class": "GentlemanData",
+      "class": "GENTLEMAN",
+      "data_label": "GentlemanData",
       "constant_key": "GENTLEMAN",
       "party_count": 5
     },
     {
-      "class": "Rival2Data",
+      "class": "RIVAL2",
+      "data_label": "Rival2Data",
       "constant_key": "RIVAL2",
       "party_count": 10
     },
     {
-      "class": "Rival3Data",
+      "class": "RIVAL3",
+      "data_label": "Rival3Data",
       "constant_key": "RIVAL3",
       "party_count": 4
     },
     {
-      "class": "LoreleiData",
+      "class": "LORELEI",
+      "data_label": "LoreleiData",
       "constant_key": "LORELEI",
       "party_count": 2
     },
     {
-      "class": "ChannelerData",
+      "class": "CHANNELER",
+      "data_label": "ChannelerData",
       "constant_key": "CHANNELER",
       "party_count": 24
     },
     {
-      "class": "AgathaData",
+      "class": "AGATHA",
+      "data_label": "AgathaData",
       "constant_key": "AGATHA",
       "party_count": 2
     },
     {
-      "class": "LanceData",
+      "class": "LANCE",
+      "data_label": "LanceData",
       "constant_key": "LANCE",
       "party_count": 2
     },
     {
-      "class": "JoyData",
+      "class": "JOY",
+      "data_label": "JoyData",
       "constant_key": "JOY",
       "party_count": 1
     },
     {
-      "class": "JennyData",
+      "class": "JENNY",
+      "data_label": "JennyData",
       "constant_key": "JENNY",
       "party_count": 1
     }
@@ -3547,7 +3596,7 @@
         ]
       }
     ],
-    "PSYCHIC": [
+    "PSYCHICTR": [
       {
         "id": 1,
         "line": 415,
@@ -11667,6 +11716,3616 @@
           "line": 788
         }
       ]
+    }
+  ],
+  "references": [
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/AgathasRoom.asm",
+      "line": 17,
+      "class": "AGATHA",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/AgathasRoom.asm",
+      "line": 18,
+      "class": "AGATHA",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/BrunosRoom.asm",
+      "line": 17,
+      "class": "BRUNO",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/BrunosRoom.asm",
+      "line": 18,
+      "class": "BRUNO",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeladonGym.asm",
+      "line": 21,
+      "class": "ERIKA",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeladonGym.asm",
+      "line": 22,
+      "class": "LASS",
+      "party_ids": [
+        17
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeladonGym.asm",
+      "line": 23,
+      "class": "BEAUTY",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeladonGym.asm",
+      "line": 24,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeladonGym.asm",
+      "line": 25,
+      "class": "BEAUTY",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeladonGym.asm",
+      "line": 26,
+      "class": "LASS",
+      "party_ids": [
+        18
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeladonGym.asm",
+      "line": 27,
+      "class": "BEAUTY",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeladonGym.asm",
+      "line": 28,
+      "class": "COOLTRAINER_F",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeruleanCity.asm",
+      "line": 39,
+      "class": "ROCKET",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeruleanGym.asm",
+      "line": 17,
+      "class": "MISTY",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeruleanGym.asm",
+      "line": 18,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CeruleanGym.asm",
+      "line": 19,
+      "class": "SWIMMER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CinnabarGym.asm",
+      "line": 22,
+      "class": "BLAINE",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CinnabarGym.asm",
+      "line": 23,
+      "class": "SUPER_NERD",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CinnabarGym.asm",
+      "line": 24,
+      "class": "BURGLAR",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CinnabarGym.asm",
+      "line": 25,
+      "class": "SUPER_NERD",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CinnabarGym.asm",
+      "line": 26,
+      "class": "BURGLAR",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CinnabarGym.asm",
+      "line": 27,
+      "class": "SUPER_NERD",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CinnabarGym.asm",
+      "line": 28,
+      "class": "BURGLAR",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/CinnabarGym.asm",
+      "line": 29,
+      "class": "SUPER_NERD",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FightingDojo.asm",
+      "line": 20,
+      "class": "BLACKBELT",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FightingDojo.asm",
+      "line": 21,
+      "class": "BLACKBELT",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FightingDojo.asm",
+      "line": 22,
+      "class": "BLACKBELT",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FightingDojo.asm",
+      "line": 23,
+      "class": "BLACKBELT",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FightingDojo.asm",
+      "line": 24,
+      "class": "BLACKBELT",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FuchsiaGym.asm",
+      "line": 22,
+      "class": "KOGA",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FuchsiaGym.asm",
+      "line": 23,
+      "class": "JUGGLER",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FuchsiaGym.asm",
+      "line": 24,
+      "class": "JUGGLER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FuchsiaGym.asm",
+      "line": 25,
+      "class": "JANINE",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FuchsiaGym.asm",
+      "line": 26,
+      "class": "TAMER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FuchsiaGym.asm",
+      "line": 27,
+      "class": "TAMER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FuchsiaGym.asm",
+      "line": 28,
+      "class": "JUGGLER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/FuchsiaGym.asm",
+      "line": 29,
+      "class": "JUGGLER",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/GameCorner.asm",
+      "line": 36,
+      "class": "ROCKET",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/LancesRoom.asm",
+      "line": 16,
+      "class": "LANCE",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/LancesRoom.asm",
+      "line": 17,
+      "class": "LANCE",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/LoreleisRoom.asm",
+      "line": 17,
+      "class": "LORELEI",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/LoreleisRoom.asm",
+      "line": 18,
+      "class": "LORELEI",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoon1F.asm",
+      "line": 30,
+      "class": "HIKER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoon1F.asm",
+      "line": 31,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoon1F.asm",
+      "line": 32,
+      "class": "LASS",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoon1F.asm",
+      "line": 33,
+      "class": "SUPER_NERD",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoon1F.asm",
+      "line": 34,
+      "class": "LASS",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoon1F.asm",
+      "line": 35,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoon1F.asm",
+      "line": 36,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoonB2F.asm",
+      "line": 26,
+      "class": "SUPER_NERD",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoonB2F.asm",
+      "line": 28,
+      "class": "ROCKET",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoonB2F.asm",
+      "line": 29,
+      "class": "ROCKET",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoonB2F.asm",
+      "line": 30,
+      "class": "ROCKET",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/MtMoonB2F.asm",
+      "line": 31,
+      "class": "ROCKET",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/OaksLab.asm",
+      "line": 22,
+      "class": "RIVAL1",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PewterGym.asm",
+      "line": 16,
+      "class": "BROCK",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PewterGym.asm",
+      "line": 17,
+      "class": "JR_TRAINER_M",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonMansion1F.asm",
+      "line": 22,
+      "class": "SCIENTIST",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonMansion2F.asm",
+      "line": 19,
+      "class": "BURGLAR",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonMansion3F.asm",
+      "line": 19,
+      "class": "BURGLAR",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonMansion3F.asm",
+      "line": 20,
+      "class": "SCIENTIST",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonMansionB1F.asm",
+      "line": 24,
+      "class": "BURGLAR",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonMansionB1F.asm",
+      "line": 25,
+      "class": "SCIENTIST",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower3F.asm",
+      "line": 17,
+      "class": "CHANNELER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower3F.asm",
+      "line": 18,
+      "class": "CHANNELER",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower3F.asm",
+      "line": 19,
+      "class": "CHANNELER",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower4F.asm",
+      "line": 19,
+      "class": "CHANNELER",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower4F.asm",
+      "line": 20,
+      "class": "CHANNELER",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower4F.asm",
+      "line": 21,
+      "class": "CHANNELER",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower5F.asm",
+      "line": 20,
+      "class": "CHANNELER",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower5F.asm",
+      "line": 21,
+      "class": "CHANNELER",
+      "party_ids": [
+        16
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower5F.asm",
+      "line": 22,
+      "class": "CHANNELER",
+      "party_ids": [
+        17
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower5F.asm",
+      "line": 23,
+      "class": "CHANNELER",
+      "party_ids": [
+        18
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower6F.asm",
+      "line": 18,
+      "class": "CHANNELER",
+      "party_ids": [
+        19
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower6F.asm",
+      "line": 19,
+      "class": "CHANNELER",
+      "party_ids": [
+        20
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower6F.asm",
+      "line": 20,
+      "class": "CHANNELER",
+      "party_ids": [
+        21
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower8F.asm",
+      "line": 16,
+      "class": "ROCKET",
+      "party_ids": [
+        19
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower8F.asm",
+      "line": 17,
+      "class": "ROCKET",
+      "party_ids": [
+        20
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/PokemonTower8F.asm",
+      "line": 18,
+      "class": "ROCKET",
+      "party_ids": [
+        21
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB1F.asm",
+      "line": 23,
+      "class": "ROCKET",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB1F.asm",
+      "line": 24,
+      "class": "ROCKET",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB1F.asm",
+      "line": 25,
+      "class": "ROCKET",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB1F.asm",
+      "line": 26,
+      "class": "ROCKET",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB1F.asm",
+      "line": 27,
+      "class": "ROCKET",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB2F.asm",
+      "line": 21,
+      "class": "ROCKET",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB3F.asm",
+      "line": 19,
+      "class": "ROCKET",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB3F.asm",
+      "line": 20,
+      "class": "ROCKET",
+      "party_ids": [
+        15
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB3F.asm",
+      "line": 21,
+      "class": "ROCKET",
+      "party_ids": [
+        16
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB3F.asm",
+      "line": 22,
+      "class": "ROCKET",
+      "party_ids": [
+        17
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB4F.asm",
+      "line": 23,
+      "class": "GIOVANNI",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RocketHideoutB4F.asm",
+      "line": 26,
+      "class": "ROCKET",
+      "party_ids": [
+        18
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnel1F.asm",
+      "line": 27,
+      "class": "HIKER",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnel1F.asm",
+      "line": 28,
+      "class": "HIKER",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnel1F.asm",
+      "line": 29,
+      "class": "HIKER",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnel1F.asm",
+      "line": 30,
+      "class": "POKEMANIAC",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnel1F.asm",
+      "line": 31,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        17
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnel1F.asm",
+      "line": 32,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        18
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnel1F.asm",
+      "line": 33,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        19
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnelB1F.asm",
+      "line": 23,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnelB1F.asm",
+      "line": 24,
+      "class": "HIKER",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnelB1F.asm",
+      "line": 25,
+      "class": "POKEMANIAC",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnelB1F.asm",
+      "line": 26,
+      "class": "POKEMANIAC",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnelB1F.asm",
+      "line": 27,
+      "class": "HIKER",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnelB1F.asm",
+      "line": 28,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnelB1F.asm",
+      "line": 29,
+      "class": "HIKER",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/RockTunnelB1F.asm",
+      "line": 30,
+      "class": "POKEMANIAC",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route1.asm",
+      "line": 17,
+      "class": "PROF_OAK",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route10.asm",
+      "line": 25,
+      "class": "POKEMANIAC",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route10.asm",
+      "line": 26,
+      "class": "HIKER",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route10.asm",
+      "line": 27,
+      "class": "POKEMANIAC",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route10.asm",
+      "line": 28,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route10.asm",
+      "line": 29,
+      "class": "HIKER",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route10.asm",
+      "line": 30,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 27,
+      "class": "GAMBLER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 28,
+      "class": "GAMBLER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 29,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 30,
+      "class": "ENGINEER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 31,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 32,
+      "class": "GAMBLER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 33,
+      "class": "GAMBLER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 34,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 35,
+      "class": "ENGINEER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route11.asm",
+      "line": 36,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route12.asm",
+      "line": 28,
+      "class": "FISHER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route12.asm",
+      "line": 29,
+      "class": "FISHER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route12.asm",
+      "line": 30,
+      "class": "JR_TRAINER_M",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route12.asm",
+      "line": 31,
+      "class": "ROCKER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route12.asm",
+      "line": 32,
+      "class": "FISHER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route12.asm",
+      "line": 33,
+      "class": "FISHER",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route12.asm",
+      "line": 34,
+      "class": "FISHER",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 24,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 25,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 26,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 27,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 28,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        15
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 29,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 30,
+      "class": "BEAUTY",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 31,
+      "class": "BEAUTY",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 32,
+      "class": "BIKER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route13.asm",
+      "line": 33,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 22,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 23,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        15
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 24,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        16
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 25,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        17
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 26,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 27,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 28,
+      "class": "BIKER",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 29,
+      "class": "BIKER",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 30,
+      "class": "BIKER",
+      "party_ids": [
+        15
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route14.asm",
+      "line": 31,
+      "class": "BIKER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 27,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        20
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 28,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        21
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 29,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 30,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 31,
+      "class": "BEAUTY",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 32,
+      "class": "BEAUTY",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 33,
+      "class": "BIKER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 34,
+      "class": "BIKER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 35,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        22
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route15.asm",
+      "line": 36,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        23
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route16.asm",
+      "line": 29,
+      "class": "BIKER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route16.asm",
+      "line": 30,
+      "class": "CUE_BALL",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route16.asm",
+      "line": 31,
+      "class": "CUE_BALL",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route16.asm",
+      "line": 32,
+      "class": "BIKER",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route16.asm",
+      "line": 33,
+      "class": "CUE_BALL",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route16.asm",
+      "line": 34,
+      "class": "BIKER",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 28,
+      "class": "CUE_BALL",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 29,
+      "class": "CUE_BALL",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 30,
+      "class": "BIKER",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 31,
+      "class": "BIKER",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 32,
+      "class": "BIKER",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 33,
+      "class": "CUE_BALL",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 34,
+      "class": "CUE_BALL",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 35,
+      "class": "CUE_BALL",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 36,
+      "class": "BIKER",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route17.asm",
+      "line": 37,
+      "class": "BIKER",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route18.asm",
+      "line": 20,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route18.asm",
+      "line": 21,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route18.asm",
+      "line": 22,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 23,
+      "class": "SWIMMER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 24,
+      "class": "SWIMMER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 25,
+      "class": "SWIMMER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 26,
+      "class": "SWIMMER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 27,
+      "class": "SWIMMER",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 28,
+      "class": "SWIMMER",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 29,
+      "class": "BEAUTY",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 30,
+      "class": "BEAUTY",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 31,
+      "class": "SWIMMER",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route19.asm",
+      "line": 32,
+      "class": "BEAUTY",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 25,
+      "class": "SWIMMER",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 26,
+      "class": "BEAUTY",
+      "party_ids": [
+        15
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 27,
+      "class": "BEAUTY",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 28,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        24
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 29,
+      "class": "SWIMMER",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 30,
+      "class": "SWIMMER",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 31,
+      "class": "BIRD_KEEPER",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 32,
+      "class": "BEAUTY",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 33,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        16
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route20.asm",
+      "line": 34,
+      "class": "BEAUTY",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route21.asm",
+      "line": 20,
+      "class": "FISHER",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route21.asm",
+      "line": 21,
+      "class": "FISHER",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route21.asm",
+      "line": 22,
+      "class": "SWIMMER",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route21.asm",
+      "line": 23,
+      "class": "CUE_BALL",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route21.asm",
+      "line": 24,
+      "class": "SWIMMER",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route21.asm",
+      "line": 25,
+      "class": "SWIMMER",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route21.asm",
+      "line": 26,
+      "class": "SWIMMER",
+      "party_ids": [
+        15
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route21.asm",
+      "line": 27,
+      "class": "FISHER",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route21.asm",
+      "line": 28,
+      "class": "FISHER",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route24.asm",
+      "line": 20,
+      "class": "ROCKET",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route24.asm",
+      "line": 21,
+      "class": "JR_TRAINER_M",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route24.asm",
+      "line": 22,
+      "class": "JR_TRAINER_M",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route24.asm",
+      "line": 23,
+      "class": "LASS",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route24.asm",
+      "line": 24,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route24.asm",
+      "line": 25,
+      "class": "LASS",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route24.asm",
+      "line": 26,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route25.asm",
+      "line": 23,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route25.asm",
+      "line": 24,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route25.asm",
+      "line": 25,
+      "class": "JR_TRAINER_M",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route25.asm",
+      "line": 26,
+      "class": "LASS",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route25.asm",
+      "line": 27,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route25.asm",
+      "line": 28,
+      "class": "LASS",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route25.asm",
+      "line": 29,
+      "class": "HIKER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route25.asm",
+      "line": 30,
+      "class": "HIKER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route25.asm",
+      "line": 31,
+      "class": "HIKER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route3.asm",
+      "line": 22,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route3.asm",
+      "line": 23,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route3.asm",
+      "line": 24,
+      "class": "LASS",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route3.asm",
+      "line": 25,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route3.asm",
+      "line": 26,
+      "class": "LASS",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route3.asm",
+      "line": 27,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route3.asm",
+      "line": 28,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route3.asm",
+      "line": 29,
+      "class": "LASS",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route4.asm",
+      "line": 22,
+      "class": "LASS",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route4.asm",
+      "line": 23,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route6.asm",
+      "line": 22,
+      "class": "JR_TRAINER_M",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route6.asm",
+      "line": 23,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        25
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route6.asm",
+      "line": 24,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route6.asm",
+      "line": 25,
+      "class": "JR_TRAINER_M",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route6.asm",
+      "line": 26,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route6.asm",
+      "line": 27,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route8.asm",
+      "line": 26,
+      "class": "SUPER_NERD",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route8.asm",
+      "line": 27,
+      "class": "GAMBLER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route8.asm",
+      "line": 28,
+      "class": "SUPER_NERD",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route8.asm",
+      "line": 29,
+      "class": "LASS",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route8.asm",
+      "line": 30,
+      "class": "SUPER_NERD",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route8.asm",
+      "line": 31,
+      "class": "LASS",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route8.asm",
+      "line": 32,
+      "class": "LASS",
+      "party_ids": [
+        15
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route8.asm",
+      "line": 33,
+      "class": "GAMBLER",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route8.asm",
+      "line": 34,
+      "class": "LASS",
+      "party_ids": [
+        16
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route9.asm",
+      "line": 22,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route9.asm",
+      "line": 23,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route9.asm",
+      "line": 24,
+      "class": "JR_TRAINER_M",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route9.asm",
+      "line": 25,
+      "class": "JR_TRAINER_F",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route9.asm",
+      "line": 26,
+      "class": "HIKER",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route9.asm",
+      "line": 27,
+      "class": "HIKER",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route9.asm",
+      "line": 28,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        13
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route9.asm",
+      "line": 29,
+      "class": "HIKER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/Route9.asm",
+      "line": 30,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        14
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SaffronGym.asm",
+      "line": 52,
+      "class": "SABRINA",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SaffronGym.asm",
+      "line": 53,
+      "class": "CHANNELER",
+      "party_ids": [
+        22
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SaffronGym.asm",
+      "line": 54,
+      "class": "PSYCHIC_TR",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SaffronGym.asm",
+      "line": 55,
+      "class": "CHANNELER",
+      "party_ids": [
+        23
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SaffronGym.asm",
+      "line": 56,
+      "class": "PSYCHIC_TR",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SaffronGym.asm",
+      "line": 57,
+      "class": "CHANNELER",
+      "party_ids": [
+        24
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SaffronGym.asm",
+      "line": 58,
+      "class": "PSYCHIC_TR",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SaffronGym.asm",
+      "line": 59,
+      "class": "PSYCHIC_TR",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo10F.asm",
+      "line": 23,
+      "class": "ROCKET",
+      "party_ids": [
+        39
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo10F.asm",
+      "line": 24,
+      "class": "SCIENTIST",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo11F.asm",
+      "line": 23,
+      "class": "GIOVANNI",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo11F.asm",
+      "line": 25,
+      "class": "ROCKET",
+      "party_ids": [
+        40
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo2F.asm",
+      "line": 24,
+      "class": "SCIENTIST",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo2F.asm",
+      "line": 25,
+      "class": "SCIENTIST",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo2F.asm",
+      "line": 26,
+      "class": "ROCKET",
+      "party_ids": [
+        23
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo2F.asm",
+      "line": 27,
+      "class": "ROCKET",
+      "party_ids": [
+        24
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo3F.asm",
+      "line": 26,
+      "class": "ROCKET",
+      "party_ids": [
+        25
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo3F.asm",
+      "line": 27,
+      "class": "SCIENTIST",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo4F.asm",
+      "line": 26,
+      "class": "ROCKET",
+      "party_ids": [
+        26
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo4F.asm",
+      "line": 27,
+      "class": "SCIENTIST",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo4F.asm",
+      "line": 28,
+      "class": "ROCKET",
+      "party_ids": [
+        27
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo5F.asm",
+      "line": 30,
+      "class": "ROCKET",
+      "party_ids": [
+        28
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo5F.asm",
+      "line": 31,
+      "class": "SCIENTIST",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo5F.asm",
+      "line": 32,
+      "class": "JUGGLER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo5F.asm",
+      "line": 33,
+      "class": "ROCKET",
+      "party_ids": [
+        29
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo6F.asm",
+      "line": 31,
+      "class": "ROCKET",
+      "party_ids": [
+        30
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo6F.asm",
+      "line": 32,
+      "class": "SCIENTIST",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo6F.asm",
+      "line": 33,
+      "class": "ROCKET",
+      "party_ids": [
+        31
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo7F.asm",
+      "line": 32,
+      "class": "ROCKET",
+      "party_ids": [
+        32
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo7F.asm",
+      "line": 33,
+      "class": "SCIENTIST",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo7F.asm",
+      "line": 34,
+      "class": "ROCKET",
+      "party_ids": [
+        33
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo7F.asm",
+      "line": 35,
+      "class": "ROCKET",
+      "party_ids": [
+        34
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo8F.asm",
+      "line": 23,
+      "class": "ROCKET",
+      "party_ids": [
+        35
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo8F.asm",
+      "line": 24,
+      "class": "SCIENTIST",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo8F.asm",
+      "line": 25,
+      "class": "ROCKET",
+      "party_ids": [
+        36
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo9F.asm",
+      "line": 21,
+      "class": "ROCKET",
+      "party_ids": [
+        37
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo9F.asm",
+      "line": 22,
+      "class": "SCIENTIST",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SilphCo9F.asm",
+      "line": 23,
+      "class": "ROCKET",
+      "party_ids": [
+        38
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnne1FRooms.asm",
+      "line": 31,
+      "class": "GENTLEMAN",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnne1FRooms.asm",
+      "line": 32,
+      "class": "GENTLEMAN",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnne1FRooms.asm",
+      "line": 33,
+      "class": "YOUNGSTER",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnne1FRooms.asm",
+      "line": 34,
+      "class": "LASS",
+      "party_ids": [
+        11
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnne2F.asm",
+      "line": 23,
+      "class": "RIVAL1",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnne2FRooms.asm",
+      "line": 36,
+      "class": "GENTLEMAN",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnne2FRooms.asm",
+      "line": 37,
+      "class": "FISHER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnne2FRooms.asm",
+      "line": 38,
+      "class": "GENTLEMAN",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnne2FRooms.asm",
+      "line": 39,
+      "class": "LASS",
+      "party_ids": [
+        12
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnneB1FRooms.asm",
+      "line": 32,
+      "class": "SAILOR",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnneB1FRooms.asm",
+      "line": 33,
+      "class": "SAILOR",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnneB1FRooms.asm",
+      "line": 34,
+      "class": "SAILOR",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnneB1FRooms.asm",
+      "line": 35,
+      "class": "SAILOR",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnneB1FRooms.asm",
+      "line": 36,
+      "class": "SAILOR",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnneB1FRooms.asm",
+      "line": 37,
+      "class": "FISHER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnneBow.asm",
+      "line": 21,
+      "class": "SAILOR",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/SSAnneBow.asm",
+      "line": 22,
+      "class": "SAILOR",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VermilionGym.asm",
+      "line": 18,
+      "class": "LT_SURGE",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VermilionGym.asm",
+      "line": 19,
+      "class": "GENTLEMAN",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VermilionGym.asm",
+      "line": 20,
+      "class": "ROCKER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VermilionGym.asm",
+      "line": 21,
+      "class": "SAILOR",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad1F.asm",
+      "line": 21,
+      "class": "COOLTRAINER_F",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad1F.asm",
+      "line": 22,
+      "class": "COOLTRAINER_M",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad2F.asm",
+      "line": 31,
+      "class": "BLACKBELT",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad2F.asm",
+      "line": 32,
+      "class": "JUGGLER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad2F.asm",
+      "line": 33,
+      "class": "TAMER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad2F.asm",
+      "line": 34,
+      "class": "POKEMANIAC",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad2F.asm",
+      "line": 35,
+      "class": "JUGGLER",
+      "party_ids": [
+        5
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad3F.asm",
+      "line": 25,
+      "class": "COOLTRAINER_M",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad3F.asm",
+      "line": 26,
+      "class": "COOLTRAINER_F",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad3F.asm",
+      "line": 27,
+      "class": "COOLTRAINER_M",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/VictoryRoad3F.asm",
+      "line": 28,
+      "class": "COOLTRAINER_F",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianForest.asm",
+      "line": 34,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianForest.asm",
+      "line": 35,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianForest.asm",
+      "line": 36,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianForest.asm",
+      "line": 37,
+      "class": "LASS",
+      "party_ids": [
+        19
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianForest.asm",
+      "line": 38,
+      "class": "BUG_CATCHER",
+      "party_ids": [
+        15
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianGym.asm",
+      "line": 26,
+      "class": "GIOVANNI",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianGym.asm",
+      "line": 27,
+      "class": "COOLTRAINER_M",
+      "party_ids": [
+        9
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianGym.asm",
+      "line": 28,
+      "class": "BLACKBELT",
+      "party_ids": [
+        6
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianGym.asm",
+      "line": 29,
+      "class": "TAMER",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianGym.asm",
+      "line": 30,
+      "class": "BLACKBELT",
+      "party_ids": [
+        7
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianGym.asm",
+      "line": 31,
+      "class": "COOLTRAINER_M",
+      "party_ids": [
+        10
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianGym.asm",
+      "line": 32,
+      "class": "BLACKBELT",
+      "party_ids": [
+        8
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianGym.asm",
+      "line": 33,
+      "class": "TAMER",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "map_object",
+      "path": "data/maps/objects/ViridianGym.asm",
+      "line": 34,
+      "class": "COOLTRAINER_M",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/CeladonGym.asm",
+      "line": 148,
+      "class": "ERIKA",
+      "party_ids": [
+        4
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/CeladonGym.asm",
+      "line": 162,
+      "class": "ERIKA",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/CeladonGym.asm",
+      "line": 172,
+      "class": "ERIKA",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/CeruleanCity.asm",
+      "line": 143,
+      "class": "RIVAL1",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/CeruleanGym.asm",
+      "line": 131,
+      "class": "MISTY",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/CinnabarGym.asm",
+      "line": 277,
+      "class": "BLAINE",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/FuchsiaGym.asm",
+      "line": 144,
+      "class": "KOGA",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/FuchsiaGym.asm",
+      "line": 158,
+      "class": "KOGA",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/FuchsiaPokecenter.asm",
+      "line": 65,
+      "class": "JOY",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/PewterGym.asm",
+      "line": 137,
+      "class": "BROCK",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/SaffronGym.asm",
+      "line": 144,
+      "class": "SABRINA",
+      "party_ids": [
+        3
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/SaffronGym.asm",
+      "line": 158,
+      "class": "SABRINA",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/VermilionCity_2.asm",
+      "line": 60,
+      "class": "JENNY",
+      "party_ids": [
+        1
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/VermilionGym.asm",
+      "line": 153,
+      "class": "LT_SURGE",
+      "party_ids": [
+        2
+      ],
+      "selector": "literal"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/PokemonTower2F.asm",
+      "line": null,
+      "class": "RIVAL2",
+      "party_ids": [
+        2,
+        3,
+        4
+      ],
+      "selector": "wRivalStarter + 1"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/SilphCo7F.asm",
+      "line": null,
+      "class": "RIVAL2",
+      "party_ids": [
+        5,
+        6,
+        7
+      ],
+      "selector": "wRivalStarter + 4"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/Route22.asm",
+      "line": null,
+      "class": "RIVAL2",
+      "party_ids": [
+        8,
+        9,
+        10
+      ],
+      "selector": "wRivalStarter + 7"
+    },
+    {
+      "kind": "script",
+      "path": "scripts/ChampionsRoom.asm",
+      "line": null,
+      "class": "RIVAL3",
+      "party_ids": [
+        1,
+        2,
+        3
+      ],
+      "selector": "wRivalStarter branches"
     }
   ]
 }
