@@ -436,9 +436,7 @@ MainInBattleLoop:
 	jp z, HandleEnemyMonFainted
 	call HandlePoisonBurnLeechSeed
 	jp z, HandlePlayerMonFainted
-	call DrawHUDsAndHPBars
-	call CheckNumAttacksLeft
-	jp MainInBattleLoop
+	jr .finishTurn
 .playerMovesFirst
 	call ExecutePlayerMove
 	ld a, [wEscapedFromBattle]
@@ -464,6 +462,8 @@ MainInBattleLoop:
 .AIActionUsedPlayerFirst
 	call HandlePoisonBurnLeechSeed
 	jp z, HandleEnemyMonFainted
+.finishTurn
+	call TryPikachuRecoverFromStatus
 	call DrawHUDsAndHPBars
 	call CheckNumAttacksLeft
 	jp MainInBattleLoop
@@ -3748,6 +3748,24 @@ CheckPlayerStatusConditions:
 	ld hl, wPlayerBattleStatus1
 	bit FLINCHED, [hl]
 	jp z, .HyperBeamCheck
+	ld a, [wLinkState]
+	cp LINK_STATE_BATTLING
+	jr z, .playerFlinched
+	call CheckActiveMonIsStarterPikachu
+	jr nc, .playerFlinched
+	ld a, [wPikachuHappiness]
+	cp 160
+	jr c, .playerFlinched
+	call BattleRandom
+	cp 50 percent + 1
+	jr nc, .playerFlinched
+	ld hl, wPlayerBattleStatus1
+	res FLINCHED, [hl]
+	ld hl, PikachuWouldntFlinchText
+	rst _PrintText
+	jp .HyperBeamCheck
+.playerFlinched
+	ld hl, wPlayerBattleStatus1
 	res FLINCHED, [hl] ; reset player's flinch status
 	ld hl, FlinchedText
 	rst _PrintText
@@ -3977,6 +3995,14 @@ FullyParalyzedText:
 
 FlinchedText:
 	text_far _FlinchedText
+	text_end
+
+PikachuWouldntFlinchText:
+	text_far _PikachuWouldntFlinchText
+	text_end
+
+PikachuShookItOffText:
+	text_far _PikachuShookItOffText
 	text_end
 
 MustRechargeText:
@@ -4253,10 +4279,28 @@ CheckForDisobedience:
 	ld [wMonIsDisobedient], a
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jr nz, .checkIfMonIsTraded
+	jr nz, .checkStarterPikachu
 	ld a, $1
 	and a
 	ret
+.checkStarterPikachu
+	call CheckActiveMonIsStarterPikachu
+	jr nc, .checkIfMonIsTraded
+
+	ld a, [wPikachuHappiness]
+	cp 50
+	ld b, 20 percent + 1
+	jr c, .rollStarterPikachuDisobedience
+	cp 80
+	jr nc, .checkIfMonIsTraded
+	ld b, 10 percent + 1
+.rollStarterPikachuDisobedience
+	call BattleRandom
+	cp b
+	jr nc, .checkIfMonIsTraded
+	ld hl, IgnoredOrdersText
+	rst _PrintText
+	jp .cannotUseMove
 ; compare the mon's original trainer ID with the player's ID to see if it was traded
 .checkIfMonIsTraded
 	ld hl, wPartyMon1OTID
@@ -4424,6 +4468,56 @@ CheckForDisobedience:
 	ret
 .cannotUseMove
 	xor a ; set Z flag
+	ret
+
+CheckActiveMonIsStarterPikachu:
+	ld a, [wWhichPokemon]
+	push af
+	ld a, [wPlayerMonNumber]
+	ld [wWhichPokemon], a
+	callfar IsThisPartymonStarterPikachu_Party
+	pop bc
+	ld a, b
+	ld [wWhichPokemon], a
+	ret
+
+TryPikachuRecoverFromStatus:
+	ld a, [wLinkState]
+	cp LINK_STATE_BATTLING
+	ret z
+	call CheckActiveMonIsStarterPikachu
+	ret nc
+	ld a, [wPikachuHappiness]
+	cp 200
+	ret c
+	ld a, [wBattleMonStatus]
+	and a
+	ret z
+	call BattleRandom
+	cp 10 percent + 1
+	ret nc
+
+	ldh a, [hWhoseTurn]
+	push af
+	xor a
+	ldh [hWhoseTurn], a
+	farcall UndoBurnParStats
+	pop af
+	ldh [hWhoseTurn], a
+
+	xor a
+	ld [wBattleMonStatus], a
+	ld [wPlayerToxicCounter], a
+	ld hl, wPlayerBattleStatus3
+	res BADLY_POISONED, [hl]
+	ld hl, wPartyMon1Status
+	ld bc, wPartyMon2 - wPartyMon1
+	ld a, [wPlayerMonNumber]
+	call AddNTimes
+	xor a
+	ld [hl], a
+	ld hl, PikachuShookItOffText
+	rst _PrintText
 	ret
 
 LoafingAroundText:

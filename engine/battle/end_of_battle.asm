@@ -30,6 +30,14 @@ EndOfBattle:
 	ld a, [wBattleResult]
 	and a
 	jr nz, .resetVariables
+	ld a, [wGymLeaderNo]
+	and a
+	jr z, .noPikachuCelebration
+	callfar IsStarterPikachuInOurParty
+	jr nc, .noPikachuCelebration
+	ld a, PIKACOMPANION_REACTION_GYM_VICTORY
+	ld [wPikachuCompanionQueuedReaction], a
+.noPikachuCelebration
 	ld hl, wTotalPayDayMoney
 	ld a, [hli]
 	or [hl]
@@ -45,8 +53,6 @@ EndOfBattle:
 	xor a
 	ld [wForceEvolution], a
 	predef EvolutionAfterBattle
-	ld d, $82
-	callfar UpdatePikachuMoodAfterBattle
 .resetVariables
 	xor a
 	ld [wLowHealthAlarm], a ;disable low health alarm

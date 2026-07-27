@@ -1930,7 +1930,8 @@ wPseudoItemID:: db
 
 wUnusedAlreadyOwnedFlag:: db
 
-	ds 2
+wPikachuCompanionQueuedReaction:: db
+wPikachuCompanionIdleCounter:: db
 
 wEvoStoneItemID:: db
 
@@ -2128,8 +2129,8 @@ wPikachuHappiness:: db
 wPikachuMood:: db
 wd471:: db
 wd472:: db
-	ds 1
-wd474:: db
+	wPikachuCompanionStepCounter:: db
+	wd474:: db
 	ds 4
 wd479:: db
 	ds 24
