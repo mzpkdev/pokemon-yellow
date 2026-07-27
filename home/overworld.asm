@@ -366,6 +366,8 @@ OverworldLoopLessDelay::
 	jp EnterMap
 
 StepCountCheck::
+	xor a
+	ld [wPikachuCompanionIdleCounter], a
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_MOVEMENT_STATE, a
 	jr nz, .doneStepCounting ; if button presses are being simulated, don't count steps
