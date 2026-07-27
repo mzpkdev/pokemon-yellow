@@ -1932,11 +1932,7 @@ SendOutMon:
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
 	callfar StarterPikachuBattleEntranceAnimation
-	callfar IsPlayerPikachuAsleepInParty
-	ldpikacry e, PikachuCry37
-	jr c, .asm_3cd81
-	ldpikacry e, PikachuCry11
-.asm_3cd81
+	callfar GetPikachuBattleEntranceCry
 	callfar PlayPikachuSoundClip
 	jr .done
 .playRegularCry

@@ -441,6 +441,23 @@ IsPlayerPikachuAsleepInParty:
 	and a
 	ret
 
+GetPikachuBattleEntranceCry::
+	call IsPlayerPikachuAsleepInParty
+	ldpikacry e, PikachuCry37
+	ret c
+	ld a, [wPikachuMood]
+	cp 50
+	ldpikacry e, PikachuCry40
+	ret c
+	cp 128
+	ldpikacry e, PikachuCry28
+	ret c
+	cp 200
+	ldpikacry e, PikachuCry11
+	ret c
+	ldpikacry e, PikachuCry35
+	ret
+
 INCLUDE "data/pikachu/pikachu_emotions.asm"
 
 PikachuWalksToNurseJoy:
