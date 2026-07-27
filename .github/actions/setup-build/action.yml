@@ -1,0 +1,23 @@
+name: Set up build dependencies
+description: Install the pinned RGBDS toolchain used to build Pokemon Yellow.
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout RGBDS
+      uses: actions/checkout@v4
+      with:
+        path: rgbds
+        ref: v0.8.0
+        repository: gbdev/rgbds
+
+    - name: Install RGBDS
+      shell: bash
+      working-directory: rgbds
+      run: |
+        sudo apt-get install -yq libpng-dev
+        sudo make install
+
+    - name: Remove RGBDS sources
+      shell: bash
+      run: rm -rf rgbds

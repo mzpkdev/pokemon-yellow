@@ -1,0 +1,58 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up build dependencies
+        uses: ./.github/actions/setup-build
+
+      - name: Build
+        run: make -j"$(nproc)"
+
+      - name: Check for modified tracked files
+        run: |
+          if ! git diff-index --quiet HEAD --; then
+            echo 'Uncommitted changes detected:'
+            git diff-index HEAD --
+            exit 1
+          fi
+
+      - name: Stage release files
+        run: |
+          mkdir release
+          cp pokeyellow.gbc       release/pokemon-yellow.gbc
+          cp pokeyellow.map       release/pokemon-yellow.map
+          cp pokeyellow.sym       release/pokemon-yellow.sym
+          cp pokeyellow_debug.gbc release/pokemon-yellow-debug.gbc
+          cp pokeyellow_debug.map release/pokemon-yellow-debug.map
+          cp pokeyellow_debug.sym release/pokemon-yellow-debug.sym
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pokemon-yellow-build
+          path: release/
+          if-no-files-found: error
+          retention-days: 3
+          overwrite: true
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/*
+          name: Pokemon Yellow (${{ github.run_number }})
+          tag_name: build-${{ github.run_number }}
+          generate_release_notes: true

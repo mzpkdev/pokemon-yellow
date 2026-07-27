@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up build dependencies
+        uses: ./.github/actions/setup-build
+
+      - name: Build
+        run: make -j"$(nproc)"
+
+      - name: Check for modified tracked files
+        run: |
+          if ! git diff-index --quiet HEAD --; then
+            echo 'Uncommitted changes detected:'
+            git diff-index HEAD --
+            exit 1
+          fi
