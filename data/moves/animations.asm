@@ -174,6 +174,16 @@ AttackAnimationPointers:
 	dw BarrageAnim
 	dw RecoverAnim
 	dw MegaDrainAnim
+	dw QuickAttackAnim
+	dw WaterfallAnim
+	dw QuickAttackAnim
+	dw HornDrillAnim
+	dw RazorWindAnim
+	dw ConfuseRayAnim
+	dw SubmissionAnim
+	dw SkyAttackAnim
+	dw TakeDownAnim
+	dw IceBeamAnim
 	dw StruggleAnim
 	assert_table_length NUM_ATTACKS
 	dw ShowPicAnim

@@ -87,4 +87,9 @@ MoveEffectPointerTable:
 	dw LeechSeedEffect           ; LEECH_SEED_EFFECT
 	dw SplashEffect              ; SPLASH_EFFECT
 	dw DisableEffect             ; DISABLE_EFFECT
+	dw BurnEffect                ; BURN_EFFECT
+	dw RecoilBurnSideEffect      ; RECOIL_BURN_SIDE_EFFECT
+	dw AttackDefenseSelfDownEffect ; ATTACK_DEFENSE_SELFDOWN_EFFECT
+	dw StatModifierSelfDownEffect ; ATTACK_SELFDOWN1
+	dw StatModifierSelfDownEffect ; DEFENSE_SELFDOWN1
 	assert_table_length NUM_MOVE_EFFECTS

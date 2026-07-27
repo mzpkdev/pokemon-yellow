@@ -176,6 +176,16 @@ MovedexEntryPointers:
 	dw BulletSeedDexEntry
 	dw RoostDexEntry
 	dw SynthesisDexEntry
+	dw MachPunchDexEntry
+	dw AquaJetDexEntry
+	dw ExtremespeedDexEntry
+	dw DrillRunDexEntry
+	dw AirCutterDexEntry
+	dw WillOWispDexEntry
+	dw SuperpowerDexEntry
+	dw BraveBirdDexEntry
+	dw FlareBlitzDexEntry
+	dw FreezeDryDexEntry
 	dw StruggleDexEntry
 	assert_table_length NUM_ATTACKS
 
@@ -873,6 +883,46 @@ RoostDexEntry:
 
 SynthesisDexEntry:
 	text_far _SynthesisDexEntry
+	text_end
+
+MachPunchDexEntry:
+	text_far _MachPunchDexEntry
+	text_end
+
+AquaJetDexEntry:
+	text_far _AquaJetDexEntry
+	text_end
+
+ExtremespeedDexEntry:
+	text_far _ExtremespeedDexEntry
+	text_end
+
+DrillRunDexEntry:
+	text_far _DrillRunDexEntry
+	text_end
+
+AirCutterDexEntry:
+	text_far _AirCutterDexEntry
+	text_end
+
+WillOWispDexEntry:
+	text_far _WillOWispDexEntry
+	text_end
+
+SuperpowerDexEntry:
+	text_far _SuperpowerDexEntry
+	text_end
+
+BraveBirdDexEntry:
+	text_far _BraveBirdDexEntry
+	text_end
+
+FlareBlitzDexEntry:
+	text_far _FlareBlitzDexEntry
+	text_end
+
+FreezeDryDexEntry:
+	text_far _FreezeDryDexEntry
 	text_end
 
 StruggleDexEntry:

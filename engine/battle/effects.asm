@@ -803,6 +803,101 @@ PrintStatText:
 	ld bc, $a
 	jp CopyData
 
+AttackDefenseSelfDownEffect:
+	ld de, wPlayerMoveEffect
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .lowerStats
+	ld de, wEnemyMoveEffect
+.lowerStats
+	ld a, ATTACK_SELFDOWN1
+	ld [de], a
+	push de
+	call StatModifierSelfDownEffect
+	pop de
+	ld a, DEFENSE_SELFDOWN1
+	ld [de], a
+	push de
+	call StatModifierSelfDownEffect
+	pop de
+	ld a, ATTACK_DEFENSE_SELFDOWN_EFFECT
+	ld [de], a
+	ret
+
+StatModifierSelfDownEffect:
+	ld hl, wPlayerMonStatMods
+	ld de, wPlayerMoveEffect
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .getStat
+	ld hl, wEnemyMonStatMods
+	ld de, wEnemyMoveEffect
+.getStat
+	ld a, [de]
+	sub ATTACK_SELFDOWN1
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld b, [hl]
+	dec b
+	jp z, CantLowerAnymore
+	ld [hl], b
+	push hl
+	push de
+	ld hl, wBattleMonAttack + 1
+	ld de, wPlayerMonUnmodifiedAttack
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .pointToStat
+	ld hl, wEnemyMonAttack + 1
+	ld de, wEnemyMonUnmodifiedAttack
+.pointToStat
+	push bc
+	sla c
+	ld b, 0
+	add hl, bc
+	ld a, c
+	add e
+	ld e, a
+	jr nc, .noCarry
+	inc d
+.noCarry
+	pop bc
+	push hl
+	push bc
+	ld hl, StatModifierRatios
+	dec b
+	sla b
+	ld c, b
+	ld b, 0
+	add hl, bc
+	pop bc
+	xor a
+	ldh [hMultiplicand], a
+	ld a, [de]
+	ldh [hMultiplicand + 1], a
+	inc de
+	ld a, [de]
+	ldh [hMultiplicand + 2], a
+	ld a, [hli]
+	ldh [hMultiplier], a
+	call Multiply
+	ld a, [hl]
+	ldh [hDivisor], a
+	ld b, 4
+	call Divide
+	pop hl
+	ldh a, [hProduct + 3]
+	ld b, a
+	ldh a, [hProduct + 2]
+	or b
+	jr nz, .storeStat
+	ldh [hMultiplicand + 1], a
+	ld a, 1
+	ldh [hMultiplicand + 2], a
+.storeStat
+	jp UpdateLoweredStat
+
 INCLUDE "data/battle/stat_mod_names.asm"
 
 INCLUDE "data/battle/stat_modifiers.asm"
@@ -1233,6 +1328,13 @@ ConfusionEffectFailed:
 
 ParalyzeEffect:
 	jpfar ParalyzeEffect_
+
+BurnEffect:
+	jpfar BurnEffect_
+
+RecoilBurnSideEffect:
+	call RecoilEffect
+	jpfar BurnSideEffect_
 
 SubstituteEffect:
 	jpfar SubstituteEffect_

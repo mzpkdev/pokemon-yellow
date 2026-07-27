@@ -175,6 +175,16 @@ MoveSoundTable:
 	db SFX_BATTLE_32,          $08, $e0 ; BULLET_SEED
 	db SFX_HEAL_AILMENT,       $00, $80 ; ROOST
 	db SFX_HEAL_AILMENT,       $00, $80 ; SYNTHESIS
+	db SFX_BATTLE_0E,          $f0, $20 ; MACH_PUNCH
+	db SFX_BATTLE_36,          $00, $80 ; AQUA_JET
+	db SFX_NOT_VERY_EFFECTIVE, $01, $ff ; EXTREMESPEED
+	db SFX_BATTLE_2B,          $f0, $60 ; DRILL_RUN
+	db SFX_BATTLE_12,          $f0, $f0 ; AIR_CUTTER
+	db SFX_BATTLE_1C,          $00, $80 ; WILL_O_WISP
+	db SFX_BATTLE_14,          $00, $80 ; SUPERPOWER
+	db SFX_BATTLE_25,          $48, $ff ; BRAVE_BIRD
+	db SFX_BATTLE_24,          $80, $10 ; FLARE_BLITZ
+	db SFX_BATTLE_17,          $f0, $ff ; FREEZE_DRY
 	db SFX_BATTLE_0B,          $00, $80 ; STRUGGLE
 	assert_table_length NUM_ATTACKS
 	db SFX_BATTLE_0B,          $00, $80

@@ -1983,11 +1983,11 @@ wPokedexSeenEnd::
 
 UNION
 
-	ds 22 ; 22 of the 42 bytes of space are alotted to movedex seen flags
+	ds 24 ; 24 of the 42 bytes of space are allotted to movedex seen flags
 
 NEXTU
 
-wMovedexSeen:: flag_array NUM_ATTACKS ; PureRGBnote: ADDED: flags for the movedex, uses all 22 bytes
+wMovedexSeen:: flag_array NUM_ATTACKS ; PureRGBnote: ADDED: flags for the movedex, uses 24 bytes
 wMovedexSeenEnd::
 
 ENDU
@@ -2129,8 +2129,8 @@ wPikachuHappiness:: db
 wPikachuMood:: db
 wd471:: db
 wd472:: db
-	wPikachuCompanionStepCounter:: db
-	wd474:: db
+wPikachuCompanionStepCounter:: db
+wd474:: db
 	ds 4
 wd479:: db
 	ds 24
