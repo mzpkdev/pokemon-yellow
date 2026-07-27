@@ -100,7 +100,13 @@ class Emulator:
         self.pyboy.screen.image.save(path)
         return path
 
-    def assert_screen_matches(self, expected: Path, name: str) -> None:
+    def assert_screen_matches(
+        self,
+        expected: Path,
+        name: str,
+        *,
+        crop: tuple[int, int, int, int] | None = None,
+    ) -> None:
         actual = self.pyboy.screen.image.convert("RGB")
         if os.environ.get("UPDATE_ROM_SNAPSHOTS") == "1":
             expected.parent.mkdir(parents=True, exist_ok=True)
@@ -108,7 +114,9 @@ class Emulator:
             return
 
         reference = Image.open(expected).convert("RGB")
-        difference = ImageChops.difference(actual, reference)
+        compared_actual = actual.crop(crop) if crop else actual
+        compared_reference = reference.crop(crop) if crop else reference
+        difference = ImageChops.difference(compared_actual, compared_reference)
         if difference.getbbox() is None:
             return
 

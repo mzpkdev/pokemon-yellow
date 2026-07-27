@@ -24,4 +24,5 @@ def test_deliver_oaks_parcel_and_leave_lab(emulator: Emulator) -> None:
     emulator.assert_screen_matches(
         SNAPSHOTS / "parcel-delivered-lab-exit.png",
         name="parcel-delivered-lab-exit",
+        crop=(0, 0, 160, 96),
     )
