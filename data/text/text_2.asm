@@ -1101,6 +1101,18 @@ _FlinchedText::
 	line "flinched!"
 	prompt
 
+_PikachuWouldntFlinchText::
+	text_ram wBattleMonNick
+	text " wouldn't"
+	line "flinch!"
+	prompt
+
+_PikachuShookItOffText::
+	text_ram wBattleMonNick
+	text " shook it"
+	line "off!"
+	prompt
+
 _MustRechargeText::
 	text "<USER>"
 	line "must recharge!"
