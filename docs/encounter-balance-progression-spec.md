@@ -239,6 +239,11 @@ hard-mode caps.
 Before encounter data is considered complete, add a working matrix (in this file
 or a linked generated report) with one row per major fight and these fields:
 
+The working matrix and playtest checklist are maintained in
+[`encounter-balance-validation-report.md`](encounter-balance-validation-report.md).
+Its 10 percent "common encounter" threshold is provisional pending user
+confirmation.
+
 | Field | Required content |
 |---|---|
 | Fight and badge-count state | Exact script variant and effective cap |
@@ -269,6 +274,17 @@ code changes require a separately approved defect or design change.
 
 All batches must preserve unrelated Static changes and report conflicts rather
 than resolving them through whole-file replacement.
+
+## Resolved implementation forks
+
+The approved selections `1A`, `2B`, `3B`, `4B`, `5A`, `6B`, and `7B` are
+resolved in the implemented trainer baseline, authored wild/fishing merge,
+targeted gift levels, evolution fallbacks, and preservation of Static-exclusive
+completion content. The validation consequences are recorded in
+[`encounter-balance-validation-report.md`](encounter-balance-validation-report.md).
+
+The 10 percent definition of a common encounter remains provisional and is not
+part of these resolved selections.
 
 ## Unresolved tuning questions
 
