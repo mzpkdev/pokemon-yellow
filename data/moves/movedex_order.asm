@@ -18,6 +18,7 @@ MovedexOrder:
 	db BONEMERANG
 	db BUBBLE
 	db BUBBLEBEAM
+	db BULLET_SEED
 	db CLAMP
 	db COMET_PUNCH
 	db CONFUSE_RAY
@@ -35,6 +36,7 @@ MovedexOrder:
 	db DOUBLESLAP
 	db DOUBLE_TEAM
 	db DOUBLE_EDGE
+	db DRAGONBREATH
 	db DRAGON_RAGE 
 	db DREAM_EATER
 	db DRILL_PECK
@@ -69,6 +71,7 @@ MovedexOrder:
 	db HYPNOSIS
 	db ICE_BEAM
 	db ICE_PUNCH
+	db ICICLE_SPEAR
 	db JUMP_KICK
 	db KARATE_CHOP
 	db KINESIS
@@ -88,6 +91,7 @@ MovedexOrder:
 	db MINIMIZE
 	db MIRROR_MOVE
 	db MIST
+	db MUD_SHOT
 	db NIGHT_SHADE
 	db PAY_DAY
 	db PECK
@@ -109,14 +113,17 @@ MovedexOrder:
 	db REST
 	db ROAR
 	db ROCK_SLIDE
+	db ROCK_TOMB
 	db ROCK_THROW
 	db ROLLING_KICK
+	db ROOST
 	db SAND_ATTACK
 	db SCRATCH
 	db SCREECH
 	db SEISMIC_TOSS
 	db SELFDESTRUCT
 	db SHARPEN
+	db SHADOW_BALL
 	db SING
 	db SKULL_BASH
 	db SKY_ATTACK
@@ -144,6 +151,7 @@ MovedexOrder:
 	db SURF
 	db SWIFT
 	db SWORDS_DANCE
+	db SYNTHESIS
 	db TACKLE
 	db TAKE_DOWN
 	db TAIL_WHIP
@@ -161,10 +169,11 @@ MovedexOrder:
 	db VINE_WHIP
 	db VICEGRIP
 	db WATER_GUN
+	db WATER_PULSE
 	db WATERFALL
 	db WHIRLWIND
 	db WING_ATTACK
 	db WITHDRAW
 	db WRAP
+	db X_SCISSOR
 	assert_table_length NUM_ATTACKS
-	
