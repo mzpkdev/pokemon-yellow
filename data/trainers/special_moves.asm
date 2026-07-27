@@ -14,69 +14,41 @@ SpecialTrainerMoves:
 	db 0
 
 	db BROCK, 1
-	db 1, 1, TACKLE
-	db 1, 2, DEFENSE_CURL
 	db 1, 3, ROCK_THROW
-	db 2, 1, SUPERSONIC
-	db 2, 2, GUST
-	db 2, 3, CONFUSE_RAY
-	db 3, 1, SCREECH
-	db 3, 2, BIDE
-	db 3, 3, BIND
+	db 2, 1, CONSTRICT
+	db 2, 3, BIDE
+	db 2, 4, BIND
 	db 0
 
 	db BROCK, 2 
-	db 1, 1, EARTHQUAKE
-	db 1, 2, BODY_SLAM
-	db 1, 3, EXPLOSION
-	db 2, 1, MEGA_DRAIN
-	db 2, 2, DOUBLE_EDGE
-	db 2, 3, DOUBLE_TEAM
-	db 3, 1, ROCK_SLIDE
-	db 3, 2, HYPER_BEAM
-	db 3, 3, FLY
-	db 4, 1, FIRE_BLAST
-	db 4, 2, DIG
-	db 4, 3, CONFUSE_RAY
-	db 5, 1, BLIZZARD
-	db 5, 2, HYDRO_PUMP
-	db 5, 3, TOXIC
-	db 6, 1, EARTHQUAKE
-	db 6, 2, BIND
-	db 6, 3, FISSURE
+	db 1, 1, BLIZZARD
+	db 2, 1, FISSURE
+	db 4, 1, BODY_SLAM
+	db 5, 2, SOLARBEAM
+	db 5, 3, CONFUSE_RAY
+	db 6, 1, FLY
+	db 6, 3, EARTHQUAKE
+	db 6, 4, DOUBLE_EDGE
 	db 0
 
 	db MISTY, 1
-	db 1, 1, DISABLE
-	db 1, 2, CONFUSION
-	db 1, 3, RAGE
-	db 2, 1, TOXIC
-	db 2, 2, WATER_GUN
-	db 2, 3, REFLECT
-	db 3, 1, DOUBLE_TEAM
-	db 3, 2, THUNDER_WAVE
-	db 3, 3, BUBBLEBEAM
+	db 2, 1, TAIL_WHIP
 	db 0
 
 	db MISTY, 2
 	db 1, 1, ICE_BEAM
-	db 1, 2, PSYCHIC_M
-	db 1, 3, HYDRO_PUMP
-	db 2, 1, FIRE_BLAST
-	db 2, 2, THUNDER
-	db 2, 3, SURF
-	db 3, 1, BLIZZARD
-	db 3, 2, PSYCHIC_M
-	db 3, 3, THUNDERBOLT
-	db 4, 1, BLIZZARD
-	db 4, 2, SLAM
-	db 4, 3, DOUBLE_TEAM
-	db 5, 1, PSYCHIC_M
-	db 5, 2, THUNDER
+	db 1, 2, DOUBLE_TEAM
+	db 2, 1, BLIZZARD
+	db 3, 1, PSYCHIC_M
+	db 3, 2, THUNDER
+	db 4, 1, SURF
+	db 4, 2, EARTHQUAKE
+	db 4, 4, REFLECT
+	db 5, 1, SUBSTITUTE
 	db 5, 3, BLIZZARD
-	db 6, 1, EARTHQUAKE
-	db 6, 2, MEGA_KICK
-	db 6, 3, HYDRO_PUMP
+	db 6, 1, SURF
+	db 6, 3, RECOVER
+	db 6, 4, THUNDERBOLT
 	db 0
 
 	db LT_SURGE, 1
