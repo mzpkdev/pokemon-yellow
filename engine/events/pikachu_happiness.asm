@@ -208,30 +208,30 @@ UpdatePikachuCompanionIdle::
 
 	ld a, [wIsInBattle]
 	and a
-	jr nz, .resetIdle
+	jp nz, .resetIdle
 	ld a, [wCurOpponent]
 	and a
-	jr nz, .resetIdle
+	jp nz, .resetIdle
 	ld a, [wJoyIgnore]
 	and a
-	jr nz, .resetIdle
+	jp nz, .resetIdle
 	ld a, [wStatusFlags5]
 	and (1 << BIT_SCRIPTED_MOVEMENT_STATE) | (1 << BIT_DISABLE_JOYPAD) | (1 << BIT_SCRIPTED_NPC_MOVEMENT)
-	jr nz, .resetIdle
+	jp nz, .resetIdle
 	ld a, [wStatusFlags3]
 	bit BIT_WARP_FROM_CUR_SCRIPT, a
-	jr nz, .resetIdle
+	jp nz, .resetIdle
 	ld a, [wStatusFlags6]
 	and (1 << BIT_FLY_WARP) | (1 << BIT_DUNGEON_WARP)
-	jr nz, .resetIdle
+	jp nz, .resetIdle
 	call CheckPikachuFollowingPlayer
-	jr nz, .resetIdle
+	jp nz, .resetIdle
 	ld a, [wPikachuOverworldStateFlags]
 	bit 3, a
-	jr nz, .resetIdle
+	jp nz, .resetIdle
 	ld a, [wSpritePikachuStateData1ImageIndex]
 	cp $ff
-	jr z, .resetIdle
+	jp z, .resetIdle
 	callfar IsStarterPikachuInOurParty
 	jr nc, .resetIdle
 
@@ -245,6 +245,8 @@ UpdatePikachuCompanionIdle::
 	jr z, .bolt
 	cp PIKACOMPANION_REACTION_SMILE
 	jr z, .smile
+	cp PIKACOMPANION_REACTION_GYM_VICTORY
+	jr z, .gymVictory
 	cp PIKACOMPANION_REACTION_HEART
 	ret nz
 	ld b, HEART_BUBBLE
@@ -262,6 +264,9 @@ UpdatePikachuCompanionIdle::
 	call UpdateSprites
 	ld a, b
 	jpfar ShowPikachuEmoteBubble
+.gymVictory
+	ldpikaemotion e, PikachuEmotion34
+	jpfar PlaySpecificPikachuEmotion
 
 .resetIdle
 	xor a
