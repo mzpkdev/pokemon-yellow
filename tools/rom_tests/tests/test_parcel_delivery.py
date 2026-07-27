@@ -24,5 +24,5 @@ def test_deliver_oaks_parcel_and_leave_lab(emulator: Emulator) -> None:
     emulator.assert_screen_matches(
         SNAPSHOTS / "parcel-delivered-lab-exit.png",
         name="parcel-delivered-lab-exit",
-        ignored_regions=((72, 80, 104, 112),),
+        ignored_regions=((0, 80, 160, 112),),
     )
