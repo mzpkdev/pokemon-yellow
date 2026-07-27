@@ -83,3 +83,10 @@ def test_queued_companion_reaction_waits_for_idle(emulator: Emulator) -> None:
 
     assert emulator.read("wPikachuCompanionQueuedReaction") == 0
     assert emulator.read("wPikachuCompanionIdleCounter") == 0
+
+    emulator.write("wPikachuCompanionQueuedReaction", 4)
+    emulator.write("wPikachuCompanionIdleCounter", 59)
+    emulator.tick(300)
+
+    assert emulator.read("wPikachuCompanionQueuedReaction") == 0
+    assert emulator.read("wPikachuCompanionIdleCounter") == 0

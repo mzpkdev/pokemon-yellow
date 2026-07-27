@@ -296,8 +296,17 @@ PikachuEmotionTable::
 	pikaemotion_def PikachuEmotion31
 	pikaemotion_def PikachuEmotion32
 	pikaemotion_def PikachuEmotion33
+	pikaemotion_def PikachuEmotion34
 
 PikachuEmotion33:
+	db $ff
+
+PikachuEmotion34:
+	pikaemotion_dummy2
+	pikaemotion_subcmd PIKAEMOTION_SUBCMD_LOADEXTRAPIKASPRITES
+	pikaemotion_movement PikachuMovementData_fd224
+	pikaemotion_pcm PikachuCry1
+	pikaemotion_movement PikachuMovementData_fd224
 	db $ff
 
 MapSpecificPikachuExpression:
