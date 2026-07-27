@@ -28,5 +28,6 @@ def test_receive_pikachu_battle_rival_and_leave_lab(emulator: Emulator) -> None:
     emulator.assert_screen_matches(
         SNAPSHOTS / "oaks-lab-exit.png",
         name="oaks-lab-exit",
-        ignored_regions=((0, 80, 160, 112),),
+        # NPC position and the player's idle animation depend on elapsed frames.
+        ignored_regions=((0, 80, 160, 112), (48, 120, 64, 136)),
     )
