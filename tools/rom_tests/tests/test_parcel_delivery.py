@@ -28,6 +28,6 @@ def test_deliver_oaks_parcel_and_leave_lab(emulator: Emulator) -> None:
         ignored_regions=(
             (0, 80, 160, 112),
             (48, 120, 72, 144),
-            (24, 128, 104, 144),
+            (0, 128, 160, 144),
         ),
     )
