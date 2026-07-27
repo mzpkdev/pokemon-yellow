@@ -57,34 +57,50 @@ ModifyPikachuHappiness::
 .okay
 	ld [wPikachuHappiness], a
 
-	; Restore d and get the d'th entry in PikachuMoods.
+	; Restore d and apply the corresponding additive mood change.
 	pop de
+	ld a, d
+	cp PIKAHAPPY_DEPOSITED
+	jr z, .deposited
+	cp PIKAHAPPY_TRADE
+	jr z, .traded
 	dec d
-	ld hl, PikachuMoods
+	ld hl, PikachuMoodChanges
 	ld e, d
 	ld d, $0
 	add hl, de
-	ld a, [hl]
-	ld b, a
-	; Modify Pikachu's mood
-	cp $80
-	jr z, .done
-	ld a, [wPikachuMood]
-	jr c, .decreased
-	cp b
-	jr nc, .done
-	ld a, [wd49b]
-	and a
-	jr nz, .done
-	jr .update_mood
-
-.decreased
-	cp b
-	jr c, .done
-.update_mood
+	ld b, [hl]
 	ld a, b
+	and a
+	ret z
+	bit 7, b
+	jr nz, .decreaseMood
+	ld a, [wPikachuMood]
+	add b
+	jr nc, .storeMood
+	ld a, $ff
+	jr .storeMood
+
+.decreaseMood
+	ld a, [wPikachuMood]
+	add b
+	jr c, .storeMood
+	xor a
+.storeMood
 	ld [wPikachuMood], a
-.done
+	ret
+
+.deposited
+	ld a, [wPikachuMood]
+	cp 33
+	ret c
+	ld a, 32
+	ld [wPikachuMood], a
+	ret
+
+.traded
+	xor a
+	ld [wPikachuMood], a
 	ret
 
 HappinessChangeTable:
@@ -102,17 +118,15 @@ HappinessChangeTable:
 	db  -5, -5, -10 ; Fainted to opponent at least 30 levels higher
 	db -10, -10, -20 ; Traded away
 
-PikachuMoods:
-	; Increase
-	db $8a           ; Gained a level
-	db $83           ; HP restore
-	db $80           ; Teach TM/HM
-	db $80           ; Challenged Gym Leader
-	db $94           ; Unknown (d = 5)
-	db $80           ; Unknown (d = 6)
-	; Decrease
-	db $62           ; Deposited
-	db $6c           ; Fainted
-	db $62           ; Unknown (d = 9)
-	db $6c           ; Unknown (d = 10)
-	db $00           ; Unknown (d = 11)
+PikachuMoodChanges:
+	db  12 ; Gained a level
+	db   4 ; HP restore
+	db   0 ; Used X item
+	db  20 ; Challenged Gym Leader
+	db   8 ; Teach TM/HM
+	db   0 ; Walking around (handled separately)
+	db   0 ; Deposited (handled separately)
+	db  -6 ; Fainted in battle
+	db -20 ; Fainted due to poison outside of battle
+	db -16 ; Fainted to an opponent at least 30 levels higher
+	db   0 ; Traded away (handled separately)
