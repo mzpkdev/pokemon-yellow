@@ -572,8 +572,6 @@ ItemUseBall:
 .skipShowingPokedexData
 	ld a, $1
 	ld [wd49c], a
-	ld a, $85
-	ld [wPikachuMood], a
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH ; is party full?
 	jr z, .sendToBox
@@ -822,8 +820,6 @@ ItemUseEvoStone:
 	rst _PrintText
 	ld a, $4
 	ld [wd49c], a
-	ld a, $82
-	ld [wPikachuMood], a
 	jr .canceledItemUse
 
 .notPlayerPikachu
@@ -2153,8 +2149,6 @@ FishingInit:
 	rst _PlaySound
 	ld a, $2
 	ld [wd49c], a
-	ld a, $81
-	ld [wPikachuMood], a
 	ld c, 40
 	rst _DelayFrames
 	and a
@@ -2532,13 +2526,15 @@ ItemUseTMHM:
 	callfar CheckIfMoveIsKnown ; check if the pokemon already knows the move
 	jr c, .chooseMon
 	predef LearnMove ; teach move
+	ld a, b
+	and a
+	jr z, .moveNotLearned
 	ld a, [wWhichPokemon]
 	ld d, a
 	pop af
 	ld [wCurItem], a
 	pop af
 	ld [wWhichPokemon], a
-	ret
 
 	ld a, [wWhichPokemon]
 	push af
@@ -2555,8 +2551,6 @@ ItemUseTMHM:
 .teachingThunderboltOrThunderToPlayerPikachu
 	ld a, $5
 	ld [wd49c], a
-	ld a, $85
-	ld [wPikachuMood], a
 .notTeachingThunderboltOrThunderToPikachu
 	pop af
 	ld [wWhichPokemon], a
@@ -2565,6 +2559,13 @@ ItemUseTMHM:
 	call IsItemHM
 	ret c
 	jp RemoveUsedItem
+
+.moveNotLearned
+	pop af
+	ld [wCurItem], a
+	pop af
+	ld [wWhichPokemon], a
+	ret
 
 BootedUpTMText:
 	text_far _BootedUpTMText

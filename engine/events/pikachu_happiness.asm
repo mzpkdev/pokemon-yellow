@@ -57,34 +57,50 @@ ModifyPikachuHappiness::
 .okay
 	ld [wPikachuHappiness], a
 
-	; Restore d and get the d'th entry in PikachuMoods.
+	; Restore d and apply the corresponding additive mood change.
 	pop de
+	ld a, d
+	cp PIKAHAPPY_DEPOSITED
+	jr z, .deposited
+	cp PIKAHAPPY_TRADE
+	jr z, .traded
 	dec d
-	ld hl, PikachuMoods
+	ld hl, PikachuMoodChanges
 	ld e, d
 	ld d, $0
 	add hl, de
-	ld a, [hl]
-	ld b, a
-	; Modify Pikachu's mood
-	cp $80
-	jr z, .done
-	ld a, [wPikachuMood]
-	jr c, .decreased
-	cp b
-	jr nc, .done
-	ld a, [wd49c]
-	and a
-	jr nz, .done
-	jr .update_mood
-
-.decreased
-	cp b
-	jr c, .done
-.update_mood
+	ld b, [hl]
 	ld a, b
+	and a
+	ret z
+	bit 7, b
+	jr nz, .decreaseMood
+	ld a, [wPikachuMood]
+	add b
+	jr nc, .storeMood
+	ld a, $ff
+	jr .storeMood
+
+.decreaseMood
+	ld a, [wPikachuMood]
+	add b
+	jr c, .storeMood
+	xor a
+.storeMood
 	ld [wPikachuMood], a
-.done
+	ret
+
+.deposited
+	ld a, [wPikachuMood]
+	cp 33
+	ret c
+	ld a, 32
+	ld [wPikachuMood], a
+	ret
+
+.traded
+	xor a
+	ld [wPikachuMood], a
 	ret
 
 HappinessChangeTable:
@@ -102,17 +118,157 @@ HappinessChangeTable:
 	db  -5, -5, -10 ; Fainted to opponent at least 30 levels higher
 	db -10, -10, -20 ; Traded away
 
-PikachuMoods:
-	; Increase
-	db $8a           ; Gained a level
-	db $83           ; HP restore
-	db $80           ; Teach TM/HM
-	db $80           ; Challenged Gym Leader
-	db $94           ; Unknown (d = 5)
-	db $80           ; Unknown (d = 6)
-	; Decrease
-	db $62           ; Deposited
-	db $6c           ; Fainted
-	db $62           ; Unknown (d = 9)
-	db $6c           ; Unknown (d = 10)
-	db $00           ; Unknown (d = 11)
+PikachuMoodChanges:
+	db  12 ; Gained a level
+	db   4 ; HP restore
+	db   0 ; Used X item
+	db  20 ; Challenged Gym Leader
+	db   8 ; Teach TM/HM
+	db   0 ; Walking around (handled separately)
+	db   0 ; Deposited (handled separately)
+	db  -6 ; Fainted in battle
+	db -20 ; Fainted due to poison outside of battle
+	db -16 ; Fainted to an opponent at least 30 levels higher
+	db   0 ; Traded away (handled separately)
+
+UpdatePikachuCompanionOnStep::
+	ld a, [wWalkBikeSurfState]
+	cp BIKING
+	ret z
+	callfar IsStarterPikachuInOurParty
+	ret nc
+
+	ld hl, wPikachuCompanionStepCounter
+	inc [hl]
+	ld a, [hl]
+	and $7
+	call z, .driftMoodTowardNeutral
+	ld a, [wPikachuCompanionStepCounter]
+	and $7f
+	call z, .tryQueueReaction
+
+	ld a, [wPikachuCompanionStepCounter]
+	and a
+	ret nz
+	ld d, PIKAHAPPY_WALKING
+	jp ModifyPikachuHappiness
+
+.driftMoodTowardNeutral
+	ld hl, wPikachuMood
+	ld a, [hl]
+	cp 128
+	ret z
+	jr c, .increaseMood
+	dec [hl]
+	ret
+
+.increaseMood
+	inc [hl]
+	ret
+
+.tryQueueReaction
+	ld a, [wPikachuCompanionQueuedReaction]
+	and a
+	ret nz
+	call Random
+	and $7
+	ret nz
+
+	ld a, [wPikachuHappiness]
+	cp 70
+	ld b, PIKACOMPANION_REACTION_BOLT
+	jr c, .queueReaction
+	cp 160
+	ret c
+	cp 250
+	ld b, PIKACOMPANION_REACTION_SMILE
+	jr c, .queueReaction
+	ld b, PIKACOMPANION_REACTION_HEART
+.queueReaction
+	ld a, b
+	ld [wPikachuCompanionQueuedReaction], a
+	ret
+
+UpdatePikachuCompanionIdle::
+	ldh a, [hJoyHeld]
+	ld b, a
+	ldh a, [hJoyPressed]
+	or b
+	jp nz, .resetIdle
+	ld a, [wPikachuCompanionQueuedReaction]
+	and a
+	jp z, .resetIdle
+
+	ld hl, wPikachuCompanionIdleCounter
+	inc [hl]
+	ld a, [hl]
+	cp 60
+	ret c
+	ld [hl], 60
+
+	ld a, [wIsInBattle]
+	and a
+	jp nz, .resetIdle
+	ld a, [wCurOpponent]
+	and a
+	jp nz, .resetIdle
+	ld a, [wJoyIgnore]
+	and a
+	jp nz, .resetIdle
+	ld a, [wStatusFlags5]
+	and (1 << BIT_SCRIPTED_MOVEMENT_STATE) | (1 << BIT_DISABLE_JOYPAD) | (1 << BIT_SCRIPTED_NPC_MOVEMENT)
+	jp nz, .resetIdle
+	ld a, [wStatusFlags3]
+	bit BIT_WARP_FROM_CUR_SCRIPT, a
+	jp nz, .resetIdle
+	ld a, [wStatusFlags6]
+	and (1 << BIT_FLY_WARP) | (1 << BIT_DUNGEON_WARP)
+	jp nz, .resetIdle
+	call CheckPikachuFollowingPlayer
+	jp nz, .resetIdle
+	ld a, [wPikachuOverworldStateFlags]
+	bit 3, a
+	jp nz, .resetIdle
+	ld a, [wSpritePikachuStateData1ImageIndex]
+	cp $ff
+	jp z, .resetIdle
+	callfar IsStarterPikachuInOurParty
+	jr nc, .resetIdle
+
+	ld a, [wPikachuCompanionQueuedReaction]
+	ld b, a
+	xor a
+	ld [wPikachuCompanionQueuedReaction], a
+	ld [wPikachuCompanionIdleCounter], a
+	ld a, b
+	cp PIKACOMPANION_REACTION_BOLT
+	jr z, .bolt
+	cp PIKACOMPANION_REACTION_SMILE
+	jr z, .smile
+	cp PIKACOMPANION_REACTION_GYM_VICTORY
+	jr z, .gymVictory
+	cp PIKACOMPANION_REACTION_HEART
+	ret nz
+	ld b, HEART_BUBBLE
+	jr .facePlayer
+.smile
+	ld b, SMILE_BUBBLE
+.facePlayer
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	ld [wSpritePikachuStateData1FacingDirection], a
+	jr .showBubble
+.bolt
+	callfar StarterPikachuEmotionCommand_turnawayfromplayer
+	ld b, BOLT_BUBBLE
+.showBubble
+	call UpdateSprites
+	ld a, b
+	jpfar ShowPikachuEmoteBubble
+.gymVictory
+	ldpikaemotion e, PikachuEmotion34
+	jpfar PlaySpecificPikachuEmotion
+
+.resetIdle
+	xor a
+	ld [wPikachuCompanionIdleCounter], a
+	ret

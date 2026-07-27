@@ -372,8 +372,6 @@ LearnMoveFromLevelUp:
 .foundThunderOrThunderbolt
 	ld a, $5
 	ld [wd49c], a
-	ld a, $85
-	ld [wPikachuMood], a
 .movesloop_done
 	pop hl
 	jr .learnSetLoop
@@ -994,4 +992,3 @@ StorePKMNLevels:
 	ret
 
 INCLUDE "data/pokemon/evos_moves.asm"
-

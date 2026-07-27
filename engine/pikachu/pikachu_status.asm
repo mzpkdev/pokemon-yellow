@@ -113,29 +113,6 @@ asm_fce21:
 	scf
 	ret
 
-UpdatePikachuMoodAfterBattle::
-; because d is always $82 at this function, it serves to
-; ensure Pikachu's mood is at least 130 after battle
-	push de
-	call IsStarterPikachuInOurParty
-	pop de
-	ret nc
-	ld a, d
-	cp 128
-	ld a, [wPikachuMood]
-	jr c, .d_less_than_128 ; we never jump
-	cp d
-	jr c, .load_d_into_mood
-	ret
-
-.d_less_than_128
-	cp d
-	ret c
-.load_d_into_mood
-	ld a, d
-	ld [wPikachuMood], a
-	ret
-
 CheckPikachuFaintedOrStatused::
 ; function to test if Pikachu is alive?
 	xor a
