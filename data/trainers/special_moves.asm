@@ -52,115 +52,77 @@ SpecialTrainerMoves:
 	db 0
 
 	db LT_SURGE, 1
-	db 1, 1, RAGE
-	db 1, 2, THUNDERPUNCH
-	db 1, 3, SCREECH
-	db 2, 1, DOUBLE_TEAM
-	db 2, 2, REFLECT
-	db 2, 3, SWIFT
-	db 3, 1, AGILITY
-	db 3, 2, QUICK_ATTACK
-	db 3, 3, THUNDERSHOCK
-	db 4, 1, THUNDER
-	db 4, 2, THUNDER_WAVE
-	db 4, 3, SURF
+	db 1, 1, THUNDERBOLT
+	db 1, 2, THUNDER_WAVE
+	db 1, 3, BODY_SLAM
+	db 1, 4, SURF
 	db 0
 
 	db LT_SURGE, 2
-	db 1, 1, THUNDER_WAVE
-	db 1, 2, THUNDER
-	db 1, 3, EXPLOSION
-	db 2, 1, HYPER_BEAM
-	db 2, 2, RECOVER
-	db 2, 3, BLIZZARD
-	db 3, 1, DIG
-	db 3, 2, THUNDER_WAVE
-	db 3, 3, HEADBUTT
-	db 4, 1, PSYCHIC_M
-	db 4, 2, THUNDERBOLT
-	db 4, 3, SKULL_BASH
-	db 5, 1, DOUBLE_EDGE
-	db 5, 2, SEISMIC_TOSS
-	db 5, 3, TAKE_DOWN
-	db 6, 1, THUNDER_WAVE
-	db 6, 2, SURF
+	db 1, 2, THUNDER_WAVE
+	db 2, 1, THUNDER_WAVE
+	db 2, 3, REFLECT
+	db 3, 1, HEADBUTT
+	db 3, 2, DIG
+	db 4, 1, THUNDER
+	db 4, 2, BLIZZARD
+	db 4, 3, RECOVER
+	db 5, 1, ICE_PUNCH
+	db 5, 3, PSYCHIC_M
+	db 6, 1, SURF
+	db 6, 2, CUT
 	db 6, 3, THUNDER
+	db 6, 4, THUNDER_WAVE
 	db 0
 
 	db ERIKA, 1
-	db 1, 1, MEGA_DRAIN
-	db 1, 2, LEECH_SEED
-	db 1, 3, POISONPOWDER
-	db 2, 1, ACID
-	db 2, 2, STUN_SPORE
-	db 2, 3, SLUDGE
-	db 3, 1, SLEEP_POWDER
-	db 3, 2, ABSORB
-	db 3, 3, VINE_WHIP
-	db 4, 1, PETAL_DANCE
-	db 4, 2, CUT
-	db 4, 3, MEGA_DRAIN
+	db 1, 1, BIND
+	db 3, 1, RAZOR_LEAF
+	db 3, 2, ACID
+	db 3, 3, LEECH_SEED
+	db 4, 1, ACID
+	db 4, 2, SOLARBEAM
+	db 4, 3, STUN_SPORE
+	db 4, 4, SLEEP_POWDER
 	db 0
 
-	
 	db ERIKA, 2
-	db 1, 1, MEGA_DRAIN
-	db 1, 2, EGG_BOMB
-	db 1, 3, POISONPOWDER
-	db 2, 1, ACID
-	db 2, 2, STUN_SPORE
-	db 2, 3, SLUDGE
-	db 3, 1, SLEEP_POWDER
-	db 3, 2, ABSORB
-	db 3, 3, VINE_WHIP
-	db 4, 1, SLUDGE
-	db 4, 2, RAZOR_LEAF
-	db 4, 3, LEECH_SEED
-	db 5, 1, PETAL_DANCE
-	db 5, 2, CUT
-	db 5, 3, MEGA_DRAIN
+	db 1, 1, BIND
+	db 1, 2, BODY_SLAM
+	db 2, 1, SWORDS_DANCE
+	db 2, 2, WRAP
+	db 3, 1, RAZOR_LEAF
+	db 3, 2, LEECH_SEED
+	db 3, 3, SLUDGE
+	db 4, 2, SLEEP_POWDER
 	db 0
 
-	
 	db ERIKA, 3
-	db 1, 1, MEGA_DRAIN
-	db 1, 2, EGG_BOMB
-	db 1, 3, POISONPOWDER
-	db 2, 1, ACID
-	db 2, 2, STUN_SPORE
-	db 2, 3, SLUDGE
-	db 3, 1, SLEEP_POWDER
-	db 3, 2, ABSORB
-	db 3, 3, VINE_WHIP
-	db 4, 1, SLUDGE
-	db 4, 2, RAZOR_LEAF
-	db 4, 3, LEECH_SEED
-	db 5, 1, PETAL_DANCE
-	db 5, 2, CUT
-	db 5, 3, MEGA_DRAIN
+	db 1, 2, STUN_SPORE
+	db 1, 3, SOLARBEAM
+	db 2, 4, SWORDS_DANCE
+	db 3, 2, SOLARBEAM
+	db 3, 3, LEECH_SEED
+	db 4, 1, REFLECT
+	db 5, 1, LEECH_SEED
 	db 0
 
 	db ERIKA, 4
-	db 1, 1, SLUDGE
-	db 1, 2, RAZOR_LEAF
-	db 1, 3, LEECH_SEED
-	db 2, 1, BIND
-	db 2, 2, MEGA_DRAIN
-	db 2, 3, BODY_SLAM
-	db 3, 1, ICE_BEAM
-	db 3, 2, DOUBLE_EDGE
-	db 3, 3, FIRE_BLAST
-	db 4, 1, GROWTH
-	db 4, 2, SLUDGE
-	db 4, 3, STUN_SPORE
+	db 1, 3, STUN_SPORE
+	db 2, 2, LEECH_SEED
+	db 2, 3, SLEEP_POWDER
+	db 2, 4, RAZOR_LEAF
+	db 3, 1, LEECH_LIFE
+	db 3, 3, SOLARBEAM
+	db 4, 1, MEGA_DRAIN
+	db 4, 2, SUBSTITUTE
 	db 5, 1, MEGA_DRAIN
-	db 5, 2, PSYCHIC_M
-	db 5, 3, SLEEP_POWDER
-	db 6, 1, LEECH_SEED
-	db 6, 2, SUBSTITUTE
-	db 6, 3, MEGA_DRAIN
+	db 5, 3, GROWTH
+	db 6, 2, LEECH_SEED
+	db 6, 3, SUBSTITUTE
+	db 6, 4, MEGA_DRAIN
 	db 0
-	
+
 	db KOGA, 1
 	db 1, 1, TOXIC
 	db 1, 2, DOUBLE_TEAM
