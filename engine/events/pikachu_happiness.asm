@@ -143,6 +143,9 @@ UpdatePikachuCompanionOnStep::
 	ld a, [hl]
 	and $7
 	call z, .driftMoodTowardNeutral
+	ld a, [wPikachuCompanionStepCounter]
+	and $7f
+	call z, .tryQueueReaction
 
 	ld a, [wPikachuCompanionStepCounter]
 	and a
@@ -161,4 +164,106 @@ UpdatePikachuCompanionOnStep::
 
 .increaseMood
 	inc [hl]
+	ret
+
+.tryQueueReaction
+	ld a, [wPikachuCompanionQueuedReaction]
+	and a
+	ret nz
+	call Random
+	and $7
+	ret nz
+
+	ld a, [wPikachuHappiness]
+	cp 70
+	ld b, PIKACOMPANION_REACTION_BOLT
+	jr c, .queueReaction
+	cp 160
+	ret c
+	cp 250
+	ld b, PIKACOMPANION_REACTION_SMILE
+	jr c, .queueReaction
+	ld b, PIKACOMPANION_REACTION_HEART
+.queueReaction
+	ld a, b
+	ld [wPikachuCompanionQueuedReaction], a
+	ret
+
+UpdatePikachuCompanionIdle::
+	ldh a, [hJoyHeld]
+	ld b, a
+	ldh a, [hJoyPressed]
+	or b
+	jp nz, .resetIdle
+	ld a, [wPikachuCompanionQueuedReaction]
+	and a
+	jp z, .resetIdle
+
+	ld hl, wPikachuCompanionIdleCounter
+	inc [hl]
+	ld a, [hl]
+	cp 60
+	ret c
+	ld [hl], 60
+
+	ld a, [wIsInBattle]
+	and a
+	jr nz, .resetIdle
+	ld a, [wCurOpponent]
+	and a
+	jr nz, .resetIdle
+	ld a, [wJoyIgnore]
+	and a
+	jr nz, .resetIdle
+	ld a, [wStatusFlags5]
+	and (1 << BIT_SCRIPTED_MOVEMENT_STATE) | (1 << BIT_DISABLE_JOYPAD) | (1 << BIT_SCRIPTED_NPC_MOVEMENT)
+	jr nz, .resetIdle
+	ld a, [wStatusFlags3]
+	bit BIT_WARP_FROM_CUR_SCRIPT, a
+	jr nz, .resetIdle
+	ld a, [wStatusFlags6]
+	and (1 << BIT_FLY_WARP) | (1 << BIT_DUNGEON_WARP)
+	jr nz, .resetIdle
+	call CheckPikachuFollowingPlayer
+	jr nz, .resetIdle
+	ld a, [wPikachuOverworldStateFlags]
+	bit 3, a
+	jr nz, .resetIdle
+	ld a, [wSpritePikachuStateData1ImageIndex]
+	cp $ff
+	jr z, .resetIdle
+	callfar IsStarterPikachuInOurParty
+	jr nc, .resetIdle
+
+	ld a, [wPikachuCompanionQueuedReaction]
+	ld b, a
+	xor a
+	ld [wPikachuCompanionQueuedReaction], a
+	ld [wPikachuCompanionIdleCounter], a
+	ld a, b
+	cp PIKACOMPANION_REACTION_BOLT
+	jr z, .bolt
+	cp PIKACOMPANION_REACTION_SMILE
+	jr z, .smile
+	cp PIKACOMPANION_REACTION_HEART
+	ret nz
+	ld b, HEART_BUBBLE
+	jr .facePlayer
+.smile
+	ld b, SMILE_BUBBLE
+.facePlayer
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	ld [wSpritePikachuStateData1FacingDirection], a
+	jr .showBubble
+.bolt
+	callfar StarterPikachuEmotionCommand_turnawayfromplayer
+	ld b, BOLT_BUBBLE
+.showBubble
+	call UpdateSprites
+	ld a, b
+	jpfar ShowPikachuEmoteBubble
+
+.resetIdle
+	xor a
+	ld [wPikachuCompanionIdleCounter], a
 	ret

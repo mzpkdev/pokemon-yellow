@@ -63,3 +63,23 @@ def test_companion_step_rollover_updates_happiness_and_mood(
     )
 
     assert emulator.read("wPikachuCompanionStepCounter") == 0
+
+
+def test_queued_companion_reaction_waits_for_idle(emulator: Emulator) -> None:
+    complete_oaks_lab_intro(emulator)
+    emulator.write("wJoyIgnore", 0)
+    emulator.write("wStatusFlags5", 0)
+    emulator.write("wPikachuCompanionQueuedReaction", 2)
+    emulator.write("wPikachuCompanionIdleCounter", 30)
+
+    emulator.pyboy.button("b", delay=2)
+    emulator.tick(3)
+
+    assert emulator.read("wPikachuCompanionQueuedReaction") == 2
+    assert emulator.read("wPikachuCompanionIdleCounter") == 0
+
+    emulator.write("wPikachuCompanionIdleCounter", 59)
+    emulator.tick(180)
+
+    assert emulator.read("wPikachuCompanionQueuedReaction") == 0
+    assert emulator.read("wPikachuCompanionIdleCounter") == 0

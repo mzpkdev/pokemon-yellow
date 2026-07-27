@@ -51,6 +51,7 @@ OverworldLoopLessDelay::
 	and a
 	jp nz, .moveAhead ; if the player sprite has not yet completed the walking animation
 	call JoypadOverworld ; get joypad state (which is possibly simulated)
+	farcall UpdatePikachuCompanionIdle
 	farcall SafariZoneCheck
 	ld a, [wSafariZoneGameOver]
 	and a

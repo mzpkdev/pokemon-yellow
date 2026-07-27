@@ -1930,7 +1930,8 @@ wPseudoItemID:: db
 
 wUnusedAlreadyOwnedFlag:: db
 
-	ds 2
+wPikachuCompanionQueuedReaction:: db
+wPikachuCompanionIdleCounter:: db
 
 wEvoStoneItemID:: db
 
