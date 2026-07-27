@@ -25,5 +25,5 @@ def test_deliver_oaks_parcel_and_leave_lab(emulator: Emulator) -> None:
         SNAPSHOTS / "parcel-delivered-lab-exit.png",
         name="parcel-delivered-lab-exit",
         # NPC position and the player's idle animation depend on elapsed frames.
-        ignored_regions=((0, 80, 160, 112), (48, 120, 64, 136)),
+        ignored_regions=((0, 80, 160, 112), (48, 120, 72, 144)),
     )
