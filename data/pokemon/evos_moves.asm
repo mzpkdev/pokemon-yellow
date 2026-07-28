@@ -519,6 +519,7 @@ GyaradosEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 20, FLAIL
 	db 20, BITE
 	db 22, GUST
 	db 25, WATERFALL
@@ -559,6 +560,7 @@ TentacoolEvosMoves:
 	db 35, BARRIER
 	db 40, SCREECH
 	db 43, SLUDGE
+	db 45, MIRROR_COAT
 	db 47, WRAP
 	db 50, HYDRO_PUMP
 	db 0
@@ -1686,6 +1688,7 @@ PoliwrathEvosMoves:
 	db 25, KARATE_CHOP
 	db 30, ICE_PUNCH
 	db 35, BODY_SLAM
+	db 39, DRAIN_PUNCH
 	db 43, HYPNOSIS
 	db 48, AMNESIA
 	db 53, HYDRO_PUMP
@@ -2198,6 +2201,7 @@ TentacruelEvosMoves:
 	db 35, BARRIER
 	db 40, SCREECH
 	db 43, SLUDGE
+	db 45, MIRROR_COAT
 	db 47, WRAP
 	db 50, HYDRO_PUMP
 	db 0
