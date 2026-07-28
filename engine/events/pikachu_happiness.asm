@@ -114,8 +114,6 @@ ModifyPikachuHappiness::
 	ld a, d
 	cp PIKAHAPPY_WALKING
 	ret z
-	cp PIKAHAPPY_DEPOSITED
-	ret z
 	cp PIKAHAPPY_TRADE
 	ret z
 	; b contains the old happiness value.
@@ -307,7 +305,7 @@ UpdatePikachuCompanionIdle::
 	cp $ff
 	jp z, .resetIdle
 	callfar IsStarterPikachuInOurParty
-	jr nc, .resetIdle
+	jp nc, .resetIdle
 
 	ld a, [wPikachuCompanionQueuedReaction]
 	ld b, a
