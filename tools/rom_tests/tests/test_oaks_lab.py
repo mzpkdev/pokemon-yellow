@@ -143,6 +143,27 @@ def test_eligible_starter_evolution_can_be_declined_without_using_stone(
     assert emulator.bag_contains(THUNDER_STONE)
 
 
+def test_story_trigger_still_refuses_below_happiness_requirement(
+    emulator: Emulator,
+) -> None:
+    complete_oaks_lab_intro(emulator)
+    _give_one_thunder_stone(emulator)
+    emulator.write("wPikachuHappiness", 199)
+    _set_event(emulator, EVENT_RESCUED_MR_FUJI)
+
+    _use_thunder_stone_on_pikachu(emulator)
+    emulator.advance_until(
+        lambda: emulator.read("wd49c") == 4,
+        button="a",
+        max_presses=4,
+        description="starter evolution refusal",
+    )
+
+    assert emulator.read("wPartySpecies") == PIKACHU
+    assert emulator.read("wEvolutionOccurred") == 0
+    assert emulator.bag_contains(THUNDER_STONE)
+
+
 def test_fuji_route_evolves_starter_and_recalls_unsupported_raichu(
     emulator: Emulator,
 ) -> None:
