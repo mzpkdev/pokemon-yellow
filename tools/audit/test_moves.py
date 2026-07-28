@@ -78,6 +78,17 @@ class MoveTableTests(unittest.TestCase):
             with self.subTest(high_critical_move=move):
                 self.assertRegex(critical, rf"\b{move}\b")
 
+    def test_tactical_move_engine_hooks_are_registered(self) -> None:
+        priority = (ROOT / "data/battle/priority_moves.asm").read_text(encoding="utf-8")
+        core = (ROOT / "engine/battle/core.asm").read_text(encoding="utf-8")
+        wram = (ROOT / "ram/wram.asm").read_text(encoding="utf-8")
+        self.assertRegex(priority, r"\bMIRROR_COAT\b")
+        self.assertIn("CalculateFlailBasePower:", core)
+        self.assertIn("HandleMirrorCoatMove:", core)
+        self.assertIn("RecordSpecialDamage:", core)
+        self.assertIn("wPlayerLastSpecialDamage:: dw", wram)
+        self.assertIn("wEnemyLastSpecialDamage:: dw", wram)
+
 
 if __name__ == "__main__":
     unittest.main()

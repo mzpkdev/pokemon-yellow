@@ -190,6 +190,8 @@
 	const BRAVE_BIRD
 	const FLARE_BLITZ
 	const FREEZE_DRY
+	const MIRROR_COAT
+	const FLAIL
 	const STRUGGLE
 DEF NUM_ATTACKS EQU const_value - 1
 

@@ -195,5 +195,7 @@ Moves:
 	move BRAVE_BIRD,   RECOIL_EFFECT,              120, FLYING,       100, 10
 	move FLARE_BLITZ,  RECOIL_BURN_SIDE_EFFECT,    120, FIRE,         100, 10
 	move FREEZE_DRY,   FREEZE_SIDE_EFFECT,           70, ICE,          100, 15
+	move MIRROR_COAT,  MIRROR_COAT_EFFECT,             1, PSYCHIC_TYPE, 100, 20
+	move FLAIL,        FLAIL_EFFECT,                 20, NORMAL,       100, 15
 	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,         100, 10
 	assert_table_length NUM_ATTACKS

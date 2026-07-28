@@ -56,6 +56,7 @@ MovedexOrder:
 	db FLAMETHROWER
 	db FLASH
 	db FLARE_BLITZ
+	db FLAIL
 	db FLY
 	db FOCUS_ENERGY
 	db FREEZE_DRY
@@ -97,6 +98,7 @@ MovedexOrder:
 	db METRONOME
 	db MIMIC
 	db MINIMIZE
+	db MIRROR_COAT
 	db MIRROR_MOVE
 	db MIST
 	db MUD_SHOT

@@ -1831,6 +1831,18 @@ _FreezeDryDexEntry::
 	next "against WATER."
 	dex
 
+_MirrorCoatDexEntry::
+	text "Returns double the"
+	next "special damage most"
+	next "recently received."
+	dex
+
+_FlailDexEntry::
+	text "An attack that grows"
+	next "stronger as the"
+	next "user's HP falls."
+	dex
+
 _StruggleDexEntry::
 	text "A last ditch"
 	next "move only usable"

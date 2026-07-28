@@ -184,5 +184,7 @@ MoveNames::
 	li "BRAVE BIRD"
 	li "FLARE BLITZ"
 	li "FREEZE-DRY"
+	li "MIRROR COAT"
+	li "FLAIL"
 	li "STRUGGLE"
 	assert_list_length NUM_ATTACKS
