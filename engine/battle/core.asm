@@ -4583,6 +4583,11 @@ GetDamageVarsForPlayerAttack:
 	rl b
 .physicalAttackCritCheck
 	ld hl, wBattleMonAttack
+	ld a, [wPlayerMoveNum]
+	cp BODY_PRESS
+	jr nz, .gotPhysicalAttackStat
+	ld hl, wBattleMonDefense
+.gotPhysicalAttackStat
 	ld a, [wCriticalHitOrOHKO]
 	and a ; check for critical hit
 	jr z, .scaleStats
@@ -4595,6 +4600,11 @@ GetDamageVarsForPlayerAttack:
 	ld c, a
 	push bc
 	ld hl, wPartyMon1Attack
+	ld a, [wPlayerMoveNum]
+	cp BODY_PRESS
+	jr nz, .gotBasePhysicalAttackStat
+	ld hl, wPartyMon1Defense
+.gotBasePhysicalAttackStat
 	ld a, [wPlayerMonNumber]
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
@@ -4766,6 +4776,11 @@ GetDamageVarsForEnemyAttack:
 	rl b
 .physicalAttackCritCheck
 	ld hl, wEnemyMonAttack
+	ld a, [wEnemyMoveNum]
+	cp BODY_PRESS
+	jr nz, .gotPhysicalAttackStat
+	ld hl, wEnemyMonDefense
+.gotPhysicalAttackStat
 	ld a, [wCriticalHitOrOHKO]
 	and a ; check for critical hit
 	jr z, .scaleStats
@@ -4779,6 +4794,11 @@ GetDamageVarsForEnemyAttack:
 	ld c, [hl]
 	push bc
 	ld c, STAT_ATTACK
+	ld a, [wEnemyMoveNum]
+	cp BODY_PRESS
+	jr nz, .gotBasePhysicalAttackStat
+	ld c, STAT_DEFENSE
+.gotBasePhysicalAttackStat
 	call GetEnemyMonStat
 	ld hl, hProduct + 2
 	pop bc
