@@ -1,5 +1,34 @@
 ; tests if mon [wCurPartySpecies] can learn move [wMoveNum]
 CanLearnTM:
+	ld a, [wMoveNum]
+	ld b, a
+	ld hl, CuratedTMCompatibility
+.findCuratedMove
+	ld a, [hli]
+	cp -1
+	jr z, .useBaseStats
+	cp b
+	jr z, .checkCuratedSpecies
+.skipCuratedSpecies
+	ld a, [hli]
+	cp -1
+	jr nz, .skipCuratedSpecies
+	jr .findCuratedMove
+.checkCuratedSpecies
+	ld a, [wCurPartySpecies]
+	ld b, a
+.curatedSpeciesLoop
+	ld a, [hli]
+	cp -1
+	jr z, .cannotLearnCuratedTM
+	cp b
+	jr nz, .curatedSpeciesLoop
+	ld c, 1
+	ret
+.cannotLearnCuratedTM
+	ld c, 0
+	ret
+.useBaseStats
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetMonHeader
@@ -25,6 +54,8 @@ CanLearnTM:
 	pop hl
 	ld c, 0
 	ret
+
+INCLUDE "data/moves/curated_tm_compatibility.asm"
 
 ; converts TM/HM number in [wTempTMHM] into move number
 ; HMs start at 51
