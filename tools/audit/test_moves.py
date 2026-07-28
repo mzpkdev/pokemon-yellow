@@ -88,6 +88,40 @@ class MoveTableTests(unittest.TestCase):
         self.assertIn("RecordSpecialDamage:", core)
         self.assertIn("wPlayerLastSpecialDamage:: dw", wram)
         self.assertIn("wEnemyLastSpecialDamage:: dw", wram)
+        self.assertIn("wDirectDamageForMirrorCoat:: db", wram)
+
+    def test_extreme_yellow_flail_curve_boundaries(self) -> None:
+        def flail_power(current_hp: int, max_hp: int) -> int:
+            for divisor, power in (
+                (20, 200),
+                (10, 150),
+                (5, 100),
+                (3, 80),
+                (2, 40),
+                (1, 20),
+            ):
+                if current_hp < max_hp // divisor:
+                    return power
+            return 20
+
+        max_hp = 300
+        expected = {
+            1: 200,
+            14: 200,
+            15: 150,
+            29: 150,
+            30: 100,
+            59: 100,
+            60: 80,
+            99: 80,
+            100: 40,
+            149: 40,
+            150: 20,
+            300: 20,
+        }
+        for hp, power in expected.items():
+            with self.subTest(hp=hp):
+                self.assertEqual(power, flail_power(hp, max_hp))
 
 
 if __name__ == "__main__":
