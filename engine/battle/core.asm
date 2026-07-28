@@ -359,6 +359,8 @@ MainInBattleLoop:
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
+	inc hl
+	ld [hl], a
 	call SelectEnemyMove
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
