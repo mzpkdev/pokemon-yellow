@@ -1730,15 +1730,15 @@ _DragonbreathDexEntry::
 	dex
 
 _RockTombDexEntry::
-	text "Hurls rocks at the"
-	next "foe and may reduce"
-	next "its SPEED."
+	text "Hurls rocks and"
+	next "always lowers the"
+	next "foe's SPEED."
 	dex
 
 _MudShotDexEntry::
-	text "Hurls mud at the"
-	next "foe and may reduce"
-	next "its SPEED."
+	text "Hurls mud and"
+	next "always lowers the"
+	next "foe's SPEED."
 	dex
 
 _WaterPulseDexEntry::
