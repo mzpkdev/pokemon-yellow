@@ -158,16 +158,16 @@ ENDM
 
 DEF TM01 EQU const_value
 	add_tm MEGA_PUNCH   ; $C9
-	add_tm RAZOR_WIND   ; $CA
+	add_tm X_SCISSOR    ; $CA
 	add_tm SWORDS_DANCE ; $CB
-	add_tm WHIRLWIND    ; $CC
+	add_tm ROOST        ; $CC
 	add_tm MEGA_KICK    ; $CD
 	add_tm TOXIC        ; $CE
 	add_tm HORN_DRILL   ; $CF
 	add_tm BODY_SLAM    ; $D0
 	add_tm TAKE_DOWN    ; $D1
 	add_tm DOUBLE_EDGE  ; $D2
-	add_tm BUBBLEBEAM   ; $D3
+	add_tm WATER_PULSE  ; $D3
 	add_tm WATER_GUN    ; $D4
 	add_tm ICE_BEAM     ; $D5
 	add_tm BLIZZARD     ; $D6
@@ -179,11 +179,11 @@ DEF TM01 EQU const_value
 	add_tm RAGE         ; $DC
 	add_tm MEGA_DRAIN   ; $DD
 	add_tm SOLARBEAM    ; $DE
-	add_tm DRAGON_RAGE  ; $DF
+	add_tm DRAGONBREATH ; $DF
 	add_tm THUNDERBOLT  ; $E0
 	add_tm THUNDER      ; $E1
 	add_tm EARTHQUAKE   ; $E2
-	add_tm FISSURE      ; $E3
+	add_tm ROCK_TOMB    ; $E3
 	add_tm DIG          ; $E4
 	add_tm PSYCHIC_M    ; $E5
 	add_tm TELEPORT     ; $E6
@@ -193,7 +193,7 @@ DEF TM01 EQU const_value
 	add_tm BIDE         ; $EA
 	add_tm METRONOME    ; $EB
 	add_tm SELFDESTRUCT ; $EC
-	add_tm EGG_BOMB     ; $ED
+	add_tm BULLET_SEED  ; $ED
 	add_tm FIRE_BLAST   ; $EE
 	add_tm SWIFT        ; $EF
 	add_tm SKULL_BASH   ; $F0
@@ -202,7 +202,7 @@ DEF TM01 EQU const_value
 	add_tm SKY_ATTACK   ; $F3
 	add_tm REST         ; $F4
 	add_tm THUNDER_WAVE ; $F5
-	add_tm PSYWAVE      ; $F6
+	add_tm SHADOW_BALL  ; $F6
 	add_tm EXPLOSION    ; $F7
 	add_tm ROCK_SLIDE   ; $F8
 	add_tm TRI_ATTACK   ; $F9
@@ -216,6 +216,20 @@ DEF NUM_TM_HM EQU NUM_TMS + NUM_HMS
 ; These fit in 7 bytes, with one unused bit left over.
 DEF __tmhm_value__ = NUM_TM_HM + 1
 DEF UNUSED_TMNUM EQU __tmhm_value__
+DEF RAZOR_WIND_TMNUM  EQU X_SCISSOR_TMNUM
+DEF WHIRLWIND_TMNUM   EQU ROOST_TMNUM
+DEF BUBBLEBEAM_TMNUM  EQU WATER_PULSE_TMNUM
+DEF DRAGON_RAGE_TMNUM EQU DRAGONBREATH_TMNUM
+DEF FISSURE_TMNUM     EQU ROCK_TOMB_TMNUM
+DEF EGG_BOMB_TMNUM    EQU BULLET_SEED_TMNUM
+DEF PSYWAVE_TMNUM     EQU SHADOW_BALL_TMNUM
+DEF TM_RAZOR_WIND  EQU TM_X_SCISSOR
+DEF TM_WHIRLWIND   EQU TM_ROOST
+DEF TM_BUBBLEBEAM  EQU TM_WATER_PULSE
+DEF TM_DRAGON_RAGE EQU TM_DRAGONBREATH
+DEF TM_FISSURE     EQU TM_ROCK_TOMB
+DEF TM_EGG_BOMB    EQU TM_BULLET_SEED
+DEF TM_PSYWAVE     EQU TM_SHADOW_BALL
 
 DEF MAX_HIDDEN_ITEMS EQU 112
 DEF MAX_HIDDEN_COINS EQU 16
