@@ -3596,7 +3596,11 @@ MirrorMoveCheck:
 	jr z, .notDone
 	jp ExecutePlayerMoveDone ; otherwise, we're done if the move missed
 .moveDidNotMiss
+	ld a, 1
+	ld [wDirectDamageForMirrorCoat], a
 	call ApplyAttackToEnemyPokemon
+	xor a
+	ld [wDirectDamageForMirrorCoat], a
 	call PrintCriticalOHKOText
 	callfar DisplayEffectiveness
 	ld a, 1
@@ -5505,6 +5509,9 @@ ApplyAttackToPlayerPokemonDone:
 RecordSpecialDamage:
 	push hl
 	push bc
+	ld a, [wDirectDamageForMirrorCoat]
+	and a
+	jr z, .done
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveType]
@@ -6394,7 +6401,11 @@ EnemyCheckIfMirrorMoveEffect:
 	jr z, .handleExplosionMiss
 	jp ExecuteEnemyMoveDone
 .moveDidNotMiss
+	ld a, 1
+	ld [wDirectDamageForMirrorCoat], a
 	call ApplyAttackToPlayerPokemon
+	xor a
+	ld [wDirectDamageForMirrorCoat], a
 	call PrintCriticalOHKOText
 	callfar DisplayEffectiveness
 	ld a, 1

@@ -1386,6 +1386,7 @@ wPlayerMoveMaxPP:: db
 ; only the user's own record, so stale/shared wDamage cannot be reflected.
 wPlayerLastSpecialDamage:: dw
 wEnemyLastSpecialDamage:: dw
+wDirectDamageForMirrorCoat:: db
 
 wEnemyMonSpecies2:: db
 wBattleMonSpecies2:: db
