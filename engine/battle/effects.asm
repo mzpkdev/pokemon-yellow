@@ -896,7 +896,61 @@ StatModifierSelfDownEffect:
 	ld a, 1
 	ldh [hMultiplicand + 2], a
 .storeStat
-	jp UpdateLoweredStat
+	ldh a, [hProduct + 2]
+	ld [hli], a
+	ldh a, [hProduct + 3]
+	ld [hl], a
+	ldh a, [hWhoseTurn]
+	and a
+	jr nz, .skipBadgeBoost
+	push bc
+	dec hl
+	call .applyRelevantBadgeBoost
+	pop bc
+.skipBadgeBoost
+	pop de
+	pop hl
+	ld b, c
+	inc b
+	push de
+	call PrintStatText
+	pop de
+	ld hl, UsersStatsFellText
+	rst _PrintText
+	ld a, c
+	and a
+	ret nz
+	ldh a, [hWhoseTurn]
+	xor 1
+	ldh [hWhoseTurn], a
+	call HalveAttackDueToBurn
+	ldh a, [hWhoseTurn]
+	xor 1
+	ldh [hWhoseTurn], a
+	ret
+
+.applyRelevantBadgeBoost
+	ld a, c
+	add a
+	inc a
+	ld b, a
+	ld a, [wObtainedBadges]
+.findBadgeBit
+	dec b
+	jr z, .testBadge
+	srl a
+	jr .findBadgeBit
+.testBadge
+	and 1
+	ret z
+	jp ApplyBadgeStatBoosts.applyBoostToStat
+
+UsersStatsFellText:
+	text "<USER>'s"
+	line "@"
+	text_ram wStringBuffer
+	text " fell!"
+	prompt
 
 INCLUDE "data/battle/stat_mod_names.asm"
 

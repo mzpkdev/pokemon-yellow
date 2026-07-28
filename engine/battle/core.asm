@@ -5765,6 +5765,20 @@ AIGetTypeEffectiveness:
 	ld b, [hl]                 ; b = type 1 of player's pokemon
 	inc hl
 	ld c, [hl]                 ; c = type 2 of player's pokemon
+	ld a, [wEnemyMoveNum]
+	cp FREEZE_DRY
+	jr nz, .ordinaryEffectiveness
+	ld a, b
+	cp WATER
+	jr z, .freezeDrySuperEffective
+	ld a, c
+	cp WATER
+	jr nz, .ordinaryEffectiveness
+.freezeDrySuperEffective
+	ld a, SUPER_EFFECTIVE
+	ld [wTypeEffectiveness], a
+	ret
+.ordinaryEffectiveness
 	; initialize to neutral effectiveness
 	ld a, EFFECTIVE
 	ld [wTypeEffectiveness], a
