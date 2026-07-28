@@ -2128,9 +2128,13 @@ wd472:: db
 wd473:: db
 wPikachuCompanionStepCounter:: db
 wd475:: db
-	ds 4
+wPikachuNextGift:: db
+wPikachuGiftCooldown:: db
+wPikachuGiftAlerted:: db
+wPikachuAmbientItem:: db
 wd47a:: db
-	ds 24
+wPikachuAmbientAlerted:: db
+	ds 23
 wd492:: db
 	ds 1
 wSurfingMinigameHiScore:: dw ; little-endian BCD

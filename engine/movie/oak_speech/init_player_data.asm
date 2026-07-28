@@ -17,6 +17,11 @@ InitPlayerData2:
 	xor a
 	ld [wPikachuMood], a ; initialize mood
 	ld [wPikachuCompanionStepCounter], a
+	ld [wPikachuNextGift], a
+	ld [wPikachuGiftCooldown], a
+	ld [wPikachuGiftAlerted], a
+	ld [wPikachuAmbientItem], a
+	ld [wPikachuAmbientAlerted], a
 	ld [wPikachuCompanionQueuedReaction], a
 	ld [wPikachuCompanionIdleCounter], a
 

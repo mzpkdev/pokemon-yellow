@@ -5,7 +5,12 @@ IsPlayerTalkingToPikachu::
 	ldh a, [hSpriteIndex]
 	cp $f
 	ret nz
+	callfar TryPikachuGift
+	jr c, .interactionHandled
+	callfar TryPikachuAmbientFind
+	jr c, .interactionHandled
 	call InitializePikachuTextID
+.interactionHandled
 	xor a
 	ldh [hSpriteIndex], a
 	ld [wd436], a
