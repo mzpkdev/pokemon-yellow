@@ -2144,7 +2144,8 @@ wPikachuGiftAlerted:: db
 wPikachuAmbientItem:: db
 wd47a:: db
 wPikachuAmbientAlerted:: db
-	ds 23
+wStarterCompanionDVs:: dw
+	ds 21
 wd492:: db
 	ds 1
 wSurfingMinigameHiScore:: dw ; little-endian BCD
