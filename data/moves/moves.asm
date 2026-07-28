@@ -197,5 +197,8 @@ Moves:
 	move FREEZE_DRY,   FREEZE_SIDE_EFFECT,           70, ICE,          100, 15
 	move MIRROR_COAT,  MIRROR_COAT_EFFECT,             1, PSYCHIC_TYPE, 100, 20
 	move FLAIL,        FLAIL_EFFECT,                 20, NORMAL,       100, 15
+	move DRAIN_PUNCH,  DRAIN_HP_EFFECT,              75, FIGHTING,     100, 10
+	move CHARM,        ATTACK_DOWN2_EFFECT,            0, BIRD,         100, 20
+	move BODY_PRESS,   NO_ADDITIONAL_EFFECT,          80, FIGHTING,     100, 10
 	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,         100, 10
 	assert_table_length NUM_ATTACKS

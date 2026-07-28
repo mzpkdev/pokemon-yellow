@@ -15,6 +15,7 @@ MovedexOrder:
 	db BIND
 	db BITE
 	db BLIZZARD
+	db BODY_PRESS
 	db BODY_SLAM
 	db BONE_CLUB
 	db BONEMERANG
@@ -22,6 +23,7 @@ MovedexOrder:
 	db BUBBLE
 	db BUBBLEBEAM
 	db BULLET_SEED
+	db CHARM
 	db CLAMP
 	db COMET_PUNCH
 	db CONFUSE_RAY
@@ -41,6 +43,7 @@ MovedexOrder:
 	db DOUBLE_EDGE
 	db DRAGONBREATH
 	db DRAGON_RAGE 
+	db DRAIN_PUNCH
 	db DREAM_EATER
 	db DRILL_PECK
 	db DRILL_RUN

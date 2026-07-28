@@ -192,6 +192,9 @@
 	const FREEZE_DRY
 	const MIRROR_COAT
 	const FLAIL
+	const DRAIN_PUNCH
+	const CHARM
+	const BODY_PRESS
 	const STRUGGLE
 DEF NUM_ATTACKS EQU const_value - 1
 

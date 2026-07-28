@@ -187,6 +187,9 @@ MoveDescriptions::
 	dw FreezeDryDescription
 	dw MirrorCoatDescription
 	dw FlailDescription
+	dw DrainPunchDescription
+	dw CharmDescription
+	dw BodyPressDescription
 	dw StruggleDescription
 	assert_table_length NUM_ATTACKS
 PoundDescription:
@@ -747,6 +750,15 @@ MirrorCoatDescription:
 FlailDescription:
 	db   "Stronger when the"
 	feed "user has less HP.@"
+DrainPunchDescription:
+	db   "An attack that"
+	feed "absorbs half damage.@"
+CharmDescription:
+	db   "Sharply reduces"
+	feed "the foe's ATTACK.@"
+BodyPressDescription:
+	db   "Uses DEFENSE to"
+	feed "calculate damage.@"
 StruggleDescription:
 	db   "Used only if your"
 	feed "PP is exhausted.@"

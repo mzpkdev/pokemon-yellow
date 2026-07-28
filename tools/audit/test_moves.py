@@ -86,6 +86,7 @@ class MoveTableTests(unittest.TestCase):
         self.assertIn("CalculateFlailBasePower:", core)
         self.assertIn("HandleMirrorCoatMove:", core)
         self.assertIn("RecordSpecialDamage:", core)
+        self.assertGreaterEqual(core.count("cp BODY_PRESS"), 4)
         self.assertIn("wPlayerLastSpecialDamage:: dw", wram)
         self.assertIn("wEnemyLastSpecialDamage:: dw", wram)
         self.assertIn("wDirectDamageForMirrorCoat:: db", wram)

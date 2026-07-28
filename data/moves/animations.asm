@@ -186,6 +186,9 @@ AttackAnimationPointers:
 	dw IceBeamAnim
 	dw BarrierAnim
 	dw StruggleAnim
+	dw MegaDrainAnim
+	dw TailWhipAnim
+	dw SubmissionAnim
 	dw StruggleAnim
 	assert_table_length NUM_ATTACKS
 	dw ShowPicAnim

@@ -212,6 +212,7 @@ RhydonEvosMoves:
 	db 19, ROCK_THROW
 	db 24, MUD_SHOT
 	db 29, ROCK_TOMB
+	db 35, BODY_PRESS
 	db 39, ROCK_SLIDE
 	db 44, EARTHQUAKE
 	db 49, TAKE_DOWN
@@ -251,6 +252,7 @@ ClefairyEvosMoves:
 ; Learnset
 	db 13, DOUBLESLAP
 	db 19, MINIMIZE
+	db 22, CHARM
 	db 26, DEFENSE_CURL
 	db 30, METRONOME
 	db 32, SING
@@ -466,6 +468,7 @@ RhyhornEvosMoves:
 	db 19, ROCK_THROW
 	db 24, MUD_SHOT
 	db 29, ROCK_TOMB
+	db 35, BODY_PRESS
 	db 39, ROCK_SLIDE
 	db 44, EARTHQUAKE
 	db 49, TAKE_DOWN
@@ -685,6 +688,7 @@ OnixEvosMoves:
 	db 25, ROCK_TOMB
 	db 29, HARDEN
 	db 31, SLAM
+	db 34, BODY_PRESS
 	db 37, ROCK_SLIDE
 	db 43, EARTHQUAKE
 	db 48, BIND
@@ -761,6 +765,7 @@ GravelerEvosMoves:
 	db 21, DIG
 	db 26, ROCK_TOMB
 	db 31, SELFDESTRUCT
+	db 36, BODY_PRESS
 	db 40, ROCK_SLIDE
 	db 45, EARTHQUAKE
 	db 48, EXPLOSION
@@ -791,6 +796,7 @@ MachokeEvosMoves:
 	db 15, MACH_PUNCH
 	db 19, SEISMIC_TOSS
 	db 28, SUBMISSION
+	db 31, DRAIN_PUNCH
 	db 33, BODY_SLAM
 	db 37, COUNTER
 	db 41, KARATE_CHOP
@@ -833,6 +839,7 @@ HitmonchanEvosMoves:
 	db 37, THUNDERPUNCH
 	db 40, DIZZY_PUNCH
 	db 42, SUBMISSION
+	db 45, DRAIN_PUNCH
 	db 48, MEGA_PUNCH
 	db 53, COUNTER
 	db 0
@@ -904,6 +911,7 @@ GolemEvosMoves:
 	db 21, DIG
 	db 26, ROCK_TOMB
 	db 31, SELFDESTRUCT
+	db 36, BODY_PRESS
 	db 40, ROCK_SLIDE
 	db 45, EARTHQUAKE
 	db 48, EXPLOSION
@@ -973,6 +981,7 @@ KoffingEvosMoves:
 	db 33, SLUDGE
 	db 38, AMNESIA
 	db 40, SELFDESTRUCT
+	db 42, BODY_PRESS
 	db 45, HAZE
 	db 48, EXPLOSION
 	db 0
@@ -1259,6 +1268,7 @@ VulpixEvosMoves:
 	db 7, QUICK_ATTACK
 	db 13, ROAR
 	db 16, CONFUSE_RAY
+	db 21, CHARM
 	db 25, WILL_O_WISP
 	db 32, FLAMETHROWER
 	db 37, NIGHT_SHADE
@@ -1491,6 +1501,7 @@ JigglypuffEvosMoves:
 	db 5, DEFENSE_CURL
 	db 14, DISABLE
 	db 16, DOUBLESLAP
+	db 20, CHARM
 	db 24, REST
 	db 30, BODY_SLAM
 	db 38, LOVELY_KISS,
@@ -1524,6 +1535,7 @@ EeveeEvosMoves:
 	db 10, QUICK_ATTACK
 	db 14, GROWL
 	db 17, DOUBLE_KICK
+	db 18, CHARM
 	db 22, HEADBUTT
 	db 30, FOCUS_ENERGY
 	db 36, JUMP_KICK
@@ -1588,6 +1600,7 @@ MachopEvosMoves:
 	db 15, MACH_PUNCH
 	db 19, SEISMIC_TOSS
 	db 28, SUBMISSION
+	db 31, DRAIN_PUNCH
 	db 33, TAKE_DOWN
 	db 37, COUNTER
 	db 45, KARATE_CHOP
@@ -1650,6 +1663,7 @@ PoliwhirlEvosMoves:
 	db 25, KARATE_CHOP
 	db 30, ICE_PUNCH
 	db 35, BODY_SLAM
+	db 39, DRAIN_PUNCH
 	db 43, HYPNOSIS
 	db 48, AMNESIA
 	db 53, HYDRO_PUMP
@@ -1827,6 +1841,7 @@ MachampEvosMoves:
 	db 15, MACH_PUNCH
 	db 19, SEISMIC_TOSS
 	db 28, SUBMISSION
+	db 31, DRAIN_PUNCH
 	db 33, TAKE_DOWN
 	db 37, COUNTER
 	db 45, SUPERPOWER
@@ -1970,6 +1985,7 @@ CloysterEvosMoves:
 	db 25, ICICLE_SPEAR
 	db 35, CLAMP
 	db 40, ICE_BEAM
+	db 43, BODY_PRESS
 	db 46, SPIKE_CANNON
 	db 50, BLIZZARD
 	db 0
@@ -2017,6 +2033,7 @@ WeezingEvosMoves:
 	db 33, SLUDGE
 	db 38, AMNESIA
 	db 40, SELFDESTRUCT
+	db 42, BODY_PRESS
 	db 45, HAZE
 	db 48, EXPLOSION
 	db 0
@@ -2337,6 +2354,7 @@ GeodudeEvosMoves:
 	db 21, DIG
 	db 26, ROCK_TOMB
 	db 31, SELFDESTRUCT
+	db 36, BODY_PRESS
 	db 40, ROCK_SLIDE
 	db 45, EARTHQUAKE
 	db 48, EXPLOSION

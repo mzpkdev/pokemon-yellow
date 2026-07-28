@@ -1878,6 +1878,24 @@ _FlailDexEntry::
 	next "user's HP falls."
 	dex
 
+_DrainPunchDexEntry::
+	text "A draining punch"
+	next "that restores half"
+	next "the damage dealt."
+	dex
+
+_CharmDexEntry::
+	text "Charms the target"
+	next "to sharply reduce"
+	next "its ATTACK."
+	dex
+
+_BodyPressDexEntry::
+	text "The user attacks"
+	next "using its DEFENSE"
+	next "instead of ATTACK."
+	dex
+
 _StruggleDexEntry::
 	text "A last ditch"
 	next "move only usable"

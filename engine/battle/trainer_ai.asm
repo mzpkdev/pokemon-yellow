@@ -488,6 +488,9 @@ AIMoveChoiceModification3:
 	jr nc, .notFlail
 	dec [hl]
 .notFlail
+	ld a, [wEnemyMoveNum]
+	cp BODY_PRESS
+	call z, EncourageBodyPressIfDefenseHigher
 	ld a, [wEnemyMovePower]
 	and a
 	jr z, .nextMove ; ignores moves that do no damage (status moves), as we're only concerned with damaging moves for this modifier
@@ -592,6 +595,26 @@ EncourageDrainingMoveIfLowHealth:
 	call AICheckIfHPBelowFractionWrapped
 	ret nc
 	dec [hl] ; encourage the draining move if enemy has more than half health gone
+	ret
+
+EncourageBodyPressIfDefenseHigher:
+	push bc
+	ld a, [wEnemyMonAttack]
+	ld b, a
+	ld a, [wEnemyMonDefense]
+	cp b
+	jr c, .done
+	jr nz, .encourage
+	ld a, [wEnemyMonAttack + 1]
+	ld b, a
+	ld a, [wEnemyMonDefense + 1]
+	cp b
+	jr c, .done
+	jr z, .done
+.encourage
+	dec [hl]
+.done
+	pop bc
 	ret
 
 ; PureRGBnote: ADDED: AKA the "Apply Status and Heal when needed" subroutine
