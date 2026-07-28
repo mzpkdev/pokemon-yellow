@@ -17,6 +17,8 @@ ModifyPikachuHappiness::
 	ret nc
 
 .proceed
+	ld a, [wPikachuHappiness]
+	push af
 	push de
 	; Divide [wPikachuHappiness] by 100.  Hold the integer part in e.
 	ld e, $0
@@ -58,6 +60,10 @@ ModifyPikachuHappiness::
 	ld [wPikachuHappiness], a
 
 	; Restore d and apply the corresponding additive mood change.
+	pop de
+	pop bc
+	push de
+	call .queueHappinessTierReaction
 	pop de
 	ld a, d
 	cp PIKAHAPPY_DEPOSITED
@@ -101,6 +107,60 @@ ModifyPikachuHappiness::
 .traded
 	xor a
 	ld [wPikachuMood], a
+	ret
+
+.queueHappinessTierReaction
+	; Walking changes are deliberately quiet, and a traded Pikachu cannot alert us.
+	ld a, d
+	cp PIKAHAPPY_WALKING
+	ret z
+	cp PIKAHAPPY_TRADE
+	ret z
+	; b contains the old happiness value.
+	ld a, b
+	call .getHappinessTier
+	ld c, a
+	ld a, [wPikachuHappiness]
+	call .getHappinessTier
+	cp c
+	ret z
+	ld b, PIKACOMPANION_REACTION_HEART
+	jr nc, .tryQueueTierReaction
+	ld b, PIKACOMPANION_REACTION_BOLT
+.tryQueueTierReaction
+	ld a, [wPikachuCompanionQueuedReaction]
+	cp PIKACOMPANION_REACTION_GYM_VICTORY
+	ret z
+	cp PIKACOMPANION_REACTION_GIFT_READY
+	ret z
+	cp PIKACOMPANION_REACTION_PORTRAIT_READY
+	ret z
+	ld a, b
+	ld [wPikachuCompanionQueuedReaction], a
+	ret
+
+.getHappinessTier
+	ld b, 0
+	cp 51
+	jr c, .gotTier
+	inc b
+	cp 101
+	jr c, .gotTier
+	inc b
+	cp 131
+	jr c, .gotTier
+	inc b
+	cp 161
+	jr c, .gotTier
+	inc b
+	cp 201
+	jr c, .gotTier
+	inc b
+	cp 251
+	jr c, .gotTier
+	inc b
+.gotTier
+	ld a, b
 	ret
 
 HappinessChangeTable:
@@ -201,6 +261,7 @@ UpdatePikachuCompanionOnStep::
 	ret
 
 UpdatePikachuCompanionIdle::
+	call .queuePendingPortraitAlert
 	ldh a, [hJoyHeld]
 	ld b, a
 	ldh a, [hJoyPressed]
@@ -244,7 +305,7 @@ UpdatePikachuCompanionIdle::
 	cp $ff
 	jp z, .resetIdle
 	callfar IsStarterPikachuInOurParty
-	jr nc, .resetIdle
+	jp nc, .resetIdle
 
 	ld a, [wPikachuCompanionQueuedReaction]
 	ld b, a
@@ -262,6 +323,8 @@ UpdatePikachuCompanionIdle::
 	jr z, .giftReady
 	cp PIKACOMPANION_REACTION_AMBIENT_FIND
 	jr z, .ambientFind
+	cp PIKACOMPANION_REACTION_PORTRAIT_READY
+	jr z, .portraitReady
 	cp PIKACOMPANION_REACTION_HEART
 	ret nz
 	ld b, HEART_BUBBLE
@@ -292,6 +355,50 @@ UpdatePikachuCompanionIdle::
 	ld [wPikachuAmbientAlerted], a
 	ld b, QUESTION_BUBBLE
 	jr .facePlayer
+
+.portraitReady
+	ld hl, wd49c
+	set PIKACHU_PENDING_EMOTION_ALERTED_F, [hl]
+	ld a, [hl]
+	and PIKACHU_PENDING_EMOTION_MASK
+	cp PIKACHU_PENDING_CAUGHT_MON
+	jr z, .portraitSmile
+	cp PIKACHU_PENDING_FISHING
+	jr z, .portraitFish
+	cp PIKACHU_PENDING_EVOLUTION_REFUSAL
+	jr z, .portraitRefusal
+	cp PIKACHU_PENDING_ELECTRIC_MOVE
+	jr z, .portraitElectric
+	ld b, EXCLAMATION_BUBBLE
+	jr .facePlayer
+.portraitSmile
+	ld b, SMILE_BUBBLE
+	jr .facePlayer
+.portraitFish
+	ld b, FISH_BUBBLE
+	jr .facePlayer
+.portraitRefusal
+	callfar StarterPikachuEmotionCommand_turnawayfromplayer
+	ld b, EXCLAMATION_BUBBLE
+	jr .showBubble
+.portraitElectric
+	ld b, BOLT_BUBBLE
+	jr .facePlayer
+
+.queuePendingPortraitAlert
+	ld a, [wd49c]
+	bit PIKACHU_PENDING_EMOTION_ALERTED_F, a
+	ret nz
+	and PIKACHU_PENDING_EMOTION_MASK
+	ret z
+	ld a, [wPikachuCompanionQueuedReaction]
+	cp PIKACOMPANION_REACTION_GYM_VICTORY
+	ret z
+	cp PIKACOMPANION_REACTION_GIFT_READY
+	ret z
+	ld a, PIKACOMPANION_REACTION_PORTRAIT_READY
+	ld [wPikachuCompanionQueuedReaction], a
+	ret
 
 .resetIdle
 	xor a
