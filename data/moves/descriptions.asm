@@ -679,11 +679,11 @@ DragonbreathDescription:
 	db   "May paralyze the"
 	feed "foe with a blast.@"
 RockTombDescription:
-	db   "Hurls rocks. May"
-	feed "reduce SPEED.@"
+	db   "Hurls rocks and"
+	feed "reduces SPEED.@"
 MudShotDescription:
-	db   "Hurls mud. May"
-	feed "reduce SPEED.@"
+	db   "Hurls mud and"
+	feed "reduces SPEED.@"
 WaterPulseDescription:
 	db   "A pulsing blast"
 	feed "that may confuse.@"
