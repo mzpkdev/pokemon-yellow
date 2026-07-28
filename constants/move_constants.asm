@@ -180,6 +180,16 @@
 	const BULLET_SEED
 	const ROOST
 	const SYNTHESIS
+	const MACH_PUNCH
+	const AQUA_JET
+	const EXTREMESPEED
+	const DRILL_RUN
+	const AIR_CUTTER
+	const WILL_O_WISP
+	const SUPERPOWER
+	const BRAVE_BIRD
+	const FLARE_BLITZ
+	const FREEZE_DRY
 	const STRUGGLE
 DEF NUM_ATTACKS EQU const_value - 1
 

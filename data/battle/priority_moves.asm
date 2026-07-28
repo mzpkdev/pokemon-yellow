@@ -5,4 +5,7 @@ PriorityMovesList:
     db COUNTER,        1
     db QUICK_ATTACK,   8
     db TRANSFORM,      8
+    db MACH_PUNCH,     8
+    db AQUA_JET,       8
+    db EXTREMESPEED,   9
     db -1 ; end

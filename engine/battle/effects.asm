@@ -803,6 +803,157 @@ PrintStatText:
 	ld bc, $a
 	jp CopyData
 
+AttackDefenseSelfDownEffect:
+	ld de, wPlayerMoveEffect
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .lowerStats
+	ld de, wEnemyMoveEffect
+.lowerStats
+	ld a, ATTACK_SELFDOWN1
+	ld [de], a
+	push de
+	call StatModifierSelfDownEffect
+	pop de
+	ld a, DEFENSE_SELFDOWN1
+	ld [de], a
+	push de
+	call StatModifierSelfDownEffect
+	pop de
+	ld a, ATTACK_DEFENSE_SELFDOWN_EFFECT
+	ld [de], a
+	ret
+
+StatModifierSelfDownEffect:
+	ld hl, wPlayerMonStatMods
+	ld de, wPlayerMoveEffect
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .getStat
+	ld hl, wEnemyMonStatMods
+	ld de, wEnemyMoveEffect
+.getStat
+	ld a, [de]
+	sub ATTACK_SELFDOWN1
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld b, [hl]
+	dec b
+	jp z, CantLowerAnymore
+	ld [hl], b
+	push hl
+	push de
+	ld hl, wBattleMonAttack + 1
+	ld de, wPlayerMonUnmodifiedAttack
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .pointToStat
+	ld hl, wEnemyMonAttack + 1
+	ld de, wEnemyMonUnmodifiedAttack
+.pointToStat
+	push bc
+	sla c
+	ld b, 0
+	add hl, bc
+	ld a, c
+	add e
+	ld e, a
+	jr nc, .noCarry
+	inc d
+.noCarry
+	pop bc
+	push hl
+	push bc
+	ld hl, StatModifierRatios
+	dec b
+	sla b
+	ld c, b
+	ld b, 0
+	add hl, bc
+	pop bc
+	xor a
+	ldh [hMultiplicand], a
+	ld a, [de]
+	ldh [hMultiplicand + 1], a
+	inc de
+	ld a, [de]
+	ldh [hMultiplicand + 2], a
+	ld a, [hli]
+	ldh [hMultiplier], a
+	call Multiply
+	ld a, [hl]
+	ldh [hDivisor], a
+	ld b, 4
+	call Divide
+	pop hl
+	ldh a, [hProduct + 3]
+	ld b, a
+	ldh a, [hProduct + 2]
+	or b
+	jr nz, .storeStat
+	ldh [hMultiplicand + 1], a
+	ld a, 1
+	ldh [hMultiplicand + 2], a
+.storeStat
+	ldh a, [hProduct + 2]
+	ld [hli], a
+	ldh a, [hProduct + 3]
+	ld [hl], a
+	ldh a, [hWhoseTurn]
+	and a
+	jr nz, .skipBadgeBoost
+	push bc
+	dec hl
+	call .applyRelevantBadgeBoost
+	pop bc
+.skipBadgeBoost
+	pop de
+	pop hl
+	ld b, c
+	inc b
+	push de
+	call PrintStatText
+	pop de
+	ld hl, UsersStatsFellText
+	rst _PrintText
+	ld a, c
+	and a
+	ret nz
+	ldh a, [hWhoseTurn]
+	xor 1
+	ldh [hWhoseTurn], a
+	call HalveAttackDueToBurn
+	ldh a, [hWhoseTurn]
+	xor 1
+	ldh [hWhoseTurn], a
+	ret
+
+.applyRelevantBadgeBoost
+	; Reapply only the badge boost for the stat just recalculated.
+	; Applying all badge boosts here would compound them once per self-drop.
+	ld a, c
+	add a
+	inc a
+	ld b, a
+	ld a, [wObtainedBadges]
+.findBadgeBit
+	dec b
+	jr z, .testBadge
+	srl a
+	jr .findBadgeBit
+.testBadge
+	and 1
+	ret z
+	jp ApplyBadgeStatBoosts.applyBoostToStat
+
+UsersStatsFellText:
+	text "<USER>'s"
+	line "@"
+	text_ram wStringBuffer
+	text " fell!"
+	prompt
+
 INCLUDE "data/battle/stat_mod_names.asm"
 
 INCLUDE "data/battle/stat_modifiers.asm"
@@ -1233,6 +1384,13 @@ ConfusionEffectFailed:
 
 ParalyzeEffect:
 	jpfar ParalyzeEffect_
+
+BurnEffect:
+	jpfar BurnEffect_
+
+RecoilBurnSideEffect:
+	call RecoilEffect
+	jpfar BurnSideEffect_
 
 SubstituteEffect:
 	jpfar SubstituteEffect_
