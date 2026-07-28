@@ -444,6 +444,9 @@ INCLUDE "engine/pikachu/pikachu_movement.asm"
 INCLUDE "engine/pikachu/pikachu_pic_animation.asm"
 INCLUDE "engine/debug/debug_menu.asm"
 
+SECTION "Pikachu Gifts", ROMX
+
+INCLUDE "engine/pikachu/pikachu_gifts.asm"
 
 SECTION "bank40", ROMX, BANK[$40]
 

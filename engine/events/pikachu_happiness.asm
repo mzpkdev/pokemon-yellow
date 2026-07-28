@@ -138,8 +138,19 @@ UpdatePikachuCompanionOnStep::
 	callfar IsStarterPikachuInOurParty
 	ret nc
 
+	ld hl, wPikachuGiftCooldown
+	ld a, [hl]
+	and a
+	jr z, .giftCooldownDone
+	dec [hl]
+.giftCooldownDone
+
+	callfar QueuePikachuGiftAlert
+
 	ld hl, wPikachuCompanionStepCounter
 	inc [hl]
+	callfar UpdatePikachuAmbientFind
+	ld hl, wPikachuCompanionStepCounter
 	ld a, [hl]
 	and $7
 	call z, .driftMoodTowardNeutral
@@ -247,6 +258,10 @@ UpdatePikachuCompanionIdle::
 	jr z, .smile
 	cp PIKACOMPANION_REACTION_GYM_VICTORY
 	jr z, .gymVictory
+	cp PIKACOMPANION_REACTION_GIFT_READY
+	jr z, .giftReady
+	cp PIKACOMPANION_REACTION_AMBIENT_FIND
+	jr z, .ambientFind
 	cp PIKACOMPANION_REACTION_HEART
 	ret nz
 	ld b, HEART_BUBBLE
@@ -267,6 +282,16 @@ UpdatePikachuCompanionIdle::
 .gymVictory
 	ldpikaemotion e, PikachuEmotion34
 	jpfar PlaySpecificPikachuEmotion
+.giftReady
+	ld a, 1
+	ld [wPikachuGiftAlerted], a
+	ld b, EXCLAMATION_BUBBLE
+	jr .facePlayer
+.ambientFind
+	ld a, 1
+	ld [wPikachuAmbientAlerted], a
+	ld b, QUESTION_BUBBLE
+	jr .facePlayer
 
 .resetIdle
 	xor a

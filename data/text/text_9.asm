@@ -483,4 +483,62 @@ _Thanks4Text::
 	line "that helped."
 	done
 
+_PikachuFoundGiftText::
+	text "PIKACHU is"
+	line "holding something!"
+	prompt
 
+_PikachuAmbientFoundText::
+	text "PIKACHU found"
+	line "something while"
+	cont "traveling!"
+	prompt
+
+_PikachuGiftAfterBrockText::
+	text "PIKACHU seems"
+	line "worried about the"
+	cont "cave ahead..."
+	prompt
+
+_PikachuGiftAfterSurgeText::
+	text "PIKACHU remembers"
+	line "the long trip"
+	cont "through MT.MOON..."
+	prompt
+
+_PikachuGiftAfterPokemonTowerText::
+	text "PIKACHU senses"
+	line "a tough fight"
+	cont "lies ahead..."
+	prompt
+
+_PikachuGiftBeforePokemonLeagueText::
+	text "PIKACHU has been"
+	line "saving something"
+	cont "for this moment..."
+	prompt
+
+_PikachuReceivedGiftText::
+	text "PIKACHU gave"
+	line "<PLAYER>"
+	cont "@"
+	text_ram wStringBuffer
+	text "!"
+	done
+
+_PikachuReceivedMultipleGiftsText::
+	text "PIKACHU gave"
+	line "<PLAYER>"
+	cont "@"
+	text_ram wStringBuffer
+	text " ×"
+	text_decimal wItemQuantity, 1, 3
+	text "!"
+	done
+
+_PikachuGiftBagFullText::
+	text "But the BAG is"
+	line "full!"
+	para "PIKACHU will hold"
+	line "onto it."
+	done
