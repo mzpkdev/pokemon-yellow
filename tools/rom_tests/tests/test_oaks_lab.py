@@ -14,6 +14,34 @@ from tools.rom_tests.scenarios.oaks_lab import (
 
 SNAPSHOTS = Path(__file__).resolve().parents[1] / "snapshots"
 
+EVENT_BEAT_BROCK = 0x77
+EVENT_BEAT_LT_SURGE = 0x167
+PIKACOMPANION_REACTION_GIFT_READY = 5
+PIKACOMPANION_REACTION_AMBIENT_FIND = 6
+POTION = 0x14
+
+
+def _set_event(emulator: Emulator, event: int) -> None:
+    address = emulator.symbols["wEventFlags"] + event // 8
+    emulator.pyboy.memory[address] |= 1 << (event % 8)
+
+
+def _clear_event(emulator: Emulator, event: int) -> None:
+    address = emulator.symbols["wEventFlags"] + event // 8
+    emulator.pyboy.memory[address] &= ~(1 << (event % 8))
+
+
+def _take_step(emulator: Emulator, button: str, description: str) -> None:
+    coordinate = "wXCoord" if button in ("left", "right") else "wYCoord"
+    start = emulator.read(coordinate)
+    for _ in range(3):
+        emulator.pyboy.button(button, delay=2)
+        for _ in range(120):
+            emulator.tick()
+            if emulator.read(coordinate) != start:
+                return
+    raise AssertionError(f"Timed out waiting for {description}")
+
 
 def test_receive_pikachu_battle_rival_and_leave_lab(emulator: Emulator) -> None:
     complete_oaks_lab_intro(emulator)
@@ -65,6 +93,76 @@ def test_companion_step_rollover_updates_happiness_and_mood(
     assert emulator.read("wPikachuCompanionStepCounter") == 0
 
 
+def test_gift_cooldown_counts_only_eligible_steps(emulator: Emulator) -> None:
+    complete_oaks_lab_intro(emulator)
+    emulator.write("wPikachuHappiness", 80)
+    _set_event(emulator, EVENT_BEAT_BROCK)
+    emulator.write("wPikachuGiftCooldown", 128)
+    emulator.write("wPikachuCompanionStepCounter", 1)
+    emulator.write("wWalkBikeSurfState", 0)
+
+    _take_step(emulator, "left", "gift cooldown walking step")
+    assert emulator.read("wPikachuGiftCooldown") == 127
+    assert emulator.read("wPikachuCompanionQueuedReaction") == 0
+
+    emulator.write("wWalkBikeSurfState", 1)
+    _take_step(emulator, "right", "gift cooldown bicycle step")
+    assert emulator.read("wPikachuGiftCooldown") == 127
+    assert emulator.read("wPikachuCompanionQueuedReaction") == 0
+
+    emulator.write("wWalkBikeSurfState", 0)
+    emulator.write("wPikachuGiftCooldown", 1)
+    _take_step(emulator, "left", "gift cooldown final walking step")
+    assert emulator.read("wPikachuGiftCooldown") == 0
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_GIFT_READY
+    )
+
+
+def test_ordered_gift_eligibility_and_alert_priority(emulator: Emulator) -> None:
+    complete_oaks_lab_intro(emulator)
+    emulator.write("wPikachuHappiness", 79)
+    emulator.write("wPikachuCompanionStepCounter", 1)
+    emulator.write("wPikachuNextGift", 0)
+    emulator.write("wPikachuAmbientItem", POTION)
+    emulator.write(
+        "wPikachuCompanionQueuedReaction",
+        PIKACOMPANION_REACTION_AMBIENT_FIND,
+    )
+    _set_event(emulator, EVENT_BEAT_LT_SURGE)
+    _clear_event(emulator, EVENT_BEAT_BROCK)
+
+    _take_step(emulator, "left", "blocked first gift step")
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_AMBIENT_FIND
+    )
+
+    _set_event(emulator, EVENT_BEAT_BROCK)
+    _take_step(emulator, "right", "first gift below happiness threshold")
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_AMBIENT_FIND
+    )
+
+    emulator.write("wPikachuHappiness", 80)
+    _take_step(emulator, "left", "eligible first gift step")
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_GIFT_READY
+    )
+
+    emulator.write("wPikachuCompanionQueuedReaction", 0)
+    emulator.write("wPikachuNextGift", 1)
+    emulator.write("wPikachuHappiness", 130)
+    _take_step(emulator, "right", "eligible second gift step")
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_GIFT_READY
+    )
+
+
 def test_queued_companion_reaction_waits_for_idle(emulator: Emulator) -> None:
     complete_oaks_lab_intro(emulator)
     emulator.write("wJoyIgnore", 0)
@@ -90,3 +188,41 @@ def test_queued_companion_reaction_waits_for_idle(emulator: Emulator) -> None:
 
     assert emulator.read("wPikachuCompanionQueuedReaction") == 0
     assert emulator.read("wPikachuCompanionIdleCounter") == 0
+
+
+def test_gift_and_ambient_alerts_wait_for_idle_and_mark_announced(
+    emulator: Emulator,
+) -> None:
+    complete_oaks_lab_intro(emulator)
+    emulator.write("wJoyIgnore", 0)
+    emulator.write("wStatusFlags5", 0)
+
+    emulator.write(
+        "wPikachuCompanionQueuedReaction",
+        PIKACOMPANION_REACTION_GIFT_READY,
+    )
+    emulator.write("wPikachuCompanionIdleCounter", 30)
+    emulator.pyboy.button("b", delay=2)
+    emulator.tick(3)
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_GIFT_READY
+    )
+    assert emulator.read("wPikachuCompanionIdleCounter") == 0
+    assert emulator.read("wPikachuGiftAlerted") == 0
+
+    emulator.write("wPikachuCompanionIdleCounter", 59)
+    emulator.tick(180)
+    assert emulator.read("wPikachuCompanionQueuedReaction") == 0
+    assert emulator.read("wPikachuCompanionIdleCounter") == 0
+    assert emulator.read("wPikachuGiftAlerted") == 1
+
+    emulator.write(
+        "wPikachuCompanionQueuedReaction",
+        PIKACOMPANION_REACTION_AMBIENT_FIND,
+    )
+    emulator.write("wPikachuCompanionIdleCounter", 59)
+    emulator.tick(180)
+    assert emulator.read("wPikachuCompanionQueuedReaction") == 0
+    assert emulator.read("wPikachuCompanionIdleCounter") == 0
+    assert emulator.read("wPikachuAmbientAlerted") == 1
