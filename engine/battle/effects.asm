@@ -930,6 +930,8 @@ StatModifierSelfDownEffect:
 	ret
 
 .applyRelevantBadgeBoost
+	; Reapply only the badge boost for the stat just recalculated.
+	; Applying all badge boosts here would compound them once per self-drop.
 	ld a, c
 	add a
 	inc a
