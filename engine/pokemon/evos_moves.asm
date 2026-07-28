@@ -370,7 +370,7 @@ LearnMoveFromLevelUp:
 	cp THUNDER
 	jr nz, .movesloop_done
 .foundThunderOrThunderbolt
-	ld a, PIKACHU_PENDING_ELECTRIC_MOVE
+	ld e, PIKACHU_PENDING_ELECTRIC_MOVE
 	callfar SetPendingPikachuEmotion
 .movesloop_done
 	pop hl

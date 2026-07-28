@@ -581,7 +581,7 @@ ItemUseBall:
 	predef ShowPokedexData
 
 .skipShowingPokedexData
-	ld a, PIKACHU_PENDING_CAUGHT_MON
+	ld e, PIKACHU_PENDING_CAUGHT_MON
 	callfar SetPendingPikachuEmotion
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH ; is party full?
@@ -846,7 +846,7 @@ ItemUseEvoStone:
 	call GetPartyMonName
 	ld hl, RefusingText
 	rst _PrintText
-	ld a, PIKACHU_PENDING_EVOLUTION_REFUSAL
+	ld e, PIKACHU_PENDING_EVOLUTION_REFUSAL
 	callfar SetPendingPikachuEmotion
 	jr .canceledItemUse
 
@@ -2156,7 +2156,7 @@ FishingInit:
 	rst _PrintText
 	ld a, SFX_HEAL_AILMENT
 	rst _PlaySound
-	ld a, PIKACHU_PENDING_FISHING
+	ld e, PIKACHU_PENDING_FISHING
 	callfar SetPendingPikachuEmotion
 	ld c, 40
 	rst _DelayFrames
@@ -2559,7 +2559,7 @@ ItemUseTMHM:
 	cp TM_THUNDER ; are we teaching thunder then?
 	jr nz, .notTeachingThunderboltOrThunderToPikachu
 .teachingThunderboltOrThunderToPlayerPikachu
-	ld a, PIKACHU_PENDING_ELECTRIC_MOVE
+	ld e, PIKACHU_PENDING_ELECTRIC_MOVE
 	callfar SetPendingPikachuEmotion
 .notTeachingThunderboltOrThunderToPikachu
 	pop af

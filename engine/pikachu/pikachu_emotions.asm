@@ -251,6 +251,7 @@ PlaySpecificPikachuEmotion:
 	jr load_expression
 
 SetPendingPikachuEmotion::
+	ld a, e
 	and PIKACHU_PENDING_EMOTION_MASK
 	ld [wd49c], a
 	ret
