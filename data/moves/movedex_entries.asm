@@ -166,6 +166,16 @@ MovedexEntryPointers:
 	dw SuperFangDexEntry
 	dw SlashDexEntry
 	dw SubstituteDexEntry
+	dw XScissorDexEntry
+	dw ShadowBallDexEntry
+	dw DragonbreathDexEntry
+	dw RockTombDexEntry
+	dw MudShotDexEntry
+	dw WaterPulseDexEntry
+	dw IcicleSpearDexEntry
+	dw BulletSeedDexEntry
+	dw RoostDexEntry
+	dw SynthesisDexEntry
 	dw StruggleDexEntry
 	assert_table_length NUM_ATTACKS
 
@@ -823,6 +833,46 @@ SlashDexEntry:
 
 SubstituteDexEntry:
 	text_far _SubstituteDexEntry
+	text_end
+
+XScissorDexEntry:
+	text_far _XScissorDexEntry
+	text_end
+
+ShadowBallDexEntry:
+	text_far _ShadowBallDexEntry
+	text_end
+
+DragonbreathDexEntry:
+	text_far _DragonbreathDexEntry
+	text_end
+
+RockTombDexEntry:
+	text_far _RockTombDexEntry
+	text_end
+
+MudShotDexEntry:
+	text_far _MudShotDexEntry
+	text_end
+
+WaterPulseDexEntry:
+	text_far _WaterPulseDexEntry
+	text_end
+
+IcicleSpearDexEntry:
+	text_far _IcicleSpearDexEntry
+	text_end
+
+BulletSeedDexEntry:
+	text_far _BulletSeedDexEntry
+	text_end
+
+RoostDexEntry:
+	text_far _RoostDexEntry
+	text_end
+
+SynthesisDexEntry:
+	text_far _SynthesisDexEntry
 	text_end
 
 StruggleDexEntry:

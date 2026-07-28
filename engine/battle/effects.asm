@@ -594,6 +594,8 @@ StatModifierDownEffect:
 	call CheckTargetSubstitute ; can't hit through substitute
 	jp nz, MoveMissed
 	ld a, [de]
+	cp SPEED_DOWN_SIDE_EFFECT_CERT
+	jr z, .guaranteedSpeedDrop
 	cp ATTACK_DOWN_SIDE_EFFECT
 	jr c, .nonSideEffect
 	call BattleRandom
@@ -601,6 +603,9 @@ StatModifierDownEffect:
 	jp nc, CantLowerAnymore
 	ld a, [de]
 	sub ATTACK_DOWN_SIDE_EFFECT ; map each stat to 0-3
+	jr .decrementStatMod
+.guaranteedSpeedDrop
+	ld a, SPEED_DOWN_SIDE_EFFECT - ATTACK_DOWN_SIDE_EFFECT
 	jr .decrementStatMod
 .nonSideEffect ; non-side effects only
 	push hl

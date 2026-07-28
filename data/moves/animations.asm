@@ -164,6 +164,16 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
+	dw CutAnim
+	dw NightShadeAnim
+	dw DragonRageAnim
+	dw RockSlideAnim
+	dw BoneClubAnim
+	dw BubbleBeamAnim
+	dw SpikeCannonAnim
+	dw BarrageAnim
+	dw RecoverAnim
+	dw MegaDrainAnim
 	dw StruggleAnim
 	assert_table_length NUM_ATTACKS
 	dw ShowPicAnim

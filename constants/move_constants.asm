@@ -170,7 +170,17 @@
 	const SUPER_FANG   ; a2
 	const SLASH        ; a3
 	const SUBSTITUTE   ; a4
-	const STRUGGLE     ; a5
+	const X_SCISSOR
+	const SHADOW_BALL
+	const DRAGONBREATH
+	const ROCK_TOMB
+	const MUD_SHOT
+	const WATER_PULSE
+	const ICICLE_SPEAR
+	const BULLET_SEED
+	const ROOST
+	const SYNTHESIS
+	const STRUGGLE
 DEF NUM_ATTACKS EQU const_value - 1
 
 	; Moves do double duty as animation identifiers.

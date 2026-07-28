@@ -165,6 +165,16 @@ MoveDescriptions::
 	dw SuperFangDescription
 	dw SlashDescription
 	dw SubstituteDescription
+	dw XScissorDescription
+	dw ShadowBallDescription
+	dw DragonbreathDescription
+	dw RockTombDescription
+	dw MudShotDescription
+	dw WaterPulseDescription
+	dw IcicleSpearDescription
+	dw BulletSeedDescription
+	dw RoostDescription
+	dw SynthesisDescription
 	dw StruggleDescription
 	assert_table_length NUM_ATTACKS
 PoundDescription:
@@ -659,6 +669,36 @@ SlashDescription:
 SubstituteDescription:
 	db   "Makes a decoy with"
 	feed "1/4 user's max HP.@"
+XScissorDescription:
+	db   "Slashes the foe"
+	feed "with crossed claws.@"
+ShadowBallDescription:
+	db   "May reduce the"
+	feed "foe's SPECIAL.@"
+DragonbreathDescription:
+	db   "May paralyze the"
+	feed "foe with a blast.@"
+RockTombDescription:
+	db   "Hurls rocks and"
+	feed "reduces SPEED.@"
+MudShotDescription:
+	db   "Hurls mud and"
+	feed "reduces SPEED.@"
+WaterPulseDescription:
+	db   "A pulsing blast"
+	feed "that may confuse.@"
+IcicleSpearDescription:
+	db   "Fires icicles to"
+	feed "hit 2-5 times.@"
+BulletSeedDescription:
+	db   "Fires seeds to hit"
+	feed "2-5 times.@"
+RoostDescription:
+	db   "Restores 1/2 of"
+	feed "the user's max HP.@"
+SynthesisDescription:
+	db   "Restores 1/2 of"
+	feed "the user's max HP.@"
 StruggleDescription:
 	db   "Used only if your"
 	feed "PP is exhausted.@"
