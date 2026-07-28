@@ -352,6 +352,7 @@ ExeggutorEvosMoves:
 	db 25, REFLECT
 	db 28, STOMP
 	db 32, STUN_SPORE
+	db 37, SYNTHESIS
 	db 40, EGG_BOMB
 	db 45, PSYCHIC_M
 	db 48, SLEEP_POWDER
@@ -381,6 +382,7 @@ ExeggcuteEvosMoves:
 	db 20, BULLET_SEED
 	db 25, REFLECT
 	db 32, STUN_SPORE
+	db 37, SYNTHESIS
 	db 40, EGG_BOMB
 	db 45, PSYCHIC_M
 	db 48, SLEEP_POWDER
@@ -497,6 +499,7 @@ ArcanineEvosMoves:
 ; Learnset
 	db 18, EMBER
 	db 23, LEER
+	db 25, WILL_O_WISP
 	db 30, TAKE_DOWN
 	db 45, FLAMETHROWER
 	db 46, EXTREMESPEED
@@ -543,6 +546,7 @@ ShellderEvosMoves:
 	db 25, ICICLE_SPEAR
 	db 35, ICE_BEAM
 	db 43, CLAMP
+	db 48, FREEZE_DRY
 	db 50, BLIZZARD
 	db 55, EXPLOSION
 	db 0
@@ -676,6 +680,7 @@ GrowlitheEvosMoves:
 ; Learnset
 	db 18, EMBER
 	db 23, LEER
+	db 25, WILL_O_WISP
 	db 30, TAKE_DOWN
 	db 35, FLAMETHROWER
 	db 36, AGILITY
@@ -867,6 +872,7 @@ ParasectEvosMoves:
 	db 6, STUN_SPORE
 	db 8, ABSORB
 	db 10, LEECH_LIFE
+	db 10, BULLET_SEED
 	db 13, POISONPOWDER
 	db 24, SPORE
 	db 27, MEGA_DRAIN
@@ -1001,6 +1007,7 @@ MankeyEvosMoves:
 ; Learnset
 	db 9, LOW_KICK
 	db 15, FURY_SWIPES
+	db 17, MACH_PUNCH
 	db 21, KARATE_CHOP
 	db 27, FOCUS_ENERGY
 	db 31, DRAIN_PUNCH
@@ -1021,6 +1028,7 @@ SeelEvosMoves:
 	db 25, BUBBLEBEAM
 	db 32, TAKE_DOWN
 	db 40, ICE_BEAM
+	db 45, FREEZE_DRY
 	db 50, BLIZZARD
 	db 0
 
@@ -1172,6 +1180,7 @@ JynxEvosMoves:
 	db 39, PSYCHIC_M
 	db 43, ICE_BEAM
 	db 47, BODY_SLAM
+	db 47, FREEZE_DRY
 	db 54, BLIZZARD
 	db 0
 
@@ -1719,6 +1728,7 @@ BeedrillEvosMoves:
 	db 21, ACID
 	db 27, TWINEEDLE
 	db 30, SLUDGE
+	db 32, X_SCISSOR
 	db 35, SWORDS_DANCE
 	db 40, AGILITY
 	db 0
@@ -1748,6 +1758,7 @@ PrimeapeEvosMoves:
 ; Learnset
 	db 9, LOW_KICK
 	db 15, FURY_SWIPES
+	db 17, MACH_PUNCH
 	db 21, KARATE_CHOP
 	db 27, FOCUS_ENERGY
 	db 31, DRAIN_PUNCH
@@ -1997,6 +2008,7 @@ CloysterEvosMoves:
 	db 40, ICE_BEAM
 	db 43, BODY_PRESS
 	db 46, SPIKE_CANNON
+	db 48, FREEZE_DRY
 	db 50, BLIZZARD
 	db 0
 
@@ -2274,6 +2286,7 @@ PonytaEvosMoves:
 ; Learnset
 	db 19, STOMP
 	db 25, DOUBLE_KICK
+	db 28, WILL_O_WISP
 	db 30, TAIL_WHIP
 	db 33, FLAMETHROWER
 	db 35, AGILITY
@@ -2289,6 +2302,7 @@ RapidashEvosMoves:
 	db 19, STOMP
 	db 25, DOUBLE_KICK
 	db 28, GROWL
+	db 28, WILL_O_WISP
 	db 30, TAIL_WHIP
 	db 33, FLAMETHROWER
 	db 35, AGILITY
