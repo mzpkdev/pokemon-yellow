@@ -184,6 +184,8 @@ AttackAnimationPointers:
 	dw SkyAttackAnim
 	dw TakeDownAnim
 	dw IceBeamAnim
+	dw BarrierAnim
+	dw StruggleAnim
 	dw StruggleAnim
 	assert_table_length NUM_ATTACKS
 	dw ShowPicAnim

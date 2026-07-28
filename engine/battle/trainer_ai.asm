@@ -150,6 +150,8 @@ AIMoveChoiceModification1:
 	inc de
 	call ReadMove
 	ld a, [wEnemyMoveEffect]
+	cp MIRROR_COAT_EFFECT
+	jr z, .checkMirrorCoat
 	cp DREAM_EATER_EFFECT
 	jp z, .checkAsleep
 	cp OHKO_EFFECT
@@ -205,6 +207,17 @@ AIMoveChoiceModification1:
 	ld a, [hl]
 	add $5 ; heavily discourage move
 	ld [hl], a
+	jr .nextMove
+.checkMirrorCoat
+	ld a, [wActionResultOrTookBattleTurn]
+	and a
+	jr nz, .discourage
+	ld a, [wPlayerMovePower]
+	and a
+	jr z, .discourage
+	ld a, [wPlayerMoveType]
+	cp SPECIAL
+	jr c, .discourage
 	jr .nextMove
 .ohko
 	call WillOHKOMoveAlwaysFail
@@ -467,6 +480,14 @@ AIMoveChoiceModification3:
 	jp z, .clearPreviousTypes ; no more moves in move set
 	inc de
 	call ReadMove
+	ld a, [wEnemyMoveNum]
+	cp FLAIL
+	jr nz, .notFlail
+	ld a, 2
+	call AICheckIfHPBelowFractionWrapped
+	jr nc, .notFlail
+	dec [hl]
+.notFlail
 	ld a, [wEnemyMovePower]
 	and a
 	jr z, .nextMove ; ignores moves that do no damage (status moves), as we're only concerned with damaging moves for this modifier

@@ -18,6 +18,8 @@ SpecialEffects:
 	db RECOIL_EFFECT
 	db RECOIL_BURN_SIDE_EFFECT
 	db ATTACK_DEFENSE_SELFDOWN_EFFECT
+	db MIRROR_COAT_EFFECT
+	db FLAIL_EFFECT
 	; fallthrough
 SpecialEffectsCont:
 ; damaging moves whose effect is executed prior to damage calculation

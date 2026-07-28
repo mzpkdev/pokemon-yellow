@@ -353,6 +353,13 @@ MainInBattleLoop:
 	pop af
 	jr nz, MainInBattleLoop ; if the player didn't select a move, jump
 .selectEnemyMove
+	; Start a fresh damage-history window once per battle round.
+	xor a
+	ld hl, wPlayerLastSpecialDamage
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
 	call SelectEnemyMove
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
@@ -3491,7 +3498,7 @@ PlayerCalcMoveDamage:
 	call IsInArray
 	jp c, .moveHitTest ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation
 	call CriticalHitTest
-	call HandleCounterMove
+	call HandleCounterLikeMoves
 	jr z, handleIfPlayerMoveMissed
 	call GetDamageVarsForPlayerAttack
 	call CalculateDamage
@@ -4539,6 +4546,13 @@ GetDamageVarsForPlayerAttack:
 	and a
 	ld d, a ; d = move power
 	ret z ; return if move power is zero
+	ld a, [wPlayerMoveNum]
+	cp FLAIL
+	jr nz, .notFlail
+	push hl
+	call CalculateFlailBasePower
+	pop hl
+.notFlail
 	ld a, [hl] ; a = [wPlayerMoveType]
 	cp SPECIAL ; types >= SPECIAL are all special
 	jr nc, .specialAttack
@@ -4641,6 +4655,69 @@ GetDamageVarsForPlayerAttack:
 	and a
 	ret
 
+FlailHPFractionsAndPowers:
+	db 20, 200
+	db 10, 150
+	db  5, 100
+	db  3,  80
+	db  2,  40
+	db  1,  20
+	db -1
+
+CalculateFlailBasePower:
+	ld hl, FlailHPFractionsAndPowers
+.loop
+	ld a, [hli]
+	cp -1
+	jr z, .minimum
+	push hl
+	call CheckUserHPBelowFraction
+	pop hl
+	jr nc, .next
+	ld d, [hl]
+	ret
+.next
+	inc hl
+	jr .loop
+.minimum
+	ld d, 20
+	ret
+
+; Return carry when the current user's HP is strictly below max HP / a.
+CheckUserHPBelowFraction:
+	ldh [hDivisor], a
+	ldh a, [hWhoseTurn]
+	and a
+	ld hl, wBattleMonMaxHP
+	jr z, .gotMaxHP
+	ld hl, wEnemyMonMaxHP
+.gotMaxHP
+	ld a, [hli]
+	ldh [hDividend], a
+	ld a, [hl]
+	ldh [hDividend + 1], a
+	ld b, 2
+	call Divide
+	ldh a, [hQuotient + 3]
+	ld c, a
+	ldh a, [hQuotient + 2]
+	ld b, a
+	ldh a, [hWhoseTurn]
+	and a
+	ld hl, wBattleMonHP + 1
+	jr z, .gotCurrentHP
+	ld hl, wEnemyMonHP + 1
+.gotCurrentHP
+	ld a, [hld]
+	ld e, a
+	ld a, [hl]
+	ld d, a
+	sub b
+	ret nz
+	ld a, e
+	sub c
+	ret
+
 ; sets b, c, d, and e for the CalculateDamage routine in the case of an attack by the enemy mon
 GetDamageVarsForEnemyAttack:
 	ld hl, wDamage ; damage to eventually inflict, initialise to zero
@@ -4652,6 +4729,13 @@ GetDamageVarsForEnemyAttack:
 	ld d, a ; d = move power
 	and a
 	ret z ; return if move power is zero
+	ld a, [wEnemyMoveNum]
+	cp FLAIL
+	jr nz, .notFlail
+	push hl
+	call CalculateFlailBasePower
+	pop hl
+.notFlail
 	ld a, [hl] ; a = [wEnemyMoveType]
 	cp SPECIAL ; types >= SPECIAL are all special
 	jr nc, .specialAttack
@@ -5112,6 +5196,57 @@ HandleCounterMove:
 	xor a
 	ret
 
+HandleCounterLikeMoves:
+	ldh a, [hWhoseTurn]
+	and a
+	ld a, [wPlayerSelectedMove]
+	jr z, .gotMove
+	ld a, [wEnemySelectedMove]
+.gotMove
+	cp MIRROR_COAT
+	jr z, HandleMirrorCoatMove
+	jp HandleCounterMove
+
+; Mirror Coat uses side-specific damage received this round. Unlike Counter's
+; original Gen 1 implementation, it never reads the shared wDamage scratch.
+HandleMirrorCoatMove:
+	ld a, 1
+	ld [wMoveMissed], a
+	ldh a, [hWhoseTurn]
+	and a
+	ld hl, wPlayerLastSpecialDamage
+	ld a, [wEnemySelectedMove]
+	jr z, .gotDamage
+	ld hl, wEnemyLastSpecialDamage
+	ld a, [wPlayerSelectedMove]
+.gotDamage
+	cp MIRROR_COAT
+	ret z
+	cp COUNTER
+	ret z
+	ld a, [hli]
+	ld b, a
+	ld a, [hl]
+	or b
+	ret z
+	; Double the recorded damage and cap at $ffff.
+	ld a, [hl]
+	add a
+	ld [wDamage + 1], a
+	ld a, b
+	adc a
+	ld [wDamage], a
+	jr nc, .hit
+	ld a, $ff
+	ld [wDamage], a
+	ld [wDamage + 1], a
+.hit
+	xor a
+	ld [wMoveMissed], a
+	call MoveHitTest
+	xor a
+	ret
+
 ApplyAttackToEnemyPokemon:
 	ld a, [wPlayerMoveEffect]
 	cp OHKO_EFFECT
@@ -5218,6 +5353,7 @@ ApplyDamageToEnemyPokemon:
 	ld [hli], a
 	ld [hl], a
 .animateHpBar
+	call RecordSpecialDamage
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
 	ld [wHPBarMaxHP+1], a
@@ -5345,6 +5481,7 @@ ApplyDamageToPlayerPokemon:
 	ld [hli], a
 	ld [hl], a
 .animateHpBar
+	call RecordSpecialDamage
 	ld hl, wBattleMonMaxHP
 	ld a, [hli]
 	ld [wHPBarMaxHP+1], a
@@ -5356,6 +5493,36 @@ ApplyDamageToPlayerPokemon:
 	predef UpdateHPBar2 ; animate the HP bar shortening
 ApplyAttackToPlayerPokemonDone:
 	jp DrawHUDsAndHPBars
+
+; Accumulate actual direct special damage after overkill capping and after the
+; Substitute branch. Multi-hit moves therefore record their full round total.
+RecordSpecialDamage:
+	push hl
+	push bc
+	ldh a, [hWhoseTurn]
+	and a
+	ld a, [wPlayerMoveType]
+	ld hl, wEnemyLastSpecialDamage + 1
+	jr z, .checkType
+	ld a, [wEnemyMoveType]
+	ld hl, wPlayerLastSpecialDamage + 1
+.checkType
+	cp SPECIAL
+	jr c, .done
+	ld a, [wDamage + 1]
+	add [hl]
+	ld [hld], a
+	ld a, [wDamage]
+	adc [hl]
+	ld [hl], a
+	jr nc, .done
+	ld [hl], $ff
+	inc hl
+	ld [hl], $ff
+.done
+	pop bc
+	pop hl
+	ret
 
 AttackSubstitute:
 ; Unlike the two ApplyAttackToPokemon functions, Attack Substitute is shared by player and enemy.
@@ -6108,7 +6275,7 @@ EnemyCalcMoveDamage:
 	call IsInArray
 	jp c, EnemyMoveHitTest
 	call CriticalHitTest
-	call HandleCounterMove
+	call HandleCounterLikeMoves
 	jr z, handleIfEnemyMoveMissed
 	call SwapPlayerAndEnemyLevels
 	call GetDamageVarsForEnemyAttack

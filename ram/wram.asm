@@ -1372,6 +1372,11 @@ wPlayerMoveType:: db
 wPlayerMoveAccuracy:: db
 wPlayerMoveMaxPP:: db
 
+; Direct special damage received during the current round. Mirror Coat reads
+; only the user's own record, so stale/shared wDamage cannot be reflected.
+wPlayerLastSpecialDamage:: dw
+wEnemyLastSpecialDamage:: dw
+
 wEnemyMonSpecies2:: db
 wBattleMonSpecies2:: db
 

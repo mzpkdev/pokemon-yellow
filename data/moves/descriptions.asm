@@ -185,6 +185,8 @@ MoveDescriptions::
 	dw BraveBirdDescription
 	dw FlareBlitzDescription
 	dw FreezeDryDescription
+	dw MirrorCoatDescription
+	dw FlailDescription
 	dw StruggleDescription
 	assert_table_length NUM_ATTACKS
 PoundDescription:
@@ -739,6 +741,12 @@ FlareBlitzDescription:
 FreezeDryDescription:
 	db   "Super effective"
 	feed "against WATER.@"
+MirrorCoatDescription:
+	db   "Returns double"
+	feed "special damage.@"
+FlailDescription:
+	db   "Stronger when the"
+	feed "user has less HP.@"
 StruggleDescription:
 	db   "Used only if your"
 	feed "PP is exhausted.@"

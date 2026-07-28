@@ -285,6 +285,7 @@ VoltorbEvosMoves:
 	db 26, SWIFT
 	db 30, LIGHT_SCREEN
 	db 35, THUNDERBOLT
+	db 38, MIRROR_COAT
 	db 44, EXPLOSION
 	db 50, THUNDER
 	db 0
@@ -1909,6 +1910,7 @@ MagikarpEvosMoves:
 	db 0
 ; Learnset
 	db 15, TACKLE
+	db 20, FLAIL
 	db 0
 
 MissingNo86EvosMoves:
@@ -1988,6 +1990,7 @@ ElectrodeEvosMoves:
 	db 26, SWIFT
 	db 30, LIGHT_SCREEN
 	db 35, THUNDERBOLT
+	db 38, MIRROR_COAT
 	db 44, EXPLOSION
 	db 50, THUNDER
 	db 0
