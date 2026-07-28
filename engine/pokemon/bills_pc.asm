@@ -413,8 +413,15 @@ BillsPCRelease:
 	ld a, [wWhichPokemon]
 	ld hl, wBoxMonNicks
 	call GetPartyMonName
+	ld a, [wCurPartySpecies]
+	cp STARTER_PIKACHU
+	jr nz, .playCompanionSpeciesCry
 	ldpikacry e, PikachuCry40
 	callfar PlayPikachuSoundClip
+	jr .showCompanionUnhappy
+.playCompanionSpeciesCry
+	call PlayCry
+.showCompanionUnhappy
 	ld hl, PikachuUnhappyText
 	rst _PrintText
 	jp BillsPCMenu
