@@ -250,6 +250,12 @@ PlaySpecificPikachuEmotion:
 	ld a, e
 	jr load_expression
 
+SetPendingPikachuEmotion::
+	ld a, e
+	and PIKACHU_PENDING_EMOTION_MASK
+	ld [wd49c], a
+	ret
+
 TalkToPikachu::
 	call MapSpecificPikachuExpression
 	jr c, load_expression
@@ -359,6 +365,7 @@ MapSpecificPikachuExpression:
     	jr c, .emotion22
 .notInLavenderTower
 	ld a, [wd49c]
+	and PIKACHU_PENDING_EMOTION_MASK
 	and a
 	jr z, .mood_based_emotion
 	dec a
