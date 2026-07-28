@@ -251,9 +251,10 @@ def test_companion_step_rollover_updates_happiness_and_mood(
     emulator: Emulator,
 ) -> None:
     complete_oaks_lab_intro(emulator)
-    emulator.write("wPikachuHappiness", 30)
+    emulator.write("wPikachuHappiness", 49)
     emulator.write("wPikachuMood", 127)
     emulator.write("wPikachuCompanionStepCounter", 0xFF)
+    emulator.write("wPikachuCompanionQueuedReaction", 0)
     emulator.write("wWalkBikeSurfState", 0)
     emulator.write("wStatusFlags5", emulator.read("wStatusFlags5") & 0x7F)
 
@@ -266,8 +267,9 @@ def test_companion_step_rollover_updates_happiness_and_mood(
     )
 
     assert emulator.read("wPikachuCompanionStepCounter") == 0
-    assert emulator.read("wPikachuHappiness") == 32
+    assert emulator.read("wPikachuHappiness") == 51
     assert emulator.read("wPikachuMood") == 128
+    assert emulator.read("wPikachuCompanionQueuedReaction") == 0
 
     emulator.write("wWalkBikeSurfState", 1)
     emulator.advance_until(
