@@ -815,11 +815,11 @@ ItemUseEvoStone:
 	ld a, [wCurPartySpecies]
 	ld [wLoadedMon], a
 	pop bc
-	jr c, .canceledItemUse
+	jp c, .canceledItemUse
 	ld a, b
 	ld [wCurPartySpecies], a
 	call Func_d85d
-	jr nc, .noEffect
+	jp nc, .noEffect
 	callfar IsThisPartymonStarterPikachu_Party
 	jr nc, .notPlayerPikachu
 	callfar CanStarterPikachuAcceptEvolution
