@@ -20,6 +20,8 @@ EVENT_RESCUED_MR_FUJI = 0x4CF
 EVENT_LOST_TO_LT_SURGE_WITH_STARTER_PIKACHU = 0x8D4
 PIKACOMPANION_REACTION_GIFT_READY = 5
 PIKACOMPANION_REACTION_AMBIENT_FIND = 6
+PIKACOMPANION_REACTION_PORTRAIT_READY = 7
+PIKACHU_PENDING_EMOTION_ALERTED = 0x80
 POTION = 0x14
 THUNDER_STONE = 0x21
 RAICHU = 0x55
@@ -161,7 +163,7 @@ def test_story_trigger_still_refuses_below_happiness_requirement(
 
     _use_thunder_stone_on_pikachu(emulator)
     emulator.advance_until(
-        lambda: emulator.read("wd49c") == 4,
+        lambda: (emulator.read("wd49c") & 0x7F) == 4,
         button="a",
         max_presses=4,
         description="starter evolution refusal",
@@ -170,6 +172,52 @@ def test_story_trigger_still_refuses_below_happiness_requirement(
     assert emulator.read("wPartySpecies") == PIKACHU
     assert emulator.read("wEvolutionOccurred") == 0
     assert emulator.bag_contains(THUNDER_STONE)
+
+
+def test_pending_portrait_uses_idle_prompt_without_consuming_it(
+    emulator: Emulator,
+) -> None:
+    complete_oaks_lab_intro(emulator)
+    emulator.write("wJoyIgnore", 0)
+    emulator.write("wStatusFlags5", 0)
+    emulator.write("wd49c", 1)
+
+    emulator.tick(3)
+
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_PORTRAIT_READY
+    )
+    assert emulator.read("wd49c") == 1
+
+    emulator.write("wPikachuCompanionIdleCounter", 59)
+    emulator.tick(180)
+
+    assert emulator.read("wPikachuCompanionQueuedReaction") == 0
+    assert emulator.read("wd49c") == (
+        PIKACHU_PENDING_EMOTION_ALERTED | 1
+    )
+
+
+def test_pending_portrait_alert_waits_behind_high_priority_reaction(
+    emulator: Emulator,
+) -> None:
+    complete_oaks_lab_intro(emulator)
+    emulator.write("wJoyIgnore", 0)
+    emulator.write("wStatusFlags5", 0)
+    emulator.write("wd49c", 2)
+    emulator.write(
+        "wPikachuCompanionQueuedReaction",
+        PIKACOMPANION_REACTION_GIFT_READY,
+    )
+
+    emulator.tick(3)
+
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_GIFT_READY
+    )
+    assert emulator.read("wd49c") == 2
 
 
 def test_fuji_route_evolves_starter_and_recalls_unsupported_raichu(
