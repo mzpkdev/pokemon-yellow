@@ -835,7 +835,7 @@ ItemUseEvoStone:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr z, .notPlayerPikachu
+	jr z, .evolveStarterPikachu
 	jr .canceledItemUse
 
 .playerPikachuRefused
@@ -851,12 +851,28 @@ ItemUseEvoStone:
 	jr .canceledItemUse
 
 .notPlayerPikachu
+	xor a
+	jr .evolveSelectedPokemon
+
+.evolveStarterPikachu
+	ld a, 1
+.evolveSelectedPokemon
+	push af
 	ld a, SFX_HEAL_AILMENT
 	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
 	ld a, $01
 	ld [wForceEvolution], a
 	callfar TryEvolvingMon ; try to evolve pokemon
+	pop af
+	and a
+	jr z, .refreshStarterCompanion
+	ld a, [wWhichPokemon]
+	ld hl, wPartyMon1CatchRate
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	ld [hl], LIGHT_BALL_GSC
+.refreshStarterCompanion
 	callfar RefreshStarterCompanionAfterEvolution
 	pop af
 	ld [wWhichPokemon], a
