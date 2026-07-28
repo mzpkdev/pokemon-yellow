@@ -1,4 +1,6 @@
 BurnEffect_:
+	callfar CheckTargetSubstitute
+	jr nz, .didntAffect
 	ld hl, wEnemyMonStatus
 	ld de, wEnemyMonType
 	ldh a, [hWhoseTurn]
@@ -37,6 +39,8 @@ BurnSideEffect_:
 	call BattleRandom
 	cp 10 percent
 	ret nc
+	callfar CheckTargetSubstitute
+	ret nz
 	ld hl, wEnemyMonHP
 	ld de, wEnemyMonStatus
 	ld bc, wEnemyMonType
