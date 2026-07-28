@@ -97,15 +97,17 @@ CheckThisPartymonStarterCompanion:
 	ld bc, NAME_LENGTH
 	call AddNTimes
 	ld de, wPlayerName
-	ld b, $6
+	ld b, NAME_LENGTH
 .loop
-	dec b
-	jr z, .isPlayerPikachu
 	ld a, [de]
-	inc de
 	cp [hl]
+	jr nz, .notPlayerPikachu
+	cp "@"
+	jr z, .isPlayerPikachu
+	inc de
 	inc hl
-	jr z, .loop
+	dec b
+	jr nz, .loop
 .notPlayerPikachu
 	and a
 	ret
