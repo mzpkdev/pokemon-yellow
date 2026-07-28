@@ -269,6 +269,7 @@ SpearowEvosMoves:
 	db 10, FURY_ATTACK
 	db 14, FOCUS_ENERGY
 	db 18, SWIFT
+	db 20, RAZOR_WIND
 	db 21, MIRROR_MOVE
 	db 24, DRILL_PECK
 	db 28, ROOST
@@ -591,6 +592,7 @@ ScytherEvosMoves:
 	db 16, CUT
 	db 24, AGILITY
 	db 30, AIR_CUTTER
+	db 33, RAZOR_WIND
 	db 36, SLASH
 	db 42, X_SCISSOR
 	db 48, DOUBLE_TEAM
@@ -685,6 +687,7 @@ GrowlitheEvosMoves:
 	db 30, TAKE_DOWN
 	db 35, FLAMETHROWER
 	db 36, AGILITY
+	db 45, FLARE_BLITZ
 	db 0
 
 OnixEvosMoves:
@@ -711,10 +714,12 @@ FearowEvosMoves:
 	db 14, FOCUS_ENERGY
 	db 18, SWIFT
 	db 20, MIRROR_MOVE
+	db 20, RAZOR_WIND
 	db 24, DRILL_PECK
 	db 28, ROOST
 	db 30, SHARPEN
 	db 40, BRAVE_BIRD
+	db 45, DRILL_RUN
 	db 0
 
 PidgeyEvosMoves:
@@ -726,6 +731,7 @@ PidgeyEvosMoves:
 	db 12, QUICK_ATTACK
 	db 19, WING_ATTACK
 	db 21, WHIRLWIND
+	db 25, RAZOR_WIND
 	db 29, TAKE_DOWN
 	db 34, ROOST
 	db 49, MIRROR_MOVE
@@ -1088,7 +1094,9 @@ FarfetchdEvosMoves:
 	db 9, SHARPEN
 	db 13, FURY_ATTACK
 	db 18, WING_ATTACK
+	db 20, RAZOR_WIND
 	db 23, SLASH
+	db 25, AIR_CUTTER
 	db 28, SWORDS_DANCE
 	db 31, DRILL_PECK
 	db 34, ROOST
@@ -1163,6 +1171,7 @@ PoliwagEvosMoves:
 	db 6, MIST
 	db 9, BUBBLE
 	db 13, WATER_GUN
+	db 17, MUD_SHOT
 	db 22, WATER_PULSE
 	db 35, BODY_SLAM
 	db 43, HYPNOSIS
@@ -1201,6 +1210,7 @@ ArticunoEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 1, MIRROR_COAT
 	db 35, AGILITY
 	db 40, DRILL_PECK
 	db 45, ICE_BEAM
@@ -1248,6 +1258,7 @@ KrabbyEvosMoves:
 ; Learnset
 	db 20, AQUA_JET
 	db 25, BUBBLEBEAM
+	db 29, FLAIL
 	db 29, CUT
 	db 30, STOMP
 	db 35, CRABHAMMER
@@ -1307,6 +1318,7 @@ PikachuEvosMoves:
 	db EVOLVE_ITEM, THUNDER_STONE, 1, RAICHU
 	db 0
 ; Learnset
+	db 1, CHARM
 	db 6, QUICK_ATTACK
 	db 8, THUNDER_WAVE
 	db 11, TAIL_WHIP
@@ -1323,6 +1335,7 @@ RaichuEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 1, CHARM
 	db 6, QUICK_ATTACK
 	db 8, THUNDER_WAVE
 	db 11, TAIL_WHIP
@@ -1381,6 +1394,8 @@ KabutoEvosMoves:
 	db 11, LEER	
 	db 15, WATER_GUN
 	db 19, ABSORB
+	db 20, AQUA_JET
+	db 24, MUD_SHOT
 	db 25, ROCK_THROW
 	db 35, MEGA_DRAIN
 	db 39, SLASH
@@ -1396,6 +1411,8 @@ KabutopsEvosMoves:
 	db 11, LEER	
 	db 15, WATER_GUN
 	db 19, ABSORB
+	db 20, AQUA_JET
+	db 24, MUD_SHOT
 	db 25, ROCK_THROW
 	db 35, MEGA_DRAIN
 	db 39, SLASH
@@ -1412,6 +1429,7 @@ HorseaEvosMoves:
 	db 10, WATER_GUN
 	db 14, SMOKESCREEN
 	db 18, LEER
+	db 20, DRAGONBREATH
 	db 22, WATER_PULSE
 	db 26, DRAGON_RAGE
 	db 30, AURORA_BEAM
@@ -1427,6 +1445,7 @@ SeadraEvosMoves:
 	db 10, WATER_GUN
 	db 14, SMOKESCREEN
 	db 18, LEER
+	db 20, DRAGONBREATH
 	db 22, WATER_PULSE
 	db 26, DRAGON_RAGE
 	db 30, AURORA_BEAM
@@ -1484,6 +1503,7 @@ OmanyteEvosMoves:
 	db 15, CONSTRICT
 	db 18, BUBBLEBEAM
 	db 22, HORN_ATTACK
+	db 23, MUD_SHOT
 	db 25, ROCK_THROW
 	db 27, SPIKE_CANNON
 	db 30, LEER
@@ -1498,6 +1518,7 @@ OmastarEvosMoves:
 	db 15, CONSTRICT
 	db 18, BUBBLEBEAM
 	db 22, HORN_ATTACK
+	db 23, MUD_SHOT
 	db 25, ROCK_THROW
 	db 27, SPIKE_CANNON
 	db 30, LEER
@@ -1677,6 +1698,7 @@ PoliwhirlEvosMoves:
 	db 6,  MIST
 	db 10, DOUBLESLAP
 	db 13, WATER_GUN
+	db 17, MUD_SHOT
 	db 22, WATER_PULSE
 	db 25, KARATE_CHOP
 	db 30, ICE_PUNCH
@@ -1694,6 +1716,7 @@ PoliwrathEvosMoves:
 	db 6,  MIST
 	db 10, DOUBLESLAP
 	db 13, WATER_GUN
+	db 17, MUD_SHOT
 	db 22, WATER_PULSE
 	db 25, KARATE_CHOP
 	db 30, ICE_PUNCH
@@ -1990,6 +2013,7 @@ KinglerEvosMoves:
 	db 20, AQUA_JET
 	db 25, BUBBLEBEAM
 	db 28, CUT
+	db 29, FLAIL
 	db 30, STOMP
 	db 35, CRABHAMMER
 	db 40, HARDEN
@@ -2138,6 +2162,7 @@ PidgeottoEvosMoves:
 	db 12, QUICK_ATTACK
 	db 18, WING_ATTACK
 	db 21, WHIRLWIND
+	db 25, RAZOR_WIND
 	db 29, TAKE_DOWN
 	db 34, ROOST
 	db 49, MIRROR_MOVE
@@ -2151,6 +2176,7 @@ PidgeotEvosMoves:
 	db 12, QUICK_ATTACK
 	db 18, WING_ATTACK
 	db 21, WHIRLWIND
+	db 25, RAZOR_WIND
 	db 29, TAKE_DOWN
 	db 34, ROOST
 	db 40, SKY_ATTACK
@@ -2235,6 +2261,7 @@ GoldeenEvosMoves:
 	db 13, WATER_GUN
 	db 15, HORN_ATTACK
 	db 17, WATERFALL
+	db 21, FLAIL
 	db 24, AQUA_JET
 	db 33, DRILL_PECK
 	db 43, DRILL_RUN
@@ -2250,6 +2277,7 @@ SeakingEvosMoves:
 	db 13, WATER_GUN
 	db 15, HORN_ATTACK
 	db 17, WATERFALL
+	db 21, FLAIL
 	db 24, AQUA_JET
 	db 33, DRILL_PECK
 	db 43, DRILL_RUN
@@ -2408,6 +2436,7 @@ AerodactylEvosMoves:
 	db 22, SUPERSONIC
 	db 27, ROCK_THROW
 	db 32, WING_ATTACK
+	db 35, RAZOR_WIND
 	db 40, ROCK_SLIDE
 	db 43, TAKE_DOWN
 	db 50, BRAVE_BIRD
@@ -2453,6 +2482,7 @@ CharmanderEvosMoves:
 	db 0
 ; Learnset
 	db 9, EMBER
+	db 12, DRAGONBREATH
 	db 13, LEER
 	db 17, RAGE
 	db 19, FIRE_PUNCH
@@ -2487,6 +2517,7 @@ CharmeleonEvosMoves:
 	db 0
 ; Learnset
 	db 9, EMBER
+	db 12, DRAGONBREATH
 	db 13, LEER
 	db 17, RAGE
 	db 19, FIRE_PUNCH
@@ -2520,6 +2551,7 @@ CharizardEvosMoves:
 	db 0
 ; Learnset
 	db 9, EMBER
+	db 12, DRAGONBREATH
 	db 13, LEER
 	db 17, RAGE
 	db 19, FIRE_PUNCH
