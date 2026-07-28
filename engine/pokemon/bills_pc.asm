@@ -383,7 +383,7 @@ BillsPCRelease:
 	call DisplayMonListMenu
 	jp c, BillsPCMenu
 	call BillsPCBackupListIndex
-	callfar IsThisPartymonStarterPikachu_Box
+	callfar IsThisPartymonStarterCompanion_Box
 	jr c, .asm_216cb
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]

@@ -135,14 +135,32 @@ CanStarterCompanionFollow::
 	ld b, 0
 	ld c, a
 	add hl, bc
+	ld b, [hl]
+	ld hl, StarterCompanionFollowerCapabilities
+.findSpecies
+	ld a, [hli]
+	cp $ff
+	jr z, .unsupported
+	cp b
+	jr z, .foundSpecies
+	inc hl
+	jr .findSpecies
+
+.foundSpecies
 	ld a, [hl]
-	cp STARTER_PIKACHU
-	jr z, .supported
+	and a
+	jr nz, .supported
+.unsupported
 	and a
 	ret
 .supported
 	scf
 	ret
+
+StarterCompanionFollowerCapabilities:
+	db STARTER_PIKACHU, TRUE
+	db RAICHU, FALSE
+	db $ff
 
 CanStarterCompanionInPartyFollow::
 	ld a, [wWhichPokemon]
@@ -184,34 +202,20 @@ RecordStarterPikachuSurgeLoss::
 	ret nz
 	CheckEvent EVENT_BEAT_LT_SURGE
 	ret nz
-	ld a, [wWhichPokemon]
-	push af
-	xor a
-	ld [wWhichPokemon], a
-.findStarter
-	ld a, [wWhichPokemon]
-	ld hl, wPartyCount
-	cp [hl]
-	jr nc, .notParticipated
-	call IsThisPartymonStarterPikachu_Party
-	jr c, .checkParticipation
-	ld hl, wWhichPokemon
-	inc [hl]
-	jr .findStarter
-
-.checkParticipation
-	ld a, [wWhichPokemon]
-	ld c, a
-	ld b, FLAG_TEST
-	ld hl, wPartyGainExpFlags
-	predef FlagActionPredef
-	ld a, c
+	ld a, [wStarterPikachuParticipatedInBattle]
 	and a
-	jr z, .notParticipated
+	ret z
 	SetEvent EVENT_LOST_TO_LT_SURGE_WITH_STARTER_PIKACHU
-.notParticipated
-	pop af
-	ld [wWhichPokemon], a
+	ret
+
+MarkStarterPikachuBattleParticipation::
+	ld a, [wStarterPikachuParticipatedInBattle]
+	and a
+	ret nz
+	call IsThisPartymonStarterPikachu_Party
+	ret nc
+	ld a, TRUE
+	ld [wStarterPikachuParticipatedInBattle], a
 	ret
 
 CanStarterPikachuAcceptEvolution::

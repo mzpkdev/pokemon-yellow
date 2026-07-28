@@ -82,6 +82,7 @@ def test_receive_pikachu_battle_rival_and_leave_lab(emulator: Emulator) -> None:
 
     assert emulator.read("wPartyCount") == 1
     assert emulator.read("wPartySpecies") == PIKACHU
+    assert emulator.read("wStarterPikachuParticipatedInBattle") == 1
     assert emulator.read("wPartyMon1CatchRate") == LIGHT_BALL_GSC
     assert emulator.read("wStarterCompanionDVs") == emulator.read("wPartyMon1DVs")
     assert (
@@ -120,6 +121,13 @@ def test_companion_fingerprint_requires_marker_and_matching_dvs(
     assert emulator.read("wPikachuHappiness") == 30
 
     emulator.write("wPartyMon1DVs", saved_dv)
+    second_dv = emulator.symbols["wPartyMon1DVs"] + 1
+    emulator.pyboy.memory[second_dv] ^= 0x01
+    _take_step(emulator, "left", "non-companion second DV step")
+    assert emulator.read("wPikachuCompanionStepCounter") == 0xFF
+    assert emulator.read("wPikachuHappiness") == 30
+
+    emulator.pyboy.memory[second_dv] ^= 0x01
     _take_step(emulator, "left", "restored companion fingerprint step")
     assert emulator.read("wPikachuCompanionStepCounter") == 0
     assert emulator.read("wPikachuHappiness") == 32
