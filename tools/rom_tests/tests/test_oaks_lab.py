@@ -334,6 +334,10 @@ def test_ordered_gift_eligibility_and_alert_priority(emulator: Emulator) -> None
     )
 
     emulator.write("wPikachuHappiness", 80)
+    emulator.write(
+        "wPikachuCompanionQueuedReaction",
+        PIKACOMPANION_REACTION_PORTRAIT_READY,
+    )
     _take_step(emulator, "left", "eligible first gift step")
     assert (
         emulator.read("wPikachuCompanionQueuedReaction")
