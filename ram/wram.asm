@@ -593,7 +593,7 @@ wForceEvolution:: db
 ; if [wAILayer2Encouragement] != 1, the second AI layer is not applied
 wAILayer2Encouragement:: db
 
-	ds 1
+wStarterPikachuParticipatedInBattle:: db
 
 ; current HP of player and enemy substitutes
 wPlayerSubstituteHP:: db

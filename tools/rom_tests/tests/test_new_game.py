@@ -22,6 +22,7 @@ def test_new_game_reaches_bedroom_overworld(emulator: Emulator) -> None:
     assert emulator.read("wPikachuAmbientAlerted") == 0
     assert emulator.read("wPikachuCompanionQueuedReaction") == 0
     assert emulator.read("wPikachuCompanionIdleCounter") == 0
+    assert emulator.read("wStarterPikachuParticipatedInBattle") == 0
     assert emulator.read("wCurMap") == 0x26
     assert (emulator.read("wYCoord"), emulator.read("wXCoord")) == (6, 3)
     emulator.assert_screen_matches(
