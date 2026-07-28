@@ -1974,11 +1974,11 @@ wPokedexSeenEnd::
 
 UNION
 
-	ds 22 ; 22 of the 42 bytes of space are alotted to movedex seen flags
+	ds 24 ; 24 of the 42 bytes of space are allotted to movedex seen flags
 
 NEXTU
 
-wMovedexSeen:: flag_array NUM_ATTACKS ; PureRGBnote: ADDED: flags for the movedex, uses all 22 bytes
+wMovedexSeen:: flag_array NUM_ATTACKS ; PureRGBnote: ADDED: flags for the movedex, uses 24 bytes
 wMovedexSeenEnd::
 
 ENDU
@@ -2611,7 +2611,7 @@ wBGPPalsBuffer:: ds (NUM_ACTIVE_PALS + 1) * PALETTE_SIZE
 SECTION "Stack", WRAM0
 
 ; the stack grows downward
-	ds $e3 - 1
+	ds $e1 - 1 ; two bytes reassigned to expanded Movedex flags
 wStack:: db
 
 ENDSECTION

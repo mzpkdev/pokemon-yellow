@@ -185,5 +185,15 @@ Moves:
 	move BULLET_SEED,  TWO_TO_FIVE_ATTACKS_EFFECT,  25, GRASS,        100, 30
 	move ROOST,        HEAL_EFFECT,                  0, FLYING,        100, 10
 	move SYNTHESIS,    HEAL_EFFECT,                  0, GRASS,         100,  5
+	move MACH_PUNCH,   NO_ADDITIONAL_EFFECT,        40, FIGHTING,     100, 30
+	move AQUA_JET,     NO_ADDITIONAL_EFFECT,        40, WATER,        100, 20
+	move EXTREMESPEED,  NO_ADDITIONAL_EFFECT,        80, NORMAL,       100,  5
+	move DRILL_RUN,    NO_ADDITIONAL_EFFECT,        80, GROUND,        95, 10
+	move AIR_CUTTER,   NO_ADDITIONAL_EFFECT,        60, FLYING,        95, 25
+	move WILL_O_WISP,  BURN_EFFECT,                  0, FIRE,           85, 15
+	move SUPERPOWER,   ATTACK_DEFENSE_SELFDOWN_EFFECT, 120, FIGHTING, 100,  5
+	move BRAVE_BIRD,   RECOIL_EFFECT,              120, FLYING,       100, 10
+	move FLARE_BLITZ,  RECOIL_BURN_SIDE_EFFECT,    120, FIRE,         100, 10
+	move FREEZE_DRY,   FREEZE_SIDE_EFFECT,           70, ICE,          100, 15
 	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,         100, 10
 	assert_table_length NUM_ATTACKS

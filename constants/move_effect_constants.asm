@@ -91,4 +91,9 @@
 	const LEECH_SEED_EFFECT          ; $54
 	const SPLASH_EFFECT              ; $55
 	const DISABLE_EFFECT             ; $56
+	const BURN_EFFECT                ; $57
+	const RECOIL_BURN_SIDE_EFFECT    ; $58
+	const ATTACK_DEFENSE_SELFDOWN_EFFECT ; $59
+	const ATTACK_SELFDOWN1           ; $5A internal
+	const DEFENSE_SELFDOWN1          ; $5B internal
 DEF NUM_MOVE_EFFECTS EQU const_value - 1

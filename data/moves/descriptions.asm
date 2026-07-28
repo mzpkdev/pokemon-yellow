@@ -175,6 +175,16 @@ MoveDescriptions::
 	dw BulletSeedDescription
 	dw RoostDescription
 	dw SynthesisDescription
+	dw MachPunchDescription
+	dw AquaJetDescription
+	dw ExtremespeedDescription
+	dw DrillRunDescription
+	dw AirCutterDescription
+	dw WillOWispDescription
+	dw SuperpowerDescription
+	dw BraveBirdDescription
+	dw FlareBlitzDescription
+	dw FreezeDryDescription
 	dw StruggleDescription
 	assert_table_length NUM_ATTACKS
 PoundDescription:
@@ -699,6 +709,36 @@ RoostDescription:
 SynthesisDescription:
 	db   "Restores 1/2 of"
 	feed "the user's max HP.@"
+MachPunchDescription:
+	db   "A punch thrown"
+	feed "with high priority.@"
+AquaJetDescription:
+	db   "A high-priority"
+	feed "water tackle.@"
+ExtremespeedDescription:
+	db   "A very powerful"
+	feed "priority attack.@"
+DrillRunDescription:
+	db   "Has a high criti-"
+	feed "cal hit ratio.@"
+AirCutterDescription:
+	db   "Has a high criti-"
+	feed "cal hit ratio.@"
+WillOWispDescription:
+	db   "A ghostly flame"
+	feed "that causes a burn.@"
+SuperpowerDescription:
+	db   "Lowers user's ATK"
+	feed "and DEFENSE.@"
+BraveBirdDescription:
+	db   "A fierce attack"
+	feed "that causes recoil.@"
+FlareBlitzDescription:
+	db   "Causes recoil and"
+	feed "may burn the foe.@"
+FreezeDryDescription:
+	db   "Super effective"
+	feed "against WATER.@"
 StruggleDescription:
 	db   "Used only if your"
 	feed "PP is exhausted.@"

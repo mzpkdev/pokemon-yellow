@@ -1806,6 +1806,66 @@ _SynthesisDexEntry::
 	next "maximum HP."
 	dex
 
+_MachPunchDexEntry::
+	text "A punch thrown at"
+	next "blinding speed. It"
+	next "usually goes first."
+	dex
+
+_AquaJetDexEntry::
+	text "The user lunges"
+	next "with water. It"
+	next "usually goes first."
+	dex
+
+_ExtremespeedDexEntry::
+	text "A powerful charge"
+	next "that has exceptional"
+	next "move priority."
+	dex
+
+_DrillRunDexEntry::
+	text "A spinning drill"
+	next "attack that often"
+	next "lands critical hits."
+	dex
+
+_AirCutterDexEntry::
+	text "Cuts with blades"
+	next "of air. It often"
+	next "lands critical hits."
+	dex
+
+_WillOWispDexEntry::
+	text "A sinister flame"
+	next "that burns the"
+	next "target."
+	dex
+
+_SuperpowerDexEntry::
+	text "A mighty attack"
+	next "that lowers the"
+	next "user's ATK and DEF."
+	dex
+
+_BraveBirdDexEntry::
+	text "A fierce flying"
+	next "charge that also"
+	next "hurts the user."
+	dex
+
+_FlareBlitzDexEntry::
+	text "A fiery charge that"
+	next "causes recoil and"
+	next "may burn the foe."
+	dex
+
+_FreezeDryDexEntry::
+	text "An icy attack that"
+	next "is super effective"
+	next "against WATER."
+	dex
+
 _StruggleDexEntry::
 	text "A last ditch"
 	next "move only usable"
