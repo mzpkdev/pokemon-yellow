@@ -60,6 +60,8 @@ class MoveTableTests(unittest.TestCase):
             "SHADOW_BALL",
             "DRILL_RUN",
             "SUPERPOWER",
+            "DRAIN_PUNCH",
+            "BODY_PRESS",
         }
         curated_moves = set(
             re.findall(r"^\s*db\s+([A-Z][A-Z0-9_]*)\s*$", compatibility, re.MULTILINE)
