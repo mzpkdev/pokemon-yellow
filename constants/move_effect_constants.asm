@@ -96,4 +96,6 @@
 	const ATTACK_DEFENSE_SELFDOWN_EFFECT ; $59
 	const ATTACK_SELFDOWN1           ; $5A internal
 	const DEFENSE_SELFDOWN1          ; $5B internal
+	const MIRROR_COAT_EFFECT
+	const FLAIL_EFFECT
 DEF NUM_MOVE_EFFECTS EQU const_value - 1

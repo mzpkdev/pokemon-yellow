@@ -150,6 +150,8 @@ AIMoveChoiceModification1:
 	inc de
 	call ReadMove
 	ld a, [wEnemyMoveEffect]
+	cp MIRROR_COAT_EFFECT
+	jr z, .checkMirrorCoat
 	cp DREAM_EATER_EFFECT
 	jp z, .checkAsleep
 	cp OHKO_EFFECT
@@ -206,6 +208,17 @@ AIMoveChoiceModification1:
 	add $5 ; heavily discourage move
 	ld [hl], a
 	jr .nextMove
+.checkMirrorCoat
+	ld a, [wActionResultOrTookBattleTurn]
+	and a
+	jr nz, .discourage
+	ld a, [wPlayerMovePower]
+	and a
+	jr z, .discourage
+	ld a, [wPlayerMoveType]
+	cp SPECIAL
+	jr c, .discourage
+	jp .nextMove
 .ohko
 	call WillOHKOMoveAlwaysFail
 	jp nc, .nextMove
@@ -467,6 +480,17 @@ AIMoveChoiceModification3:
 	jp z, .clearPreviousTypes ; no more moves in move set
 	inc de
 	call ReadMove
+	ld a, [wEnemyMoveNum]
+	cp FLAIL
+	jr nz, .notFlail
+	ld a, 2
+	call AICheckIfHPBelowFractionWrapped
+	jr nc, .notFlail
+	dec [hl]
+.notFlail
+	ld a, [wEnemyMoveNum]
+	cp BODY_PRESS
+	call z, EncourageBodyPressIfDefenseHigher
 	ld a, [wEnemyMovePower]
 	and a
 	jr z, .nextMove ; ignores moves that do no damage (status moves), as we're only concerned with damaging moves for this modifier
@@ -571,6 +595,26 @@ EncourageDrainingMoveIfLowHealth:
 	call AICheckIfHPBelowFractionWrapped
 	ret nc
 	dec [hl] ; encourage the draining move if enemy has more than half health gone
+	ret
+
+EncourageBodyPressIfDefenseHigher:
+	push bc
+	ld a, [wEnemyMonAttack]
+	ld b, a
+	ld a, [wEnemyMonDefense]
+	cp b
+	jr c, .done
+	jr nz, .encourage
+	ld a, [wEnemyMonAttack + 1]
+	ld b, a
+	ld a, [wEnemyMonDefense + 1]
+	cp b
+	jr c, .done
+	jr z, .done
+.encourage
+	dec [hl]
+.done
+	pop bc
 	ret
 
 ; PureRGBnote: ADDED: AKA the "Apply Status and Heal when needed" subroutine

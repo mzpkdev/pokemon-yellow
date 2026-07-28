@@ -186,6 +186,11 @@ MovedexEntryPointers:
 	dw BraveBirdDexEntry
 	dw FlareBlitzDexEntry
 	dw FreezeDryDexEntry
+	dw MirrorCoatDexEntry
+	dw FlailDexEntry
+	dw DrainPunchDexEntry
+	dw CharmDexEntry
+	dw BodyPressDexEntry
 	dw StruggleDexEntry
 	assert_table_length NUM_ATTACKS
 
@@ -923,6 +928,26 @@ FlareBlitzDexEntry:
 
 FreezeDryDexEntry:
 	text_far _FreezeDryDexEntry
+	text_end
+
+MirrorCoatDexEntry:
+	text_far _MirrorCoatDexEntry
+	text_end
+
+FlailDexEntry:
+	text_far _FlailDexEntry
+	text_end
+
+DrainPunchDexEntry:
+	text_far _DrainPunchDexEntry
+	text_end
+
+CharmDexEntry:
+	text_far _CharmDexEntry
+	text_end
+
+BodyPressDexEntry:
+	text_far _BodyPressDexEntry
 	text_end
 
 StruggleDexEntry:

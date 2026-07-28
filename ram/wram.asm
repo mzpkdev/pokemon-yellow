@@ -1372,6 +1372,12 @@ wPlayerMoveType:: db
 wPlayerMoveAccuracy:: db
 wPlayerMoveMaxPP:: db
 
+; Direct special damage received during the current round. Mirror Coat reads
+; only the user's own record, so stale/shared wDamage cannot be reflected.
+wPlayerLastSpecialDamage:: dw
+wEnemyLastSpecialDamage:: dw
+wDirectDamageForMirrorCoat:: db
+
 wEnemyMonSpecies2:: db
 wBattleMonSpecies2:: db
 
@@ -2611,7 +2617,7 @@ wBGPPalsBuffer:: ds (NUM_ACTIVE_PALS + 1) * PALETTE_SIZE
 SECTION "Stack", WRAM0
 
 ; the stack grows downward
-	ds $e1 - 1 ; two bytes reassigned to expanded Movedex flags
+	ds $e1 - 6 ; seven bytes reassigned to Movedex and battle state
 wStack:: db
 
 ENDSECTION
