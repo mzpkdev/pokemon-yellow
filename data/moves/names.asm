@@ -184,5 +184,10 @@ MoveNames::
 	li "BRAVE BIRD"
 	li "FLARE BLITZ"
 	li "FREEZE-DRY"
+	li "MIRROR COAT"
+	li "FLAIL"
+	li "DRAIN PUNCH"
+	li "CHARM"
+	li "BODY PRESS"
 	li "STRUGGLE"
 	assert_list_length NUM_ATTACKS

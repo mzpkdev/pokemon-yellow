@@ -185,6 +185,11 @@ MoveSoundTable:
 	db SFX_BATTLE_25,          $48, $ff ; BRAVE_BIRD
 	db SFX_BATTLE_24,          $80, $10 ; FLARE_BLITZ
 	db SFX_BATTLE_17,          $f0, $ff ; FREEZE_DRY
+	db SFX_BATTLE_33,          $f0, $10 ; MIRROR_COAT
+	db SFX_BATTLE_0B,          $00, $80 ; FLAIL
+	db SFX_BATTLE_0E,          $f0, $20 ; DRAIN_PUNCH
+	db SFX_BATTLE_31,          $80, $04 ; CHARM
+	db SFX_BATTLE_14,          $00, $80 ; BODY_PRESS
 	db SFX_BATTLE_0B,          $00, $80 ; STRUGGLE
 	assert_table_length NUM_ATTACKS
 	db SFX_BATTLE_0B,          $00, $80

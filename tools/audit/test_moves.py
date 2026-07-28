@@ -60,6 +60,8 @@ class MoveTableTests(unittest.TestCase):
             "SHADOW_BALL",
             "DRILL_RUN",
             "SUPERPOWER",
+            "DRAIN_PUNCH",
+            "BODY_PRESS",
         }
         curated_moves = set(
             re.findall(r"^\s*db\s+([A-Z][A-Z0-9_]*)\s*$", compatibility, re.MULTILINE)
@@ -77,6 +79,52 @@ class MoveTableTests(unittest.TestCase):
         for move in ("DRILL_RUN", "AIR_CUTTER"):
             with self.subTest(high_critical_move=move):
                 self.assertRegex(critical, rf"\b{move}\b")
+
+    def test_tactical_move_engine_hooks_are_registered(self) -> None:
+        priority = (ROOT / "data/battle/priority_moves.asm").read_text(encoding="utf-8")
+        core = (ROOT / "engine/battle/core.asm").read_text(encoding="utf-8")
+        wram = (ROOT / "ram/wram.asm").read_text(encoding="utf-8")
+        self.assertRegex(priority, r"\bMIRROR_COAT\b")
+        self.assertIn("CalculateFlailBasePower:", core)
+        self.assertIn("HandleMirrorCoatMove:", core)
+        self.assertIn("RecordSpecialDamage:", core)
+        self.assertGreaterEqual(core.count("cp BODY_PRESS"), 4)
+        self.assertIn("wPlayerLastSpecialDamage:: dw", wram)
+        self.assertIn("wEnemyLastSpecialDamage:: dw", wram)
+        self.assertIn("wDirectDamageForMirrorCoat:: db", wram)
+
+    def test_extreme_yellow_flail_curve_boundaries(self) -> None:
+        def flail_power(current_hp: int, max_hp: int) -> int:
+            for divisor, power in (
+                (20, 200),
+                (10, 150),
+                (5, 100),
+                (3, 80),
+                (2, 40),
+                (1, 20),
+            ):
+                if current_hp < max_hp // divisor:
+                    return power
+            return 20
+
+        max_hp = 300
+        expected = {
+            1: 200,
+            14: 200,
+            15: 150,
+            29: 150,
+            30: 100,
+            59: 100,
+            60: 80,
+            99: 80,
+            100: 40,
+            149: 40,
+            150: 20,
+            300: 20,
+        }
+        for hp, power in expected.items():
+            with self.subTest(hp=hp):
+                self.assertEqual(power, flail_power(hp, max_hp))
 
 
 if __name__ == "__main__":

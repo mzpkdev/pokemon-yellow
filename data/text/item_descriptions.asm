@@ -453,8 +453,8 @@ _TM19Description::
 	prompt
 
 _TM20Description::
-	text "Raises ATTACK if"
-	next "the user is hit."
+	text "A draining punch"
+	next "that restores HP."
 	prompt
 
 _TM21Description::
@@ -523,8 +523,8 @@ _TM33Description::
 	prompt
 
 _TM34Description::
-	text "Waits 2-3 turns to"
-	next "hit back double."
+	text "Attacks using the"
+	next "user's DEFENSE."
 	prompt
 
 _TM35Description::

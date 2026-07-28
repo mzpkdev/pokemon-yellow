@@ -92,4 +92,6 @@ MoveEffectPointerTable:
 	dw AttackDefenseSelfDownEffect ; ATTACK_DEFENSE_SELFDOWN_EFFECT
 	dw StatModifierSelfDownEffect ; ATTACK_SELFDOWN1
 	dw StatModifierSelfDownEffect ; DEFENSE_SELFDOWN1
+	dw NULL                      ; MIRROR_COAT_EFFECT
+	dw NULL                      ; FLAIL_EFFECT
 	assert_table_length NUM_MOVE_EFFECTS

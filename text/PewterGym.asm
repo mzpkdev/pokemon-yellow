@@ -72,7 +72,7 @@ _PewterGymBrockWaitTakeThisText::
 
 _PewterGymReceivedTM34Text::
 	text "<PLAYER> received"
-	line "TM34 BIDE!@"
+	line "TM34 BODY PRESS!@"
 	text_end
 
 _TM34ExplanationText::
@@ -92,12 +92,12 @@ _TM34ExplanationText::
   cont "a new technique!"
 
 	para "TM34 contains"
-	line "BIDE!"
+	line "BODY PRESS!"
 
-	para "Your #MON will"
-	line "absorb damage in"
-	cont "battle then pay"
-	cont "it back double!"
+	para "The tougher your"
+	line "#MON's DEFENSE,"
+	cont "the harder this"
+	cont "attack will hit!"
 	done
 
 _PewterGymTM34NoRoomText::

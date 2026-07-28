@@ -1831,6 +1831,36 @@ _FreezeDryDexEntry::
 	next "against WATER."
 	dex
 
+_MirrorCoatDexEntry::
+	text "Returns double the"
+	next "special damage most"
+	next "recently received."
+	dex
+
+_FlailDexEntry::
+	text "An attack that grows"
+	next "stronger as the"
+	next "user's HP falls."
+	dex
+
+_DrainPunchDexEntry::
+	text "A draining punch"
+	next "that restores half"
+	next "the damage dealt."
+	dex
+
+_CharmDexEntry::
+	text "Charms the target"
+	next "to sharply reduce"
+	next "its ATTACK."
+	dex
+
+_BodyPressDexEntry::
+	text "The user attacks"
+	next "using its DEFENSE"
+	next "instead of ATTACK."
+	dex
+
 _StruggleDexEntry::
 	text "A last ditch"
 	next "move only usable"
