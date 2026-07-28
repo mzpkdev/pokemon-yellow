@@ -637,6 +637,7 @@ PinsirEvosMoves:
 ; Learnset
 	db 5, HARDEN
 	db 8, FOCUS_ENERGY
+	db 24, BIND
 	db 25, SEISMIC_TOSS
 	db 30, TWINEEDLE
 	db 36, SUBMISSION
@@ -655,10 +656,10 @@ TangelaEvosMoves:
 	db 21, POISONPOWDER
 	db 23, STUN_SPORE
 	db 25, SLEEP_POWDER
+	db 26, BIND
 	db 32, MEGA_DRAIN
 	db 42, BODY_SLAM
 	db 45, SYNTHESIS
-	db 48, BIND
 	db 0
 
 MissingNo1FEvosMoves:
@@ -692,13 +693,13 @@ OnixEvosMoves:
 ; Learnset
 	db 12, ROCK_THROW
 	db 19, DIG
+	db 23, BIND
 	db 25, ROCK_TOMB
 	db 29, HARDEN
 	db 31, SLAM
 	db 34, BODY_PRESS
 	db 37, ROCK_SLIDE
 	db 43, EARTHQUAKE
-	db 48, BIND
 	db 0
 
 FearowEvosMoves:
