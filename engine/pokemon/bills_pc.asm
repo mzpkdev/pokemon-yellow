@@ -383,7 +383,7 @@ BillsPCRelease:
 	call DisplayMonListMenu
 	jp c, BillsPCMenu
 	call BillsPCBackupListIndex
-	callfar IsThisPartymonStarterPikachu_Box
+	callfar IsThisPartymonStarterCompanion_Box
 	jr c, .asm_216cb
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
@@ -413,8 +413,15 @@ BillsPCRelease:
 	ld a, [wWhichPokemon]
 	ld hl, wBoxMonNicks
 	call GetPartyMonName
+	ld a, [wCurPartySpecies]
+	cp STARTER_PIKACHU
+	jr nz, .playCompanionSpeciesCry
 	ldpikacry e, PikachuCry40
 	callfar PlayPikachuSoundClip
+	jr .showCompanionUnhappy
+.playCompanionSpeciesCry
+	call PlayCry
+.showCompanionUnhappy
 	ld hl, PikachuUnhappyText
 	rst _PrintText
 	jp BillsPCMenu

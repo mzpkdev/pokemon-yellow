@@ -1065,6 +1065,13 @@ OaksLabPlayerReceivedMonText:
 	call AddPartyMon
 	ld a, LIGHT_BALL_GSC
 	ld [wPartyMon1CatchRate], a
+	ld hl, wPartyMon1DVs
+	ld de, wStarterCompanionDVs
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
 	call DisablePikachuOverworldSpriteDrawing
 	SetEvent EVENT_GOT_STARTER
 	ld hl, wStatusFlags4
