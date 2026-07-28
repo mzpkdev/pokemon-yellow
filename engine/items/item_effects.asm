@@ -811,6 +811,23 @@ ItemUseEvoStone:
 	jr nc, .noEffect
 	callfar IsThisPartymonStarterPikachu_Party
 	jr nc, .notPlayerPikachu
+	callfar CanStarterPikachuAcceptEvolution
+	jr nc, .playerPikachuRefused
+	cp PIKACHU_EVOLUTION_ROUTE_SURGE
+	ld hl, PikachuEvolutionSurgeText
+	jr z, .showAcceptance
+	ld hl, PikachuEvolutionFujiText
+.showAcceptance
+	rst _PrintText
+	ld hl, PikachuEvolutionWarningText
+	rst _PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr z, .notPlayerPikachu
+	jr .canceledItemUse
+
+.playerPikachuRefused
 	ldpikacry e, PikachuCry28
 	callfar PlayPikachuSoundClip
 	ld a, [wWhichPokemon]
@@ -829,6 +846,7 @@ ItemUseEvoStone:
 	ld a, $01
 	ld [wForceEvolution], a
 	callfar TryEvolvingMon ; try to evolve pokemon
+	callfar RefreshStarterCompanionAfterEvolution
 	pop af
 	ld [wWhichPokemon], a
 	ld hl, wNumBagItems
@@ -891,6 +909,18 @@ Func_d85d:
 
 RefusingText:
 	text_far _RefusingText
+	text_end
+
+PikachuEvolutionSurgeText:
+	text_far _PikachuEvolutionSurgeText
+	text_end
+
+PikachuEvolutionFujiText:
+	text_far _PikachuEvolutionFujiText
+	text_end
+
+PikachuEvolutionWarningText:
+	text_far _PikachuEvolutionWarningText
 	text_end
 
 ItemUseVitamin:

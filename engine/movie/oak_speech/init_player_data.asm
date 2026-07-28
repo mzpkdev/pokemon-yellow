@@ -22,6 +22,8 @@ InitPlayerData2:
 	ld [wPikachuGiftAlerted], a
 	ld [wPikachuAmbientItem], a
 	ld [wPikachuAmbientAlerted], a
+	ld [wStarterCompanionDVs], a
+	ld [wStarterCompanionDVs + 1], a
 	ld [wPikachuCompanionQueuedReaction], a
 	ld [wPikachuCompanionIdleCounter], a
 

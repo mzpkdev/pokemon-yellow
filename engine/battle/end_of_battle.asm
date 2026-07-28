@@ -27,6 +27,7 @@ EndOfBattle:
 	rst _DelayFrames
 	jr .evolution
 .notLinkBattle
+	callfar RecordStarterPikachuSurgeLoss
 	ld a, [wBattleResult]
 	and a
 	jr nz, .resetVariables

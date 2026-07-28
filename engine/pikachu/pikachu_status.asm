@@ -1,97 +1,98 @@
 IsStarterPikachuInOurParty::
-	ld hl, wPartySpecies
-	ld de, wPartyMon1OTID
-	ld bc, wPartyMonOT
-	push hl
+	ld a, [wWhichPokemon]
+	push af
+	xor a
+	ld [wWhichPokemon], a
 .loop
-	pop hl
-	ld a, [hli]
-	push hl
-	inc a
-	jr z, .noPlayerPikachu
-	cp STARTER_PIKACHU + 1
-	jr nz, .curMonNotPlayerPikachu
-	ld h, d
-	ld l, e
-	ld a, [wPlayerID]
+	ld a, [wWhichPokemon]
+	ld hl, wPartyCount
 	cp [hl]
-	jr nz, .curMonNotPlayerPikachu
-	inc hl
-	ld a, [wPlayerID+1]
-	cp [hl]
-	jr nz, .curMonNotPlayerPikachu
-	push de
-	push bc
-	ld hl, wPlayerName
-	ld d, $6 ; possible player length - 1
-.nameCompareLoop
-	dec d
-	jr z, .sameOT
-	ld a, [bc]
-	inc bc
-	cp [hl]
-	inc hl
-	jr z, .nameCompareLoop
-	pop bc
-	pop de
-.curMonNotPlayerPikachu
-	ld hl, wPartyMon2 - wPartyMon1
-	add hl, de
-	ld d, h
-	ld e, l
-	ld hl, NAME_LENGTH
-	add hl, bc
-	ld b, h
-	ld c, l
+	jr nc, .notFound
+	call IsThisPartymonStarterPikachu_Party
+	jr c, .found
+	ld hl, wWhichPokemon
+	inc [hl]
 	jr .loop
 
-.sameOT
-	pop bc
-	pop de
-	ld h, d
-	ld l, e
-	ld bc, -NAME_LENGTH
-	add hl, bc
-	ld a, [hli]
-	or [hl]
-	jr z, .noPlayerPikachu ; XXX how is this determined?
-	pop hl
+.found
+	pop af
+	ld [wWhichPokemon], a
 	scf
 	ret
 
-.noPlayerPikachu
-	pop hl
+.notFound
+	pop af
+	ld [wWhichPokemon], a
 	and a
 	ret
 
 IsThisPartymonStarterPikachu_Box::
+	ld a, STARTER_PIKACHU
 	ld hl, wBoxMon1
 	ld bc, wBoxMon2 - wBoxMon1
 	ld de, wBoxMonOT
-	jr asm_fce21
+	jr CheckThisPartymonStarterCompanion
 
 IsThisPartymonStarterPikachu_Party::
 IsThisPartymonStarterPikachu::
+	ld a, STARTER_PIKACHU
+	jr CheckThisPartymonStarterCompanion_Party
+
+IsThisPartymonStarterCompanion_Box::
+	ld a, $ff
+	ld hl, wBoxMon1
+	ld bc, wBoxMon2 - wBoxMon1
+	ld de, wBoxMonOT
+	jr CheckThisPartymonStarterCompanion
+
+IsThisPartymonStarterCompanion_Party::
+	ld a, $ff
+CheckThisPartymonStarterCompanion_Party:
 	ld hl, wPartyMon1
 	ld bc, wPartyMon2 - wPartyMon1
 	ld de, wPartyMonOT
-asm_fce21:
+CheckThisPartymonStarterCompanion:
+	push af
+	push de
 	ld a, [wWhichPokemon]
 	call AddNTimes
+	pop de
+	pop af
+	ld b, a
 	ld a, [hl]
+	ld c, a
+	ld a, b
+	cp $ff
+	ld a, c
+	jr z, .checkCompanionSpecies
 	cp STARTER_PIKACHU
 	jr nz, .notPlayerPikachu
-	ld bc, wPartyMon1OTID - wPartyMon1
+.checkFingerprint
+	push de
+	ld bc, MON_CATCH_RATE
+	add hl, bc
+	ld a, [hl]
+	cp LIGHT_BALL_GSC
+	jr nz, .fingerprintMismatch
+	ld bc, MON_OTID - MON_CATCH_RATE
 	add hl, bc
 	ld a, [wPlayerID]
 	cp [hl]
-	jr nz, .notPlayerPikachu
+	jr nz, .fingerprintMismatch
 	inc hl
 	ld a, [wPlayerID+1]
 	cp [hl]
-	jr nz, .notPlayerPikachu
-	ld h, d
-	ld l, e
+	jr nz, .fingerprintMismatch
+	ld bc, MON_DVS - (MON_OTID + 1)
+	add hl, bc
+	ld a, [wStarterCompanionDVs]
+	cp [hl]
+	jr nz, .fingerprintMismatch
+	inc hl
+	ld a, [wStarterCompanionDVs + 1]
+	cp [hl]
+	jr nz, .fingerprintMismatch
+	pop hl
 	ld a, [wWhichPokemon]
 	ld bc, NAME_LENGTH
 	call AddNTimes
@@ -109,8 +110,128 @@ asm_fce21:
 	and a
 	ret
 
+.checkCompanionSpecies
+	cp STARTER_PIKACHU
+	jr z, .checkFingerprint
+	cp RAICHU
+	jr z, .checkFingerprint
+	jr .notPlayerPikachu
+
+.fingerprintMismatch
+	pop de
+	jr .notPlayerPikachu
+
 .isPlayerPikachu
 	scf
+	ret
+
+CanStarterCompanionFollow::
+	call IsThisPartymonStarterCompanion_Party
+	ret nc
+	ld a, [wWhichPokemon]
+	ld hl, wPartySpecies
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	cp STARTER_PIKACHU
+	jr z, .supported
+	and a
+	ret
+.supported
+	scf
+	ret
+
+CanStarterCompanionInPartyFollow::
+	ld a, [wWhichPokemon]
+	push af
+	xor a
+	ld [wWhichPokemon], a
+.loop
+	ld a, [wWhichPokemon]
+	ld hl, wPartyCount
+	cp [hl]
+	jr nc, .notFound
+	call CanStarterCompanionFollow
+	jr c, .found
+	ld hl, wWhichPokemon
+	inc [hl]
+	jr .loop
+
+.found
+	pop af
+	ld [wWhichPokemon], a
+	scf
+	ret
+
+.notFound
+	pop af
+	ld [wWhichPokemon], a
+	and a
+	ret
+
+RecordStarterPikachuSurgeLoss::
+	ld a, [wBattleResult]
+	and a
+	ret z
+	ld a, [wSurrenderedFromTrainerBattle]
+	and a
+	ret nz
+	ld a, [wCurOpponent]
+	cp OPP_LT_SURGE
+	ret nz
+	CheckEvent EVENT_BEAT_LT_SURGE
+	ret nz
+	ld a, [wWhichPokemon]
+	push af
+	xor a
+	ld [wWhichPokemon], a
+.findStarter
+	ld a, [wWhichPokemon]
+	ld hl, wPartyCount
+	cp [hl]
+	jr nc, .notParticipated
+	call IsThisPartymonStarterPikachu_Party
+	jr c, .checkParticipation
+	ld hl, wWhichPokemon
+	inc [hl]
+	jr .findStarter
+
+.checkParticipation
+	ld a, [wWhichPokemon]
+	ld c, a
+	ld b, FLAG_TEST
+	ld hl, wPartyGainExpFlags
+	predef FlagActionPredef
+	ld a, c
+	and a
+	jr z, .notParticipated
+	SetEvent EVENT_LOST_TO_LT_SURGE_WITH_STARTER_PIKACHU
+.notParticipated
+	pop af
+	ld [wWhichPokemon], a
+	ret
+
+CanStarterPikachuAcceptEvolution::
+	ld a, [wPikachuHappiness]
+	cp PIKACHU_EVOLUTION_HAPPINESS
+	jr c, .notEligible
+	CheckEvent EVENT_LOST_TO_LT_SURGE_WITH_STARTER_PIKACHU
+	jr z, .checkFuji
+	ld a, PIKACHU_EVOLUTION_ROUTE_SURGE
+	scf
+	ret
+
+.checkFuji
+	CheckEvent EVENT_RESCUED_MR_FUJI
+	jr z, .notEligible
+	ld a, PIKACHU_EVOLUTION_ROUTE_FUJI
+	scf
+	ret
+
+.notEligible
+	ld a, PIKACHU_EVOLUTION_ROUTE_NONE
+	and a
 	ret
 
 CheckPikachuFaintedOrStatused::
