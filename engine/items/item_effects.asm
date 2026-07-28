@@ -852,7 +852,11 @@ ItemUseEvoStone:
 	call WaitForSoundToFinish
 	ld a, $01
 	ld [wForceEvolution], a
+	ld a, [wWhichPokemon]
+	push af
 	callfar TryEvolvingMon ; try to evolve pokemon
+	pop af
+	ld [wWhichPokemon], a
 	pop af
 	and a
 	jr z, .refreshStarterCompanion
