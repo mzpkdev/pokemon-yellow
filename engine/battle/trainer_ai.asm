@@ -218,7 +218,7 @@ AIMoveChoiceModification1:
 	ld a, [wPlayerMoveType]
 	cp SPECIAL
 	jr c, .discourage
-	jr .nextMove
+	jp .nextMove
 .ohko
 	call WillOHKOMoveAlwaysFail
 	jp nc, .nextMove
