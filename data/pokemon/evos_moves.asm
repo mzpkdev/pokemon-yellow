@@ -269,6 +269,7 @@ SpearowEvosMoves:
 	db 10, FURY_ATTACK
 	db 14, FOCUS_ENERGY
 	db 18, SWIFT
+	db 20, RAZOR_WIND
 	db 21, MIRROR_MOVE
 	db 24, DRILL_PECK
 	db 28, ROOST
@@ -591,6 +592,7 @@ ScytherEvosMoves:
 	db 16, CUT
 	db 24, AGILITY
 	db 30, AIR_CUTTER
+	db 33, RAZOR_WIND
 	db 36, SLASH
 	db 42, X_SCISSOR
 	db 48, DOUBLE_TEAM
@@ -711,6 +713,7 @@ FearowEvosMoves:
 	db 14, FOCUS_ENERGY
 	db 18, SWIFT
 	db 20, MIRROR_MOVE
+	db 20, RAZOR_WIND
 	db 24, DRILL_PECK
 	db 28, ROOST
 	db 30, SHARPEN
@@ -726,6 +729,7 @@ PidgeyEvosMoves:
 	db 12, QUICK_ATTACK
 	db 19, WING_ATTACK
 	db 21, WHIRLWIND
+	db 25, RAZOR_WIND
 	db 29, TAKE_DOWN
 	db 34, ROOST
 	db 49, MIRROR_MOVE
@@ -1088,6 +1092,7 @@ FarfetchdEvosMoves:
 	db 9, SHARPEN
 	db 13, FURY_ATTACK
 	db 18, WING_ATTACK
+	db 20, RAZOR_WIND
 	db 23, SLASH
 	db 28, SWORDS_DANCE
 	db 31, DRILL_PECK
@@ -2138,6 +2143,7 @@ PidgeottoEvosMoves:
 	db 12, QUICK_ATTACK
 	db 18, WING_ATTACK
 	db 21, WHIRLWIND
+	db 25, RAZOR_WIND
 	db 29, TAKE_DOWN
 	db 34, ROOST
 	db 49, MIRROR_MOVE
@@ -2151,6 +2157,7 @@ PidgeotEvosMoves:
 	db 12, QUICK_ATTACK
 	db 18, WING_ATTACK
 	db 21, WHIRLWIND
+	db 25, RAZOR_WIND
 	db 29, TAKE_DOWN
 	db 34, ROOST
 	db 40, SKY_ATTACK
@@ -2408,6 +2415,7 @@ AerodactylEvosMoves:
 	db 22, SUPERSONIC
 	db 27, ROCK_THROW
 	db 32, WING_ATTACK
+	db 35, RAZOR_WIND
 	db 40, ROCK_SLIDE
 	db 43, TAKE_DOWN
 	db 50, BRAVE_BIRD
