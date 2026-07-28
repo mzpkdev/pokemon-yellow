@@ -19,6 +19,7 @@ EVENT_BEAT_LT_SURGE = 0x167
 PIKACOMPANION_REACTION_GIFT_READY = 5
 PIKACOMPANION_REACTION_AMBIENT_FIND = 6
 POTION = 0x14
+LIGHT_BALL_GSC = 0xA3
 
 
 def _set_event(emulator: Emulator, event: int) -> None:
@@ -48,6 +49,12 @@ def test_receive_pikachu_battle_rival_and_leave_lab(emulator: Emulator) -> None:
 
     assert emulator.read("wPartyCount") == 1
     assert emulator.read("wPartySpecies") == PIKACHU
+    assert emulator.read("wPartyMon1CatchRate") == LIGHT_BALL_GSC
+    assert emulator.read("wStarterCompanionDVs") == emulator.read("wPartyMon1DVs")
+    assert (
+        emulator.pyboy.memory[emulator.symbols["wStarterCompanionDVs"] + 1]
+        == emulator.pyboy.memory[emulator.symbols["wPartyMon1DVs"] + 1]
+    )
     assert emulator.read("wOaksLabCurScript") == SCRIPT_OAKSLAB_NOOP
     assert not emulator.is_in_battle()
     assert emulator.read("wCurMap") == PALLET_TOWN
@@ -58,6 +65,31 @@ def test_receive_pikachu_battle_rival_and_leave_lab(emulator: Emulator) -> None:
         name="oaks-lab-exit-upper",
         crop=(0, 0, 160, 80),
     )
+
+
+def test_companion_fingerprint_requires_marker_and_matching_dvs(
+    emulator: Emulator,
+) -> None:
+    complete_oaks_lab_intro(emulator)
+    saved_dv = emulator.read("wPartyMon1DVs")
+    emulator.write("wPikachuHappiness", 30)
+    emulator.write("wPikachuCompanionStepCounter", 0xFF)
+    emulator.write("wPartyMon1CatchRate", 190)
+
+    _take_step(emulator, "left", "non-companion marker step")
+    assert emulator.read("wPikachuCompanionStepCounter") == 0xFF
+    assert emulator.read("wPikachuHappiness") == 30
+
+    emulator.write("wPartyMon1CatchRate", LIGHT_BALL_GSC)
+    emulator.write("wPartyMon1DVs", saved_dv ^ 0x01)
+    _take_step(emulator, "right", "non-companion DV step")
+    assert emulator.read("wPikachuCompanionStepCounter") == 0xFF
+    assert emulator.read("wPikachuHappiness") == 30
+
+    emulator.write("wPartyMon1DVs", saved_dv)
+    _take_step(emulator, "left", "restored companion fingerprint step")
+    assert emulator.read("wPikachuCompanionStepCounter") == 0
+    assert emulator.read("wPikachuHappiness") == 32
 
 
 def test_companion_step_rollover_updates_happiness_and_mood(
