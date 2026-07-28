@@ -4648,6 +4648,23 @@ GetDamageVarsForPlayerAttack:
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a ; hl = player's offensive stat
+	ld a, [wPlayerMoveNum]
+	cp BODY_PRESS
+	jr nz, .bodyPressBurnDone
+	ld a, [wCriticalHitOrOHKO]
+	and a
+	jr nz, .bodyPressBurnDone
+	ld a, [wBattleMonStatus]
+	bit BRN, a
+	jr z, .bodyPressBurnDone
+	srl h
+	rr l
+	ld a, h
+	or l
+	jr nz, .bodyPressBurnDone
+	inc l
+.bodyPressBurnDone
+	ld a, h
 	or b ; is either high byte nonzero?
 	jr z, .next ; if not, we don't need to scale
 ; bc /= 4 (scale enemy's defensive stat)
@@ -4841,6 +4858,23 @@ GetDamageVarsForEnemyAttack:
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a ; hl = enemy's offensive stat
+	ld a, [wEnemyMoveNum]
+	cp BODY_PRESS
+	jr nz, .bodyPressBurnDone
+	ld a, [wCriticalHitOrOHKO]
+	and a
+	jr nz, .bodyPressBurnDone
+	ld a, [wEnemyMonStatus]
+	bit BRN, a
+	jr z, .bodyPressBurnDone
+	srl h
+	rr l
+	ld a, h
+	or l
+	jr nz, .bodyPressBurnDone
+	inc l
+.bodyPressBurnDone
+	ld a, h
 	or b ; is either high byte nonzero?
 	jr z, .next ; if not, we don't need to scale
 ; bc /= 4 (scale player's defensive stat)
