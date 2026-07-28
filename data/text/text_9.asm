@@ -93,6 +93,48 @@ _RefusingText::
 	line "is refusing!"
 	prompt
 
+_PikachuEvolutionSurgeText::
+	text "PIKACHU stared at"
+	line "the THUNDER"
+	cont "STONE..."
+	para "It remembered the"
+	line "powerful RAICHU..."
+	para "PIKACHU looked up"
+	line "at <PLAYER>..."
+	para "This time, PIKACHU"
+	line "seems unafraid."
+	prompt
+
+_PikachuEvolutionFujiText::
+	text "PIKACHU stared at"
+	line "the THUNDER"
+	cont "STONE..."
+	para "It remembered the"
+	line "#MON TOWER..."
+	para "And MR.FUJI's love"
+	line "for #MON."
+	para "PIKACHU looked up"
+	line "at <PLAYER>..."
+	para "It seems certain"
+	line "your bond won't"
+	cont "change."
+	prompt
+
+_PikachuEvolutionWarningText::
+	text "If PIKACHU evolves"
+	line "it will return to"
+	cont "its # BALL."
+	para "It will no longer"
+	line "walk beside"
+	cont "<PLAYER>."
+	para "Evolve PIKACHU?"
+	prompt
+
+_StarterRaichuReturnedText::
+	text "RAICHU returned to"
+	line "its # BALL."
+	prompt
+
 _VitaminStatRoseText::
 	text_ram wNameBuffer
 	text "'s"

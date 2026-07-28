@@ -804,13 +804,30 @@ ItemUseEvoStone:
 	ld a, [wCurPartySpecies]
 	ld [wLoadedMon], a
 	pop bc
-	jr c, .canceledItemUse
+	jp c, .canceledItemUse
 	ld a, b
 	ld [wCurPartySpecies], a
 	call Func_d85d
-	jr nc, .noEffect
+	jp nc, .noEffect
 	callfar IsThisPartymonStarterPikachu_Party
 	jr nc, .notPlayerPikachu
+	callfar CanStarterPikachuAcceptEvolution
+	jr nc, .playerPikachuRefused
+	cp PIKACHU_EVOLUTION_ROUTE_SURGE
+	ld hl, PikachuEvolutionSurgeText
+	jr z, .showAcceptance
+	ld hl, PikachuEvolutionFujiText
+.showAcceptance
+	rst _PrintText
+	ld hl, PikachuEvolutionWarningText
+	rst _PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr z, .evolveStarterPikachu
+	jr .canceledItemUse
+
+.playerPikachuRefused
 	ldpikacry e, PikachuCry28
 	callfar PlayPikachuSoundClip
 	ld a, [wWhichPokemon]
@@ -823,12 +840,33 @@ ItemUseEvoStone:
 	jr .canceledItemUse
 
 .notPlayerPikachu
+	xor a
+	jr .evolveSelectedPokemon
+
+.evolveStarterPikachu
+	ld a, 1
+.evolveSelectedPokemon
+	push af
 	ld a, SFX_HEAL_AILMENT
 	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
 	ld a, $01
 	ld [wForceEvolution], a
+	ld a, [wWhichPokemon]
+	push af
 	callfar TryEvolvingMon ; try to evolve pokemon
+	pop af
+	ld [wWhichPokemon], a
+	pop af
+	and a
+	jr z, .refreshStarterCompanion
+	ld a, [wWhichPokemon]
+	ld hl, wPartyMon1CatchRate
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	ld [hl], LIGHT_BALL_GSC
+.refreshStarterCompanion
+	callfar RefreshStarterCompanionAfterEvolution
 	pop af
 	ld [wWhichPokemon], a
 	ld hl, wNumBagItems
@@ -891,6 +929,18 @@ Func_d85d:
 
 RefusingText:
 	text_far _RefusingText
+	text_end
+
+PikachuEvolutionSurgeText:
+	text_far _PikachuEvolutionSurgeText
+	text_end
+
+PikachuEvolutionFujiText:
+	text_far _PikachuEvolutionFujiText
+	text_end
+
+PikachuEvolutionWarningText:
+	text_far _PikachuEvolutionWarningText
 	text_end
 
 ItemUseVitamin:

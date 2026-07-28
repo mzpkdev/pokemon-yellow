@@ -448,6 +448,10 @@ SECTION "Pikachu Gifts", ROMX
 
 INCLUDE "engine/pikachu/pikachu_gifts.asm"
 
+SECTION "Starter Companion", ROMX
+
+INCLUDE "engine/pikachu/starter_companion.asm"
+
 SECTION "bank40", ROMX, BANK[$40]
 
 SeadraPicFront::      INCBIN "gfx/pokemon/front/seadra.pic"

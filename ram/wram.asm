@@ -593,7 +593,7 @@ wForceEvolution:: db
 ; if [wAILayer2Encouragement] != 1, the second AI layer is not applied
 wAILayer2Encouragement:: db
 
-	ds 1
+wStarterPikachuParticipatedInBattle:: db
 
 ; current HP of player and enemy substitutes
 wPlayerSubstituteHP:: db
@@ -2134,7 +2134,8 @@ wPikachuGiftAlerted:: db
 wPikachuAmbientItem:: db
 wd47a:: db
 wPikachuAmbientAlerted:: db
-	ds 23
+wStarterCompanionDVs:: dw
+	ds 21
 wd492:: db
 	ds 1
 wSurfingMinigameHiScore:: dw ; little-endian BCD
