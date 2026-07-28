@@ -139,6 +139,8 @@ QueuePikachuGiftAlert::
 	and a
 	jr z, .queueGiftAlert
 	cp PIKACOMPANION_REACTION_AMBIENT_FIND
+	jr z, .queueGiftAlert
+	cp PIKACOMPANION_REACTION_PORTRAIT_READY
 	ret nz
 .queueGiftAlert
 	ld a, PIKACOMPANION_REACTION_GIFT_READY
