@@ -1282,6 +1282,7 @@ NinetalesEvosMoves:
 	db 7, QUICK_ATTACK
 	db 13, ROAR
 	db 16, CONFUSE_RAY
+	db 21, CHARM
 	db 25, WILL_O_WISP
 	db 32, FLAMETHROWER
 	db 37, NIGHT_SHADE
@@ -1516,6 +1517,7 @@ WigglytuffEvosMoves:
 	db 5, DEFENSE_CURL
 	db 14, DISABLE
 	db 16, DOUBLESLAP
+	db 20, CHARM
 	db 24, REST
 	db 30, BODY_SLAM
 	db 38, LOVELY_KISS,
@@ -1548,6 +1550,7 @@ FlareonEvosMoves:
 ; Learnset
 	db 8, SAND_ATTACK
 	db 10, LEER
+	db 18, CHARM
 	db 23, QUICK_ATTACK
 	db 26, EMBER
 	db 30, DOUBLE_KICK
@@ -1563,6 +1566,7 @@ JolteonEvosMoves:
 	db 0
 ; Learnset
 	db 8, SAND_ATTACK
+	db 18, CHARM
 	db 23, QUICK_ATTACK
 	db 26, THUNDERSHOCK
 	db 30, DOUBLE_KICK
@@ -1579,6 +1583,7 @@ VaporeonEvosMoves:
 ; Learnset
 	db 8, SAND_ATTACK
 	db 16, WATER_GUN
+	db 18, CHARM
 	db 23, QUICK_ATTACK
 	db 26, BUBBLEBEAM
 	db 30, BITE
@@ -2017,6 +2022,7 @@ ClefableEvosMoves:
 ; Learnset
 	db 13, DOUBLESLAP
 	db 19, MINIMIZE
+	db 22, CHARM
 	db 26, DEFENSE_CURL
 	db 30, METRONOME
 	db 35, BODY_SLAM
