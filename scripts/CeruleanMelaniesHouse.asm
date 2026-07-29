@@ -109,7 +109,7 @@ CeruleanMelanieHouseSandshrewText:
 
 CeruleanTradeHouseGamblerText:
 	text_asm
-	ld a, TRADE_FOR_LOLA
+	ld a, TRADE_FOR_MIMEY
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 	rst TextScriptEnd
