@@ -26,6 +26,17 @@ jobs:
       - name: Run actionlint
         uses: docker://rhysd/actionlint:1.7.12
 
+      - name: Lint pull request title
+        if: github.event_name == 'pull_request'
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9._/-]+\))?(!)?: .+'
+          if [[ ! "$PR_TITLE" =~ $pattern ]]; then
+            echo "::error::PR title must follow Conventional Commits, for example: feat(battle): add critical-hit test"
+            exit 1
+          fi
+
   audit:
     name: Audit
     runs-on: ubuntu-latest
