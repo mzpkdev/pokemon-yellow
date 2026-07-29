@@ -80,10 +80,37 @@ class WildSightingFrameworkTests(unittest.TestCase):
                 re.MULTILINE,
             )
             thresholds = [int(threshold, 16) for threshold, _ in entries]
+            bucket_sizes = [
+                current - previous
+                for previous, current in zip(
+                    [-1, *thresholds[:-1]],
+                    thresholds,
+                )
+            ]
             self.assertGreater(len(entries), 1, table_name)
             self.assertEqual(thresholds[-1], 0xFF, table_name)
             self.assertEqual(thresholds, sorted(set(thresholds)), table_name)
+            self.assertGreaterEqual(min(bucket_sizes), 13, table_name)
             self.assertRegex(table.group(1), r"(?m)^\s*db 0\s*$")
+
+    def test_profile_method_flags_match_populated_table_pointers(self) -> None:
+        sightings = _source("engine/events/wild_sightings.asm")
+        profiles = re.findall(
+            r"^\s*sighting_profile\s+(.+?),\s*([A-Za-z0-9_]+),\s*([A-Za-z0-9_]+)",
+            sightings,
+            re.MULTILINE,
+        )
+
+        for flags, land_table, water_table in profiles:
+            with self.subTest(flags=flags):
+                self.assertEqual(
+                    land_table != "NoWildSightings",
+                    "SIGHTING_METHOD_LAND" in flags,
+                )
+                self.assertEqual(
+                    water_table != "NoWildSightings",
+                    "SIGHTING_METHOD_WATER" in flags,
+                )
 
     def test_sighting_species_do_not_overlap_their_profiles_normal_species(
         self,
