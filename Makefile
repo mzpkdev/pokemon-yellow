@@ -142,8 +142,19 @@ opts = -cjsv -k 01 -l 0x33 -m 0x1b -p 0 -r 03 -t "POKEMON YELLOW"
 
 ### Misc file-specific graphics rules
 
-gfx/player/yellow.2bpp: rgbgfx += --colors embedded
-gfx/trainers/janine.2bpp: rgbgfx += --colors embedded
+embedded_palette_gfx := \
+	gfx/player/yellow.2bpp \
+	gfx/trainers/janine.2bpp \
+	gfx/movedex/type_icons/bug.2bpp \
+	gfx/movedex/type_icons/dragon.2bpp \
+	gfx/movedex/type_icons/ground.2bpp \
+	gfx/movedex/type_icons/ice.2bpp \
+	gfx/movedex/type_icons/normal.2bpp \
+	gfx/movedex/type_icons/rock.2bpp \
+	gfx/movedex/type_icons/tri.2bpp \
+	gfx/movedex/type_icons/typeless.2bpp
+
+$(embedded_palette_gfx): rgbgfx += --colors embedded
 
 gfx/battle/move_anim_0.2bpp: tools/gfx += --trim-whitespace
 gfx/battle/move_anim_1.2bpp: tools/gfx += --trim-whitespace
