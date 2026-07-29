@@ -238,7 +238,7 @@ TryPikachuAmbientFind::
 	ld b, a
 	ld c, 1
 	push bc
-	ld c, QUESTION_BUBBLE
+	ld c, SMILE_BUBBLE
 	callfar ShowPikachuEmoteBubbleFromC
 	ldpikacry e, PikachuCry35
 	callfar PlayPikachuSoundClip

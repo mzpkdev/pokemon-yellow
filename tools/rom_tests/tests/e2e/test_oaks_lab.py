@@ -399,7 +399,7 @@ def test_talking_to_pikachu_delivers_ambient_find_after_complete_dialogue(
         description="Pikachu ambient-find dialogue",
     )
 
-    assert emulator.read("wWhichEmotionBubble") == QUESTION_BUBBLE
+    assert emulator.read("wWhichEmotionBubble") == SMILE_BUBBLE
     assert emulator.bag_contains(POTION)
     assert emulator.read("wPikachuAmbientAlerted") == 0
 
@@ -468,3 +468,4 @@ def test_gift_and_ambient_alerts_wait_for_idle_and_mark_announced(
     assert emulator.read("wPikachuCompanionQueuedReaction") == 0
     assert emulator.read("wPikachuCompanionIdleCounter") == 0
     assert emulator.read("wPikachuAmbientAlerted") == 1
+    assert emulator.read("wWhichEmotionBubble") == QUESTION_BUBBLE
