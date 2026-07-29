@@ -261,15 +261,9 @@ class WildSightingFrameworkTests(unittest.TestCase):
         selector_end = sightings.index("\nClearWildSighting::", selector_start)
         selector = sightings[selector_start:selector_end]
         self.assertNotIn("wCurEnemyLevel", selector)
+        self.assertNotIn("wd49c", selector)
         self.assertIn("ld [wCurPartySpecies], a", selector)
         self.assertIn("ld [wEnemyMonSpecies2], a", selector)
-        self.assertIn(
-            "ld a, [wd49c]\n"
-            "\tand PIKACHU_PENDING_EMOTION_MASK\n"
-            "\tcp PIKACHU_PENDING_SIGHTING\n"
-            "\tjr z, .noReplacementPop",
-            selector,
-        )
         self.assertLess(selector.index("call ClearWildSighting"), selector.index("ret", selector.index(".gotSpecies")))
 
     def test_encounter_method_selects_a_dedicated_species_table(self) -> None:

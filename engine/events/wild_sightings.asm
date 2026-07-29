@@ -127,13 +127,6 @@ TryReplaceWithWildSighting::
 	cp c
 	jr nz, .noReplacementPop
 
-	; Let the player acknowledge Pikachu's hint before the encounter consumes
-	; the sighting and clears its pending portrait.
-	ld a, [wd49c]
-	and PIKACHU_PENDING_EMOTION_MASK
-	cp PIKACHU_PENDING_SIGHTING
-	jr z, .noReplacementPop
-
 	pop de ; d = requested encounter-method bit
 	ld a, [wSightingProfile]
 	push de
