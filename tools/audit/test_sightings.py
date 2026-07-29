@@ -103,8 +103,10 @@ class WildSightingFrameworkTests(unittest.TestCase):
         update = sightings[update_start:update_end]
 
         eligibility = update.index("call GetCurrentWildSightingZoneAndProfile")
+        terrain = update.index("call GetCurrentWildSightingStepMethod")
         counter = update.index("inc [hl]")
         self.assertLess(eligibility, counter)
+        self.assertLess(terrain, counter)
         self.assertIn(
             "push bc\n\t\tcall Random\n\t\tcp SIGHTING_TRIGGER_CHANCE\n\t\tpop bc",
             update,

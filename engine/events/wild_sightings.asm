@@ -14,8 +14,13 @@ UpdateWildSightingOnStep::
 	and a
 	pop bc
 	ret z
-	ld a, e
-	and SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER
+	ld d, e
+	push bc
+	call GetCurrentWildSightingStepMethod
+	ld e, a
+	pop bc
+	ld a, d
+	and e
 	ret z
 
 	ld hl, wSightingCooldown
@@ -47,6 +52,33 @@ UpdateWildSightingOnStep::
 	ld hl, wSightingFlags
 	set SIGHTING_ACTIVE_F, [hl]
 	call QueueWildSightingPikachuHint
+	ret
+
+; Match the terrain classification used by TryDoWildEncounter without rolling
+; an encounter. Outdoor maps require grass or water; encounter-enabled indoor
+; maps allow land encounters anywhere except forest-style maps.
+GetCurrentWildSightingStepMethod:
+	hlcoord 8, 9
+	ld e, [hl]
+	ld a, [wGrassTile]
+	cp e
+	ld a, SIGHTING_METHOD_LAND
+	ret z
+	ld a, e
+	cp $14
+	ld a, SIGHTING_METHOD_WATER
+	ret z
+	ld a, [wCurMap]
+	cp FIRST_INDOOR_MAP
+	jr c, .ineligible
+	ld a, [wCurMapTileset]
+	cp FOREST
+	jr z, .ineligible
+	ld a, SIGHTING_METHOD_LAND
+	ret
+
+.ineligible
+	xor a
 	ret
 
 ValidateWildSightingZone::
