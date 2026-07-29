@@ -96,6 +96,20 @@ class WildSightingFrameworkTests(unittest.TestCase):
         companion_call = overworld.index("farcall UpdatePikachuCompanionOnStep")
         self.assertLess(sighting_call, companion_call)
 
+    def test_only_eligible_steps_advance_the_interval_and_rng_preserves_zone(self) -> None:
+        sightings = _source("engine/events/wild_sightings.asm")
+        update_start = sightings.index("UpdateWildSightingOnStep::")
+        update_end = sightings.index("\nValidateWildSightingZone::", update_start)
+        update = sightings[update_start:update_end]
+
+        eligibility = update.index("call GetCurrentWildSightingZoneAndProfile")
+        counter = update.index("inc [hl]")
+        self.assertLess(eligibility, counter)
+        self.assertIn(
+            "push bc\n\t\tcall Random\n\t\tcp SIGHTING_TRIGGER_CHANCE\n\t\tpop bc",
+            update,
+        )
+
     def test_warp_and_connected_map_entries_validate_the_active_zone(self) -> None:
         overworld = _source("home/overworld.asm")
         clear_variables = _source("engine/overworld/clear_variables.asm")

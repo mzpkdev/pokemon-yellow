@@ -1,20 +1,6 @@
 UpdateWildSightingOnStep::
-	ld hl, wSightingCooldown
-	ld a, [hl]
-	and a
-	jr z, .cooldownDone
-	dec [hl]
-	ret
-
-.cooldownDone
 	ld a, [wSightingFlags]
 	bit SIGHTING_ACTIVE_F, a
-	ret nz
-
-	ld hl, wSightingStepCounter
-	inc [hl]
-	ld a, [hl]
-	and SIGHTING_STEP_INTERVAL - 1
 	ret nz
 
 	call GetCurrentWildSightingZoneAndProfile
@@ -32,9 +18,25 @@ UpdateWildSightingOnStep::
 	and SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER
 	ret z
 
+	ld hl, wSightingCooldown
+	ld a, [hl]
+	and a
+	jr z, .cooldownDone
+	dec [hl]
+	ret
+
+.cooldownDone
+	ld hl, wSightingStepCounter
+	inc [hl]
+	ld a, [hl]
+	and SIGHTING_STEP_INTERVAL - 1
+	ret nz
+
 	IF !DEF(_DEBUG)
+		push bc
 		call Random
 		cp SIGHTING_TRIGGER_CHANCE
+		pop bc
 		ret nc
 	ENDC
 
