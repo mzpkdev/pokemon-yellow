@@ -152,14 +152,14 @@ TryingToLearn:
 	ld [hli], a ; wTopMenuItemY
 	ld a, 5
 	ld [hli], a ; wTopMenuItemX
-	xor a
+	ld a, [wNumMovesMinusOne]
 	ld [hli], a ; wCurrentMenuItem
 	inc hl
-	ld a, [wNumMovesMinusOne]
 	ld [hli], a ; wMaxMenuItem
 	ld a, A_BUTTON | B_BUTTON
 	ld [hli], a ; wMenuWatchedKeys
-	ld [hl], 0 ; wLastMenuItem
+	ld a, [wNumMovesMinusOne]
+	ld [hl], a ; wLastMenuItem
 	ld hl, hUILayoutFlags
 	set BIT_DOUBLE_SPACED_MENU, [hl]
 	call HandleMenuInput
