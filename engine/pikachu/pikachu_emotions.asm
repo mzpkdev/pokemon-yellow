@@ -411,7 +411,7 @@ MapSpecificPikachuExpression:
 	dpikaemotion PikachuEmotion23
 	dpikaemotion PikachuEmotion24
 	dpikaemotion PikachuEmotion25
-	dpikaemotion PikachuEmotion32
+	dpikaemotion PikachuEmotion27
 
 IsPlayerPikachuAsleepInParty:
 	xor a
