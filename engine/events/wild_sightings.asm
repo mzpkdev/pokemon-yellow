@@ -191,6 +191,7 @@ INCLUDE "data/wild/sighting_maps.asm"
 ; weighted species table. Species tables are intentionally empty until their
 ; contents are balanced separately from the engine framework.
 WildSightingProfiles:
+	table_width 3, WildSightingProfiles
 	sighting_profile 0, NoWildSightings
 	sighting_profile SIGHTING_METHOD_LAND, EarlyGrasslandSightings
 	sighting_profile SIGHTING_METHOD_LAND, ForestSightings
