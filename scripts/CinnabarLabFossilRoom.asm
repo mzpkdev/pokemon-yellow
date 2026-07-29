@@ -100,7 +100,7 @@ CinnabarLabFossilRoomScientist1Text:
 
 CinnabarLabFossilRoomScientist2Text:
 	text_asm
-	ld a, TRADE_FOR_STICKY
+	ld a, TRADE_FOR_ROO
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 	rst TextScriptEnd
