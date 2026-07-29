@@ -339,7 +339,9 @@ UpdatePikachuCompanionIdle::
 	callfar StarterPikachuEmotionCommand_turnawayfromplayer
 	ld b, BOLT_BUBBLE
 .showBubble
+	push bc
 	call UpdateSprites
+	pop bc
 	ld a, b
 	jpfar ShowPikachuEmoteBubble
 .gymVictory
