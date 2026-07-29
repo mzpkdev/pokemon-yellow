@@ -9,7 +9,7 @@ from tools.rom_tests.scenarios.viridian_city import (
 )
 
 
-SNAPSHOTS = Path(__file__).resolve().parents[1] / "snapshots"
+SNAPSHOTS = Path(__file__).resolve().parents[2] / "snapshots"
 
 
 def test_new_game_reaches_viridian_city(emulator: Emulator) -> None:

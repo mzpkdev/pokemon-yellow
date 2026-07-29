@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable
+from collections.abc import Callable, Iterable
 from io import BytesIO
 import os
 from pathlib import Path
@@ -42,12 +42,18 @@ class Emulator:
 
     @staticmethod
     def _load_symbols(path: Path) -> dict[str, int]:
+        return Emulator._parse_symbols(path.read_text(encoding="utf-8").splitlines())
+
+    @staticmethod
+    def _parse_symbols(lines: Iterable[str]) -> dict[str, int]:
         symbols: dict[str, int] = {}
-        for line in path.read_text(encoding="utf-8").splitlines():
+        for line in lines:
             if not line or line.startswith(";"):
                 continue
             location, name = line.split(maxsplit=1)
-            _, address = location.split(":")
+            if ":" not in location:
+                continue
+            _, address = location.split(":", maxsplit=1)
             symbols[name] = int(address, 16)
         return symbols
 
