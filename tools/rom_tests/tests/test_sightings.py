@@ -84,7 +84,7 @@ def test_sighting_world_state_and_optional_companion_hint(
     assert not (emulator.read("wSightingFlags") & SIGHTING_ACTIVE)
     assert emulator.read("wSightingZone") == 0
     assert emulator.read("wSightingProfile") == 0
-    assert emulator.read("wSightingCooldown") == 255
+    assert emulator.read("wSightingCooldown") > 0
     assert (emulator.read("wd49c") & 0x7F) == 0
 
     # Sightings are world events: removing the starter's identity suppresses

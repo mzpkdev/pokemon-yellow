@@ -96,6 +96,15 @@ class WildSightingFrameworkTests(unittest.TestCase):
         companion_call = overworld.index("farcall UpdatePikachuCompanionOnStep")
         self.assertLess(sighting_call, companion_call)
 
+    def test_warp_and_connected_map_entries_validate_the_active_zone(self) -> None:
+        overworld = _source("home/overworld.asm")
+        clear_variables = _source("engine/overworld/clear_variables.asm")
+        self.assertIn("callfar ValidateWildSightingZone", clear_variables)
+        self.assertIn(
+            "call LoadMapHeader\n\tfarcall ValidateWildSightingZone",
+            overworld,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
