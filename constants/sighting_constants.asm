@@ -56,11 +56,11 @@ DEF NUM_SIGHTING_ZONES EQU const_value
 	const SIGHTING_ACTIVE_F
 	const SIGHTING_BATTLE_F
 
-; Easy-to-tune global defaults.
-DEF SIGHTING_STEP_INTERVAL       EQU 128
-DEF SIGHTING_TRIGGER_CHANCE      EQU $20 ; 12.5%
+; Debug tuning: make sightings nearly immediate and easy to repeat.
+DEF SIGHTING_STEP_INTERVAL       EQU 8
+DEF SIGHTING_TRIGGER_CHANCE      EQU $ff ; 255/256
 DEF SIGHTING_ENCOUNTER_CHANCE    EQU 25 percent + 1
-DEF SIGHTING_COOLDOWN_STEPS      EQU 255
+DEF SIGHTING_COOLDOWN_STEPS      EQU 16
 
 MACRO sighting_profile
 	db \1

@@ -152,7 +152,7 @@ QueuePikachuGiftAlert::
 	ld [wPikachuCompanionQueuedReaction], a
 	ret
 
-; Roll for a modest found item every 256 eligible steps, then queue a
+; Roll for a found item at the configured eligible-step interval, then queue a
 ; one-time question reaction. A ready milestone gift always takes priority.
 UpdatePikachuAmbientFind::
 	call IsNextPikachuGiftReady
@@ -161,7 +161,7 @@ UpdatePikachuAmbientFind::
 	and a
 	jr nz, .tryQueueAlert
 	ld a, [wPikachuCompanionStepCounter]
-	and a
+	and PIKACHU_AMBIENT_FIND_STEP_MASK
 	ret nz
 	call Random
 	and PIKACHU_AMBIENT_FIND_CHANCE_MASK
