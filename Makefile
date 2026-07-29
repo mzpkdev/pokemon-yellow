@@ -82,6 +82,9 @@ tools:
 
 
 RGBASMFLAGS = -Q8 -P includes.asm -Weverything -Werror -Wnumeric-string=2 -Wtruncation=1
+RGBLINKFLAGS = -Weverything -Werror
+RGBFIXFLAGS = -Weverything -Werror
+RGBGFXFLAGS = -Weverything -Werror
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`
 ifeq ($(DEBUG),1)
 RGBASMFLAGS += -E
@@ -133,11 +136,14 @@ pokeyellow_vc_pad    = 0x00
 opts = -cjsv -k 01 -l 0x33 -m 0x1b -p 0 -r 03 -t "POKEMON YELLOW"
 
 %.gbc: $$(%_obj) layout.link
-	$(RGBLINK) -p $($*_pad) -w -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
-	$(RGBFIX) -p $($*_pad) $(opts) $@
+	$(RGBLINK) $(RGBLINKFLAGS) -p $($*_pad) -w -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
+	$(RGBFIX) $(RGBFIXFLAGS) -p $($*_pad) $(opts) $@
 
 
 ### Misc file-specific graphics rules
+
+gfx/player/yellow.2bpp: rgbgfx += --colors embedded
+gfx/trainers/janine.2bpp: rgbgfx += --colors embedded
 
 gfx/battle/move_anim_0.2bpp: tools/gfx += --trim-whitespace
 gfx/battle/move_anim_1.2bpp: tools/gfx += --trim-whitespace
@@ -164,12 +170,12 @@ gfx/surfing_pikachu/surfing_pikachu_3.2bpp: tools/gfx += --trim-whitespace
 %.png: ;
 
 %.2bpp: %.png
-	$(RGBGFX) $(rgbgfx) -o $@ $<
+	$(RGBGFX) $(RGBGFXFLAGS) $(rgbgfx) -o $@ $<
 	$(if $(tools/gfx),\
 		tools/gfx $(tools/gfx) -o $@ $@)
 
 %.1bpp: %.png
-	$(RGBGFX) $(rgbgfx) --depth 1 -o $@ $<
+	$(RGBGFX) $(RGBGFXFLAGS) $(rgbgfx) --depth 1 -o $@ $<
 	$(if $(tools/gfx),\
 		tools/gfx $(tools/gfx) --depth 1 -o $@ $@)
 
