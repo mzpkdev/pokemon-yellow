@@ -65,6 +65,7 @@ DEF SIGHTING_COOLDOWN_STEPS      EQU 255
 MACRO sighting_profile
 	db \1
 	dw \2
+	dw \3
 ENDM
 
 MACRO sighting_mon
