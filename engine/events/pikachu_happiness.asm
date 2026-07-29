@@ -389,7 +389,7 @@ UpdatePikachuCompanionIdle::
 	ld b, BOLT_BUBBLE
 	jr .facePlayer
 .portraitSighting
-	ld b, QUESTION_BUBBLE
+	ld b, EXCLAMATION_BUBBLE
 	jr .facePlayer
 
 .queuePendingPortraitAlert
