@@ -68,6 +68,7 @@ MACRO sighting_profile
 ENDM
 
 MACRO sighting_mon
+	; Inclusive cumulative threshold, species. The final entry should use $ff.
 	db \1, \2
 ENDM
 

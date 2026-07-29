@@ -56,6 +56,11 @@ class WildSightingFrameworkTests(unittest.TestCase):
 
     def test_production_species_tables_are_empty_placeholders(self) -> None:
         sightings = _source("engine/events/wild_sightings.asm")
+        production_sightings = re.sub(
+            r"(?ms)^IF DEF\(_DEBUG\)\r?\n.*?^ENDC\r?\n",
+            "",
+            sightings,
+        )
         table_names = re.findall(
             r"^\s*sighting_profile\s+[^,]+,\s*([A-Za-z0-9_]+)",
             sightings,
@@ -65,7 +70,7 @@ class WildSightingFrameworkTests(unittest.TestCase):
         self.assertGreater(len(table_names), 1)
         for table_name in table_names:
             self.assertRegex(
-                sightings,
+                production_sightings,
                 rf"(?m)^{re.escape(table_name)}:\r?\n\s*db 0\s*$",
             )
 

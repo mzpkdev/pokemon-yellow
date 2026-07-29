@@ -32,9 +32,11 @@ UpdateWildSightingOnStep::
 	and SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER
 	ret z
 
-	call Random
-	cp SIGHTING_TRIGGER_CHANCE
-	ret nc
+	IF !DEF(_DEBUG)
+		call Random
+		cp SIGHTING_TRIGGER_CHANCE
+		ret nc
+	ENDC
 
 	ld a, b
 	ld [wSightingZone], a
@@ -85,20 +87,19 @@ TryReplaceWithWildSighting::
 	and a
 	ret z
 
-	call Random
-	cp SIGHTING_ENCOUNTER_CHANCE
-	ret nc
+	IF !DEF(_DEBUG)
+		call Random
+		cp SIGHTING_ENCOUNTER_CHANCE
+		ret nc
+	ENDC
 	call Random
 	ld b, a
 .chooseSpecies
 	ld a, [hli]
 	and a
 	ret z
-	ld c, a
-	ld a, b
-	sub c
-	jr c, .gotSpecies
-	ld b, a
+	cp b
+	jr nc, .gotSpecies
 	inc hl
 	jr .chooseSpecies
 
@@ -212,6 +213,9 @@ WildSightingProfiles:
 NoWildSightings:
 	db 0
 EarlyGrasslandSightings:
+IF DEF(_DEBUG)
+	sighting_mon $ff, CATERPIE
+ENDC
 	db 0
 ForestSightings:
 	db 0
