@@ -369,6 +369,8 @@ UpdatePikachuCompanionIdle::
 	jr z, .portraitRefusal
 	cp PIKACHU_PENDING_ELECTRIC_MOVE
 	jr z, .portraitElectric
+	cp PIKACHU_PENDING_SIGHTING
+	jr z, .portraitSighting
 	ld b, EXCLAMATION_BUBBLE
 	jr .facePlayer
 .portraitSmile
@@ -383,6 +385,9 @@ UpdatePikachuCompanionIdle::
 	jr .showBubble
 .portraitElectric
 	ld b, BOLT_BUBBLE
+	jr .facePlayer
+.portraitSighting
+	ld b, QUESTION_BUBBLE
 	jr .facePlayer
 
 .queuePendingPortraitAlert

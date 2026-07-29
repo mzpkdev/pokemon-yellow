@@ -2145,7 +2145,12 @@ wPikachuAmbientItem:: db
 wd47a:: db
 wPikachuAmbientAlerted:: db
 wStarterCompanionDVs:: dw
-	ds 21
+wSightingZone:: db
+wSightingProfile:: db
+wSightingFlags:: db
+wSightingStepCounter:: db
+wSightingCooldown:: db
+	ds 16
 wd492:: db
 	ds 1
 wSurfingMinigameHiScore:: dw ; little-endian BCD
