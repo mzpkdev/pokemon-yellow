@@ -90,10 +90,10 @@ def test_sighting_world_state_and_optional_companion_hint(
     # Sightings are world events: removing the starter's identity suppresses
     # only the hint, not activation itself.
     emulator.write("wPartyMon1CatchRate", LIGHT_BALL_GSC ^ 0x01)
-    emulator.write("wSightingCooldown", 0)
-    emulator.write("wSightingStepCounter", 127)
     emulator.write("wd49c", 0)
     _enter_route_1(emulator)
+    emulator.write("wSightingCooldown", 0)
+    emulator.write("wSightingStepCounter", 127)
     _take_step(emulator, "up")
 
     assert emulator.read("wSightingFlags") & SIGHTING_ACTIVE
