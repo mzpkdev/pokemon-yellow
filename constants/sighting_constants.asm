@@ -57,9 +57,9 @@ DEF NUM_SIGHTING_ZONES EQU const_value
 	const SIGHTING_BATTLE_F
 
 ; Check often enough for sightings to be discoverable without making them
-; routine: 12.5% every 16 eligible steps, or 128 steps on average.
+; routine: 25% every 16 eligible steps, or 64 steps on average.
 DEF SIGHTING_STEP_INTERVAL       EQU 16
-DEF SIGHTING_TRIGGER_CHANCE      EQU $20 ; 12.5%
+DEF SIGHTING_TRIGGER_CHANCE      EQU $40 ; 25%
 DEF SIGHTING_ENCOUNTER_CHANCE    EQU 25 percent + 1
 DEF SIGHTING_COOLDOWN_STEPS      EQU 128
 
