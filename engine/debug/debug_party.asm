@@ -13,7 +13,10 @@ SetDebugNewGameParty: ; unreferenced except in _DEBUG
 	jr .loop
 
 DebugNewGameParty: ; unreferenced except in _DEBUG
-	db STARTER_PIKACHU, 5
+	db SNORLAX, 80
+	db PERSIAN, 80
+	db JIGGLYPUFF, 80
+	db STARTER_PIKACHU, 80
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -35,30 +38,27 @@ IF DEF(_DEBUG)
 
 	call SetDebugNewGameParty
 
-	; Make the debug Pikachu a real starter companion.
-	ld a, STARTER_PIKACHU
-	ld [wPlayerStarter], a
-	ld a, LIGHT_BALL_GSC
-	ld [wPartyMon1CatchRate], a
-	ld hl, wPartyMon1DVs
-	ld de, wStarterCompanionDVs
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	ld a, 255
-	ld [wPikachuHappiness], a
+	; Pikachu gets 3 HM moves.
+	ld a, FLY
+	ld hl, wPartyMon4Moves
+	ld [hl], a
+	ld a, FLASH
+	ld hl, wPartyMon4Moves + 2
+	ld [hl], a
+	ld a, SURF
+	ld hl, wPartyMon4Moves + 3
+	ld [hl], a
 
-	; Skip the Pallet Town, lab, and rival-battle introduction.
-	SetEvent EVENT_GOT_STARTER
-	SetEvent EVENT_OAK_APPEARED_IN_PALLET
-	SetEvent EVENT_FOLLOWED_OAK_INTO_LAB
-	SetEvent EVENT_FOLLOWED_OAK_INTO_LAB_2
-	SetEvent EVENT_OAK_ASKED_TO_CHOOSE_MON
-	SetEvent EVENT_BATTLED_RIVAL_IN_OAKS_LAB
-	ld a, 22 ; SCRIPT_OAKSLAB_NOOP
-	ld [wOaksLabCurScript], a
+	; Snorlax gets four HM moves.
+	ld hl, wPartyMon1Moves
+	ld a, FLY
+	ld [hli], a
+	ld a, CUT
+	ld [hli], a
+	ld a, SURF
+	ld [hli], a
+	ld a, STRENGTH
+	ld [hl], a
 
 	; Get some debug items.
 	ld hl, wNumBagItems
