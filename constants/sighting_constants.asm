@@ -1,0 +1,77 @@
+; Wild sighting encounter methods.
+	const_def
+	const SIGHTING_METHOD_LAND_F
+	const SIGHTING_METHOD_WATER_F
+
+DEF SIGHTING_METHOD_LAND  EQU 1 << SIGHTING_METHOD_LAND_F
+DEF SIGHTING_METHOD_WATER EQU 1 << SIGHTING_METHOD_WATER_F
+
+; Shared habitat profiles. Zone identity is stored separately so related maps
+; may share an encounter pool without necessarily sharing a sighting lifetime.
+	const_def
+	const SIGHTING_PROFILE_NONE
+	const SIGHTING_PROFILE_EARLY_GRASSLAND
+	const SIGHTING_PROFILE_FOREST
+	const SIGHTING_PROFILE_ROCKY_ROUTE
+	const SIGHTING_PROFILE_MOUNTAIN_CAVE
+	const SIGHTING_PROFILE_URBAN_OUTSKIRTS
+	const SIGHTING_PROFILE_WETLAND
+	const SIGHTING_PROFILE_COAST
+	const SIGHTING_PROFILE_OPEN_OCEAN
+	const SIGHTING_PROFILE_HAUNTED
+	const SIGHTING_PROFILE_INDUSTRIAL
+	const SIGHTING_PROFILE_VOLCANIC
+	const SIGHTING_PROFILE_ICE_CAVE
+	const SIGHTING_PROFILE_SAFARI
+	const SIGHTING_PROFILE_ENDGAME
+DEF NUM_SIGHTING_PROFILES EQU const_value
+
+; Sighting lifetime zones. Multiple maps can share a zone without coupling
+; their encounter pool to that identity.
+	const_def
+	const SIGHTING_ZONE_NONE
+	const SIGHTING_ZONE_PALLET_VIRIDIAN
+	const SIGHTING_ZONE_PEWTER_CERULEAN
+	const SIGHTING_ZONE_CENTRAL_KANTO
+	const SIGHTING_ZONE_EAST_KANTO
+	const SIGHTING_ZONE_SOUTH_KANTO
+	const SIGHTING_ZONE_CYCLING_ROAD
+	const SIGHTING_ZONE_COAST
+	const SIGHTING_ZONE_INDIGO
+	const SIGHTING_ZONE_VIRIDIAN_FOREST
+	const SIGHTING_ZONE_MT_MOON
+	const SIGHTING_ZONE_ROCK_TUNNEL
+	const SIGHTING_ZONE_POWER_PLANT
+	const SIGHTING_ZONE_VICTORY_ROAD
+	const SIGHTING_ZONE_POKEMON_TOWER
+	const SIGHTING_ZONE_SEAFOAM_ISLANDS
+	const SIGHTING_ZONE_POKEMON_MANSION
+	const SIGHTING_ZONE_DIGLETTS_CAVE
+	const SIGHTING_ZONE_SAFARI
+	const SIGHTING_ZONE_CERULEAN_CAVE
+DEF NUM_SIGHTING_ZONES EQU const_value
+
+; Runtime flags.
+	const_def
+	const SIGHTING_ACTIVE_F
+	const SIGHTING_BATTLE_F
+
+; Easy-to-tune global defaults.
+DEF SIGHTING_STEP_INTERVAL       EQU 128
+DEF SIGHTING_TRIGGER_CHANCE      EQU $20 ; 12.5%
+DEF SIGHTING_ENCOUNTER_CHANCE    EQU 25 percent + 1
+DEF SIGHTING_COOLDOWN_STEPS      EQU 255
+
+MACRO sighting_profile
+	db \1
+	dw \2
+ENDM
+
+MACRO sighting_mon
+	; Inclusive cumulative threshold, species. The final entry should use $ff.
+	db \1, \2
+ENDM
+
+MACRO sighting_map
+	db \1, \2
+ENDM
