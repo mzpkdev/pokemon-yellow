@@ -23,6 +23,7 @@ PIKACOMPANION_REACTION_AMBIENT_FIND = 6
 PIKACOMPANION_REACTION_PORTRAIT_READY = 7
 PIKACHU_PENDING_EMOTION_ALERTED = 0x80
 EXCLAMATION_BUBBLE = 0
+QUESTION_BUBBLE = 1
 SMILE_BUBBLE = 2
 POTION = 0x14
 ESCAPE_ROPE = 0x1D
@@ -381,6 +382,27 @@ def test_talking_to_pikachu_delivers_gift_after_complete_dialogue(
     assert emulator.bag_contains(ESCAPE_ROPE)
     assert emulator.read("wPikachuGiftCooldown") == 128
     assert emulator.read("wPikachuGiftAlerted") == 0
+
+
+def test_talking_to_pikachu_delivers_ambient_find_after_complete_dialogue(
+    emulator: Emulator,
+) -> None:
+    complete_oaks_lab_intro(emulator)
+    emulator.write("wPikachuAmbientItem", POTION)
+    emulator.write("wPikachuAmbientAlerted", 1)
+
+    # Pikachu is directly above the player after the opening scenario.
+    emulator.write("wSpritePlayerStateData1FacingDirection", 4)
+    emulator.advance_until(
+        lambda: emulator.read("wPikachuAmbientItem") == 0,
+        button="a",
+        max_presses=16,
+        description="Pikachu ambient-find dialogue",
+    )
+
+    assert emulator.read("wWhichEmotionBubble") == QUESTION_BUBBLE
+    assert emulator.bag_contains(POTION)
+    assert emulator.read("wPikachuAmbientAlerted") == 0
 
 
 def test_queued_companion_reaction_waits_for_idle(emulator: Emulator) -> None:

@@ -47,8 +47,8 @@ TryPikachuGift::
 	ld c, [hl]
 	push de
 	push bc
-	ld a, SMILE_BUBBLE
-	callfar ShowPikachuEmoteBubble
+	ld c, SMILE_BUBBLE
+	callfar ShowPikachuEmoteBubbleFromC
 	ldpikacry e, PikachuCry35
 	callfar PlayPikachuSoundClip
 	pop bc
@@ -234,11 +234,14 @@ TryPikachuAmbientFind::
 	ld b, a
 	ld c, 1
 	push bc
-	ld a, QUESTION_BUBBLE
-	callfar ShowPikachuEmoteBubble
+	ld c, QUESTION_BUBBLE
+	callfar ShowPikachuEmoteBubbleFromC
 	ldpikacry e, PikachuCry35
 	callfar PlayPikachuSoundClip
 	ld hl, PikachuAmbientFoundText
+	push hl
+	farcall DisplayTextIDInit
+	pop hl
 	rst _PrintText
 	pop bc
 	call GiveItem
@@ -255,12 +258,14 @@ TryPikachuAmbientFind::
 .keepQueuedReaction
 	ld hl, PikachuReceivedGiftText
 	rst _PrintText
+	call CloseTextDisplay
 	scf
 	ret
 
 .bagFull
 	ld hl, PikachuGiftBagFullText
 	rst _PrintText
+	call CloseTextDisplay
 	scf
 	ret
 
