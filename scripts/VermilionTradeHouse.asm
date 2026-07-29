@@ -12,7 +12,7 @@ VermilionTradeHouseGentlemanText:
 
 VermilionTradeHouseLittleGirlText:
 	text_asm
-	ld a, TRADE_FOR_DUX
+	ld a, TRADE_FOR_TWINKLE
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 	rst TextScriptEnd
