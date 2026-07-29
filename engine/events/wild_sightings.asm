@@ -58,6 +58,10 @@ UpdateWildSightingOnStep::
 ; an encounter. Outdoor maps require grass or water; encounter-enabled indoor
 ; maps allow land encounters anywhere except forest-style maps.
 GetCurrentWildSightingStepMethod:
+	callfar IsPlayerStandingOnDoorTileOrWarpTile
+	jr c, .ineligible
+	callfar IsPlayerJustOutsideMap
+	jr z, .ineligible
 	hlcoord 8, 9
 	ld e, [hl]
 	ld a, [wGrassTile]

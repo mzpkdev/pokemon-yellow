@@ -37,6 +37,17 @@ def _enter_route_1(emulator: Emulator) -> None:
     emulator.tick(30)
 
 
+def _take_step(emulator: Emulator, button: str) -> None:
+    coordinate = "wXCoord" if button in ("left", "right") else "wYCoord"
+    start = emulator.read(coordinate)
+    emulator.advance_until(
+        lambda: emulator.read(coordinate) != start,
+        button=button,
+        max_presses=3,
+        description=f"sighting {button} step",
+    )
+
+
 ROUTE_1_NORTHBOUND_WAYPOINTS = (
     ("wYCoord", 30, "up"),
     ("wXCoord", 6, "left"),
@@ -80,10 +91,19 @@ def test_sighting_hint_and_grouped_zone_cleanup(
     _enter_route_1(emulator)
 
     emulator.write("wSightingFlags", 0)
-    emulator.write("wSightingCooldown", 0)
     emulator.write("wSightingStepCounter", 127)
     emulator.write("wd49c", 0)
     emulator.write("wPikachuCompanionQueuedReaction", 0)
+
+    # The southern Route 1 path is not encounter terrain. It must not charge
+    # either the activation interval or an active cooldown.
+    emulator.write("wSightingCooldown", 5)
+    _take_step(emulator, "up")
+    assert emulator.read("wSightingStepCounter") == 127
+    assert emulator.read("wSightingCooldown") == 5
+    assert not (emulator.read("wSightingFlags") & SIGHTING_ACTIVE)
+
+    emulator.write("wSightingCooldown", 0)
     resume_index = _follow_route_1_waypoints(
         emulator,
         stop_on_sighting=True,

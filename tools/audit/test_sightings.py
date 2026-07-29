@@ -107,6 +107,11 @@ class WildSightingFrameworkTests(unittest.TestCase):
         counter = update.index("inc [hl]")
         self.assertLess(eligibility, counter)
         self.assertLess(terrain, counter)
+        terrain_start = sightings.index("GetCurrentWildSightingStepMethod:")
+        terrain_end = sightings.index("\nValidateWildSightingZone::", terrain_start)
+        terrain_source = sightings[terrain_start:terrain_end]
+        self.assertIn("callfar IsPlayerStandingOnDoorTileOrWarpTile", terrain_source)
+        self.assertIn("callfar IsPlayerJustOutsideMap", terrain_source)
         self.assertIn(
             "push bc\n\t\tcall Random\n\t\tcp SIGHTING_TRIGGER_CHANCE\n\t\tpop bc",
             update,
