@@ -284,6 +284,25 @@ class WildSightingFrameworkTests(unittest.TestCase):
         self.assertIn("dw \\3", constants)
         self.assertIn("table_width 5, WildSightingProfiles", sightings)
 
+    def test_sighting_capture_penalty_uses_the_effective_rate(self) -> None:
+        item_effects = _source("engine/items/item_effects.asm")
+        ball_start = item_effects.index("ItemUseBall:")
+        ball_end = item_effects.index("\nItemUseBallText00:", ball_start)
+        ball = item_effects[ball_start:ball_end]
+        helper_start = ball.index("GetEffectiveEnemyCatchRate:")
+        helper = ball[helper_start:]
+
+        self.assertEqual(ball.count("call GetEffectiveEnemyCatchRate"), 2)
+        self.assertIn("bit SIGHTING_BATTLE_F, a", helper)
+        self.assertIn("ld a, [wEnemyMonActualCatchRate]", helper)
+        self.assertIn("push bc", helper)
+        self.assertIn("srl a\n\tsrl a", helper)
+        self.assertIn("sub c", helper)
+        self.assertIn("pop bc", helper)
+        master_ball = ball.index("cp MASTER_BALL")
+        first_penalty = ball.index("call GetEffectiveEnemyCatchRate")
+        self.assertLess(master_ball, first_penalty)
+
     def test_world_step_update_is_independent_from_companion_update(self) -> None:
         overworld = _source("home/overworld.asm")
         sighting_call = overworld.index("farcall UpdateWildSightingOnStep")

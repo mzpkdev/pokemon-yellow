@@ -315,7 +315,7 @@ ItemUseBall:
 	pop bc ; b = Rand1 - Status
 
 ; If Rand1 - Status > CatchRate, the ball fails to capture the Pokémon.
-	ld a, [wEnemyMonActualCatchRate]
+	call GetEffectiveEnemyCatchRate
 	cp b
 	jr c, .failedToCapture
 
@@ -343,7 +343,7 @@ ItemUseBall:
 	xor a
 	ldh [hMultiplicand], a
 	ldh [hMultiplicand + 1], a
-	ld a, [wEnemyMonActualCatchRate]
+	call GetEffectiveEnemyCatchRate
 	ldh [hMultiplicand + 2], a
 	ld a, 100
 	ldh [hMultiplier], a
@@ -615,6 +615,23 @@ ItemUseBall:
 
 .emptyString
 	db "@"
+
+; Sighted Pokemon retain 75% of their current effective catch rate. Calculate
+; this when the rate is used so Safari bait and rock modifiers still compose.
+GetEffectiveEnemyCatchRate:
+	ld a, [wSightingFlags]
+	bit SIGHTING_BATTLE_F, a
+	ld a, [wEnemyMonActualCatchRate]
+	ret z
+	push bc
+	ld b, a
+	srl a
+	srl a
+	ld c, a
+	ld a, b
+	sub c
+	pop bc
+	ret
 
 ItemUseBallText00:
 ;"It dodged the thrown ball!"
