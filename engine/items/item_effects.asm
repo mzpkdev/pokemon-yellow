@@ -570,8 +570,6 @@ ItemUseBall:
 	predef ShowPokedexData
 
 .skipShowingPokedexData
-	ld e, PIKACHU_PENDING_CAUGHT_MON
-	callfar SetPendingPikachuEmotion
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH ; is party full?
 	jr z, .sendToBox
