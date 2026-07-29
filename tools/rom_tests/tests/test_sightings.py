@@ -37,17 +37,6 @@ def _enter_route_1(emulator: Emulator) -> None:
     emulator.tick(30)
 
 
-def _take_step(emulator: Emulator, button: str) -> None:
-    coordinate = "wXCoord" if button in ("left", "right") else "wYCoord"
-    start = emulator.read(coordinate)
-    emulator.advance_until(
-        lambda: emulator.read(coordinate) != start,
-        button=button,
-        max_presses=3,
-        description=f"sighting {button} step",
-    )
-
-
 ROUTE_1_NORTHBOUND_WAYPOINTS = (
     ("wYCoord", 30, "up"),
     ("wXCoord", 6, "left"),
@@ -84,6 +73,47 @@ def _follow_route_1_waypoints(
     return len(ROUTE_1_NORTHBOUND_WAYPOINTS)
 
 
+def test_only_encounter_terrain_charges_sighting_cooldown(
+    emulator: Emulator,
+) -> None:
+    complete_oaks_lab_intro(emulator)
+    _enter_route_1(emulator)
+
+    emulator.write("wSightingFlags", 0)
+    emulator.write("wSightingStepCounter", 10)
+    emulator.write("wSightingCooldown", 100)
+    saw_eligible_step = False
+    saw_ineligible_step = False
+
+    # Stop before the Viridian connection so both outcomes are observed within
+    # one eligible sighting map: encounter terrain decrements the cooldown,
+    # while ordinary Route 1 path tiles leave it untouched.
+    for symbol, value, button in ROUTE_1_NORTHBOUND_WAYPOINTS[:-1]:
+        for _ in range(160):
+            if emulator.read(symbol) == value:
+                break
+            before = emulator.read("wSightingCooldown")
+            emulator.press(button)
+            after = emulator.read("wSightingCooldown")
+            if after == before:
+                saw_ineligible_step = True
+            elif after == before - 1:
+                saw_eligible_step = True
+            else:
+                raise AssertionError(
+                    f"Unexpected sighting cooldown change: {before} -> {after}"
+                )
+        else:
+            raise AssertionError(
+                f"Timed out checking Route 1 terrain toward {symbol}={value}"
+            )
+
+    assert emulator.read("wCurMap") == ROUTE_1
+    assert emulator.read("wSightingStepCounter") == 10
+    assert saw_eligible_step
+    assert saw_ineligible_step
+
+
 def test_sighting_hint_and_grouped_zone_cleanup(
     emulator: Emulator,
 ) -> None:
@@ -94,14 +124,6 @@ def test_sighting_hint_and_grouped_zone_cleanup(
     emulator.write("wSightingStepCounter", 127)
     emulator.write("wd49c", 0)
     emulator.write("wPikachuCompanionQueuedReaction", 0)
-
-    # The southern Route 1 path is not encounter terrain. It must not charge
-    # either the activation interval or an active cooldown.
-    emulator.write("wSightingCooldown", 5)
-    _take_step(emulator, "up")
-    assert emulator.read("wSightingStepCounter") == 127
-    assert emulator.read("wSightingCooldown") == 5
-    assert not (emulator.read("wSightingFlags") & SIGHTING_ACTIVE)
 
     emulator.write("wSightingCooldown", 0)
     resume_index = _follow_route_1_waypoints(
