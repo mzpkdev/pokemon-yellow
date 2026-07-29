@@ -205,6 +205,8 @@ class WildSightingFrameworkTests(unittest.TestCase):
             )
         )
         excluded = {
+            "PIKACHU", "RAICHU",
+            "EEVEE", "VAPOREON", "JOLTEON", "FLAREON",
             "BULBASAUR", "IVYSAUR", "VENUSAUR",
             "CHARMANDER", "CHARMELEON", "CHARIZARD",
             "SQUIRTLE", "WARTORTLE", "BLASTOISE",
@@ -212,6 +214,40 @@ class WildSightingFrameworkTests(unittest.TestCase):
             "ARTICUNO", "ZAPDOS", "MOLTRES", "MEWTWO", "MEW",
         }
         self.assertFalse(species & excluded)
+
+    def test_land_and_water_tables_use_disjoint_species(self) -> None:
+        sightings = _source("engine/events/wild_sightings.asm")
+        profiles = re.findall(
+            r"^\s*sighting_profile\s+[^,]+,\s*([A-Za-z0-9_]+),\s*([A-Za-z0-9_]+)",
+            sightings,
+            re.MULTILINE,
+        )
+
+        def table_species(table_name: str) -> set[str]:
+            table = re.search(
+                rf"(?ms)^{re.escape(table_name)}:\r?\n(.*?)(?=^[A-Za-z]\w*:\r?$|\Z)",
+                sightings,
+            )
+            self.assertIsNotNone(table, table_name)
+            return set(
+                re.findall(
+                    r"^\s*sighting_mon\s+\$[0-9a-f]{2},\s+([A-Z0-9_]+)",
+                    table.group(1),
+                    re.MULTILINE,
+                )
+            )
+
+        for land_table, water_table in profiles:
+            if "NoWildSightings" in (land_table, water_table):
+                continue
+            shared_species = (
+                table_species(land_table) & table_species(water_table)
+            )
+            self.assertFalse(
+                shared_species,
+                f"{land_table} and {water_table} share "
+                f"{sorted(shared_species)}",
+            )
 
     def test_encounter_hook_runs_after_repel_and_preserves_level(self) -> None:
         encounters = _source("engine/battle/wild_encounters.asm")

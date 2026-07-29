@@ -345,8 +345,8 @@ UrbanOutskirtsWaterSightings:
 WetlandLandSightings:
 	sighting_mon $32, PARAS
 	sighting_mon $65, EXEGGCUTE
-	sighting_mon $8b, PSYDUCK
-	sighting_mon $a5, KRABBY
+	sighting_mon $8b, LICKITUNG
+	sighting_mon $a5, CUBONE
 	sighting_mon $be, DITTO
 	sighting_mon $cb, PARASECT
 	sighting_mon $d8, EXEGGUTOR
@@ -369,12 +369,12 @@ CoastalLandSightings:
 	sighting_mon $32, DODUO
 	sighting_mon $58, FARFETCHD
 	sighting_mon $7f, EXEGGCUTE
-	sighting_mon $a5, KRABBY
-	sighting_mon $be, SEEL
-	sighting_mon $d8, SHELLDER
+	sighting_mon $a5, PONYTA
+	sighting_mon $be, CUBONE
+	sighting_mon $d8, PARAS
 	sighting_mon $e5, DODRIO
 	sighting_mon $f2, EXEGGUTOR
-	sighting_mon $ff, LAPRAS
+	sighting_mon $ff, LICKITUNG
 	db 0
 CoastalWaterSightings:
 	sighting_mon $32, SHELLDER
@@ -428,19 +428,19 @@ VolcanicSightings:
 	sighting_mon $d8, RAPIDASH
 	sighting_mon $e5, RHYDON
 	sighting_mon $f2, GOLEM
-	sighting_mon $ff, FLAREON
+	sighting_mon $ff, DRAGONITE
 	db 0
 IceCaveLandSightings:
 	sighting_mon $25, MACHOP
 	sighting_mon $4c, CUBONE
 	sighting_mon $72, CLEFAIRY
-	sighting_mon $8b, PSYDUCK
-	sighting_mon $a5, POLIWAG
-	sighting_mon $be, TENTACOOL
+	sighting_mon $8b, GEODUDE
+	sighting_mon $a5, ONIX
+	sighting_mon $be, DITTO
 	sighting_mon $cb, MACHOKE
 	sighting_mon $d8, MAROWAK
 	sighting_mon $e5, CLEFABLE
-	sighting_mon $f2, LAPRAS
+	sighting_mon $f2, RHYHORN
 	sighting_mon $ff, GOLEM
 	db 0
 IceCaveWaterSightings:
@@ -452,14 +452,14 @@ IceCaveWaterSightings:
 	sighting_mon $cb, GYARADOS
 	sighting_mon $e5, TENTACRUEL
 	sighting_mon $f2, DRAGONAIR
-	sighting_mon $ff, VAPOREON
+	sighting_mon $ff, DRAGONITE
 	db 0
 SafariLandSightings:
 	sighting_mon $25, NIDORAN_F
 	sighting_mon $4c, NIDORAN_M
 	sighting_mon $72, DODUO
 	sighting_mon $98, PONYTA
-	sighting_mon $b2, PSYDUCK
+	sighting_mon $b2, VULPIX
 	sighting_mon $cb, DITTO
 	sighting_mon $d8, PORYGON
 	sighting_mon $e5, PERSIAN
@@ -480,10 +480,10 @@ SafariWaterSightings:
 EndgameLandSightings:
 	sighting_mon $25, ARCANINE
 	sighting_mon $4c, NINETALES
-	sighting_mon $65, CLOYSTER
-	sighting_mon $7f, STARMIE
+	sighting_mon $65, RAPIDASH
+	sighting_mon $7f, MAROWAK
 	sighting_mon $98, SNORLAX
-	sighting_mon $b2, LAPRAS
+	sighting_mon $b2, PARASECT
 	sighting_mon $be, PERSIAN
 	sighting_mon $cb, VICTREEBEL
 	sighting_mon $d8, VILEPLUME
