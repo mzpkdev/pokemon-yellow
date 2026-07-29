@@ -214,9 +214,6 @@ UpdatePikachuCompanionOnStep::
 	ld a, [hl]
 	and $7
 	call z, .driftMoodTowardNeutral
-	ld a, [wPikachuCompanionStepCounter]
-	and $7f
-	call z, .tryQueueReaction
 
 	ld a, [wPikachuCompanionStepCounter]
 	and a
@@ -235,29 +232,6 @@ UpdatePikachuCompanionOnStep::
 
 .increaseMood
 	inc [hl]
-	ret
-
-.tryQueueReaction
-	ld a, [wPikachuCompanionQueuedReaction]
-	and a
-	ret nz
-	call Random
-	and $7
-	ret nz
-
-	ld a, [wPikachuHappiness]
-	cp 70
-	ld b, PIKACOMPANION_REACTION_BOLT
-	jr c, .queueReaction
-	cp 160
-	ret c
-	cp 250
-	ld b, PIKACOMPANION_REACTION_SMILE
-	jr c, .queueReaction
-	ld b, PIKACOMPANION_REACTION_HEART
-.queueReaction
-	ld a, b
-	ld [wPikachuCompanionQueuedReaction], a
 	ret
 
 UpdatePikachuCompanionIdle::
