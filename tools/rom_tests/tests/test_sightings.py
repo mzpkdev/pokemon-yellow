@@ -93,9 +93,19 @@ def test_only_encounter_terrain_charges_sighting_cooldown(
             if emulator.read(symbol) == value:
                 break
             before = emulator.read("wSightingCooldown")
+            before_position = (
+                emulator.read("wXCoord"),
+                emulator.read("wYCoord"),
+            )
             emulator.write("wNumberOfNoRandomBattleStepsLeft", 0xFF)
             emulator.press(button)
             after = emulator.read("wSightingCooldown")
+            after_position = (
+                emulator.read("wXCoord"),
+                emulator.read("wYCoord"),
+            )
+            if after_position == before_position:
+                continue
             if after == before:
                 saw_ineligible_step = True
             elif after == before - 1:
