@@ -2,10 +2,8 @@ TradeMons:
 ; entries correspond to TRADE_FOR_* constants
 	table_width 3 + NAME_LENGTH, TradeMons
 	; give mon, get mon, dialog id, nickname
-	; The two instances of TRADE_DIALOGSET_EVOLUTION are a leftover
-	; from the Japanese Blue trades, which used species that evolve.
-	; Japanese Red and Green used TRADE_DIALOGSET_CASUAL, and had
-	; the same species as English Red and Blue.
+	; Dialog sets only select the trader's tone; trade evolution is
+	; determined separately by the received species.
 	db MR_MIME,    HAUNTER,   TRADE_DIALOGSET_CASUAL,    "SPOOKY@@@@@"
 	db BUTTERFREE, SCYTHER,   TRADE_DIALOGSET_CASUAL,    "SLASH@@@@@@"
 	db VULPIX,     EEVEE,     TRADE_DIALOGSET_HAPPY,     "BUDDY@@@@@@"
