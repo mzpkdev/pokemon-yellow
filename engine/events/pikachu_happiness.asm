@@ -342,8 +342,8 @@ UpdatePikachuCompanionIdle::
 	push bc
 	call UpdateSprites
 	pop bc
-	ld a, b
-	jpfar ShowPikachuEmoteBubble
+	ld c, b
+	jpfar ShowPikachuEmoteBubbleFromC
 .gymVictory
 	ldpikaemotion e, PikachuEmotion34
 	jpfar PlaySpecificPikachuEmotion
