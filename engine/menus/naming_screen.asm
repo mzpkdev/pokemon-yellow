@@ -14,6 +14,8 @@ AskName:
 	rst _PrintText
 	hlcoord 14, 7
 	lb bc, 8, 15
+	ld a, 1 << BIT_SECOND_MENU_OPTION_DEFAULT
+	ld [wTwoOptionMenuID], a
 	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
