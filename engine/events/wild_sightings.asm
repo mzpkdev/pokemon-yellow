@@ -8,20 +8,33 @@ UpdateWildSightingOnStep::
 	and a
 	ret z
 	push bc
+	call GetCurrentWildSightingStepMethod
+	ld d, a
+	pop bc
+	and a
+	ret z
+	ld a, c
+	push bc
+	push de
 	call GetWildSightingProfile
-	ld e, a
+	ld b, a
+	pop de
+	ld a, d
+	and b
+	jr z, .ineligibleProfile
+	ld a, d
+	call GetWildSightingTable
 	ld a, [hl]
 	and a
 	pop bc
 	ret z
-	ld d, e
-	push bc
-	call GetCurrentWildSightingStepMethod
-	ld e, a
+	jr .eligibleProfile
+
+.ineligibleProfile
 	pop bc
-	ld a, d
-	and e
-	ret z
+	ret
+
+.eligibleProfile
 
 	ld hl, wSightingCooldown
 	ld a, [hl]
@@ -121,6 +134,8 @@ TryReplaceWithWildSighting::
 	pop de
 	and d
 	ret z
+	ld a, d
+	call GetWildSightingTable
 	ld a, [hl]
 	and a
 	ret z
@@ -206,7 +221,7 @@ GetCurrentWildSightingZoneAndProfile:
 	ld c, [hl]
 	ret
 
-; Return a profile's encounter-method flags in a and species-table pointer in hl.
+; Return a profile's encounter-method flags in a and table pointers in hl.
 GetWildSightingProfile:
 	ld e, a
 	ld d, 0
@@ -214,7 +229,20 @@ GetWildSightingProfile:
 	add hl, de
 	add hl, de
 	add hl, de
+	add hl, de
+	add hl, de
 	ld a, [hli]
+	ret
+
+; Return the land or water species table selected by a.
+; Input: a = SIGHTING_METHOD_* bit, hl = profile table pointers.
+GetWildSightingTable:
+	cp SIGHTING_METHOD_WATER
+	jr nz, .loadPointer
+	inc hl
+	inc hl
+
+.loadPointer
 	push af
 	ld e, [hl]
 	inc hl
@@ -226,58 +254,251 @@ GetWildSightingProfile:
 
 INCLUDE "data/wild/sighting_maps.asm"
 
-; Each profile contains supported encounter-method flags and a pointer to a
-; weighted species table. Species tables are intentionally empty until their
-; contents are balanced separately from the engine framework.
+; Each profile contains supported encounter-method flags followed by land and
+; water species-table pointers. Unsupported methods use NoWildSightings.
 WildSightingProfiles:
-	table_width 3, WildSightingProfiles
-	sighting_profile 0, NoWildSightings
-	sighting_profile SIGHTING_METHOD_LAND, EarlyGrasslandSightings
-	sighting_profile SIGHTING_METHOD_LAND, ForestSightings
-	sighting_profile SIGHTING_METHOD_LAND, RockyRouteSightings
-	sighting_profile SIGHTING_METHOD_LAND, MountainCaveSightings
-	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, UrbanOutskirtsSightings
-	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, WetlandSightings
-	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, CoastalSightings
-	sighting_profile SIGHTING_METHOD_WATER, OpenOceanSightings
-	sighting_profile SIGHTING_METHOD_LAND, HauntedSightings
-	sighting_profile SIGHTING_METHOD_LAND, IndustrialSightings
-	sighting_profile SIGHTING_METHOD_LAND, VolcanicSightings
-	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, IceCaveSightings
-	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, SafariSightings
-	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, EndgameSightings
+	table_width 5, WildSightingProfiles
+	sighting_profile 0, NoWildSightings, NoWildSightings
+	sighting_profile SIGHTING_METHOD_LAND, EarlyGrasslandSightings, NoWildSightings
+	sighting_profile SIGHTING_METHOD_LAND, ForestSightings, NoWildSightings
+	sighting_profile SIGHTING_METHOD_LAND, RockyRouteSightings, NoWildSightings
+	sighting_profile SIGHTING_METHOD_LAND, MountainCaveSightings, NoWildSightings
+	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, UrbanOutskirtsLandSightings, UrbanOutskirtsWaterSightings
+	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, WetlandLandSightings, WetlandWaterSightings
+	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, CoastalLandSightings, CoastalWaterSightings
+	sighting_profile SIGHTING_METHOD_WATER, NoWildSightings, OpenOceanSightings
+	sighting_profile SIGHTING_METHOD_LAND, HauntedSightings, NoWildSightings
+	sighting_profile SIGHTING_METHOD_LAND, IndustrialSightings, NoWildSightings
+	sighting_profile SIGHTING_METHOD_LAND, VolcanicSightings, NoWildSightings
+	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, IceCaveLandSightings, IceCaveWaterSightings
+	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, SafariLandSightings, SafariWaterSightings
+	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, EndgameLandSightings, EndgameWaterSightings
 	assert_table_length NUM_SIGHTING_PROFILES
 
 NoWildSightings:
 	db 0
 EarlyGrasslandSightings:
-IF DEF(_DEBUG)
-	sighting_mon $ff, CATERPIE
-ENDC
+	sighting_mon $32, CATERPIE
+	sighting_mon $65, WEEDLE
+	sighting_mon $98, MEOWTH
+	sighting_mon $be, VULPIX
+	sighting_mon $e5, SANDSHREW
+	sighting_mon $ff, PARAS
 	db 0
 ForestSightings:
+	sighting_mon $32, PARAS
+	sighting_mon $58, VENONAT
+	sighting_mon $7f, BELLSPROUT
+	sighting_mon $98, MEOWTH
+	sighting_mon $b2, CLEFAIRY
+	sighting_mon $cb, BUTTERFREE
+	sighting_mon $e5, BEEDRILL
+	sighting_mon $f2, SCYTHER
+	sighting_mon $ff, PINSIR
 	db 0
 RockyRouteSightings:
+	sighting_mon $32, GEODUDE
+	sighting_mon $58, VULPIX
+	sighting_mon $7f, GROWLITHE
+	sighting_mon $a5, CUBONE
+	sighting_mon $be, ONIX
+	sighting_mon $d8, PONYTA
+	sighting_mon $e5, MACHOKE
+	sighting_mon $f2, MAGNETON
+	sighting_mon $ff, WIGGLYTUFF
 	db 0
 MountainCaveSightings:
+	sighting_mon $25, NIDORAN_F
+	sighting_mon $4c, NIDORAN_M
+	sighting_mon $72, EKANS
+	sighting_mon $98, DROWZEE
+	sighting_mon $b2, GOLBAT
+	sighting_mon $cb, GRAVELER
+	sighting_mon $d8, PARASECT
+	sighting_mon $e5, MAROWAK
+	sighting_mon $f2, CLEFABLE
+	sighting_mon $ff, MACHOKE
 	db 0
-UrbanOutskirtsSightings:
+UrbanOutskirtsLandSightings:
+	sighting_mon $25, ODDISH
+	sighting_mon $4c, BELLSPROUT
+	sighting_mon $72, DROWZEE
+	sighting_mon $98, EXEGGCUTE
+	sighting_mon $b2, PERSIAN
+	sighting_mon $cb, CUBONE
+	sighting_mon $d8, ARCANINE
+	sighting_mon $e5, NINETALES
+	sighting_mon $f2, ALAKAZAM
+	sighting_mon $ff, EXEGGUTOR
 	db 0
-WetlandSightings:
+UrbanOutskirtsWaterSightings:
+	sighting_mon $32, POLIWAG
+	sighting_mon $65, SLOWPOKE
+	sighting_mon $8b, GOLDEEN
+	sighting_mon $b2, KRABBY
+	sighting_mon $cb, SHELLDER
+	sighting_mon $d8, STARYU
+	sighting_mon $e5, POLIWHIRL
+	sighting_mon $f2, STARMIE
+	sighting_mon $ff, POLIWRATH
 	db 0
-CoastalSightings:
+WetlandLandSightings:
+	sighting_mon $32, PARAS
+	sighting_mon $65, EXEGGCUTE
+	sighting_mon $8b, LICKITUNG
+	sighting_mon $a5, CUBONE
+	sighting_mon $be, DITTO
+	sighting_mon $cb, PARASECT
+	sighting_mon $d8, EXEGGUTOR
+	sighting_mon $e5, VILEPLUME
+	sighting_mon $f2, VICTREEBEL
+	sighting_mon $ff, PINSIR
+	db 0
+WetlandWaterSightings:
+	sighting_mon $32, POLIWAG
+	sighting_mon $65, PSYDUCK
+	sighting_mon $8b, GOLDEEN
+	sighting_mon $b2, KRABBY
+	sighting_mon $cb, HORSEA
+	sighting_mon $d8, POLIWHIRL
+	sighting_mon $e5, GOLDUCK
+	sighting_mon $f2, POLIWRATH
+	sighting_mon $ff, GYARADOS
+	db 0
+CoastalLandSightings:
+	sighting_mon $32, DODUO
+	sighting_mon $58, FARFETCHD
+	sighting_mon $7f, EXEGGCUTE
+	sighting_mon $a5, PONYTA
+	sighting_mon $be, CUBONE
+	sighting_mon $d8, PARAS
+	sighting_mon $e5, DODRIO
+	sighting_mon $f2, EXEGGUTOR
+	sighting_mon $ff, LICKITUNG
+	db 0
+CoastalWaterSightings:
+	sighting_mon $32, SHELLDER
+	sighting_mon $65, STARYU
+	sighting_mon $8b, KRABBY
+	sighting_mon $b2, SEEL
+	sighting_mon $cb, PSYDUCK
+	sighting_mon $d8, CLOYSTER
+	sighting_mon $e5, STARMIE
+	sighting_mon $f2, KINGLER
+	sighting_mon $ff, LAPRAS
 	db 0
 OpenOceanSightings:
+	sighting_mon $32, KRABBY
+	sighting_mon $65, SEEL
+	sighting_mon $8b, LAPRAS
+	sighting_mon $b2, DRATINI
+	sighting_mon $cb, TENTACRUEL
+	sighting_mon $e5, KINGLER
+	sighting_mon $f2, DEWGONG
+	sighting_mon $ff, DRAGONAIR
 	db 0
 HauntedSightings:
+	sighting_mon $32, DROWZEE
+	sighting_mon $65, ABRA
+	sighting_mon $8b, DITTO
+	sighting_mon $b2, CLEFAIRY
+	sighting_mon $cb, HYPNO
+	sighting_mon $d8, KADABRA
+	sighting_mon $e5, CLEFABLE
+	sighting_mon $f2, ALAKAZAM
+	sighting_mon $ff, WIGGLYTUFF
 	db 0
 IndustrialSightings:
+	sighting_mon $32, KOFFING
+	sighting_mon $65, MACHOP
+	sighting_mon $8b, DITTO
+	sighting_mon $a5, WEEZING
+	sighting_mon $be, MACHOKE
+	sighting_mon $d8, PORYGON
+	sighting_mon $e5, GOLEM
+	sighting_mon $f2, ALAKAZAM
+	sighting_mon $ff, MACHAMP
 	db 0
 VolcanicSightings:
+	sighting_mon $32, VULPIX
+	sighting_mon $65, KOFFING
+	sighting_mon $8b, WEEZING
+	sighting_mon $a5, NINETALES
+	sighting_mon $be, ARCANINE
+	sighting_mon $d8, RAPIDASH
+	sighting_mon $e5, RHYDON
+	sighting_mon $f2, GOLEM
+	sighting_mon $ff, NIDOKING
 	db 0
-IceCaveSightings:
+IceCaveLandSightings:
+	sighting_mon $25, MACHOP
+	sighting_mon $4c, CUBONE
+	sighting_mon $72, CLEFAIRY
+	sighting_mon $8b, GEODUDE
+	sighting_mon $a5, ONIX
+	sighting_mon $be, DITTO
+	sighting_mon $cb, MACHOKE
+	sighting_mon $d8, MAROWAK
+	sighting_mon $e5, CLEFABLE
+	sighting_mon $f2, RHYHORN
+	sighting_mon $ff, GOLEM
 	db 0
-SafariSightings:
+IceCaveWaterSightings:
+	sighting_mon $25, PSYDUCK
+	sighting_mon $4c, POLIWAG
+	sighting_mon $72, TENTACOOL
+	sighting_mon $98, LAPRAS
+	sighting_mon $b2, DRATINI
+	sighting_mon $cb, GYARADOS
+	sighting_mon $e5, TENTACRUEL
+	sighting_mon $f2, DRAGONAIR
+	sighting_mon $ff, DRAGONITE
 	db 0
-EndgameSightings:
+SafariLandSightings:
+	sighting_mon $25, NIDORAN_F
+	sighting_mon $4c, NIDORAN_M
+	sighting_mon $72, DODUO
+	sighting_mon $98, PONYTA
+	sighting_mon $b2, VULPIX
+	sighting_mon $cb, DITTO
+	sighting_mon $d8, PORYGON
+	sighting_mon $e5, PERSIAN
+	sighting_mon $f2, RAPIDASH
+	sighting_mon $ff, ARCANINE
+	db 0
+SafariWaterSightings:
+	sighting_mon $32, DRATINI
+	sighting_mon $58, PSYDUCK
+	sighting_mon $7f, POLIWAG
+	sighting_mon $a5, SLOWPOKE
+	sighting_mon $be, HORSEA
+	sighting_mon $d8, LAPRAS
+	sighting_mon $e5, DRAGONAIR
+	sighting_mon $f2, GOLDUCK
+	sighting_mon $ff, GYARADOS
+	db 0
+EndgameLandSightings:
+	sighting_mon $25, ARCANINE
+	sighting_mon $4c, NINETALES
+	sighting_mon $65, RAPIDASH
+	sighting_mon $7f, MAROWAK
+	sighting_mon $98, SNORLAX
+	sighting_mon $b2, PARASECT
+	sighting_mon $be, PERSIAN
+	sighting_mon $cb, VICTREEBEL
+	sighting_mon $d8, VILEPLUME
+	sighting_mon $e5, WEEZING
+	sighting_mon $f2, NIDOKING
+	sighting_mon $ff, NIDOQUEEN
+	db 0
+EndgameWaterSightings:
+	sighting_mon $25, STARMIE
+	sighting_mon $4c, CLOYSTER
+	sighting_mon $72, LAPRAS
+	sighting_mon $8b, KINGLER
+	sighting_mon $a5, SEADRA
+	sighting_mon $be, GOLDUCK
+	sighting_mon $d8, TENTACRUEL
+	sighting_mon $f2, DEWGONG
+	sighting_mon $ff, SEAKING
 	db 0
