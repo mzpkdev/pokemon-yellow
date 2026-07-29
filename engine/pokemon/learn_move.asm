@@ -156,9 +156,10 @@ TryingToLearn:
 	ld [hli], a ; wCurrentMenuItem
 	inc hl
 	ld [hli], a ; wMaxMenuItem
+	ld b, a
 	ld a, A_BUTTON | B_BUTTON
 	ld [hli], a ; wMenuWatchedKeys
-	ld a, [wNumMovesMinusOne]
+	ld a, b
 	ld [hl], a ; wLastMenuItem
 	ld hl, hUILayoutFlags
 	set BIT_DOUBLE_SPACED_MENU, [hl]
