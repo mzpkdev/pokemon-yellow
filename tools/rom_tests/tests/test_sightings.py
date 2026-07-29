@@ -93,6 +93,7 @@ def test_only_encounter_terrain_charges_sighting_cooldown(
             if emulator.read(symbol) == value:
                 break
             before = emulator.read("wSightingCooldown")
+            emulator.write("wNumberOfNoRandomBattleStepsLeft", 0xFF)
             emulator.press(button)
             after = emulator.read("wSightingCooldown")
             if after == before:
