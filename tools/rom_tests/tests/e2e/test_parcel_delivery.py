@@ -11,7 +11,7 @@ from tools.rom_tests.scenarios.parcel_delivery import (
 )
 
 
-SNAPSHOTS = Path(__file__).resolve().parents[1] / "snapshots"
+SNAPSHOTS = Path(__file__).resolve().parents[2] / "snapshots"
 
 
 def test_deliver_oaks_parcel_and_leave_lab(emulator: Emulator) -> None:

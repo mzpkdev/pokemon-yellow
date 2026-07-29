@@ -24,6 +24,10 @@
 # precompiled python
 *.pyc
 *$py.class
+.pytest_cache/
+
+# test artifacts
+test-results/
 
 # save game files
 *.sgm

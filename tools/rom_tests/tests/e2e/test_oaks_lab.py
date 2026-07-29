@@ -12,7 +12,7 @@ from tools.rom_tests.scenarios.oaks_lab import (
 )
 
 
-SNAPSHOTS = Path(__file__).resolve().parents[1] / "snapshots"
+SNAPSHOTS = Path(__file__).resolve().parents[2] / "snapshots"
 
 EVENT_BEAT_BROCK = 0x77
 EVENT_BEAT_LT_SURGE = 0x167
