@@ -90,7 +90,9 @@ class WildSightingFrameworkTests(unittest.TestCase):
             self.assertGreater(len(entries), 1, table_name)
             self.assertEqual(thresholds[-1], 0xFF, table_name)
             self.assertEqual(thresholds, sorted(set(thresholds)), table_name)
-            self.assertGreaterEqual(min(bucket_sizes), 13, table_name)
+            # Five percent of 256 rolls alternates between 12- and 13-byte
+            # buckets when cumulative percentage boundaries are rounded.
+            self.assertGreaterEqual(min(bucket_sizes), 12, table_name)
             self.assertRegex(table.group(1), r"(?m)^\s*db 0\s*$")
 
     def test_profile_method_flags_match_populated_table_pointers(self) -> None:
