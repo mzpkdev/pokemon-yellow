@@ -17,7 +17,7 @@ TryPikachuGift::
 	ld a, [hli]
 	ld d, a
 	or e
-	jr z, .noGift
+	jp z, .noGift
 	ld a, c
 	and a
 	jr z, .checkEligibility
@@ -63,6 +63,9 @@ TryPikachuGift::
 .genericFoundText
 	ld hl, PikachuFoundGiftText
 .printFoundText
+	push hl
+	farcall DisplayTextIDInit
+	pop hl
 	rst _PrintText
 	pop bc
 	call GiveItem
@@ -87,12 +90,14 @@ TryPikachuGift::
 	ld hl, PikachuReceivedGiftText
 .printReceivedText
 	rst _PrintText
+	call CloseTextDisplay
 	scf
 	ret
 
 .bagFull
 	ld hl, PikachuGiftBagFullText
 	rst _PrintText
+	call CloseTextDisplay
 	scf
 	ret
 
