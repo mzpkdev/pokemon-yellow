@@ -22,7 +22,10 @@ PIKACOMPANION_REACTION_GIFT_READY = 5
 PIKACOMPANION_REACTION_AMBIENT_FIND = 6
 PIKACOMPANION_REACTION_PORTRAIT_READY = 7
 PIKACHU_PENDING_EMOTION_ALERTED = 0x80
+EXCLAMATION_BUBBLE = 0
+SMILE_BUBBLE = 2
 POTION = 0x14
+ESCAPE_ROPE = 0x1D
 THUNDER_STONE = 0x21
 RAICHU = 0x55
 LIGHT_BALL_GSC = 0xA3
@@ -356,6 +359,30 @@ def test_ordered_gift_eligibility_and_alert_priority(emulator: Emulator) -> None
     )
 
 
+def test_talking_to_pikachu_delivers_gift_after_complete_dialogue(
+    emulator: Emulator,
+) -> None:
+    complete_oaks_lab_intro(emulator)
+    emulator.write("wPikachuHappiness", 80)
+    emulator.write("wPikachuGiftCooldown", 0)
+    emulator.write("wPikachuNextGift", 0)
+    _set_event(emulator, EVENT_BEAT_BROCK)
+
+    # Pikachu is directly above the player after the opening scenario.
+    emulator.write("wSpritePlayerStateData1FacingDirection", 4)
+    emulator.advance_until(
+        lambda: emulator.read("wPikachuNextGift") == 1,
+        button="a",
+        max_presses=16,
+        description="first Pikachu gift dialogue",
+    )
+
+    assert emulator.read("wWhichEmotionBubble") == SMILE_BUBBLE
+    assert emulator.bag_contains(ESCAPE_ROPE)
+    assert emulator.read("wPikachuGiftCooldown") == 128
+    assert emulator.read("wPikachuGiftAlerted") == 0
+
+
 def test_queued_companion_reaction_waits_for_idle(emulator: Emulator) -> None:
     complete_oaks_lab_intro(emulator)
     emulator.write("wJoyIgnore", 0)
@@ -409,6 +436,7 @@ def test_gift_and_ambient_alerts_wait_for_idle_and_mark_announced(
     assert emulator.read("wPikachuCompanionQueuedReaction") == 0
     assert emulator.read("wPikachuCompanionIdleCounter") == 0
     assert emulator.read("wPikachuGiftAlerted") == 1
+    assert emulator.read("wWhichEmotionBubble") == EXCLAMATION_BUBBLE
 
     emulator.write(
         "wPikachuCompanionQueuedReaction",

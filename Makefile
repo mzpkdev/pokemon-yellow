@@ -81,7 +81,7 @@ tools:
 	$(MAKE) -C tools/
 
 
-RGBASMFLAGS = -Q8 -P includes.asm -Weverything -Werror -Wnumeric-string=2 -Wtruncation=1
+RGBASMFLAGS = -Q8 -P includes.asm -Weverything -Wno-obsolete -Werror -Wnumeric-string=2 -Wtruncation=1
 RGBLINKFLAGS = -Weverything -Werror
 RGBFIXFLAGS = -Weverything -Werror
 RGBGFXFLAGS = -Weverything -Werror
