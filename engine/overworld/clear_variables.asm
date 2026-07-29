@@ -17,4 +17,5 @@ ClearVariablesOnEnterMap::
 	ld hl, wWhichTrade
 	ld bc, wStandingOnWarpPadOrHole - wWhichTrade
 	call FillMemory
+	callfar ValidateWildSightingZone
 	ret

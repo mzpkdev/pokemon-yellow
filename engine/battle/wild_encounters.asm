@@ -100,6 +100,14 @@ TryDoWildEncounter:
 	and a
 	ret
 .willEncounter
+	hlcoord 8, 9
+	ld a, [hl]
+	cp $14
+	ld a, SIGHTING_METHOD_WATER
+	jr z, .checkSighting
+	ld a, SIGHTING_METHOD_LAND
+.checkSighting
+	callfar TryReplaceWithWildSighting
 	xor a
 	ret
 

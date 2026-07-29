@@ -24,6 +24,11 @@ InitPlayerData2:
 	ld [wPikachuAmbientAlerted], a
 	ld [wStarterCompanionDVs], a
 	ld [wStarterCompanionDVs + 1], a
+	ld [wSightingZone], a
+	ld [wSightingProfile], a
+	ld [wSightingFlags], a
+	ld [wSightingStepCounter], a
+	ld [wSightingCooldown], a
 	ld [wPikachuCompanionQueuedReaction], a
 	ld [wPikachuCompanionIdleCounter], a
 

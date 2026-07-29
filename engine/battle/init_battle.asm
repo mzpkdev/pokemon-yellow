@@ -1,4 +1,6 @@
 InitBattle::
+	ld hl, wSightingFlags
+	res SIGHTING_BATTLE_F, [hl]
 	ld a, [wCurOpponent]
 	and a
 	jr z, DetermineWildOpponent
