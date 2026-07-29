@@ -14,6 +14,10 @@ Complete every applicable section of the pull request template. Explain the
 premise of the change, how it works, and include screenshots for visual
 changes. Write `Not applicable` in the screenshots section when appropriate.
 
+If you cannot run the build or tests locally, feel free to open the pull
+request as a draft and use the CI results for feedback. Address any failures
+before marking the pull request as ready for review.
+
 Pull request titles must follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```text
