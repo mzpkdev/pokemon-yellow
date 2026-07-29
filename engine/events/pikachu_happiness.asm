@@ -350,7 +350,7 @@ UpdatePikachuCompanionIdle::
 .giftReady
 	ld a, 1
 	ld [wPikachuGiftAlerted], a
-	ld b, EXCLAMATION_BUBBLE
+	ld b, QUESTION_BUBBLE
 	jr .facePlayer
 .ambientFind
 	ld a, 1

@@ -22,7 +22,6 @@ PIKACOMPANION_REACTION_GIFT_READY = 5
 PIKACOMPANION_REACTION_AMBIENT_FIND = 6
 PIKACOMPANION_REACTION_PORTRAIT_READY = 7
 PIKACHU_PENDING_EMOTION_ALERTED = 0x80
-EXCLAMATION_BUBBLE = 0
 QUESTION_BUBBLE = 1
 SMILE_BUBBLE = 2
 POTION = 0x14
@@ -458,7 +457,7 @@ def test_gift_and_ambient_alerts_wait_for_idle_and_mark_announced(
     assert emulator.read("wPikachuCompanionQueuedReaction") == 0
     assert emulator.read("wPikachuCompanionIdleCounter") == 0
     assert emulator.read("wPikachuGiftAlerted") == 1
-    assert emulator.read("wWhichEmotionBubble") == EXCLAMATION_BUBBLE
+    assert emulator.read("wWhichEmotionBubble") == QUESTION_BUBBLE
 
     emulator.write(
         "wPikachuCompanionQueuedReaction",
