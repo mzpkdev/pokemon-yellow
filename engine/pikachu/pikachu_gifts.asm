@@ -147,6 +147,10 @@ QueuePikachuGiftAlert::
 	jr z, .queueGiftAlert
 	cp PIKACOMPANION_REACTION_PORTRAIT_READY
 	ret nz
+	ld a, [wd49c]
+	and PIKACHU_PENDING_EMOTION_MASK
+	cp PIKACHU_PENDING_SIGHTING
+	ret z
 .queueGiftAlert
 	ld a, PIKACOMPANION_REACTION_GIFT_READY
 	ld [wPikachuCompanionQueuedReaction], a

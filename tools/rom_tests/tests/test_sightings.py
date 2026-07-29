@@ -147,6 +147,10 @@ def test_sighting_hint_and_grouped_zone_cleanup(
     assert emulator.read("wSightingZone") == SIGHTING_ZONE_PALLET_VIRIDIAN
     assert emulator.read("wSightingProfile") == SIGHTING_PROFILE_EARLY_GRASSLAND
     assert (emulator.read("wd49c") & 0x7F) == PIKACHU_PENDING_SIGHTING
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_PORTRAIT_READY
+    )
 
     emulator.write("wJoyIgnore", 0)
     emulator.write("wStatusFlags5", 0)
