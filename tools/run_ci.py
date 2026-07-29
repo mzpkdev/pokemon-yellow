@@ -15,13 +15,18 @@ WORKFLOW = REPOSITORY / ".github" / "workflows" / "ci.yml"
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run the build job from .github/workflows/ci.yml with act.",
+        description="Run .github/workflows/ci.yml locally with act.",
     )
     parser.add_argument(
         "--event",
         choices=("pull_request", "push"),
         default="pull_request",
         help="GitHub event to simulate (default: pull_request).",
+    )
+    parser.add_argument(
+        "--job",
+        choices=("lint", "audit", "build", "test", "e2e"),
+        help="Run only the selected CI job (default: run the complete workflow).",
     )
     parser.add_argument(
         "act_args",
@@ -48,10 +53,10 @@ def main() -> int:
         args.event,
         "--workflows",
         str(WORKFLOW),
-        "--job",
-        "build",
-        *act_args,
     ]
+    if args.job:
+        command.extend(("--job", args.job))
+    command.extend(act_args)
     return subprocess.run(command, cwd=REPOSITORY, check=False).returncode
 
 

@@ -6,7 +6,7 @@ from tools.rom_tests.emulator import Emulator
 from tools.rom_tests.scenarios.new_game import reach_bedroom_overworld
 
 
-SNAPSHOTS = Path(__file__).resolve().parents[1] / "snapshots"
+SNAPSHOTS = Path(__file__).resolve().parents[2] / "snapshots"
 
 
 def test_new_game_reaches_bedroom_overworld(emulator: Emulator) -> None:

@@ -9,10 +9,10 @@ running, then run:
 python tools/run_ci.py
 ```
 
-This runs the `build` job from `.github/workflows/ci.yml` as a pull request,
-including the ROM build and headless gameplay tests. To simulate a push to
-`main`, including staging and uploading the build artifact to act's local
-artifact server, run:
+This runs the complete `.github/workflows/ci.yml` workflow as a pull request.
+To run only one check, pass `--job` with `lint`, `audit`, `build`, `test`, or
+`e2e`. To simulate a push to `main`, including staging and uploading the build
+artifact to act's local artifact server, run:
 
 ```console
 python tools/run_ci.py --event push -- --artifact-server-path .act-artifacts
