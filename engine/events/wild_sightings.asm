@@ -428,7 +428,7 @@ VolcanicSightings:
 	sighting_mon $d8, RAPIDASH
 	sighting_mon $e5, RHYDON
 	sighting_mon $f2, GOLEM
-	sighting_mon $ff, DRAGONITE
+	sighting_mon $ff, NIDOKING
 	db 0
 IceCaveLandSightings:
 	sighting_mon $25, MACHOP
