@@ -17,7 +17,7 @@ LIGHT_BALL_GSC = 0xA3
 PIKACHU_PENDING_SIGHTING = 6
 PIKACHU_PENDING_EMOTION_ALERTED = 0x80
 PIKACOMPANION_REACTION_PORTRAIT_READY = 7
-QUESTION_BUBBLE = 1
+EXCLAMATION_BUBBLE = 0
 SIGHTING_ZONE_PALLET_VIRIDIAN = 1
 SIGHTING_PROFILE_EARLY_GRASSLAND = 1
 SIGHTING_ACTIVE = 1
@@ -147,6 +147,10 @@ def test_sighting_hint_and_grouped_zone_cleanup(
     assert emulator.read("wSightingZone") == SIGHTING_ZONE_PALLET_VIRIDIAN
     assert emulator.read("wSightingProfile") == SIGHTING_PROFILE_EARLY_GRASSLAND
     assert (emulator.read("wd49c") & 0x7F) == PIKACHU_PENDING_SIGHTING
+    assert (
+        emulator.read("wPikachuCompanionQueuedReaction")
+        == PIKACOMPANION_REACTION_PORTRAIT_READY
+    )
 
     emulator.write("wJoyIgnore", 0)
     emulator.write("wStatusFlags5", 0)
@@ -160,7 +164,7 @@ def test_sighting_hint_and_grouped_zone_cleanup(
     assert emulator.read("wd49c") == (
         PIKACHU_PENDING_EMOTION_ALERTED | PIKACHU_PENDING_SIGHTING
     )
-    assert emulator.read("wWhichEmotionBubble") == QUESTION_BUBBLE
+    assert emulator.read("wWhichEmotionBubble") == EXCLAMATION_BUBBLE
 
     _follow_route_1_waypoints(
         emulator,

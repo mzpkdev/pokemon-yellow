@@ -191,6 +191,11 @@ QueueWildSightingPikachuHint:
 	ret nz
 	ld e, PIKACHU_PENDING_SIGHTING
 	callfar SetPendingPikachuEmotion
+	ld a, [wPikachuCompanionQueuedReaction]
+	cp PIKACOMPANION_REACTION_GIFT_READY
+	ret z
+	ld a, PIKACOMPANION_REACTION_PORTRAIT_READY
+	ld [wPikachuCompanionQueuedReaction], a
 	ret
 
 ClearWildSightingPikachuHint:
