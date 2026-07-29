@@ -96,6 +96,24 @@ class WildSightingFrameworkTests(unittest.TestCase):
         companion_call = overworld.index("farcall UpdatePikachuCompanionOnStep")
         self.assertLess(sighting_call, companion_call)
 
+    def test_pikachu_sighting_hint_uses_question_bubble(self) -> None:
+        happiness = _source("engine/events/pikachu_happiness.asm")
+        portrait_start = happiness.index(".portraitReady")
+        portrait_end = happiness.index("\n.queuePendingPortraitAlert", portrait_start)
+        portrait = happiness[portrait_start:portrait_end]
+
+        sighting_branch = (
+            "cp PIKACHU_PENDING_SIGHTING\n"
+            "\tjr z, .portraitSighting"
+        )
+        sighting_handler = (
+            ".portraitSighting\n"
+            "\tld b, QUESTION_BUBBLE\n"
+            "\tjr .facePlayer"
+        )
+        self.assertIn(sighting_branch, portrait)
+        self.assertIn(sighting_handler, portrait)
+
     def test_only_eligible_steps_advance_the_interval_and_rng_preserves_zone(self) -> None:
         sightings = _source("engine/events/wild_sightings.asm")
         update_start = sightings.index("UpdateWildSightingOnStep::")
