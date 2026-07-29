@@ -327,7 +327,7 @@ class WildSightingFrameworkTests(unittest.TestCase):
         self.assertIn(sighting_branch, portrait)
         self.assertIn(sighting_handler, portrait)
 
-    def test_pikachu_sighting_interaction_uses_shock_expression(self) -> None:
+    def test_pikachu_sighting_interaction_uses_surprise_expression(self) -> None:
         emotions = _source("engine/pikachu/pikachu_emotions.asm")
         table_start = emotions.index(".Emotions:")
         table_end = emotions.index("\n\nIsPlayerPikachuAsleepInParty:", table_start)
@@ -340,7 +340,7 @@ class WildSightingFrameworkTests(unittest.TestCase):
         self.assertEqual(len(pending_emotions), 6)
         self.assertEqual(
             pending_emotions[-1],
-            "dpikaemotion PikachuEmotion25",
+            "dpikaemotion PikachuEmotion32",
         )
 
     def test_only_eligible_steps_advance_the_interval_and_rng_preserves_zone(self) -> None:

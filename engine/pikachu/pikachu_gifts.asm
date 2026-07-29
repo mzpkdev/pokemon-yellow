@@ -17,7 +17,7 @@ TryPikachuGift::
 	ld a, [hli]
 	ld d, a
 	or e
-	jr z, .noGift
+	jp z, .noGift
 	ld a, c
 	and a
 	jr z, .checkEligibility
