@@ -121,6 +121,12 @@ ShowPikachuEmoteBubble:
 	predef EmotionBubble
 	ret
 
+; Far-call entry point. The bank-switch trampoline uses a for the destination
+; bank, so cross-bank callers pass the bubble ID in c instead.
+ShowPikachuEmoteBubbleFromC:
+	ld a, c
+	jr ShowPikachuEmoteBubble
+
 StarterPikachuEmotionCommand_movement:
 	ld a, [de]
 	inc de

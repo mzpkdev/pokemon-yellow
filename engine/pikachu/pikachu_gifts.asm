@@ -47,8 +47,8 @@ TryPikachuGift::
 	ld c, [hl]
 	push de
 	push bc
-	ld a, SMILE_BUBBLE
-	callfar ShowPikachuEmoteBubble
+	ld c, SMILE_BUBBLE
+	callfar ShowPikachuEmoteBubbleFromC
 	ldpikacry e, PikachuCry35
 	callfar PlayPikachuSoundClip
 	pop bc
@@ -147,12 +147,16 @@ QueuePikachuGiftAlert::
 	jr z, .queueGiftAlert
 	cp PIKACOMPANION_REACTION_PORTRAIT_READY
 	ret nz
+	ld a, [wd49c]
+	and PIKACHU_PENDING_EMOTION_MASK
+	cp PIKACHU_PENDING_SIGHTING
+	ret z
 .queueGiftAlert
 	ld a, PIKACOMPANION_REACTION_GIFT_READY
 	ld [wPikachuCompanionQueuedReaction], a
 	ret
 
-; Roll for a modest found item every 256 eligible steps, then queue a
+; Roll for a found item at the configured eligible-step interval, then queue a
 ; one-time question reaction. A ready milestone gift always takes priority.
 UpdatePikachuAmbientFind::
 	call IsNextPikachuGiftReady
@@ -161,7 +165,7 @@ UpdatePikachuAmbientFind::
 	and a
 	jr nz, .tryQueueAlert
 	ld a, [wPikachuCompanionStepCounter]
-	and a
+	and PIKACHU_AMBIENT_FIND_STEP_MASK
 	ret nz
 	call Random
 	and PIKACHU_AMBIENT_FIND_CHANCE_MASK
@@ -234,11 +238,14 @@ TryPikachuAmbientFind::
 	ld b, a
 	ld c, 1
 	push bc
-	ld a, QUESTION_BUBBLE
-	callfar ShowPikachuEmoteBubble
+	ld c, SMILE_BUBBLE
+	callfar ShowPikachuEmoteBubbleFromC
 	ldpikacry e, PikachuCry35
 	callfar PlayPikachuSoundClip
 	ld hl, PikachuAmbientFoundText
+	push hl
+	farcall DisplayTextIDInit
+	pop hl
 	rst _PrintText
 	pop bc
 	call GiveItem
@@ -255,12 +262,14 @@ TryPikachuAmbientFind::
 .keepQueuedReaction
 	ld hl, PikachuReceivedGiftText
 	rst _PrintText
+	call CloseTextDisplay
 	scf
 	ret
 
 .bagFull
 	ld hl, PikachuGiftBagFullText
 	rst _PrintText
+	call CloseTextDisplay
 	scf
 	ret
 

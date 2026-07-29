@@ -261,6 +261,7 @@ class WildSightingFrameworkTests(unittest.TestCase):
         selector_end = sightings.index("\nClearWildSighting::", selector_start)
         selector = sightings[selector_start:selector_end]
         self.assertNotIn("wCurEnemyLevel", selector)
+        self.assertNotIn("wd49c", selector)
         self.assertIn("ld [wCurPartySpecies], a", selector)
         self.assertIn("ld [wEnemyMonSpecies2], a", selector)
         self.assertLess(selector.index("call ClearWildSighting"), selector.index("ret", selector.index(".gotSpecies")))
@@ -309,7 +310,7 @@ class WildSightingFrameworkTests(unittest.TestCase):
         companion_call = overworld.index("farcall UpdatePikachuCompanionOnStep")
         self.assertLess(sighting_call, companion_call)
 
-    def test_pikachu_sighting_hint_uses_question_bubble(self) -> None:
+    def test_pikachu_sighting_hint_uses_exclamation_bubble(self) -> None:
         happiness = _source("engine/events/pikachu_happiness.asm")
         portrait_start = happiness.index(".portraitReady")
         portrait_end = happiness.index("\n.queuePendingPortraitAlert", portrait_start)
@@ -321,7 +322,7 @@ class WildSightingFrameworkTests(unittest.TestCase):
         )
         sighting_handler = (
             ".portraitSighting\n"
-            "\tld b, QUESTION_BUBBLE\n"
+            "\tld b, EXCLAMATION_BUBBLE\n"
             "\tjr .facePlayer"
         )
         self.assertIn(sighting_branch, portrait)

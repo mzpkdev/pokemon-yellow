@@ -342,15 +342,15 @@ UpdatePikachuCompanionIdle::
 	push bc
 	call UpdateSprites
 	pop bc
-	ld a, b
-	jpfar ShowPikachuEmoteBubble
+	ld c, b
+	jpfar ShowPikachuEmoteBubbleFromC
 .gymVictory
 	ldpikaemotion e, PikachuEmotion34
 	jpfar PlaySpecificPikachuEmotion
 .giftReady
 	ld a, 1
 	ld [wPikachuGiftAlerted], a
-	ld b, EXCLAMATION_BUBBLE
+	ld b, QUESTION_BUBBLE
 	jr .facePlayer
 .ambientFind
 	ld a, 1
@@ -389,7 +389,7 @@ UpdatePikachuCompanionIdle::
 	ld b, BOLT_BUBBLE
 	jr .facePlayer
 .portraitSighting
-	ld b, QUESTION_BUBBLE
+	ld b, EXCLAMATION_BUBBLE
 	jr .facePlayer
 
 .queuePendingPortraitAlert
