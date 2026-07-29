@@ -153,7 +153,7 @@ embedded_palette_gfx := \
 	gfx/movedex/type_icons/rock.2bpp \
 	gfx/movedex/type_icons/tri.2bpp \
 	gfx/movedex/type_icons/typeless.2bpp \
-	$(patsubst %.png,%.2bpp,$(filter-out gfx/icons/null.png,$(wildcard gfx/icons/*.png)))
+	$(patsubst %.png,%.2bpp,$(filter-out gfx/icons/abra.png gfx/icons/null.png,$(wildcard gfx/icons/*.png)))
 
 $(embedded_palette_gfx): rgbgfx += --colors embedded
 
