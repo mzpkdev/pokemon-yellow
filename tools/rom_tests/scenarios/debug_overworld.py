@@ -6,6 +6,7 @@ from tools.rom_tests.scenarios.viridian_city import VIRIDIAN_CITY, walk_to_value
 
 FULL_COLOR_OVERWORLD = 1 << 2
 VIRIDIAN_POKECENTER = 0x29
+ROUTE_22 = 0x21
 
 
 def start_debug_game_in_viridian(emulator: Emulator) -> None:
@@ -59,3 +60,23 @@ def enter_viridian_pokecenter(emulator: Emulator) -> None:
         "Viridian Pokemon Center",
     )
     emulator.tick(180)
+
+
+def walk_west_to_route_22(emulator: Emulator) -> None:
+    """Cross Viridian's west connected-map boundary into Route 22."""
+    walk_to_value(emulator, "wXCoord", 19, "left", "Viridian main path")
+    walk_to_value(emulator, "wYCoord", 20, "up", "Viridian west path")
+    walk_to_value(emulator, "wXCoord", 7, "left", "Viridian west exit")
+    walk_to_value(emulator, "wYCoord", 16, "up", "Route 22 connection row")
+    walk_to_value(emulator, "wCurMap", ROUTE_22, "left", "Route 22")
+    emulator.tick(180)
+
+
+def mount_bicycle_with_select(emulator: Emulator) -> None:
+    """Use PureRGB's Select shortcut to mount the debug inventory bicycle."""
+    assert emulator.read("wWalkBikeSurfState") == 0
+    emulator.press("select")
+    if emulator.read("wWalkBikeSurfState") != 1:
+        emulator.press("b")
+    emulator.tick(180)
+    assert emulator.read("wWalkBikeSurfState") == 1
