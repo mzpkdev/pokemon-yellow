@@ -20,7 +20,11 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
     """Advance the announcement, non-cancellable animation, and result text."""
     assert emulator.read("wForceEvolution") == 0
     map_before = emulator.pyboy.screen.image.convert("RGB")
-    map_before.save(emulator.results / "hatch-00-announcement.png")
+    map_before.save(emulator.results / "hatch-map-before.png")
+    for frame in range(0, 121, 30):
+        if frame:
+            emulator.tick(30)
+        emulator.save_screenshot(f"hatch-announcement-{frame:03d}f.png")
     saved_tile_animations = emulator.read("hTileAnimations")
     transfer_destination = emulator.symbols["hAutoBGTransferDest"]
     saved_transfer_destination = bytes(
@@ -34,10 +38,11 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
         emulator.tick()
     else:
         raise AssertionError("Egg hatch animation did not begin")
+    emulator.tick(3)
     emulator.save_screenshot("hatch-01-animation-00s.png")
 
     # Wait past sprite loading, the cry, and the animation's 80-frame lead-in.
-    emulator.tick(180)
+    emulator.tick(177)
     emulator.save_screenshot("hatch-02-animation-03s.png")
     tilemap = emulator.symbols["wTileMap"] + 2 * 20 + 7
     visible_bg = 0x9C00 + 2 * 32 + 7

@@ -416,6 +416,9 @@ HandlePendingEggHatch:
 	rst _DelayFrames
 	xor a
 	ldh [hAutoBGTransferEnabled], a
+	ld a, $ff
+	ld [wUpdateSpritesEnabled], a
+	call ClearSprites
 	; Evolution normally runs on a full-screen menu. Show Yellow's window
 	; tilemap across the screen so the movie never overwrites the map beneath.
 	xor a
@@ -424,9 +427,6 @@ HandlePendingEggHatch:
 	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	call Delay3
-	ld a, $ff
-	ld [wUpdateSpritesEnabled], a
-	call ClearSprites
 	ld a, EGG
 	ld [wEvoOldSpecies], a
 	ld a, [wCurSpecies]
