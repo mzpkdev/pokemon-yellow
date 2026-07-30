@@ -2640,10 +2640,3 @@ SECTION "Stack", WRAM0
 wStack:: db
 
 ENDSECTION
-
-
-SECTION "Full Color Overworld WRAM", WRAMX, BANK[2]
-
-wFullColorTileAttributes:: ds $100
-wFullColorOverworldActive:: db
-assert LOW(wFullColorTileAttributes) == 0

@@ -247,8 +247,6 @@ WRAM0
 	"GBC Palette Data"
 	org $df24
 	"Stack"
-WRAMX $2
-	"Full Color Overworld WRAM"
 VRAM $0
 	"VRAM"
 SRAM $0

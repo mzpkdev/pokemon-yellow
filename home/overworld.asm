@@ -726,7 +726,6 @@ CheckMapConnections::
 	ld [wPikachuSpawnState], a
 	call LoadMapHeader
 	farcall ValidateWildSightingZone
-	farcall LoadFullColorTileAttributes
 	call PlayDefaultMusicFadeOutCurrent
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand
@@ -2129,7 +2128,6 @@ LoadMapData::
 	call LoadMapHeader
 	call InitMapSprites ; load tile pattern data for sprites
 	call LoadScreenRelatedData
-	farcall LoadFullColorTileAttributes
 	call CopyMapViewToVRAM
 	ld a, $01
 	ld [wUpdateSpritesEnabled], a
@@ -2164,7 +2162,6 @@ ReloadMapAfterSurfingMinigame::
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
 	call LoadScreenRelatedData
-	farcall LoadFullColorTileAttributes
 	call CopyMapViewToVRAM
 	ld de, vBGMap1
 	call CopyMapViewToVRAM2
@@ -2223,7 +2220,7 @@ CopyMapViewToVRAM2:
 	dec b
 	jr nz, .vramCopyLoop
 	pop de
-	call CopyFullColorMapViewAttributes
+	farcall CopyFullColorMapViewAttributes
 	ret
 
 ; function to switch to the ROM bank that a map is stored in

@@ -3,53 +3,49 @@
 
 DEF FULL_COLOR_TILESET_SIZE EQU $60
 
-LoadFullColorTileAttributes::
+CopyFullColorMapViewAttributes::
 	ldh a, [hGBC]
 	and a
 	ret z
 	ld a, [wOptions2]
 	bit BIT_FULL_COLOR_OVERWORLD, a
-	jr nz, .enabled
-	ld a, 2
-	ldh [rSVBK], a
-	xor a
-	ld [wFullColorOverworldActive], a
-	ldh [rSVBK], a
-	ret
-
-.enabled
-	ld a, 2
-	ldh [rSVBK], a
-	xor a
-	ld [wFullColorOverworldActive], a
-	ldh [rSVBK], a
-	ld a, [wCurMapTileset]
-	cp NUM_TILESETS
-	ret nc
-	ld c, a
-	ld b, 0
-	ld hl, FullColorTileAttributePointers
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-
-	ld a, 2
-	ldh [rSVBK], a
-	ld hl, wFullColorTileAttributes
-	ld bc, $100
-	ld a, 7
-	call FillMemory
-	ld h, d
-	ld l, e
-	ld de, wFullColorTileAttributes
-	ld bc, FULL_COLOR_TILESET_SIZE
-	rst _CopyData
+	ret z
+	call GetFullColorAttributeTableHigh
 	ld a, 1
-	ld [wFullColorOverworldActive], a
+	ldh [rVBK], a
+	ld hl, wTileMap
+	ld a, SCREEN_HEIGHT
+.row
+	push af
+	ld c, SCREEN_WIDTH
+.column
+	ld a, [hli]
+	cp FULL_COLOR_TILESET_SIZE
+	jr c, .assigned
+	ld a, 7
+	jr .write
+.assigned
+	push bc
+	ld c, a
+	ld a, [bc]
+	and $7
+	pop bc
+.write
+	ld [de], a
+	inc e
+	dec c
+	jr nz, .column
+	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+	add e
+	ld e, a
+	jr nc, .noCarry
+	inc d
+.noCarry
+	pop af
+	dec a
+	jr nz, .row
 	xor a
-	ldh [rSVBK], a
+	ldh [rVBK], a
 	ret
 
 ApplyFullColorOverworldPalettes::
@@ -58,15 +54,8 @@ ApplyFullColorOverworldPalettes::
 	ret z
 	ld a, [wDefaultPaletteCommand]
 	cp SET_PAL_OVERWORLD
-	jr z, .checkEnabled
-	ld a, 2
-	ldh [rSVBK], a
-	xor a
-	ld [wFullColorOverworldActive], a
-	ldh [rSVBK], a
-	ret
+	ret nz
 
-.checkEnabled
 	ld a, [wOptions2]
 	bit BIT_FULL_COLOR_OVERWORLD, a
 	ret z
@@ -94,36 +83,136 @@ ApplyFullColorOverworldPalettes::
 	jr nz, .loop
 	ret
 
-FullColorTileAttributePointers:
-	table_width 2, FullColorTileAttributePointers
-	dw FullColorOutdoorAttributes ; OVERWORLD
-	dw FullColorIndoorAttributes  ; REDS_HOUSE_1
-	dw FullColorIndoorAttributes  ; MART
-	dw FullColorForestAttributes  ; FOREST
-	dw FullColorIndoorAttributes  ; REDS_HOUSE_2
-	dw FullColorIndoorAttributes  ; DOJO
-	dw FullColorIndoorAttributes  ; POKECENTER
-	dw FullColorIndoorAttributes  ; GYM
-	dw FullColorIndoorAttributes  ; HOUSE
-	dw FullColorIndoorAttributes  ; FOREST_GATE
-	dw FullColorIndoorAttributes  ; MUSEUM
-	dw FullColorIndoorAttributes  ; UNDERGROUND
-	dw FullColorIndoorAttributes  ; GATE
-	dw FullColorIndoorAttributes  ; SHIP
-	dw FullColorIndoorAttributes  ; SHIP_PORT
-	dw FullColorIndoorAttributes  ; CEMETERY
-	dw FullColorIndoorAttributes  ; INTERIOR
-	dw FullColorCaveAttributes    ; CAVERN
-	dw FullColorIndoorAttributes  ; LOBBY
-	dw FullColorIndoorAttributes  ; MANSION
-	dw FullColorIndoorAttributes  ; LAB
-	dw FullColorIndoorAttributes  ; CLUB
-	dw FullColorIndoorAttributes  ; FACILITY
-	dw FullColorOutdoorAttributes ; PLATEAU
-	dw FullColorIndoorAttributes  ; BEACH_HOUSE (not Celebrations Safari)
-	assert_table_length NUM_TILESETS
+DrawFullColorRowOrColumn::
+	push af
+	ldh a, [hGBC]
+	and a
+	jp z, .done
+	ld a, [wOptions2]
+	bit BIT_FULL_COLOR_OVERWORLD, a
+	jp z, .done
+	ld a, [wDefaultPaletteCommand]
+	cp SET_PAL_OVERWORLD
+	jp nz, .done
+	ld a, [wIsInBattle]
+	and a
+	jp nz, .done
+	call GetFullColorAttributeTableHigh
+	ld a, 1
+	ldh [rVBK], a
+	ldh a, [hRedrawRowOrColumnMode]
+	dec a
+	jr nz, .row
+
+.column
+	ld hl, wRedrawRowOrColumnSrcTiles
+	ldh a, [hRedrawRowOrColumnDest]
+	ld e, a
+	ldh a, [hRedrawRowOrColumnDest + 1]
+	ld d, a
+	ld a, SCREEN_HEIGHT
+.columnLoop
+	push af
+	REPT 2
+		ld a, [hli]
+		cp FULL_COLOR_TILESET_SIZE
+		jr c, .columnAssigned\@
+		ld a, 7
+		jr .columnWrite\@
+.columnAssigned\@
+		ld c, a
+		ld a, [bc]
+		and $7
+.columnWrite\@
+		ld [de], a
+		inc de
+	ENDR
+	ld a, BG_MAP_WIDTH - 1
+	add e
+	ld e, a
+	jr nc, .columnNoCarry
+	inc d
+.columnNoCarry
+	ld a, d
+	and $3
+	or $98
+	ld d, a
+	pop af
+	dec a
+	jr nz, .columnLoop
+	jr .restoreVRAMBank
+
+.row
+	ld hl, wRedrawRowOrColumnSrcTiles
+	ldh a, [hRedrawRowOrColumnDest]
+	ld e, a
+	ldh a, [hRedrawRowOrColumnDest + 1]
+	ld d, a
+	push de
+	call .drawRowHalf
+	pop de
+	ld a, BG_MAP_WIDTH
+	add e
+	ld e, a
+	call .drawRowHalf
+	jr .restoreVRAMBank
+.drawRowHalf
+	ld a, SCREEN_WIDTH
+.rowLoop
+	push af
+	ld a, [hli]
+	cp FULL_COLOR_TILESET_SIZE
+	jr c, .rowAssigned
+	ld a, 7
+	jr .rowWrite
+.rowAssigned
+	ld c, a
+	ld a, [bc]
+	and $7
+.rowWrite
+	ld [de], a
+	ld a, e
+	inc a
+	and $1f
+	ld c, a
+	ld a, e
+	and $e0
+	or c
+	ld e, a
+	pop af
+	dec a
+	jr nz, .rowLoop
+	ret
+
+.restoreVRAMBank
+	xor a
+	ldh [rVBK], a
+.done
+	pop af
+	ret
+
+GetFullColorAttributeTableHigh:
+	ld a, [wCurMapTileset]
+	ld b, HIGH(FullColorIndoorAttributes)
+	cp CAVERN
+	jr nz, .notCave
+	ld b, HIGH(FullColorCaveAttributes)
+	ret
+.notCave
+	ld b, HIGH(FullColorOutdoorAttributes)
+	cp OVERWORLD
+	ret z
+	ld b, HIGH(FullColorForestAttributes)
+	cp FOREST
+	ret z
+	ld b, HIGH(FullColorOutdoorAttributes)
+	cp PLATEAU
+	ret z
+	ld b, HIGH(FullColorIndoorAttributes)
+	ret
 
 ; Palette numbers: gray, red, green, water, yellow, brown, accent, text.
+ALIGN[8]
 FullColorOutdoorAttributes:
 	db 0,5,5,1,5,6,6,6, 6,6,4,4,4,0,5,0
 	db 0,5,6,5,3,6,6,6, 6,6,0,5,5,2,5,0
@@ -132,6 +221,7 @@ FullColorOutdoorAttributes:
 	db 2,2,0,0,0,0,0,0, 5,5,0,5,6,6,0,0
 	db 2,2,2,6,5,5,0,0, 5,5,6,5,6,6,7,7
 
+ALIGN[8]
 FullColorForestAttributes:
 	db 0,5,5,1,5,6,6,6, 6,6,4,4,4,0,5,0
 	db 0,5,6,5,3,6,6,6, 6,6,0,5,5,2,5,0
@@ -140,6 +230,7 @@ FullColorForestAttributes:
 	db 2,2,0,0,0,0,0,0, 5,5,0,5,6,6,0,0
 	db 2,2,2,6,5,5,0,0, 5,5,6,5,6,6,7,7
 
+ALIGN[8]
 FullColorIndoorAttributes:
 	db 0,1,1,0,0,5,5,5, 5,5,5,5,5,5,5,0
 	db 5,5,5,1,1,5,5,0, 0,0,0,5,5,5,5,0
@@ -148,6 +239,7 @@ FullColorIndoorAttributes:
 	db 5,1,1,1,1,0,1,1, 5,5,5,5,5,5,5,5
 	db 0,5,5,1,1,1,1,0, 5,0,0,5,5,5,7,7
 
+ALIGN[8]
 FullColorCaveAttributes:
 	db 0,5,5,0,0,5,5,5, 5,5,5,5,5,5,5,0
 	db 0,0,5,5,0,0,0,0, 5,5,0,0,3,3,0,0

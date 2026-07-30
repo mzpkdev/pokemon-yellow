@@ -137,7 +137,7 @@ pokeyellow_vc_pad    = 0x00
 opts = -cjsv -k 01 -l 0x33 -m 0x1b -p 0 -r 03 -t "POKEMON YELLOW"
 
 %.gbc: $$(%_obj) layout.link
-	$(RGBLINK) $(RGBLINKFLAGS) -p $($*_pad) -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
+	$(RGBLINK) $(RGBLINKFLAGS) -p $($*_pad) -w -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
 	$(RGBFIX) $(RGBFIXFLAGS) -p $($*_pad) $(opts) $@
 
 
