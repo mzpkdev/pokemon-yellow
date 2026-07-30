@@ -63,8 +63,8 @@ OverworldLoopLessDelay::
 	rst _DelayFrame
 IF DEF(_DEBUG)
 	ld a, [wDebugAtlasRequest]
-	and a
-	jp nz, DebugAtlasEnterMap
+	cp $a5
+	jp z, DebugAtlasEnterMap
 ENDC
 	call IsSurfingPikachuInParty
 	call LoadGBPal

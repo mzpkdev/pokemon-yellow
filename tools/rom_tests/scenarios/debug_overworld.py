@@ -51,7 +51,9 @@ def debug_atlas_enter_map(
     emulator.write("wDebugAtlasMap", map_id)
     emulator.write("wDebugAtlasX", x)
     emulator.write("wDebugAtlasY", y)
-    emulator.write("wDebugAtlasRequest", 1)
+    # The request aliases surfing-minigame scratch in debug builds, so use a
+    # magic value that ordinary gameplay cannot accidentally interpret.
+    emulator.write("wDebugAtlasRequest", 0xA5)
     emulator.advance_until(
         lambda: emulator.read("wDebugAtlasRequest") == 0
         and emulator.read("wCurMap") == map_id,
