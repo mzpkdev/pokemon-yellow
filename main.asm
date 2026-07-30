@@ -527,6 +527,16 @@ MewPicFront::         INCBIN "gfx/pokemon/front/mew.pic"
 MewPicBack::          INCBIN "gfx/pokemon/back/mewb.pic"
 
 
+SECTION "Johto Baby Pics", ROMX, BANK[$43]
+
+SmoochumPicFront::    INCBIN "gfx/pokemon/front/smoochum.pic"
+SmoochumPicBack::     INCBIN "gfx/pokemon/back/smoochumb.pic"
+ElekidPicFront::      INCBIN "gfx/pokemon/front/elekid.pic"
+ElekidPicBack::       INCBIN "gfx/pokemon/back/elekidb.pic"
+MagbyPicFront::       INCBIN "gfx/pokemon/front/magby.pic"
+MagbyPicBack::        INCBIN "gfx/pokemon/back/magbyb.pic"
+
+
 SECTION "bank42", ROMX, BANK[$42]
 
 INCLUDE "data/sgb/sgb_palettes.asm"

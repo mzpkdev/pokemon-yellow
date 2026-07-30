@@ -7,9 +7,8 @@
 	db 45 ; catch rate
 	db 87 ; base exp
 
-	; Use Jynx's graphics until the Crystal sprites are integrated.
-	INCBIN "gfx/pokemon/front/jynx.pic", 0, 1 ; sprite dimensions
-	dw JynxPicFront, JynxPicBack
+	INCBIN "gfx/pokemon/front/smoochum.pic", 0, 1 ; sprite dimensions
+	dw SmoochumPicFront, SmoochumPicBack
 
 	db POUND, LOVELY_KISS, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
@@ -22,4 +21,4 @@
 	     BIDE,         METRONOME,    SKULL_BASH,   REST,         PSYWAVE,      \
 	     SUBSTITUTE
 
-	db BANK(JynxPicFront)
+	db BANK(SmoochumPicFront)

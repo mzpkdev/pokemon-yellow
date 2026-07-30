@@ -7,9 +7,8 @@
 	db 45 ; catch rate
 	db 106 ; base exp
 
-	; Use Electabuzz's graphics until the Crystal sprites are integrated.
-	INCBIN "gfx/pokemon/front/electabuzz.pic", 0, 1 ; sprite dimensions
-	dw ElectabuzzPicFront, ElectabuzzPicBack
+	INCBIN "gfx/pokemon/front/elekid.pic", 0, 1 ; sprite dimensions
+	dw ElekidPicFront, ElekidPicBack
 
 	db QUICK_ATTACK, LEER, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
@@ -22,4 +21,4 @@
 	     SWIFT,        SKULL_BASH,   REST,         THUNDER_WAVE, PSYWAVE,      \
 	     SUBSTITUTE,   STRENGTH,     FLASH
 
-	db BANK(ElectabuzzPicFront)
+	db BANK(ElekidPicFront)

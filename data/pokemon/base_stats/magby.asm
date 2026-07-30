@@ -7,9 +7,8 @@
 	db 45 ; catch rate
 	db 117 ; base exp
 
-	; Use Magmar's graphics until the Crystal sprites are integrated.
-	INCBIN "gfx/pokemon/front/magmar.pic", 0, 1 ; sprite dimensions
-	dw MagmarPicFront, MagmarPicBack
+	INCBIN "gfx/pokemon/front/magby.pic", 0, 1 ; sprite dimensions
+	dw MagbyPicFront, MagbyPicBack
 
 	db EMBER, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
@@ -21,4 +20,4 @@
 	     BIDE,         METRONOME,    FIRE_BLAST,   SKULL_BASH,   REST,         \
 	     SUBSTITUTE,   STRENGTH,     FLAMETHROWER
 
-	db BANK(MagmarPicFront)
+	db BANK(MagbyPicFront)
