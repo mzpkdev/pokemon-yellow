@@ -2852,7 +2852,7 @@ CleffaEvosMoves:
 	db 8, DEFENSE_CURL
 	db 12, DOUBLESLAP
 	db 16, MINIMIZE
-	db 20, CHARM
+	db 20, METRONOME
 	db 24, SWIFT
 	db 30, LIGHT_SCREEN
 	db 0
@@ -2865,7 +2865,7 @@ IgglybuffEvosMoves:
 	db 16, DOUBLESLAP
 	db 20, REST
 	db 24, BODY_SLAM
-	db 30, LOVELY_KISS
+	db 30, MIMIC
 	db 36, DOUBLE_EDGE
 	db 0
 

@@ -44,6 +44,19 @@ def evolution_rows(species: str) -> list[str]:
     return re.findall(r"(?m)^\s*db\s+([^;\r\n]+)", match.group("body"))
 
 
+def learnset_rows(species: str) -> list[str]:
+    data = read("data/pokemon/evos_moves.asm")
+    match = re.search(
+        rf"(?ms)^{species.title().replace('_', '')}EvosMoves:\s*$"
+        rf".*?^\s*db\s+0(?:\s*;.*)?$"
+        rf"(?P<body>.*?)(?=^\s*db\s+0(?:\s*;.*)?$)",
+        data,
+    )
+    if match is None:
+        raise AssertionError(f"missing learnset data for {species}")
+    return re.findall(r"(?m)^\s*db\s+([^;\r\n]+)", match.group("body"))
+
+
 class JohtoExtensionTests(unittest.TestCase):
     def test_new_dex_entries_are_appended_in_order(self) -> None:
         constants = re.findall(
@@ -100,6 +113,43 @@ class JohtoExtensionTests(unittest.TestCase):
         for species, row in expected.items():
             with self.subTest(species=species):
                 self.assertEqual([row], evolution_rows(species))
+
+    def test_bond_babies_use_curated_family_learnsets(self) -> None:
+        expected = {
+            "PICHU": [
+                "5, LEER",
+                "10, QUICK_ATTACK",
+                "15, DOUBLE_KICK",
+                "18, THUNDER_WAVE",
+                "23, DOUBLE_TEAM",
+                "28, SING",
+                "34, THUNDERPUNCH",
+                "40, AGILITY",
+                "45, THUNDERBOLT",
+                "50, LIGHT_SCREEN",
+            ],
+            "CLEFFA": [
+                "4, SING",
+                "8, DEFENSE_CURL",
+                "12, DOUBLESLAP",
+                "16, MINIMIZE",
+                "20, METRONOME",
+                "24, SWIFT",
+                "30, LIGHT_SCREEN",
+            ],
+            "IGGLYBUFF": [
+                "8, CHARM",
+                "12, DISABLE",
+                "16, DOUBLESLAP",
+                "20, REST",
+                "24, BODY_SLAM",
+                "30, MIMIC",
+                "36, DOUBLE_EDGE",
+            ],
+        }
+        for species, rows in expected.items():
+            with self.subTest(species=species):
+                self.assertEqual(rows, learnset_rows(species))
 
     def test_new_sprites_are_48_pixels_square(self) -> None:
         paths = [
