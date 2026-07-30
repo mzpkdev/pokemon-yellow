@@ -454,6 +454,8 @@ HandlePendingEggHatch:
 	call LoadFontTilePatterns
 	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, EggHatchedText
 	rst _PrintText
 	call GBPalWhiteOutWithDelay3
