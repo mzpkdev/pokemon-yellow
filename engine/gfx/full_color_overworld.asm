@@ -209,6 +209,14 @@ WaitForFullColorVRAM:
 GetFullColorAttributeTableHigh:
 	ld a, [wCurMapTileset]
 	ld b, HIGH(FullColorIndoorAttributes)
+	cp MART
+	jr z, .pokecenter
+	cp POKECENTER
+	jr nz, .notPokecenter
+.pokecenter
+	ld b, HIGH(FullColorPokecenterAttributes)
+	ret
+.notPokecenter
 	cp CAVERN
 	jr nz, .notCave
 	ld b, HIGH(FullColorCaveAttributes)
@@ -253,6 +261,15 @@ FullColorIndoorAttributes:
 	db 0,1,1,1,0,0,2,0, 1,1,0,5,5,5,5,5
 	db 5,1,1,1,1,0,1,1, 5,5,5,5,5,5,5,5
 	db 0,5,5,1,1,1,1,0, 5,0,0,5,5,5,7,7
+	ds $100 - FULL_COLOR_TILESET_SIZE
+
+FullColorPokecenterAttributes:
+	db 0,0,1,1,3,3,0,0, 0,0,0,0,1,0,0,0
+	db 0,0,1,1,3,3,0,1, 3,3,0,0,1,1,0,0
+	db 2,2,5,5,1,4,1,1, 3,0,1,1,6,6,6,6
+	db 2,2,5,5,1,4,0,1, 0,0,0,0,0,0,6,6
+	db 0,0,0,0,0,0,0,0, 0,0,0,0,6,6,4,4
+	db 0,0,0,0,0,0,0,0, 0,3,0,0,0,0,7,7
 	ds $100 - FULL_COLOR_TILESET_SIZE
 
 FullColorCaveAttributes:

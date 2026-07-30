@@ -5,6 +5,7 @@ from tools.rom_tests.scenarios.viridian_city import VIRIDIAN_CITY, walk_to_value
 
 
 FULL_COLOR_OVERWORLD = 1 << 2
+VIRIDIAN_POKECENTER = 0x29
 
 
 def start_debug_game_in_viridian(emulator: Emulator) -> None:
@@ -45,4 +46,28 @@ def exercise_viridian_scrolling(emulator: Emulator) -> None:
     walk_to_value(emulator, "wXCoord", 19, "left", "Viridian main path")
     walk_to_value(emulator, "wYCoord", 29, "down", "south Viridian path")
     walk_to_value(emulator, "wYCoord", 20, "up", "Viridian Mart row")
+    emulator.tick(180)
+
+
+def enter_viridian_pokecenter(emulator: Emulator) -> None:
+    """Enter the building immediately north of the debug spawn."""
+    walk_to_value(
+        emulator,
+        "wCurMap",
+        VIRIDIAN_POKECENTER,
+        "up",
+        "Viridian Pokemon Center",
+    )
+    emulator.tick(180)
+
+
+def leave_viridian_pokecenter(emulator: Emulator) -> None:
+    """Return to Viridian City through the center's exit."""
+    walk_to_value(
+        emulator,
+        "wCurMap",
+        VIRIDIAN_CITY,
+        "down",
+        "Viridian City return",
+    )
     emulator.tick(180)
