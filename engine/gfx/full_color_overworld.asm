@@ -227,7 +227,8 @@ DrawFullColorRowOrColumn::
 	call GetFullColorAttributeTableHigh
 	ld a, 1
 	ldh [rVBK], a
-	ldh a, [hRedrawRowOrColumnMode]
+	pop af
+	push af
 	dec a
 	jr nz, .row
 

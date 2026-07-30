@@ -112,8 +112,10 @@ RedrawMapView:
 	ld a, l
 	ldh [hRedrawRowOrColumnDest], a
 	ld a, REDRAW_ROW
-	ldh [hRedrawRowOrColumnMode], a
+	push af
 	farcall DrawFullColorRowOrColumn
+	pop af
+	ldh [hRedrawRowOrColumnMode], a
 	rst _DelayFrame
 	ld hl, hRedrawMapViewRowOffset
 	inc [hl]

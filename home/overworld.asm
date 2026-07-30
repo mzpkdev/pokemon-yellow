@@ -1606,7 +1606,6 @@ ScheduleNorthRowRedraw::
 	ld a, [wMapViewVRAMPointer + 1]
 	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_ROW
-	ldh [hRedrawRowOrColumnMode], a
 	jp PrepareFullColorRowOrColumn
 
 CopyToRedrawRowOrColumnSrcTiles::
@@ -1636,7 +1635,6 @@ ScheduleSouthRowRedraw::
 	ld a, l
 	ldh [hRedrawRowOrColumnDest], a
 	ld a, REDRAW_ROW
-	ldh [hRedrawRowOrColumnMode], a
 	jp PrepareFullColorRowOrColumn
 
 ScheduleEastColumnRedraw::
@@ -1654,7 +1652,6 @@ ScheduleEastColumnRedraw::
 	ld a, [wMapViewVRAMPointer + 1]
 	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_COL
-	ldh [hRedrawRowOrColumnMode], a
 	jp PrepareFullColorRowOrColumn
 
 ScheduleColumnRedrawHelper::
@@ -1685,17 +1682,21 @@ ScheduleWestColumnRedraw::
 	ld a, [wMapViewVRAMPointer + 1]
 	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_COL
-	ldh [hRedrawRowOrColumnMode], a
-	; fallthrough
+	jp PrepareFullColorRowOrColumn
+
 PrepareFullColorRowOrColumn:
+	push af
 	ldh a, [hGBC]
 	and a
-	ret z
+	jr z, .done
 	ld a, [wOptions2]
 	and %1100
 	cp 1 << BIT_FULL_COLOR_OVERWORLD
-	ret nz
+	jr nz, .done
 	farcall DrawFullColorRowOrColumn
+.done
+	pop af
+	ldh [hRedrawRowOrColumnMode], a
 	ret
 
 ; function to write the tiles that make up a tile block to memory
