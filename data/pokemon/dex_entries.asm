@@ -199,11 +199,11 @@ PokedexEntryPointers:
 	dw KingdraDexEntry
 	dw ScizorDexEntry
 	dw Porygon2DexEntry
-	dw PikachuDexEntry   ; placeholder family entry
-	dw ClefairyDexEntry  ; placeholder family entry
-	dw JigglypuffDexEntry ; placeholder family entry
-	dw GolbatDexEntry    ; placeholder family entry
-	dw ChanseyDexEntry   ; placeholder family entry
+	dw PichuDexEntry
+	dw CleffaDexEntry
+	dw IgglybuffDexEntry
+	dw CrobatDexEntry
+	dw BlisseyDexEntry
 	assert_table_length NUM_POKEMON_INDEXES
 
 ; string: species name
@@ -1329,6 +1329,41 @@ Porygon2DexEntry:
 	db 2,0
 	dw 717
 	text_far _Porygon2DexEntry
+	text_end
+
+PichuDexEntry:
+	db "TINY MOUSE@"
+	db 1,0
+	dw 44
+	text_far _PichuDexEntry
+	text_end
+
+CleffaDexEntry:
+	db "STAR SHAPE@"
+	db 1,0
+	dw 66
+	text_far _CleffaDexEntry
+	text_end
+
+IgglybuffDexEntry:
+	db "BALLOON@"
+	db 1,0
+	dw 22
+	text_far _IgglybuffDexEntry
+	text_end
+
+CrobatDexEntry:
+	db "BAT@"
+	db 5,11
+	dw 1653
+	text_far _CrobatDexEntry
+	text_end
+
+BlisseyDexEntry:
+	db "HAPPINESS@"
+	db 4,11
+	dw 1032
+	text_far _BlisseyDexEntry
 	text_end
 
 MissingNoDexEntry:

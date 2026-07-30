@@ -89,6 +89,18 @@ class JohtoExtensionTests(unittest.TestCase):
             with self.subTest(species=species):
                 self.assertEqual(rows, evolution_rows(species))
 
+    def test_bond_evolutions_use_the_shared_pikachu_thresholds(self) -> None:
+        expected = {
+            "PICHU": "EVOLVE_BOND, 160, PIKACHU",
+            "CLEFFA": "EVOLVE_BOND, 160, CLEFAIRY",
+            "IGGLYBUFF": "EVOLVE_BOND, 160, JIGGLYPUFF",
+            "GOLBAT": "EVOLVE_BOND, 200, CROBAT",
+            "CHANSEY": "EVOLVE_BOND, 200, BLISSEY",
+        }
+        for species, row in expected.items():
+            with self.subTest(species=species):
+                self.assertEqual([row], evolution_rows(species))
+
     def test_new_sprites_are_48_pixels_square(self) -> None:
         paths = [
             ROOT / "gfx/pokemon" / facing / f"{species.lower()}{suffix}.png"
@@ -125,7 +137,14 @@ class JohtoExtensionTests(unittest.TestCase):
             for source_root in source_roots
             for path in (ROOT / source_root).rglob("*.asm")
         )
-        for species in ("SMOOCHUM", "ELEKID", "MAGBY"):
+        for species in (
+            "SMOOCHUM",
+            "ELEKID",
+            "MAGBY",
+            "PICHU",
+            "CLEFFA",
+            "IGGLYBUFF",
+        ):
             with self.subTest(species=species):
                 self.assertNotRegex(sources, rf"\b{species}\b")
 

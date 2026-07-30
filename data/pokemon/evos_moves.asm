@@ -805,6 +805,7 @@ GravelerEvosMoves:
 
 ChanseyEvosMoves:
 ; Evolutions
+	db EVOLVE_BOND, 200, BLISSEY
 	db 0
 ; Learnset
 	db 12, DOUBLESLAP
@@ -1949,6 +1950,7 @@ HypnoEvosMoves:
 
 GolbatEvosMoves:
 ; Evolutions
+	db EVOLVE_BOND, 200, CROBAT
 	db 0
 ; Learnset
 	db 5, SUPERSONIC
@@ -2829,21 +2831,68 @@ Porygon2EvosMoves:
 	db 0
 
 PichuEvosMoves:
-	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db EVOLVE_BOND, 160, PIKACHU
+	db 0
+	db 5, LEER
+	db 10, QUICK_ATTACK
+	db 15, DOUBLE_KICK
+	db 18, THUNDER_WAVE
+	db 23, DOUBLE_TEAM
+	db 28, SING
+	db 34, THUNDERPUNCH
+	db 40, AGILITY
+	db 45, THUNDERBOLT
+	db 50, LIGHT_SCREEN
+	db 0
 
 CleffaEvosMoves:
-	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db EVOLVE_BOND, 160, CLEFAIRY
+	db 0
+	db 4, SING
+	db 8, DEFENSE_CURL
+	db 12, DOUBLESLAP
+	db 16, MINIMIZE
+	db 20, CHARM
+	db 24, SWIFT
+	db 30, LIGHT_SCREEN
+	db 0
 
 IgglybuffEvosMoves:
-	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db EVOLVE_BOND, 160, JIGGLYPUFF
+	db 0
+	db 8, CHARM
+	db 12, DISABLE
+	db 16, DOUBLESLAP
+	db 20, REST
+	db 24, BODY_SLAM
+	db 30, LOVELY_KISS
+	db 36, DOUBLE_EDGE
+	db 0
 
 CrobatEvosMoves:
-	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db 0
+	db 5, SUPERSONIC
+	db 13, ABSORB
+	db 17, LEECH_LIFE
+	db 19, WING_ATTACK
+	db 21, CONFUSE_RAY
+	db 24, SWIFT
+	db 29, AIR_CUTTER
+	db 33, MEGA_DRAIN
+	db 38, AGILITY
+	db 41, HAZE
+	db 42, X_SCISSOR
+	db 55, ROOST
+	db 0
 
 BlisseyEvosMoves:
-	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db 0
+	db 12, DOUBLESLAP
+	db 24, SING
+	db 30, GROWL
+	db 38, MINIMIZE
+	db 44, DEFENSE_CURL
+	db 48, LIGHT_SCREEN
+	db 50, MEGA_PUNCH
+	db 54, DOUBLE_EDGE
+	db 0

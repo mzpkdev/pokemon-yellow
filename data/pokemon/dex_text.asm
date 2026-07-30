@@ -1596,3 +1596,53 @@ _Porygon2DexEntry::
 	next "behavior that was"
 	next "not programmed"
 	dex
+
+_PichuDexEntry::
+	text "It is not yet"
+	next "skilled at storing"
+	next "electricity."
+
+	page "It may discharge"
+	next "power when startled"
+	next "or amused"
+	dex
+
+_CleffaDexEntry::
+	text "Its silhouette is"
+	next "like a star."
+	next "People believe it"
+
+	page "arrived by riding"
+	next "on a shooting star"
+	next "from far away"
+	dex
+
+_IgglybuffDexEntry::
+	text "Its soft body is"
+	next "very elastic."
+	next "Once it starts"
+
+	page "bouncing, it may"
+	next "be unable to stop"
+	next "on its own"
+	dex
+
+_CrobatDexEntry::
+	text "Its hind legs are"
+	next "now a second pair"
+	next "of wings."
+
+	page "It flies silently"
+	next "but cannot walk"
+	next "very well"
+	dex
+
+_BlisseyDexEntry::
+	text "Anyone who eats a"
+	next "bite of its egg"
+	next "becomes cheerful"
+
+	page "and caring toward"
+	next "everyone around"
+	next "them"
+	dex
