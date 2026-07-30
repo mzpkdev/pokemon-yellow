@@ -2,13 +2,13 @@ _EnemyAppearedText::
 	text_ram wEnemyMonNick
 	text_start
 	line "appeared!"
-	done
+	prompt
 
 _TrainerWantsToFightText::
 	text_ram wTrainerName
 	text " wants"
 	line "to fight!"
-	done
+	prompt
 
 _UnveiledGhostText::
 	text "SILPH SCOPE"
@@ -572,14 +572,14 @@ _EggCannotBeTradedText::
 _EggHatchingText::
 	text "Huh? The EGG is"
 	line "hatching!"
-	prompt
+	done
 
 _EggHatchedText::
 	text "Huh? "
 	text_ram wNameBuffer
 	text " hatched"
 	line "from the EGG!"
-	prompt
+	done
 
 _Colosseum3MonsText::
 	text "You need 3 #MON"
