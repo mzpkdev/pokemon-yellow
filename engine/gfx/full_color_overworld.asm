@@ -3,6 +3,22 @@
 
 DEF FULL_COLOR_TILESET_SIZE EQU $60
 
+DEF PAL_BG_GRAY   EQU 0
+DEF PAL_BG_RED    EQU 1
+DEF PAL_BG_GREEN  EQU 2
+DEF PAL_BG_WATER  EQU 3
+DEF PAL_BG_YELLOW EQU 4
+DEF PAL_BG_BROWN  EQU 5
+DEF PAL_BG_ROOF   EQU 6
+DEF PAL_BG_TEXT   EQU 7
+
+MACRO tilepal
+	REPT _NARG +- 1
+		db PAL_BG_\2
+		SHIFT
+	ENDR
+ENDM
+
 CopyFullColorMapViewAttributes::
 	ldh a, [hGBC]
 	and a
@@ -315,31 +331,45 @@ WaitForFullColorVRAM:
 
 GetFullColorAttributeTableHigh:
 	ld a, [wCurMapTileset]
-	ld b, HIGH(FullColorIndoorAttributes)
-	cp MART
-	jr z, .pokecenter
-	cp POKECENTER
-	jr nz, .notPokecenter
-.pokecenter
-	ld b, HIGH(FullColorPokecenterAttributes)
+	cp NUM_TILESETS
+	jr c, .known
+	ld a, BEACH_HOUSE
+.known
+	ld hl, FullColorAttributeTableHighs
+	add l
+	ld l, a
+	jr nc, .noCarry
+	inc h
+.noCarry
+	ld b, [hl]
 	ret
-.notPokecenter
-	cp CAVERN
-	jr nz, .notCave
-	ld b, HIGH(FullColorCaveAttributes)
-	ret
-.notCave
-	ld b, HIGH(FullColorOutdoorAttributes)
-	cp OVERWORLD
-	ret z
-	ld b, HIGH(FullColorForestAttributes)
-	cp FOREST
-	ret z
-	ld b, HIGH(FullColorOutdoorAttributes)
-	cp PLATEAU
-	ret z
-	ld b, HIGH(FullColorIndoorAttributes)
-	ret
+
+FullColorAttributeTableHighs:
+	db HIGH(FullColorOutdoorAttributes)  ; OVERWORLD
+	db HIGH(FullColorRedsHouseAttributes)
+	db HIGH(FullColorPokecenterAttributesExact)
+	db HIGH(FullColorForestAttributes)
+	db HIGH(FullColorRedsHouseAttributes)
+	db HIGH(FullColorGymAttributes)
+	db HIGH(FullColorPokecenterAttributesExact)
+	db HIGH(FullColorGymAttributes)
+	db HIGH(FullColorHouseAttributes)
+	db HIGH(FullColorGateAttributes)
+	db HIGH(FullColorGateAttributes)
+	db HIGH(FullColorUndergroundAttributes)
+	db HIGH(FullColorGateAttributes)
+	db HIGH(FullColorShipAttributes)
+	db HIGH(FullColorShipPortAttributes)
+	db HIGH(FullColorCemeteryAttributes)
+	db HIGH(FullColorInteriorAttributes)
+	db HIGH(FullColorCaveAttributes)
+	db HIGH(FullColorLobbyAttributes)
+	db HIGH(FullColorMansionAttributes)
+	db HIGH(FullColorLabAttributes)
+	db HIGH(FullColorClubAttributes)
+	db HIGH(FullColorFacilityAttributes)
+	db HIGH(FullColorPlateauAttributes)
+	db HIGH(FullColorIndoorAttributes) ; BEACH_HOUSE safe fallback
 
 ; Palette numbers: gray, red, green, water, yellow, brown, accent, text.
 ALIGN 8
@@ -380,12 +410,32 @@ FullColorPokecenterAttributes:
 	ds $100 - FULL_COLOR_TILESET_SIZE
 
 FullColorCaveAttributes:
-	db 0,5,5,0,0,5,5,5, 5,5,5,5,5,5,5,0
-	db 0,0,5,5,0,0,0,0, 5,5,0,0,3,3,0,0
-	db 0,5,5,5,5,0,0,0, 0,0,0,5,5,5,5,0
-	db 5,5,0,0,0,0,5,5, 0,0,0,0,5,5,5,5
-	db 0,0,0,5,5,5,0,0, 5,5,5,5,0,0,0,0
-	db 5,5,5,0,0,0,5,5, 5,5,0,0,0,0,7,7
+	INCLUDE "engine/gfx/full_color_tilesets/cavern.asm"
+	ds $100 - (@ - FullColorCaveAttributes)
+
+MACRO full_color_attribute_table
+	ALIGN 8
+\1:
+	INCLUDE \2
+	ds $100 - (@ - \1)
+ENDM
+
+	full_color_attribute_table FullColorRedsHouseAttributes, "engine/gfx/full_color_tilesets/reds_house.asm"
+	full_color_attribute_table FullColorPokecenterAttributesExact, "engine/gfx/full_color_tilesets/pokecenter.asm"
+	full_color_attribute_table FullColorGymAttributes, "engine/gfx/full_color_tilesets/gym.asm"
+	full_color_attribute_table FullColorHouseAttributes, "engine/gfx/full_color_tilesets/house.asm"
+	full_color_attribute_table FullColorGateAttributes, "engine/gfx/full_color_tilesets/gate.asm"
+	full_color_attribute_table FullColorUndergroundAttributes, "engine/gfx/full_color_tilesets/underground.asm"
+	full_color_attribute_table FullColorShipAttributes, "engine/gfx/full_color_tilesets/ship.asm"
+	full_color_attribute_table FullColorShipPortAttributes, "engine/gfx/full_color_tilesets/ship_port.asm"
+	full_color_attribute_table FullColorCemeteryAttributes, "engine/gfx/full_color_tilesets/cemetery.asm"
+	full_color_attribute_table FullColorInteriorAttributes, "engine/gfx/full_color_tilesets/interior.asm"
+	full_color_attribute_table FullColorLobbyAttributes, "engine/gfx/full_color_tilesets/lobby.asm"
+	full_color_attribute_table FullColorMansionAttributes, "engine/gfx/full_color_tilesets/mansion.asm"
+	full_color_attribute_table FullColorLabAttributes, "engine/gfx/full_color_tilesets/lab.asm"
+	full_color_attribute_table FullColorClubAttributes, "engine/gfx/full_color_tilesets/club.asm"
+	full_color_attribute_table FullColorFacilityAttributes, "engine/gfx/full_color_tilesets/facility.asm"
+	full_color_attribute_table FullColorPlateauAttributes, "engine/gfx/full_color_tilesets/plateau.asm"
 
 FullColorOutdoorPalettes:
 	RGB 27,31,27, 21,21,21, 13,13,13, 7,7,7
