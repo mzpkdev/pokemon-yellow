@@ -40,7 +40,7 @@ OptionMenuJumpTable:
 	dw OptionsMenu_SpeakerSettings
 	dw OptionsMenu_GBPrinterBrightness
 	dw OptionsMenu_Color
-	dw OptionsMenu_Dummy
+	dw OptionsMenu_OverworldColor
 	dw OptionsMenu_Cancel
 
 OptionsMenu_TextSpeed:
@@ -435,9 +435,44 @@ ColorYText:
 ColorSGBText:
 	db "SGB@"
 
-OptionsMenu_Dummy:
+OptionsMenu_OverworldColor:
+	ld a, [wOptions2]
+	ld c, 0
+	bit BIT_FULL_COLOR_OVERWORLD, a
+	jr z, .checkInput
+	inc c
+.checkInput
+	ldh a, [hJoy5]
+	and D_LEFT | D_RIGHT
+	jr z, .print
+	ld a, [wOptions2]
+	xor 1 << BIT_FULL_COLOR_OVERWORLD
+	ld [wOptions2], a
+	ld a, c
+	xor 1
+	ld c, a
+.print
+	ld b, 0
+	ld hl, OverworldColorStrings
+	add hl, bc
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	hlcoord 12, 14
+	call PlaceString
 	and a
 	ret
+
+OverworldColorStrings:
+	dw OverworldOriginalText
+	dw OverworldFullText
+
+OverworldOriginalText:
+	db "ORIGINAL@"
+
+OverworldFullText:
+	db "FULL    @"
 
 OptionsMenu_Cancel:
 	ldh a, [hJoy5]
@@ -539,7 +574,8 @@ AllOptionsText:
 	next "BATTLESTYLE:"
 	next "SOUND:"
 	next "PRINT:"
-	next "COLOR:@"
+	next "COLOR:"
+	next "OVERWORLD:@"
 
 OptionMenuCancelText:
 	db "CANCEL     SELECT@"
