@@ -54,14 +54,13 @@ def debug_atlas_enter_map(
     # The request aliases surfing-minigame scratch in debug builds, so use a
     # magic value that ordinary gameplay cannot accidentally interpret.
     emulator.write("wDebugAtlasRequest", 0xA5)
-    emulator.advance_until(
-        lambda: emulator.read("wDebugAtlasRequest") == 0
-        and emulator.read("wCurMap") == map_id,
-        button="b",
-        max_presses=20,
-        description=f"debug atlas map {map_id:#x}",
+    # EnterMap reuses that scratch byte while loading map objects, so the
+    # request value itself is intentionally not a completion flag.
+    emulator.tick(240)
+    assert emulator.read("wCurMap") == map_id, (
+        f"debug atlas requested map {map_id:#x}, "
+        f"but map {emulator.read('wCurMap'):#x} loaded"
     )
-    emulator.tick(120)
 
 
 def exercise_viridian_scrolling(emulator: Emulator) -> None:
