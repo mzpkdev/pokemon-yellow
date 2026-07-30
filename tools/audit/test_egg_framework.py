@@ -106,6 +106,15 @@ class EggFrameworkTests(unittest.TestCase):
             with self.subTest(token=token):
                 self.assertIn(token, hatch)
 
+    def test_box_withdrawal_restores_move_type_after_egg_check(self) -> None:
+        move_mon = read("engine/pokemon/add_mon.asm").split("_MoveMon::", 1)[1]
+        egg_check = move_mon.split("cp EGG", 1)[1].split("call LoadMonData", 1)[0]
+        self.assertIn("ld a, [wMoveMonType]", egg_check)
+        self.assertLess(
+            egg_check.index("ld a, [wMoveMonType]"),
+            egg_check.index("srl a"),
+        )
+
     def test_transient_pending_state_is_cleared(self) -> None:
         for path in (
             "engine/overworld/clear_variables.asm",

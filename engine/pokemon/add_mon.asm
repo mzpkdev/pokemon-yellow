@@ -515,6 +515,7 @@ _MoveMon::
 	ld a, [hl]
 	cp EGG
 	jr z, .initializeEggPartyData
+	ld a, [wMoveMonType]
 	push hl
 	srl a
 	add $2
