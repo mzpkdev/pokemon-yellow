@@ -45,7 +45,11 @@ def start_debug_game_in_viridian(emulator: Emulator) -> None:
 
 
 def debug_atlas_enter_map(
-    emulator: Emulator, map_id: int, x: int = 1, y: int = 1
+    emulator: Emulator,
+    map_id: int,
+    x: int = 1,
+    y: int = 1,
+    destination_warp: int = 0xFF,
 ) -> None:
     """Ask the debug ROM to reload an arbitrary map through EnterMap."""
     emulator.write("wDebugAtlasMap", map_id)
@@ -53,6 +57,8 @@ def debug_atlas_enter_map(
     emulator.write("wDebugAtlasY", y)
     emulator.write("wXBlockCoord", x & 1)
     emulator.write("wYBlockCoord", y & 1)
+    emulator.write("wDestinationWarpID", destination_warp)
+    emulator.write("hPreviousTileset", 0xFF)
     emulator.write("wDebugAtlasRequest", 0xA5)
     for _ in range(600):
         emulator.tick(1)

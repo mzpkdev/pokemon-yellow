@@ -10,8 +10,6 @@ DebugAtlasEnterMap:
 	ld [wXCoord], a
 	ld a, [wDebugAtlasY]
 	ld [wYCoord], a
-	ld a, -1
-	ld [wDestinationWarpID], a
 	jp EnterMap
 ENDC
 

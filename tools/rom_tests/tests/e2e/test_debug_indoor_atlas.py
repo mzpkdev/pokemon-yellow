@@ -93,7 +93,9 @@ def test_debug_full_color_indoor_map_atlas(emulator: Emulator) -> None:
 
     start_debug_game_in_viridian(emulator)
     for map_name, map_id, tileset, tileset_id, x, y in cases:
-        debug_atlas_enter_map(emulator, map_id, x=x, y=y)
+        debug_atlas_enter_map(
+            emulator, map_id, x=x, y=y, destination_warp=0
+        )
         assert emulator.read("wCurMapTileset") == tileset_id, (
             f"{map_name} loaded tileset {emulator.read('wCurMapTileset')}, "
             f"expected {tileset} ({tileset_id})"
