@@ -2,13 +2,13 @@ _EnemyAppearedText::
 	text_ram wEnemyMonNick
 	text_start
 	line "appeared!"
-	prompt
+	done
 
 _TrainerWantsToFightText::
 	text_ram wTrainerName
 	text " wants"
 	line "to fight!"
-	prompt
+	done
 
 _UnveiledGhostText::
 	text "SILPH SCOPE"
