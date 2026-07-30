@@ -1,3 +1,20 @@
+IF DEF(_DEBUG)
+DebugAtlasEnterMap:
+	xor a
+	ld [wDebugAtlasRequest], a
+	ld a, [wCurMap]
+	ld [wLastMap], a
+	ld a, [wDebugAtlasMap]
+	ld [wCurMap], a
+	ld a, [wDebugAtlasX]
+	ld [wXCoord], a
+	ld a, [wDebugAtlasY]
+	ld [wYCoord], a
+	ld a, -1
+	ld [wDestinationWarpID], a
+	jp EnterMap
+ENDC
+
 EnterMap::
 ; Load a new map.
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
@@ -44,6 +61,11 @@ OverworldLoop::
 	rst _DelayFrame
 OverworldLoopLessDelay::
 	rst _DelayFrame
+IF DEF(_DEBUG)
+	ld a, [wDebugAtlasRequest]
+	and a
+	jp nz, DebugAtlasEnterMap
+ENDC
 	call IsSurfingPikachuInParty
 	call LoadGBPal
 	call HandleMidJump

@@ -44,6 +44,24 @@ def start_debug_game_in_viridian(emulator: Emulator) -> None:
     assert emulator.read("wOptions2") & FULL_COLOR_OVERWORLD
 
 
+def debug_atlas_enter_map(
+    emulator: Emulator, map_id: int, x: int = 1, y: int = 1
+) -> None:
+    """Ask the debug ROM to reload an arbitrary map through EnterMap."""
+    emulator.write("wDebugAtlasMap", map_id)
+    emulator.write("wDebugAtlasX", x)
+    emulator.write("wDebugAtlasY", y)
+    emulator.write("wDebugAtlasRequest", 1)
+    emulator.advance_until(
+        lambda: emulator.read("wDebugAtlasRequest") == 0
+        and emulator.read("wCurMap") == map_id,
+        button="b",
+        max_presses=20,
+        description=f"debug atlas map {map_id:#x}",
+    )
+    emulator.tick(120)
+
+
 def exercise_viridian_scrolling(emulator: Emulator) -> None:
     """Walk a known-valid route that streams rows and columns into the BG map."""
     walk_to_value(emulator, "wXCoord", 19, "left", "Viridian main path")

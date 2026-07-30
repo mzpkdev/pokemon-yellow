@@ -2632,6 +2632,14 @@ wLastOBP1:: db
 wdef4:: db
 wBGPPalsBuffer:: ds NUM_ACTIVE_PALS + 1 * PALETTE_SIZE
 
+IF DEF(_DEBUG)
+; PyBoy-only map atlas request. Release WRAM layout is unchanged.
+wDebugAtlasRequest:: db
+wDebugAtlasMap:: db
+wDebugAtlasX:: db
+wDebugAtlasY:: db
+ENDC
+
 
 SECTION "Stack", WRAM0
 
