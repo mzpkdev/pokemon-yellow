@@ -356,10 +356,10 @@ OverworldLoopLessDelay::
 	callfar AnyPartyAlive
 	ld a, d
 	and a
-	jr z, AllPokemonFainted
+	jp z, AllPokemonFainted
 	ld a, [wSurrenderedFromTrainerBattle]
 	and a
-	jr nz, AllPokemonFainted
+	jp nz, AllPokemonFainted
 .noFaintCheck
 	ld c, 10
 	rst _DelayFrames
