@@ -502,9 +502,6 @@ OptionsControl:
 	scf
 	ret
 .doNotWrapAround
-	cp $5
-	jr c, .regularIncrement
-	ld [hl], $6
 .regularIncrement
 	inc [hl]
 	scf

@@ -112,12 +112,6 @@ LoadSpecialWarpData:
 	add hl, de
 	jr .copyWarpData2
 .otherDestination
-	ld hl, wStatusFlags6
-	bit BIT_DEBUG_MODE, [hl]
-	jr z, .regularDestination
-	ld a, VIRIDIAN_CITY
-	jr .usedFlyWarp
-.regularDestination
 	ld a, [wDestinationMap]
 .usedFlyWarp
 	ld b, a

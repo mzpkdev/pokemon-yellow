@@ -2144,6 +2144,10 @@ LoadMapData::
 	call EnableLCD
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand
+	; RunPaletteCommand initializes the CGB attribute map, so restore the
+	; per-tile attributes after it has finished.
+	ld de, vBGMap0
+	farcall CopyFullColorMapViewAttributes
 	call LoadPlayerSpriteGraphics
 	ld a, [wStatusFlags6]
 	and 1 << BIT_DUNGEON_WARP | 1 << BIT_FLY_WARP
