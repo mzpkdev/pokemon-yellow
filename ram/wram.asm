@@ -2632,15 +2632,6 @@ wLastOBP1:: db
 wdef4:: db
 wBGPPalsBuffer:: ds NUM_ACTIVE_PALS + 1 * PALETTE_SIZE
 
-IF DEF(_DEBUG)
-; PyBoy-only map atlas request. Release WRAM layout is unchanged.
-wDebugAtlasRequest:: db
-wDebugAtlasMap:: db
-wDebugAtlasX:: db
-wDebugAtlasY:: db
-ENDC
-
-
 SECTION "Stack", WRAM0
 
 ; the stack grows downward
@@ -2648,3 +2639,12 @@ SECTION "Stack", WRAM0
 wStack:: db
 
 ENDSECTION
+
+IF DEF(_DEBUG)
+; PyBoy-only aliases. The surfing minigame is inactive during atlas warps, and
+; aliases keep both release and debug WRAM/stack layouts unchanged.
+DEF wDebugAtlasRequest EQU wSurfingMinigameData
+DEF wDebugAtlasMap EQU wSurfingMinigameRoutineNumber
+DEF wDebugAtlasX EQU wc5d2
+DEF wDebugAtlasY EQU wSurfingMinigameWaveFunctionNumber
+ENDC
