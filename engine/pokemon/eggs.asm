@@ -1,5 +1,65 @@
 SECTION "Egg Framework", ROMX
 
+IF DEF(_DEBUG)
+SetDebugNewGameBox:
+	xor a ; Box 1
+	ld [wCurrentBoxNum], a
+	ld a, $80 ; player party data, without nickname prompts
+	ld [wMonDataLocation], a
+	ld a, 15
+	ld [wCurEnemyLevel], a
+	ld de, DebugNewGameBoxMons
+.loop
+	ld a, [de]
+	cp -1
+	jr z, .done
+	inc de
+	push de
+	ld [wCurPartySpecies], a
+	call AddPartyMon
+
+	ld a, [wCurPartySpecies]
+	ld [wNamedObjectIndex], a
+	call GetMonName
+	push de
+	ld de, wPartyMonNicks
+	ld bc, NAME_LENGTH
+	pop hl
+	rst _CopyData
+
+	xor a
+	ld [wWhichPokemon], a
+	ld a, PARTY_TO_BOX
+	ld [wMoveMonType], a
+	call MoveMon
+	xor a ; remove the temporary party copy
+	ld [wRemoveMonFromBox], a
+	call RemovePokemon
+	pop de
+	jr .loop
+.done
+	xor a ; PLAYER_PARTY_DATA
+	ld [wMonDataLocation], a
+	ret
+
+DebugNewGameBoxMons:
+	db SMOOCHUM
+	db ELEKID
+	db MAGBY
+	db POLITOED
+	db SLOWKING
+	db STEELIX
+	db KINGDRA
+	db SCIZOR
+	db PORYGON2
+	db PICHU
+	db CLEFFA
+	db IGGLYBUFF
+	db CROBAT
+	db BLISSEY
+	db -1 ; end
+ENDC
+
 ; Create a party Egg.
 ; Input: a = species that will hatch, bc = incubation steps (1-65535).
 ; Output: carry set on success, clear if the party is full.
