@@ -8,12 +8,8 @@ DebugAtlasEnterMap:
 	ld [wCurMap], a
 	ld a, [wDebugAtlasX]
 	ld [wXCoord], a
-	and $1
-	ld [wXBlockCoord], a
 	ld a, [wDebugAtlasY]
 	ld [wYCoord], a
-	and $1
-	ld [wYBlockCoord], a
 	ld a, -1
 	ld [wDestinationWarpID], a
 	jp EnterMap

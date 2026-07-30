@@ -51,6 +51,8 @@ def debug_atlas_enter_map(
     emulator.write("wDebugAtlasMap", map_id)
     emulator.write("wDebugAtlasX", x)
     emulator.write("wDebugAtlasY", y)
+    emulator.write("wXBlockCoord", x & 1)
+    emulator.write("wYBlockCoord", y & 1)
     emulator.write("wDebugAtlasRequest", 0xA5)
     for _ in range(600):
         emulator.tick(1)
