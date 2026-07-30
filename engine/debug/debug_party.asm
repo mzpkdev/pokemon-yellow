@@ -13,12 +13,65 @@ SetDebugNewGameParty: ; unreferenced except in _DEBUG
 	jr .loop
 
 DebugNewGameParty: ; unreferenced except in _DEBUG
-	db SNORLAX, 100
-	db BLASTOISE, 100
-	db CHARIZARD, 100
-	db STARTER_PIKACHU, 100
-	db DRAGONITE, 100
-	db MEW, 100
+	db STARTER_PIKACHU, 5
+	db -1 ; end
+
+SetDebugNewGameBox:
+	xor a ; Box 1
+	ld [wCurrentBoxNum], a
+	ld a, $80 ; player party data, without nickname prompts
+	ld [wMonDataLocation], a
+	ld a, 15
+	ld [wCurEnemyLevel], a
+	ld de, DebugNewGameBoxMons
+.loop
+	ld a, [de]
+	cp -1
+	jr z, .done
+	inc de
+	push de
+	ld [wCurPartySpecies], a
+	call AddPartyMon
+
+	ld a, [wCurPartySpecies]
+	ld [wNamedObjectIndex], a
+	call GetMonName
+	push de
+	ld de, wPartyMonNicks
+	ld bc, NAME_LENGTH
+	pop hl
+	rst _CopyData
+
+	xor a
+	ld [wWhichPokemon], a
+	ld a, PARTY_TO_BOX
+	ld [wMoveMonType], a
+	call MoveMon
+	xor a ; remove the temporary party copy
+	ld [wRemoveMonFromBox], a
+	call RemovePokemon
+	pop de
+	jr .loop
+.done
+	xor a ; PLAYER_PARTY_DATA
+	ld [wMonDataLocation], a
+	ret
+
+DebugNewGameBoxMons:
+	db SMOOCHUM
+	db ELEKID
+	db MAGBY
+	db POLITOED
+	db SLOWKING
+	db STEELIX
+	db KINGDRA
+	db SCIZOR
+	db PORYGON2
+	db PICHU
+	db CLEFFA
+	db IGGLYBUFF
+	db CROBAT
+	db BLISSEY
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -38,28 +91,39 @@ IF DEF(_DEBUG)
 ;	ld a, %11111100
 	ld [wObtainedBadges], a
 
+	call SetDebugNewGameBox
 	call SetDebugNewGameParty
+
+	; Mark Pikachu as the player's companion.
+	ld a, LIGHT_BALL_GSC
+	ld [wPartyMon1CatchRate], a
+	ld hl, wPartyMon1DVs
+	ld de, wStarterCompanionDVs
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	SetEvent EVENT_GOT_STARTER
+	ld hl, wStatusFlags4
+	set BIT_GOT_STARTER, [hl]
+
+	; Add a Pichu Egg with a short debug incubation.
+	ld a, PICHU
+	ld bc, 16
+	farcall CreatePartyEgg
+
+	call SetDebugNewGameBox
 
 	; Pikachu gets 3 HM moves.
 	ld a, FLY
-	ld hl, wPartyMon4Moves
+	ld hl, wPartyMon1Moves
 	ld [hl], a
 	ld a, FLASH
-	ld hl, wPartyMon4Moves + 2
+	ld hl, wPartyMon1Moves + 2
 	ld [hl], a
 	ld a, SURF
-	ld hl, wPartyMon4Moves + 3
-	ld [hl], a
-
-	; Snorlax gets four HM moves.
-	ld hl, wPartyMon1Moves
-	ld a, FLY
-	ld [hli], a
-	ld a, CUT
-	ld [hli], a
-	ld a, SURF
-	ld [hli], a
-	ld a, STRENGTH
+	ld hl, wPartyMon1Moves + 3
 	ld [hl], a
 
 	; Get some debug items.

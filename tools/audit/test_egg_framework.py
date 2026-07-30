@@ -83,6 +83,48 @@ class EggFrameworkTests(unittest.TestCase):
             ),
         )
 
+    def test_debug_start_exercises_egg_and_added_species(self) -> None:
+        debug_party = read("engine/debug/debug_party.asm")
+        debug_menu = read("engine/debug/debug_menu.asm")
+        added_species = (
+            "SMOOCHUM",
+            "ELEKID",
+            "MAGBY",
+            "POLITOED",
+            "SLOWKING",
+            "STEELIX",
+            "KINGDRA",
+            "SCIZOR",
+            "PORYGON2",
+            "PICHU",
+            "CLEFFA",
+            "IGGLYBUFF",
+            "CROBAT",
+            "BLISSEY",
+        )
+        box_table = debug_party.split("DebugNewGameBoxMons:", 1)[1].split(
+            "PrepareNewGameDebug:", 1
+        )[0]
+
+        self.assertIn("db STARTER_PIKACHU, 5", debug_party)
+        self.assertIn("ld bc, 16", debug_party)
+        self.assertIn("farcall CreatePartyEgg", debug_party)
+        self.assertIn("ld a, 15", debug_party)
+        self.assertIn("ld a, PARTY_TO_BOX", debug_party)
+        self.assertNotIn("\tdb EGG", box_table)
+        for species in added_species:
+            with self.subTest(species=species):
+                self.assertEqual(box_table.count(f"\tdb {species}\n"), 1)
+
+        self.assertRegex(
+            debug_menu,
+            re.compile(
+                r"set BIT_DEBUG_MODE, \[hl\]\s+"
+                r"ld a, PEWTER_CITY\s+"
+                r"ld \[wDefaultMap\], a"
+            ),
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
