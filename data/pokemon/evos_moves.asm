@@ -595,6 +595,7 @@ GastlyEvosMoves:
 
 ScytherEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, SCIZOR
 	db 0
 ; Learnset
 	db 6, FOCUS_ENERGY
@@ -701,6 +702,7 @@ GrowlitheEvosMoves:
 
 OnixEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, STEELIX
 	db 0
 ; Learnset
 	db 12, ROCK_THROW
@@ -748,6 +750,7 @@ PidgeyEvosMoves:
 
 SlowpokeEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, SLOWKING
 	db EVOLVE_LEVEL, 37, SLOWBRO
 	db 0
 ; Learnset
@@ -1449,6 +1452,7 @@ HorseaEvosMoves:
 
 SeadraEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, KINGDRA
 	db 0
 ; Learnset
 	db 10, WATER_GUN
@@ -1701,6 +1705,7 @@ ParasEvosMoves:
 
 PoliwhirlEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, POLITOED
 	db EVOLVE_ITEM, WATER_STONE, 1, POLIWRATH
 	db 0
 ; Learnset
@@ -2426,6 +2431,7 @@ GeodudeEvosMoves:
 
 PorygonEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, PORYGON2
 	db 0
 ; Learnset
 	db 12, PSYBEAM
@@ -2735,24 +2741,77 @@ MagbyEvosMoves:
 
 PolitoedEvosMoves:
 	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db  6, MIST
+	db 10, DOUBLESLAP
+	db 13, WATER_GUN
+	db 17, HYPNOSIS
+	db 22, WATER_PULSE
+	db 30, BODY_SLAM
+	db 40, AMNESIA
+	db 48, HYDRO_PUMP
+	db 0
 
 SlowkingEvosMoves:
 	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db  6, GROWL
+	db 10, WATER_GUN
+	db 15, CONFUSION
+	db 20, DISABLE
+	db 25, HEADBUTT
+	db 30, PSYBEAM
+	db 36, WITHDRAW
+	db 40, AMNESIA
+	db 45, PSYCHIC_M
+	db 0
 
 SteelixEvosMoves:
 	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db 12, ROCK_THROW
+	db 19, DIG
+	db 23, BIND
+	db 25, ROCK_TOMB
+	db 29, HARDEN
+	db 31, SLAM
+	db 34, BODY_PRESS
+	db 37, ROCK_SLIDE
+	db 43, EARTHQUAKE
+	db 0
 
 KingdraEvosMoves:
 	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db 10, WATER_GUN
+	db 14, SMOKESCREEN
+	db 18, LEER
+	db 20, DRAGONBREATH
+	db 22, WATER_PULSE
+	db 26, DRAGON_RAGE
+	db 30, AURORA_BEAM
+	db 33, WATERFALL
+	db 37, AGILITY
+	db 41, SLAM
+	db 45, HYDRO_PUMP
+	db 0
 
 ScizorEvosMoves:
 	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db  6, FOCUS_ENERGY
+	db 12, QUICK_ATTACK
+	db 16, CUT
+	db 24, AGILITY
+	db 30, AIR_CUTTER
+	db 36, SLASH
+	db 42, X_SCISSOR
+	db 48, DOUBLE_TEAM
+	db 54, SWORDS_DANCE
+	db 0
 
 Porygon2EvosMoves:
 	db 0 ; no evolutions
-	db 0 ; placeholder learnset
+	db 12, PSYBEAM
+	db 20, RECOVER
+	db 24, SHARPEN
+	db 28, TRI_ATTACK
+	db 32, AGILITY
+	db 40, BARRIER
+	db 50, HYPER_BEAM
+	db 0

@@ -1536,3 +1536,63 @@ _MagbyDexEntry::
 	next "nose when it is"
 	next "healthy"
 	dex
+
+_PolitoedDexEntry::
+	text "When it expands"
+	next "its throat to"
+	next "croak, nearby"
+
+	page "POLIWAG and"
+	next "POLIWHIRL gather"
+	next "at once"
+	dex
+
+_SlowkingDexEntry::
+	text "It has incredible"
+	next "intellect and"
+	next "intuition."
+
+	page "Whatever happens,"
+	next "it stays calm and"
+	next "collected"
+	dex
+
+_SteelixDexEntry::
+	text "Its body has been"
+	next "compressed deep"
+	next "underground."
+
+	page "It is harder than"
+	next "any kind of metal"
+	next "known"
+	dex
+
+_KingdraDexEntry::
+	text "It sleeps deep on"
+	next "the ocean floor,"
+	next "storing energy."
+
+	page "Its awakening can"
+	next "stir powerful"
+	next "whirlpools"
+	dex
+
+_ScizorDexEntry::
+	text "Its claws crush"
+	next "hard objects."
+	next "Their eye patterns"
+
+	page "Foes may believe"
+	next "it has three heads"
+	next "in battle"
+	dex
+
+_Porygon2DexEntry::
+	text "It was upgraded"
+	next "with advanced"
+	next "technology."
+
+	page "It sometimes shows"
+	next "behavior that was"
+	next "not programmed"
+	dex

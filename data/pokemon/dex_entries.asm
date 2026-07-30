@@ -193,12 +193,12 @@ PokedexEntryPointers:
 	dw SmoochumDexEntry
 	dw ElekidDexEntry
 	dw MagbyDexEntry
-	dw PoliwrathDexEntry ; placeholder family entry
-	dw SlowbroDexEntry   ; placeholder family entry
-	dw OnixDexEntry      ; placeholder family entry
-	dw SeadraDexEntry    ; placeholder family entry
-	dw ScytherDexEntry   ; placeholder family entry
-	dw PorygonDexEntry   ; placeholder family entry
+	dw PolitoedDexEntry
+	dw SlowkingDexEntry
+	dw SteelixDexEntry
+	dw KingdraDexEntry
+	dw ScizorDexEntry
+	dw Porygon2DexEntry
 	assert_table_length NUM_POKEMON_INDEXES
 
 ; string: species name
@@ -1282,6 +1282,48 @@ MagbyDexEntry:
 	db 2,4
 	dw 472
 	text_far _MagbyDexEntry
+	text_end
+
+PolitoedDexEntry:
+	db "FROG@"
+	db 3,7
+	dw 747
+	text_far _PolitoedDexEntry
+	text_end
+
+SlowkingDexEntry:
+	db "ROYAL@"
+	db 6,7
+	dw 1753
+	text_far _SlowkingDexEntry
+	text_end
+
+SteelixDexEntry:
+	db "IRON SNAKE@"
+	db 30,2
+	dw 8818
+	text_far _SteelixDexEntry
+	text_end
+
+KingdraDexEntry:
+	db "DRAGON@"
+	db 5,11
+	dw 3351
+	text_far _KingdraDexEntry
+	text_end
+
+ScizorDexEntry:
+	db "PINCER@"
+	db 5,11
+	dw 2601
+	text_far _ScizorDexEntry
+	text_end
+
+Porygon2DexEntry:
+	db "VIRTUAL@"
+	db 2,0
+	dw 717
+	text_far _Porygon2DexEntry
 	text_end
 
 MissingNoDexEntry:
