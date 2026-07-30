@@ -438,8 +438,9 @@ ColorSGBText:
 OptionsMenu_OverworldColor:
 	ld a, [wOptions2]
 	ld c, 0
-	bit BIT_FULL_COLOR_OVERWORLD, a
-	jr z, .checkInput
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .checkInput
 	inc c
 .checkInput
 	ldh a, [hJoy5]

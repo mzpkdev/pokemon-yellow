@@ -8,8 +8,9 @@ CopyFullColorMapViewAttributes::
 	and a
 	ret z
 	ld a, [wOptions2]
-	bit BIT_FULL_COLOR_OVERWORLD, a
-	ret z
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	ret nz
 	call GetFullColorAttributeTableHigh
 	ld a, 1
 	ldh [rVBK], a
@@ -57,8 +58,9 @@ ApplyFullColorOverworldPalettes::
 	ret nz
 
 	ld a, [wOptions2]
-	bit BIT_FULL_COLOR_OVERWORLD, a
-	ret z
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	ret nz
 	ld a, [wCurMapTileset]
 	ld hl, FullColorIndoorPalettes
 	cp OVERWORLD
@@ -89,8 +91,9 @@ DrawFullColorRowOrColumn::
 	and a
 	jp z, .done
 	ld a, [wOptions2]
-	bit BIT_FULL_COLOR_OVERWORLD, a
-	jp z, .done
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jp nz, .done
 	ld a, [wDefaultPaletteCommand]
 	cp SET_PAL_OVERWORLD
 	jp nz, .done
