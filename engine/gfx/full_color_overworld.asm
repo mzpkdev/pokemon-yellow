@@ -220,8 +220,8 @@ FullColorOutdoorAttributes:
 	db 5,0,5,5,5,5,5,5, 6,0,0,0,5,2,2,0
 	db 2,2,0,0,0,0,0,0, 5,5,0,5,6,6,0,0
 	db 2,2,2,6,5,5,0,0, 5,5,6,5,6,6,7,7
+	ds $100 - FULL_COLOR_TILESET_SIZE
 
-ALIGN 8
 FullColorForestAttributes:
 	db 0,5,5,1,5,6,6,6, 6,6,4,4,4,0,5,0
 	db 0,5,6,5,3,6,6,6, 6,6,0,5,5,2,5,0
@@ -229,8 +229,8 @@ FullColorForestAttributes:
 	db 5,0,5,5,5,5,5,5, 6,0,0,0,5,2,2,0
 	db 2,2,0,0,0,0,0,0, 5,5,0,5,6,6,0,0
 	db 2,2,2,6,5,5,0,0, 5,5,6,5,6,6,7,7
+	ds $100 - FULL_COLOR_TILESET_SIZE
 
-ALIGN 8
 FullColorIndoorAttributes:
 	db 0,1,1,0,0,5,5,5, 5,5,5,5,5,5,5,0
 	db 5,5,5,1,1,5,5,0, 0,0,0,5,5,5,5,0
@@ -238,8 +238,8 @@ FullColorIndoorAttributes:
 	db 0,1,1,1,0,0,2,0, 1,1,0,5,5,5,5,5
 	db 5,1,1,1,1,0,1,1, 5,5,5,5,5,5,5,5
 	db 0,5,5,1,1,1,1,0, 5,0,0,5,5,5,7,7
+	ds $100 - FULL_COLOR_TILESET_SIZE
 
-ALIGN 8
 FullColorCaveAttributes:
 	db 0,5,5,0,0,5,5,5, 5,5,5,5,5,5,5,0
 	db 0,0,5,5,0,0,0,0, 5,5,0,0,3,3,0,0
