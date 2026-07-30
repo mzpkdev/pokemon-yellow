@@ -2138,7 +2138,7 @@ wStarterCompanionDVs:: dw
 wSightingZone:: db
 wSightingProfile:: db
 wSightingFlags:: db
-wSightingStepCounter:: db
+wSightingStepCounter:: db ; reserved to preserve the existing WRAM layout
 wSightingCooldown:: db
 	ds 16
 wd492:: db

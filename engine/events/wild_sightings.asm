@@ -3,6 +3,21 @@ UpdateWildSightingOnStep::
 	bit SIGHTING_ACTIVE_F, a
 	ret nz
 
+	; All ordinary player movement charges the next sighting, including steps
+	; outside encounter terrain and while Repel is active.
+	ld hl, wSightingCooldown
+	ld a, [hl]
+	and a
+	jr z, .charged
+	dec [hl]
+	ret
+
+.charged
+	; Start charged on a new game, but do not surface an opportunity before
+	; catching has been introduced and Oak has supplied the first Poke Balls.
+	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
+	ret z
+
 	call GetCurrentWildSightingZoneAndProfile
 	ld a, c
 	and a
@@ -35,20 +50,6 @@ UpdateWildSightingOnStep::
 	ret
 
 .eligibleProfile
-
-	ld hl, wSightingCooldown
-	ld a, [hl]
-	and a
-	jr z, .cooldownDone
-	dec [hl]
-	ret
-
-.cooldownDone
-	ld hl, wSightingStepCounter
-	inc [hl]
-	ld a, [hl]
-	and SIGHTING_STEP_INTERVAL - 1
-	ret nz
 
 	IF !DEF(_DEBUG)
 		push bc
