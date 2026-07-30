@@ -2236,6 +2236,9 @@ CopyMapViewToVRAM2:
 	dec b
 	jr nz, .vramCopyLoop
 	pop de
+	ld a, d
+	cp HIGH(vBGMap0)
+	ret nz
 	ldh a, [hGBC]
 	and a
 	ret z

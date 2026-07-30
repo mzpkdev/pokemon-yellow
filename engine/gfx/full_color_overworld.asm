@@ -57,6 +57,9 @@ ApplyFullColorOverworldPalettes::
 	ld a, [wDefaultPaletteCommand]
 	cp SET_PAL_OVERWORLD
 	ret nz
+	ld a, [wIsInBattle]
+	and a
+	ret nz
 
 	ld a, [wOptions2]
 	and %1100
