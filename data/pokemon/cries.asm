@@ -196,4 +196,18 @@ CryData::
 	mon_cry SFX_CRY_21, $55, $01 ; Bellsprout
 	mon_cry SFX_CRY_25, $44, $20 ; Weepinbell
 	mon_cry SFX_CRY_25, $66, $CC ; Victreebel
+	mon_cry SFX_CRY_1D, $FF, $40 ; Smoochum
+	mon_cry SFX_CRY_18, $EE, $40 ; Elekid
+	mon_cry SFX_CRY_1F, $FF, $60 ; Magby
+	mon_cry SFX_CRY_21, $70, $60 ; Politoed
+	mon_cry SFX_CRY_08, $00, $80 ; Slowking
+	mon_cry SFX_CRY_17, $E0, $10 ; Steelix
+	mon_cry SFX_CRY_19, $20, $20 ; Kingdra
+	mon_cry SFX_CRY_16, $00, $80 ; Scizor
+	mon_cry SFX_CRY_25, $AA, $80 ; Porygon2
+	mon_cry SFX_CRY_0F, $EE, $01 ; Pichu (Pikachu family)
+	mon_cry SFX_CRY_19, $CC, $01 ; Cleffa (Clefairy family)
+	mon_cry SFX_CRY_0E, $FF, $35 ; Igglybuff (Jigglypuff family)
+	mon_cry SFX_CRY_1D, $FA, $80 ; Crobat (Golbat family)
+	mon_cry SFX_CRY_14, $0A, $C0 ; Blissey (Chansey family)
 	assert_table_length NUM_POKEMON_INDEXES

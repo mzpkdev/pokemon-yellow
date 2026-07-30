@@ -155,5 +155,22 @@
 	const DEX_DRAGONITE  ; 149
 	const DEX_MEWTWO     ; 150
 	const DEX_MEW        ; 151
+	const DEX_SMOOCHUM   ; 152
+	const DEX_ELEKID     ; 153
+	const DEX_MAGBY      ; 154
+	const DEX_POLITOED   ; 155
+	const DEX_SLOWKING   ; 156
+	const DEX_STEELIX    ; 157
+	const DEX_KINGDRA    ; 158
+	const DEX_SCIZOR     ; 159
+	const DEX_PORYGON2   ; 160
+	const DEX_PICHU      ; 161
+	const DEX_CLEFFA     ; 162
+	const DEX_IGGLYBUFF  ; 163
+	const DEX_CROBAT     ; 164
+	const DEX_BLISSEY    ; 165
 
 DEF NUM_POKEMON EQU const_value - 1
+
+; Completing the original Kanto Pokédex remains the diploma/rating target.
+DEF NUM_KANTO_POKEMON EQU DEX_MEW

@@ -527,6 +527,38 @@ MewPicFront::         INCBIN "gfx/pokemon/front/mew.pic"
 MewPicBack::          INCBIN "gfx/pokemon/back/mewb.pic"
 
 
+SECTION "Johto Baby Pics", ROMX, BANK[$43]
+
+SmoochumPicFront::    INCBIN "gfx/pokemon/front/smoochum.pic"
+SmoochumPicBack::     INCBIN "gfx/pokemon/back/smoochumb.pic"
+ElekidPicFront::      INCBIN "gfx/pokemon/front/elekid.pic"
+ElekidPicBack::       INCBIN "gfx/pokemon/back/elekidb.pic"
+MagbyPicFront::       INCBIN "gfx/pokemon/front/magby.pic"
+MagbyPicBack::        INCBIN "gfx/pokemon/back/magbyb.pic"
+PolitoedPicFront::    INCBIN "gfx/pokemon/front/politoed.pic"
+PolitoedPicBack::     INCBIN "gfx/pokemon/back/politoedb.pic"
+SlowkingPicFront::    INCBIN "gfx/pokemon/front/slowking.pic"
+SlowkingPicBack::     INCBIN "gfx/pokemon/back/slowkingb.pic"
+SteelixPicFront::     INCBIN "gfx/pokemon/front/steelix.pic"
+SteelixPicBack::      INCBIN "gfx/pokemon/back/steelixb.pic"
+KingdraPicFront::     INCBIN "gfx/pokemon/front/kingdra.pic"
+KingdraPicBack::      INCBIN "gfx/pokemon/back/kingdrab.pic"
+ScizorPicFront::      INCBIN "gfx/pokemon/front/scizor.pic"
+ScizorPicBack::       INCBIN "gfx/pokemon/back/scizorb.pic"
+Porygon2PicFront::    INCBIN "gfx/pokemon/front/porygon2.pic"
+Porygon2PicBack::     INCBIN "gfx/pokemon/back/porygon2b.pic"
+PichuPicFront::       INCBIN "gfx/pokemon/front/pichu.pic"
+PichuPicBack::        INCBIN "gfx/pokemon/back/pichub.pic"
+CleffaPicFront::      INCBIN "gfx/pokemon/front/cleffa.pic"
+CleffaPicBack::       INCBIN "gfx/pokemon/back/cleffab.pic"
+IgglybuffPicFront::   INCBIN "gfx/pokemon/front/igglybuff.pic"
+IgglybuffPicBack::    INCBIN "gfx/pokemon/back/igglybuffb.pic"
+CrobatPicFront::      INCBIN "gfx/pokemon/front/crobat.pic"
+CrobatPicBack::       INCBIN "gfx/pokemon/back/crobatb.pic"
+BlisseyPicFront::     INCBIN "gfx/pokemon/front/blissey.pic"
+BlisseyPicBack::      INCBIN "gfx/pokemon/back/blisseyb.pic"
+
+
 SECTION "bank42", ROMX, BANK[$42]
 
 INCLUDE "data/sgb/sgb_palettes.asm"

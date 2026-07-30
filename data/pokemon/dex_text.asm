@@ -1506,3 +1506,143 @@ _MewDexEntry::
 	next "fine, delicate"
 	next "hair can be seen"
 	dex
+
+_SmoochumDexEntry::
+	text "Its lips are the"
+	next "most sensitive"
+	next "part of its body."
+
+	page "It uses them to"
+	next "examine unfamiliar"
+	next "objects"
+	dex
+
+_ElekidDexEntry::
+	text "It spins its arms"
+	next "to build up"
+	next "electricity."
+
+	page "It tires quickly,"
+	next "so it stores only"
+	next "a little power"
+	dex
+
+_MagbyDexEntry::
+	text "Its body heat can"
+	next "top 1,100 degrees."
+	next "Small flames leak"
+
+	page "from its mouth and"
+	next "nose when it is"
+	next "healthy"
+	dex
+
+_PolitoedDexEntry::
+	text "When it expands"
+	next "its throat to"
+	next "croak, nearby"
+
+	page "POLIWAG and"
+	next "POLIWHIRL gather"
+	next "at once"
+	dex
+
+_SlowkingDexEntry::
+	text "It has incredible"
+	next "intellect and"
+	next "intuition."
+
+	page "Whatever happens,"
+	next "it stays calm and"
+	next "collected"
+	dex
+
+_SteelixDexEntry::
+	text "Its body has been"
+	next "compressed deep"
+	next "underground."
+
+	page "It is harder than"
+	next "any kind of metal"
+	next "known"
+	dex
+
+_KingdraDexEntry::
+	text "It sleeps deep on"
+	next "the ocean floor,"
+	next "storing energy."
+
+	page "Its awakening can"
+	next "stir powerful"
+	next "whirlpools"
+	dex
+
+_ScizorDexEntry::
+	text "Its claws crush"
+	next "hard objects."
+	next "Their eye patterns"
+
+	page "Foes may believe"
+	next "it has three heads"
+	next "in battle"
+	dex
+
+_Porygon2DexEntry::
+	text "It was upgraded"
+	next "with advanced"
+	next "technology."
+
+	page "It sometimes shows"
+	next "behavior that was"
+	next "not programmed"
+	dex
+
+_PichuDexEntry::
+	text "It is not yet"
+	next "skilled at storing"
+	next "electricity."
+
+	page "It may discharge"
+	next "power when startled"
+	next "or amused"
+	dex
+
+_CleffaDexEntry::
+	text "Its silhouette is"
+	next "like a star."
+	next "People believe it"
+
+	page "arrived by riding"
+	next "on a shooting star"
+	next "from far away"
+	dex
+
+_IgglybuffDexEntry::
+	text "Its soft body is"
+	next "very elastic."
+	next "Once it starts"
+
+	page "bouncing, it may"
+	next "be unable to stop"
+	next "on its own"
+	dex
+
+_CrobatDexEntry::
+	text "Its hind legs are"
+	next "now a second pair"
+	next "of wings."
+
+	page "It flies silently"
+	next "but cannot walk"
+	next "very well"
+	dex
+
+_BlisseyDexEntry::
+	text "Anyone who eats a"
+	next "bite of its egg"
+	next "becomes cheerful"
+
+	page "and caring toward"
+	next "everyone around"
+	next "them"
+	dex
