@@ -286,7 +286,6 @@ WildSightingProfiles:
 	sighting_profile SIGHTING_METHOD_LAND, PokemonMansionSightings, NoWildSightings
 	sighting_profile SIGHTING_METHOD_LAND, DiglettsCaveSightings, NoWildSightings
 	sighting_profile SIGHTING_METHOD_LAND, SafariLandSightings, NoWildSightings
-	sighting_profile 0, NoWildSightings, NoWildSightings
 	assert_table_length NUM_SIGHTING_PROFILES
 
 NoWildSightings:

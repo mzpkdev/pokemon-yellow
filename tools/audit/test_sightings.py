@@ -28,7 +28,7 @@ class WildSightingFrameworkTests(unittest.TestCase):
         self.assertEqual([record[2] for record in records], maps)
         self.assertIn("assert_table_length NUM_MAPS", sighting_maps)
 
-    def test_only_maps_with_normal_wild_data_receive_profiles(self) -> None:
+    def test_sighting_profiles_match_wild_data_and_explicit_exclusions(self) -> None:
         wild_pointers = _source("data/wild/grass_water.asm")
         sighting_maps = _source("data/wild/sighting_maps.asm")
 
@@ -43,11 +43,17 @@ class WildSightingFrameworkTests(unittest.TestCase):
             re.MULTILINE,
         )
 
+        excluded_maps = {
+            "CERULEAN_CAVE_1F",
+            "CERULEAN_CAVE_2F",
+            "CERULEAN_CAVE_B1F",
+        }
+
         self.assertEqual(len(wild_rows), len(sighting_rows))
-        for wild_data, (zone, profile, _) in zip(
+        for wild_data, (zone, profile, map_name) in zip(
             wild_rows, sighting_rows, strict=True
         ):
-            if wild_data == "NothingWildMons":
+            if wild_data == "NothingWildMons" or map_name in excluded_maps:
                 self.assertEqual(zone, "SIGHTING_ZONE_NONE")
                 self.assertEqual(profile, "SIGHTING_PROFILE_NONE")
             else:
