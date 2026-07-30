@@ -91,6 +91,7 @@ class EggFrameworkTests(unittest.TestCase):
         self.assertIn("call TextBoxBorder", handler)
         self.assertIn("call CopyScreenTileBufferToVRAM", handler)
         self.assertIn("call LoadFontTilePatterns", handler)
+        self.assertEqual(handler.count("call WaitForTextScrollButtonPress"), 2)
         self.assertIn("call ReloadTilesetTilePatterns", handler)
         self.assertIn("call LoadScreenTilesFromBuffer2DisableBGTransfer", handler)
         self.assertIn("call RunDefaultPaletteCommand", handler)

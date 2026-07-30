@@ -422,6 +422,7 @@ HandlePendingEggHatch:
 	ldh [hAutoBGTransferEnabled], a
 	ld hl, EggHatchingText
 	rst _PrintText
+	call WaitForTextScrollButtonPress
 	ld c, 50
 	rst _DelayFrames
 	xor a
@@ -465,6 +466,7 @@ HandlePendingEggHatch:
 	ldh [hJoyLast], a
 	ld hl, EggHatchedText
 	rst _PrintText
+	call WaitForTextScrollButtonPress
 	call GBPalWhiteOutWithDelay3
 	call ReloadTilesetTilePatterns
 	call LoadScreenTilesFromBuffer2DisableBGTransfer
