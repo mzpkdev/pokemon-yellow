@@ -150,6 +150,6 @@ MonPartyData:
 	db ICON_DRAGONITE     ; Dragonite
 	db ICON_MEWTWO        ; Mewtwo
 	db ICON_MEW           ; Mew
-	db ICON_JYNX          ; Smoochum (temporary family icon)
-	db ICON_ELECTABUZZ    ; Elekid (temporary family icon)
-	db ICON_MAGMAR        ; Magby (temporary family icon)
+	db ICON_JYNX          ; Smoochum
+	db ICON_ELECTABUZZ    ; Elekid
+	db ICON_MAGMAR        ; Magby

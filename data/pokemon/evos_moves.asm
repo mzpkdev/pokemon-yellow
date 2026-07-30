@@ -2688,19 +2688,41 @@ VictreebelEvosMoves:
 	db 0
 
 SmoochumEvosMoves:
-; Evolutions are enabled in a later framework phase.
+; Evolutions
+	db EVOLVE_LEVEL, 30, JYNX
 	db 0
 ; Learnset
+	db  9, LICK
+	db 13, SING
+	db 21, CONFUSION
+	db 25, ICE_PUNCH
+	db 33, LOVELY_KISS
+	db 37, PSYCHIC_M
+	db 49, BLIZZARD
 	db 0
 
 ElekidEvosMoves:
-; Evolutions are enabled in a later framework phase.
+; Evolutions
+	db EVOLVE_LEVEL, 30, ELECTABUZZ
 	db 0
 ; Learnset
+	db  9, LEER
+	db 17, THUNDERSHOCK
+	db 25, SCREECH
+	db 33, THUNDERPUNCH
+	db 41, LIGHT_SCREEN
+	db 49, THUNDER
 	db 0
 
 MagbyEvosMoves:
-; Evolutions are enabled in a later framework phase.
+; Evolutions
+	db EVOLVE_LEVEL, 30, MAGMAR
 	db 0
 ; Learnset
+	db  7, LEER
+	db 13, SMOG
+	db 19, FIRE_PUNCH
+	db 25, SMOKESCREEN
+	db 31, CONFUSE_RAY
+	db 43, FIRE_BLAST
 	db 0

@@ -1506,3 +1506,33 @@ _MewDexEntry::
 	next "fine, delicate"
 	next "hair can be seen"
 	dex
+
+_SmoochumDexEntry::
+	text "Its lips are the"
+	next "most sensitive"
+	next "part of its body."
+
+	page "It uses them to"
+	next "examine unfamiliar"
+	next "objects"
+	dex
+
+_ElekidDexEntry::
+	text "It spins its arms"
+	next "to build up"
+	next "electricity."
+
+	page "It tires quickly,"
+	next "so it stores only"
+	next "a little power"
+	dex
+
+_MagbyDexEntry::
+	text "Its body heat can"
+	next "top 1,100 degrees."
+	next "Small flames leak"
+
+	page "from its mouth and"
+	next "nose when it is"
+	next "healthy"
+	dex

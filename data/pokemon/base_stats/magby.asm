@@ -13,7 +13,7 @@
 	db EMBER, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; Temporary family TM/HM learnset.
+	; tm/hm learnset
 	tmhm MEGA_PUNCH,   MEGA_KICK, TOXIC, BODY_SLAM, TAKE_DOWN,   PSYWAVE, \
 	     DOUBLE_EDGE,  HYPER_BEAM,   SUBMISSION,   COUNTER,      SEISMIC_TOSS, \
 	     RAGE,         PSYCHIC_M,    TELEPORT,     MIMIC,        DOUBLE_TEAM,  \

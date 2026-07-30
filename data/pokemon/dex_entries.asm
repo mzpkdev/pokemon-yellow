@@ -190,9 +190,9 @@ PokedexEntryPointers:
 	dw BellsproutDexEntry
 	dw WeepinbellDexEntry
 	dw VictreebelDexEntry
-	dw JynxDexEntry       ; temporary family entry
-	dw ElectabuzzDexEntry ; temporary family entry
-	dw MagmarDexEntry     ; temporary family entry
+	dw SmoochumDexEntry
+	dw ElekidDexEntry
+	dw MagbyDexEntry
 	assert_table_length NUM_POKEMON_INDEXES
 
 ; string: species name
@@ -1255,6 +1255,27 @@ MewDexEntry:
 	db 1,4
 	dw 90
 	text_far _MewDexEntry
+	text_end
+
+SmoochumDexEntry:
+	db "KISS@"
+	db 1,4
+	dw 132
+	text_far _SmoochumDexEntry
+	text_end
+
+ElekidDexEntry:
+	db "ELECTRIC@"
+	db 2,0
+	dw 518
+	text_far _ElekidDexEntry
+	text_end
+
+MagbyDexEntry:
+	db "LIVE COAL@"
+	db 2,4
+	dw 472
+	text_far _MagbyDexEntry
 	text_end
 
 MissingNoDexEntry:
