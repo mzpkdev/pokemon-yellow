@@ -96,3 +96,11 @@ def dismount_bicycle_with_select(emulator: Emulator) -> None:
     emulator.press("b")
     emulator.tick(180)
     assert emulator.read("wWalkBikeSurfState") == 0
+
+
+def open_viridian_pokecenter_sign(emulator: Emulator) -> None:
+    """Open the sign dialogue immediately northeast of the debug spawn."""
+    walk_to_value(emulator, "wXCoord", 24, "right", "Pokemon Center sign")
+    emulator.press("up", wait_frames=30)
+    emulator.press("a", wait_frames=180)
+    assert emulator.read("hWY") == 0

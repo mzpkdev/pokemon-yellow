@@ -8,6 +8,7 @@ from tools.rom_tests.scenarios.debug_overworld import (
     enter_viridian_pokecenter,
     exercise_viridian_scrolling,
     mount_bicycle_with_select,
+    open_viridian_pokecenter_sign,
     ride_bicycle_in_viridian,
     start_debug_game_in_viridian,
     walk_west_to_route_22,
@@ -135,4 +136,20 @@ def test_debug_full_color_pokemon_menus_use_menu_palettes(
     emulator.assert_screen_matches(
         SNAPSHOTS / "debug-full-color-after-pokemon-menus.png",
         name="debug-full-color-after-pokemon-menus",
+    )
+
+
+def test_debug_full_color_survives_dialogue_window(emulator: Emulator) -> None:
+    start_debug_game_in_viridian(emulator)
+    open_viridian_pokecenter_sign(emulator)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-full-color-dialogue-open.png",
+        name="debug-full-color-dialogue-open",
+    )
+
+    emulator.press("b")
+    emulator.tick(180)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-full-color-after-dialogue.png",
+        name="debug-full-color-after-dialogue",
     )

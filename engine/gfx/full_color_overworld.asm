@@ -65,6 +65,94 @@ CopyFullColorMapViewAttributes::
 	ldh [rVBK], a
 	ret
 
+CopyFullColorDialogueAttributes::
+	ldh a, [hGBC]
+	and a
+	ret z
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	ret nz
+	ld a, [wLastPaletteCommand]
+	cp SET_PAL_OVERWORLD
+	ret nz
+	ld a, [wIsInBattle]
+	and a
+	ret nz
+
+	ld a, 1
+	ldh [rVBK], a
+	ld a, [wMapViewVRAMPointer]
+	ld l, a
+	ld a, [wMapViewVRAMPointer + 1]
+	ld h, a
+	ld de, vBGMap1
+	ld a, SCREEN_HEIGHT - 6
+.terrainRow
+	push af
+	push hl
+	ld c, SCREEN_WIDTH
+.terrainColumn
+	ld a, [hl]
+	call WaitForFullColorVRAM
+	ld [de], a
+	inc de
+	ld a, l
+	inc a
+	and $1f
+	ld b, a
+	ld a, l
+	and $e0
+	or b
+	ld l, a
+	dec c
+	jr nz, .terrainColumn
+	pop hl
+	ld a, BG_MAP_WIDTH
+	add l
+	ld l, a
+	jr nc, .sourceRowReady
+	inc h
+.sourceRowReady
+	ld a, h
+	and $3
+	or $98
+	ld h, a
+	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+	add e
+	ld e, a
+	jr nc, .terrainRowReady
+	inc d
+.terrainRowReady
+	pop af
+	dec a
+	jr nz, .terrainRow
+
+	ld a, 6
+.textRow
+	push af
+	ld c, SCREEN_WIDTH
+.textColumn
+	ld a, 7
+	call WaitForFullColorVRAM
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .textColumn
+	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+	add e
+	ld e, a
+	jr nc, .textRowReady
+	inc d
+.textRowReady
+	pop af
+	dec a
+	jr nz, .textRow
+
+	xor a
+	ldh [rVBK], a
+	ret
+
 ApplyFullColorOverworldPalettes::
 	ldh a, [hGBC]
 	and a

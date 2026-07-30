@@ -72,6 +72,11 @@ DisplayTextIDInit::
 	jr nz, .spriteStandStillLoop
 	ld b, $9c ; window background address
 	call CopyScreenTileBufferToVRAM ; transfer background in WRAM to VRAM
+	ldh a, [hTextID]
+	and a
+	jr z, .attributesDone
+	farcall CopyFullColorDialogueAttributes
+.attributesDone
 	xor a
 	ldh [hWY], a ; put the window on the screen
 	call LoadFontTilePatterns
