@@ -60,14 +60,3 @@ def enter_viridian_pokecenter(emulator: Emulator) -> None:
     )
     emulator.tick(180)
 
-
-def leave_viridian_pokecenter(emulator: Emulator) -> None:
-    """Return to Viridian City through the center's exit."""
-    walk_to_value(
-        emulator,
-        "wCurMap",
-        VIRIDIAN_CITY,
-        "down",
-        "Viridian City return",
-    )
-    emulator.tick(180)

@@ -6,7 +6,6 @@ from tools.rom_tests.emulator import Emulator
 from tools.rom_tests.scenarios.debug_overworld import (
     enter_viridian_pokecenter,
     exercise_viridian_scrolling,
-    leave_viridian_pokecenter,
     start_debug_game_in_viridian,
 )
 
@@ -20,12 +19,17 @@ def test_debug_full_color_overworld_scrolling(emulator: Emulator) -> None:
         name="debug-viridian-spawn",
     )
 
-    enter_viridian_pokecenter(emulator)
-    emulator.save_screenshot("debug-viridian-pokecenter.png")
-    leave_viridian_pokecenter(emulator)
-
     exercise_viridian_scrolling(emulator)
     emulator.assert_screen_matches(
         SNAPSHOTS / "debug-viridian-scrolled.png",
         name="debug-viridian-scrolled",
+    )
+
+
+def test_debug_full_color_pokecenter(emulator: Emulator) -> None:
+    start_debug_game_in_viridian(emulator)
+    enter_viridian_pokecenter(emulator)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-viridian-pokecenter.png",
+        name="debug-viridian-pokecenter",
     )
