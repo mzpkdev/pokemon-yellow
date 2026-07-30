@@ -576,7 +576,7 @@ _EggHatchingText::
 
 _EggHatchedText::
 	text "Huh? "
-	text_ram wNameBuffer
+	text_ram wStringBuffer
 	text " hatched"
 	line "from the EGG!"
 	done

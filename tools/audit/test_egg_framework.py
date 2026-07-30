@@ -113,7 +113,7 @@ class EggFrameworkTests(unittest.TestCase):
             "_Colosseum3MonsText::", 1
         )[0]
         self.assertIn('text "Huh? "', hatch_text)
-        self.assertIn("text_ram wNameBuffer", hatch_text)
+        self.assertIn("text_ram wStringBuffer", hatch_text)
         self.assertIn('line "from the EGG!"', hatch_text)
         self.assertIn("done", hatch_text)
 

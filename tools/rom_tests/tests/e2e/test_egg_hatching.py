@@ -69,7 +69,12 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
     else:
         raise AssertionError("Egg hatch animation did not finish")
     assert emulator.read("wEvoCancelled") == 0
-    emulator.tick(90)
+    assert emulator.read("wEvoNewSpecies") == PICHU
+    emulator.tick(180)
+    assert bytes(
+        emulator.pyboy.memory[emulator.symbols["wStringBuffer"] + offset]
+        for offset in range(6)
+    ) == bytes((0x8F, 0x88, 0x82, 0x87, 0x94, 0x50))
     emulator.save_screenshot("hatch-result.png")
 
     # The result remains on screen until the player acknowledges it.

@@ -467,6 +467,10 @@ HandlePendingEggHatch:
 	ld a, [wEvoNewSpecies]
 	ld [wNamedObjectIndex], a
 	call GetMonName
+	ld hl, wNameBuffer
+	ld de, wStringBuffer
+	ld bc, NAME_LENGTH
+	rst _CopyData
 	ld hl, EggHatchedText
 	rst _PrintText
 	call WaitForTextScrollButtonPress
