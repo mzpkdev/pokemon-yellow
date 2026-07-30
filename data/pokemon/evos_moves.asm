@@ -2735,6 +2735,8 @@ MagbyEvosMoves:
 	db 13, SMOG
 	db 19, FIRE_PUNCH
 	db 25, SMOKESCREEN
+	db 26, MACH_PUNCH
+	db 29, FLARE_BLITZ
 	db 31, CONFUSE_RAY
 	db 43, FIRE_BLAST
 	db 0
@@ -2743,6 +2745,7 @@ PolitoedEvosMoves:
 	db 0 ; no evolutions
 	db  6, MIST
 	db 10, DOUBLESLAP
+	db 12, MUD_SHOT
 	db 13, WATER_GUN
 	db 17, HYPNOSIS
 	db 22, WATER_PULSE
@@ -2756,6 +2759,7 @@ SlowkingEvosMoves:
 	db  6, GROWL
 	db 10, WATER_GUN
 	db 15, CONFUSION
+	db 18, WATER_PULSE
 	db 20, DISABLE
 	db 25, HEADBUTT
 	db 30, PSYBEAM
@@ -2802,6 +2806,8 @@ ScizorEvosMoves:
 	db 36, SLASH
 	db 42, X_SCISSOR
 	db 48, DOUBLE_TEAM
+	db 50, ROOST
+	db 53, SUPERPOWER
 	db 54, SWORDS_DANCE
 	db 0
 
