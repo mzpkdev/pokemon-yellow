@@ -733,8 +733,16 @@ CheckMapConnections::
 ; x#SPRITESTATEDATA2_IMAGEBASEOFFSET without loading any tile patterns.
 	call InitMapSprites
 	call LoadTileBlockMap
+	ldh a, [hGBC]
+	and a
+	jr z, .attributesDone
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .attributesDone
 	ld de, vBGMap0
 	farcall CopyFullColorMapViewAttributes
+.attributesDone
 	jp OverworldLoopLessDelay
 
 .didNotEnterConnectedMap
@@ -2148,8 +2156,16 @@ LoadMapData::
 	call RunPaletteCommand
 	; RunPaletteCommand initializes the CGB attribute map, so restore the
 	; per-tile attributes after it has finished.
+	ldh a, [hGBC]
+	and a
+	jr z, .attributesDone
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .attributesDone
 	ld de, vBGMap0
 	farcall CopyFullColorMapViewAttributes
+.attributesDone
 	call LoadPlayerSpriteGraphics
 	ld a, [wStatusFlags6]
 	and 1 << BIT_DUNGEON_WARP | 1 << BIT_FLY_WARP

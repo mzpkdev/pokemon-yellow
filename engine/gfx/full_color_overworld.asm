@@ -54,6 +54,10 @@ CopyFullColorMapViewAttributes::
 	jr nc, .noCarry
 	inc d
 .noCarry
+	ld a, d
+	and $3
+	or $98
+	ld d, a
 	pop af
 	dec a
 	jr nz, .row
