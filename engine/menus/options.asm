@@ -511,11 +511,11 @@ OptionsControl:
 .pressedUp
 	ld a, [hl]
 	cp $7
-	jr nz, .doNotMoveCursorToColorOption
-	ld [hl], $5
+	jr nz, .doNotMoveCursorToOverworldColorOption
+	ld [hl], $6
 	scf
 	ret
-.doNotMoveCursorToColorOption
+.doNotMoveCursorToOverworldColorOption
 	and a
 	jr nz, .regularDecrement
 	ld [hl], $8
@@ -552,7 +552,7 @@ InitOptionsMenu:
 	call PlaceString
 	xor a
 	ld [wOptionsCursorLocation], a
-	ld c, 6
+	ld c, 7
 .loop
 	push bc
 	call GetOptionPointer
