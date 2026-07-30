@@ -725,8 +725,8 @@ CheckMapConnections::
 	ld a, $2
 	ld [wPikachuSpawnState], a
 	call LoadMapHeader
-	farcall LoadFullColorTileAttributes
 	farcall ValidateWildSightingZone
+	farcall LoadFullColorTileAttributes
 	call PlayDefaultMusicFadeOutCurrent
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand
