@@ -59,6 +59,16 @@ RedrawMapView:
 	ldh [hTileAnimations], a
 	call LoadCurrentMapView
 	call RunDefaultPaletteCommand
+	ldh a, [hGBC]
+	and a
+	jr z, .paletteReady
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .paletteReady
+	ld b, SET_PAL_OVERWORLD
+	call RunPaletteCommand
+.paletteReady
 	ld hl, wMapViewVRAMPointer
 	ld a, [hli]
 	ld h, [hl]
@@ -103,6 +113,7 @@ RedrawMapView:
 	ldh [hRedrawRowOrColumnDest], a
 	ld a, REDRAW_ROW
 	ldh [hRedrawRowOrColumnMode], a
+	farcall DrawFullColorRowOrColumn
 	rst _DelayFrame
 	ld hl, hRedrawMapViewRowOffset
 	inc [hl]
