@@ -319,4 +319,4 @@ INCBIN "gfx/icons/dragonair.2bpp"
 INCBIN "gfx/icons/dragonite.2bpp"
 INCBIN "gfx/icons/mewtwo.2bpp"
 INCBIN "gfx/icons/mew.2bpp"
-
+INCBIN "gfx/icons/egg.2bpp"

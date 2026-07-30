@@ -164,4 +164,4 @@ MonPartyData:
 	db ICON_JIGGLYPUFF    ; Igglybuff
 	db ICON_GOLBAT        ; Crobat
 	db ICON_CHANSEY       ; Blissey
-	db ICON_EXEGGCUTE     ; Egg
+	db ICON_EGG           ; Egg

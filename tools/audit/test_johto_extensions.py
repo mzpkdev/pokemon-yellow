@@ -101,6 +101,22 @@ class JohtoExtensionTests(unittest.TestCase):
                 self.assertEqual(b"\x89PNG\r\n\x1a\n", header[:8])
                 self.assertEqual((40, 40), struct.unpack(">II", header[16:24]))
 
+    def test_egg_uses_its_dedicated_party_icon(self) -> None:
+        constants = read("constants/icon_constants.asm")
+        self.assertRegex(constants, r"(?m)^\s*const ICON_EGG$")
+        self.assertRegex(
+            read("data/pokemon/menu_icons.asm"),
+            r"(?m)^\s*db ICON_EGG\s+; Egg$",
+        )
+        self.assertIn(
+            'INCBIN "gfx/icons/egg.2bpp"',
+            read("gfx/sprites.asm"),
+        )
+
+        header = (ROOT / "gfx/icons/egg.png").read_bytes()[:24]
+        self.assertEqual(b"\x89PNG\r\n\x1a\n", header[:8])
+        self.assertEqual((16, 32), struct.unpack(">II", header[16:24]))
+
     def test_babies_use_their_gen2_level_evolutions(self) -> None:
         expected = {
             "SMOOCHUM": "EVOLVE_LEVEL, 30, JYNX",
