@@ -51,8 +51,8 @@ IF DEF(_DEBUG)
 	set BIT_GOT_STARTER, [hl]
 
 	; Add a Pichu Egg with a short debug incubation.
-	ld d, PICHU
-	ld bc, 16
+	ld c, PICHU
+	ld de, 16
 	farcall CreatePartyEgg
 
 	; Pikachu gets 3 HM moves.

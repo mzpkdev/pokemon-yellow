@@ -16,9 +16,9 @@ class EggFrameworkTests(unittest.TestCase):
         constructor = eggs.split("UpdatePartyEggsOnStep::", 1)[0]
         self.assertIn("call AddPartyMon", constructor)
         self.assertNotIn("predef _AddPartyMon", constructor)
-        self.assertIn("; Input: d = species that will hatch", constructor)
+        self.assertIn("; Input: c = species that will hatch, de = incubation steps", constructor)
         self.assertIn("ld hl, wPartyMon1CatchRate", constructor)
-        self.assertIn("ld de, MON_EXP - MON_CATCH_RATE", constructor)
+        self.assertIn("ld bc, MON_EXP - MON_CATCH_RATE", constructor)
         self.assertIn("ld hl, wPartyMon1HP", constructor)
         self.assertIn("ld hl, wPartyMon1MaxHP", constructor)
         self.assertGreaterEqual(len(re.findall(r"xor a\s+ld \[hli\], a\s+ld \[hl\], a", constructor)), 2)
@@ -150,8 +150,8 @@ class EggFrameworkTests(unittest.TestCase):
         box_table = eggs.split("DebugNewGameBoxMons:", 1)[1].split("ENDC", 1)[0]
 
         self.assertIn("db STARTER_PIKACHU, 5", debug_party)
-        self.assertIn("ld d, PICHU", debug_party)
-        self.assertIn("ld bc, 16", debug_party)
+        self.assertIn("ld c, PICHU", debug_party)
+        self.assertIn("ld de, 16", debug_party)
         self.assertIn("farcall CreatePartyEgg", debug_party)
         self.assertEqual(debug_party.count("SetDebugNewGameBox"), 1)
         self.assertLess(

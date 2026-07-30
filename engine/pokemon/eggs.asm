@@ -61,12 +61,12 @@ DebugNewGameBoxMons:
 ENDC
 
 ; Create a party Egg.
-; Input: d = species that will hatch, bc = incubation steps (1-65535).
+; Input: c = species that will hatch, de = incubation steps (1-65535).
 ; Output: carry set on success, clear if the party is full.
 ; Clobbers: af, bc, de, hl.
 CreatePartyEgg::
-	push bc
 	push de
+	push bc
 	ld a, [wMonDataLocation]
 	push af
 	ld a, EGG
@@ -80,13 +80,13 @@ CreatePartyEgg::
 	jr nc, .partyFull
 	pop af
 	ld [wMonDataLocation], a
-	pop de ; d = target species
-	pop bc
+	pop bc ; c = target species
+	pop de
 
 	ld a, [wPartyCount]
 	dec a
-	push bc
 	push de
+	push bc
 	push af
 	ld hl, wPartyMon1HP
 	ld bc, wPartyMon2 - wPartyMon1
@@ -107,16 +107,16 @@ CreatePartyEgg::
 	ld hl, wPartyMon1CatchRate
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
-	pop de
-	ld [hl], d
 	pop bc
-	ld de, MON_EXP - MON_CATCH_RATE
-	add hl, de
+	ld [hl], c
+	pop de
+	ld bc, MON_EXP - MON_CATCH_RATE
+	add hl, bc
 	xor a
 	ld [hli], a
-	ld [hl], b
+	ld [hl], d
 	inc hl
-	ld [hl], c
+	ld [hl], e
 
 	; AddPartyMon already supplied the default species name, but it was written
 	; before naming was suppressed only in older call paths. Set it explicitly.
@@ -141,8 +141,8 @@ CreatePartyEgg::
 .partyFull
 	pop af
 	ld [wMonDataLocation], a
-	pop de
 	pop bc
+	pop de
 	and a
 	ret
 
