@@ -1,75 +1,26 @@
 """End-to-end coverage for the debug party Egg and automatic hatching."""
 
-from pyboy.utils import WindowEvent
-
-from tools.rom_tests.emulator import Emulator
+from tools.rom_tests.emulator import Emulator, screen_difference
+from tools.rom_tests.scenarios.egg_hatching import (
+    DEBUG_INCUBATION_STEPS,
+    EGG,
+    PICHU,
+    start_debug_game_with_egg,
+    walk_debug_egg_until_hatch,
+    walk_one_overworld_step,
+)
 from tools.rom_tests.scenarios.oaks_lab import complete_oaks_lab_intro
 
 
-PICHU = 0xC8
-EGG = 0xCD
-PEWTER_CITY = 0x02
-DEBUG_INCUBATION_STEPS = 16
 EGG_NICKNAME = bytes((0x84, 0x86, 0x86, 0x50))  # "EGG@"
 PARTY_END = 0xFF
-
-
-def _start_debug_game(emulator: Emulator) -> None:
-    """Open the hidden debug menu and choose its prepared Pewter City game."""
-    emulator.tick(600)
-    emulator.pyboy.send_input(WindowEvent.PRESS_BUTTON_SELECT)
-    for _ in range(2400):
-        emulator.tick()
-        if (
-            emulator.read("wTopMenuItemY") == 7
-            and emulator.read("wTopMenuItemX") == 6
-            and emulator.read("wMaxMenuItem") == 1
-        ):
-            break
-    else:
-        raise AssertionError("Timed out waiting for the debug menu")
-
-    emulator.pyboy.send_input(WindowEvent.RELEASE_BUTTON_SELECT)
-    emulator.tick(5)
-    emulator.press("down", wait_frames=5)
-    emulator.press("a", wait_frames=30)
-    emulator.advance_until(
-        lambda: (
-            emulator.read("wCurMap") == PEWTER_CITY
-            and emulator.read("wPartyCount") == 2
-            and emulator.read("wStatusFlags6") & 1
-        ),
-        button="a",
-        max_presses=30,
-        description="playable debug Pewter City game",
-    )
-    emulator.tick(300)
-
-
-def _walk_one_step(emulator: Emulator, preferred_button: str | None) -> str:
-    opposites = {
-        "left": "right",
-        "right": "left",
-        "up": "down",
-        "down": "up",
-    }
-    buttons = (
-        [preferred_button] * 3 + ["down", "left", "right", "up"] * 3
-        if preferred_button is not None
-        else ["down", "left", "right", "up"] * 3
-    )
-    for button in buttons:
-        coordinate = "wXCoord" if button in ("left", "right") else "wYCoord"
-        before = emulator.read(coordinate)
-        emulator.press(button, wait_frames=40)
-        if emulator.read(coordinate) != before:
-            return opposites[button]
-    raise AssertionError("Could not take a player-controlled overworld step")
 
 
 def _complete_hatch_presentation(emulator: Emulator) -> None:
     """Advance the announcement, non-cancellable animation, and result text."""
     assert emulator.read("wForceEvolution") == 0
+    map_before = emulator.pyboy.screen.image.convert("RGB")
+    map_before.save(emulator.results / "hatch-00-announcement.png")
     saved_tile_animations = emulator.read("hTileAnimations")
     transfer_destination = emulator.symbols["hAutoBGTransferDest"]
     saved_transfer_destination = bytes(
@@ -83,9 +34,11 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
         emulator.tick()
     else:
         raise AssertionError("Egg hatch animation did not begin")
+    emulator.save_screenshot("hatch-01-animation-00s.png")
 
     # Wait past sprite loading, the cry, and the animation's 80-frame lead-in.
     emulator.tick(180)
+    emulator.save_screenshot("hatch-02-animation-03s.png")
     tilemap = emulator.symbols["wTileMap"] + 2 * 20 + 7
     visible_bg = 0x9800 + 2 * 32 + 7
     assert all(
@@ -97,13 +50,19 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
 
     # Unlike ordinary evolution, hatching cannot be cancelled with B. Keep
     # pressing through the cry lead-in and the actual cancellation window.
-    for _ in range(300):
+    for press_index in range(300):
         if emulator.read("wForceEvolution") == 0:
             break
         emulator.press("b", wait_frames=5)
+        if (press_index + 1) % 15 == 0:
+            elapsed_seconds = 3 + (press_index + 1) // 15 * 2
+            emulator.save_screenshot(
+                f"hatch-animation-{elapsed_seconds:02d}s.png"
+            )
     else:
         raise AssertionError("Egg hatch animation did not finish")
     assert emulator.read("wEvoCancelled") == 0
+    emulator.save_screenshot("hatch-result.png")
 
     # The result remains on screen until the player acknowledges it.
     before = (emulator.read("wXCoord"), emulator.read("wYCoord"))
@@ -116,10 +75,23 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
     ) == saved_transfer_destination
     assert emulator.pyboy.memory[0xFF47] == saved_bgp
     assert emulator.read("wUpdateSpritesEnabled") == 1
+    map_after = emulator.pyboy.screen.image.convert("RGB")
+    map_after.save(emulator.results / "hatch-map-after.png")
+
+    # The pre-hatch image contains the dialogue box, player, and companion.
+    # Mask only those dynamic regions; all surrounding map pixels and colors
+    # must return exactly to their pre-movie appearance.
+    difference = screen_difference(
+        map_before,
+        map_after,
+        ignored_regions=((0, 96, 160, 144), (48, 32, 112, 96)),
+    )
+    difference.save(emulator.results / "hatch-map-after-diff.png")
+    assert difference.getbbox() is None
 
 
 def test_debug_party_egg_hatches_after_16_counted_steps(emulator: Emulator) -> None:
-    _start_debug_game(emulator)
+    start_debug_game_with_egg(emulator)
 
     party_species = emulator.symbols["wPartySpecies"]
     assert emulator.pyboy.memory[party_species + 1] == EGG
@@ -134,32 +106,7 @@ def test_debug_party_egg_hatches_after_16_counted_steps(emulator: Emulator) -> N
     assert bytes(emulator.pyboy.memory[nickname + i] for i in range(4)) == EGG_NICKNAME
 
     emulator.press("b", wait_frames=20)
-    next_button = "up"
-    counted_steps = 0
-    for attempt in range(DEBUG_INCUBATION_STEPS + 8):
-        before = int.from_bytes(
-            bytes(emulator.pyboy.memory[countdown + i] for i in range(3)),
-            "big",
-        )
-        try:
-            next_button = _walk_one_step(emulator, next_button)
-        except AssertionError as error:
-            raise AssertionError(f"Failed on debug Egg movement {attempt + 1}") from error
-
-        if emulator.read("wPartyMon2") == PICHU:
-            assert before == 1
-            counted_steps += 1
-            break
-
-        after = int.from_bytes(
-            bytes(emulator.pyboy.memory[countdown + i] for i in range(3)),
-            "big",
-        )
-        assert after in (before, before - 1)
-        if after == before - 1:
-            counted_steps += 1
-    else:
-        raise AssertionError("The real debug Egg did not hatch")
+    next_button, counted_steps = walk_debug_egg_until_hatch(emulator)
 
     for _ in range(600):
         if emulator.read("wEggHatchPending") == 0:
@@ -171,7 +118,7 @@ def test_debug_party_egg_hatches_after_16_counted_steps(emulator: Emulator) -> N
     assert emulator.read("wEggHatchPending") == 0
 
     _complete_hatch_presentation(emulator)
-    _walk_one_step(emulator, next_button)
+    walk_one_overworld_step(emulator, next_button)
 
 
 def _add_pichu_egg_beside_pikachu(emulator: Emulator) -> None:
@@ -196,7 +143,7 @@ def test_party_egg_hatches_and_returns_control_to_the_overworld(
 
     next_button = "left"
     for step in range(DEBUG_INCUBATION_STEPS):
-        next_button = _walk_one_step(emulator, next_button)
+        next_button = walk_one_overworld_step(emulator, next_button)
         if step < DEBUG_INCUBATION_STEPS - 1:
             assert emulator.read("wPartyMon2") == EGG
 
@@ -209,4 +156,4 @@ def test_party_egg_hatches_and_returns_control_to_the_overworld(
     assert emulator.read("wEggHatchPending") == 0
 
     _complete_hatch_presentation(emulator)
-    _walk_one_step(emulator, next_button)
+    walk_one_overworld_step(emulator, next_button)
