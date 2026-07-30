@@ -51,7 +51,7 @@ IF DEF(_DEBUG)
 	set BIT_GOT_STARTER, [hl]
 
 	; Add a Pichu Egg with a short debug incubation.
-	ld a, PICHU
+	ld d, PICHU
 	ld bc, 16
 	farcall CreatePartyEgg
 

@@ -61,12 +61,12 @@ DebugNewGameBoxMons:
 ENDC
 
 ; Create a party Egg.
-; Input: a = species that will hatch, bc = incubation steps (1-65535).
+; Input: d = species that will hatch, bc = incubation steps (1-65535).
 ; Output: carry set on success, clear if the party is full.
 ; Clobbers: af, bc, de, hl.
 CreatePartyEgg::
 	push bc
-	push af
+	push de
 	ld a, [wMonDataLocation]
 	push af
 	ld a, EGG
