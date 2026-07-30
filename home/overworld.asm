@@ -372,6 +372,7 @@ StepCountCheck::
 	jr nz, .doneStepCounting ; if button presses are being simulated, don't count steps
 	farcall UpdateWildSightingOnStep
 	farcall UpdatePikachuCompanionOnStep
+	farcall UpdatePartyEggsOnStep
 ; step counting
 	ld hl, wStepCounter
 	dec [hl]
