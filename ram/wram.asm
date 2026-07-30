@@ -2141,6 +2141,7 @@ wd475:: db
 wPikachuNextGift:: db
 wPikachuGiftCooldown:: db
 wPikachuGiftAlerted:: db
+wd479::
 wPikachuAmbientItem:: db
 wd47a:: db
 wPikachuAmbientAlerted:: db
@@ -2159,6 +2160,7 @@ wPrinterSettings:: db
 wUnknownSerialFlag_d499:: db
 wPrinterConnectionOpen:: db
 wPrinterOpcode:: db
+wd49c::
 wd49b:: db
 
 	ds 19
