@@ -100,3 +100,28 @@ def test_debug_full_color_bicycle_survives_start_menu(emulator: Emulator) -> Non
         SNAPSHOTS / "debug-viridian-bicycle-after-start-menu.png",
         name="debug-viridian-bicycle-after-start-menu",
     )
+
+
+def test_debug_full_color_pokemon_menus_use_menu_palettes(
+    emulator: Emulator,
+) -> None:
+    start_debug_game_in_viridian(emulator)
+    emulator.press("start")
+    emulator.press("down")
+    emulator.press("a")
+    emulator.tick(180)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-full-color-party-menu.png",
+        name="debug-full-color-party-menu",
+    )
+
+    emulator.press("a")
+    stats_item = emulator.read("wMaxMenuItem") - 2
+    for _ in range(stats_item):
+        emulator.press("down")
+    emulator.press("a")
+    emulator.tick(240)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-full-color-status-screen.png",
+        name="debug-full-color-status-screen",
+    )
