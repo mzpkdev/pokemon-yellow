@@ -18,6 +18,7 @@ CopyFullColorMapViewAttributes::
 	ld a, SCREEN_HEIGHT
 .row
 	push af
+	push de
 	ld c, SCREEN_WIDTH
 .column
 	ld a, [hli]
@@ -34,10 +35,20 @@ CopyFullColorMapViewAttributes::
 .write
 	call WaitForFullColorVRAM
 	ld [de], a
-	inc e
+	push bc
+	ld a, e
+	inc a
+	and $1f
+	ld c, a
+	ld a, e
+	and $e0
+	or c
+	ld e, a
+	pop bc
 	dec c
 	jr nz, .column
-	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+	pop de
+	ld a, BG_MAP_WIDTH
 	add e
 	ld e, a
 	jr nc, .noCarry
