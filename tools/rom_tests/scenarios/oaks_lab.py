@@ -36,7 +36,7 @@ def walk_from_bedroom_to_oak(emulator: Emulator) -> None:
     _advance_to_value(emulator, "wYCoord", 1, "up", "bedroom stairs")
     # Current StaticYellow displays a one-time movement/options tutorial here.
     # Clear every page before trying to step onto the stairs.
-    for _ in range(8):
+    for _ in range(9):
         emulator.press("a")
     _advance_to_value(emulator, "wCurMap", REDS_HOUSE_1F, "right", "first floor")
 
