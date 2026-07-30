@@ -125,3 +125,14 @@ def test_debug_full_color_pokemon_menus_use_menu_palettes(
         SNAPSHOTS / "debug-full-color-status-screen.png",
         name="debug-full-color-status-screen",
     )
+
+    emulator.press("b")
+    emulator.tick(180)
+    emulator.press("b")
+    emulator.tick(180)
+    emulator.press("start")
+    emulator.tick(180)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-full-color-after-pokemon-menus.png",
+        name="debug-full-color-after-pokemon-menus",
+    )
