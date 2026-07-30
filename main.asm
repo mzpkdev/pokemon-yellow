@@ -53,7 +53,6 @@ INCLUDE "engine/overworld/cut.asm"
 INCLUDE "engine/overworld/missable_objects.asm"
 INCLUDE "engine/overworld/push_boulder.asm"
 INCLUDE "engine/pokemon/add_mon.asm"
-INCLUDE "engine/pokemon/eggs.asm"
 INCLUDE "engine/flag_action.asm"
 INCLUDE "engine/events/heal_party.asm"
 INCLUDE "engine/math/bcd.asm"
@@ -67,6 +66,7 @@ INCLUDE "engine/events/hidden_objects/book_or_sculpture.asm"
 INCLUDE "engine/events/hidden_objects/elevator.asm"
 INCLUDE "engine/events/hidden_objects/town_map.asm"
 INCLUDE "engine/events/hidden_objects/pokemon_stuff.asm"
+INCLUDE "engine/pokemon/eggs.asm"
 
 
 SECTION "bank4", ROMX

@@ -1,3 +1,5 @@
+SECTION "Egg Framework", ROMX
+
 ; Create a party Egg.
 ; Input: a = species that will hatch, bc = incubation steps (1-65535).
 ; Output: carry set on success, clear if the party is full.
@@ -14,7 +16,7 @@ CreatePartyEgg::
 	; A nonzero high nybble suppresses naming while still selecting player data.
 	ld a, $10
 	ld [wMonDataLocation], a
-	call _AddPartyMon
+	predef AddPartyMon
 	jr nc, .partyFull
 	pop af
 	ld [wMonDataLocation], a
@@ -260,7 +262,7 @@ HatchPartyEgg::
 	ld d, h
 	ld e, l
 	pop hl
-	call AddPartyMon_WriteMovePP
+	farcall AddPartyMon_WriteMovePP
 	pop hl
 
 	push hl
@@ -284,7 +286,7 @@ HatchPartyEgg::
 	ld e, l
 	pop hl
 	ld b, 1
-	call CalcStats
+	farcall CalcStats
 	pop hl
 	push hl
 	ld de, MON_MAXHP
@@ -322,10 +324,10 @@ HatchPartyEgg::
 	ld b, FLAG_SET
 	push bc
 	ld hl, wPokedexOwned
-	call FlagAction
+	farcall FlagAction
 	pop bc
 	ld hl, wPokedexSeen
-	call FlagAction
+	farcall FlagAction
 
 	xor a
 	ld [wEggHatchPending], a
