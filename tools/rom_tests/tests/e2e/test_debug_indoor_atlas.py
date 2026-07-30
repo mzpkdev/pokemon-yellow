@@ -29,13 +29,20 @@ TOWN_SPAWNS = (
 )
 
 
-def indoor_maps() -> list[tuple[str, int, str, int]]:
-    """Return every non-outdoor map and its expected tileset ID."""
-    map_ids: dict[str, int] = {}
+def indoor_maps() -> list[tuple[str, int, str, int, int, int]]:
+    """Return every non-outdoor map, its tileset, and a central capture point."""
+    map_data: dict[str, tuple[int, int, int]] = {}
     for line in (ROOT / "constants/map_constants.asm").read_text().splitlines():
-        match = re.search(r"map_const\s+(\w+).+;\s+\$([0-9A-Fa-f]{2})", line)
+        match = re.search(
+            r"map_const\s+(\w+),\s*(\d+),\s*(\d+)\s*;\s+\$([0-9A-Fa-f]{2})",
+            line,
+        )
         if match:
-            map_ids[match.group(1)] = int(match.group(2), 16)
+            map_data[match.group(1)] = (
+                int(match.group(4), 16),
+                int(match.group(2)),
+                int(match.group(3)),
+            )
 
     tileset_ids: dict[str, int] = {}
     next_tileset = 0
@@ -45,7 +52,7 @@ def indoor_maps() -> list[tuple[str, int, str, int]]:
             tileset_ids[match.group(1)] = next_tileset
             next_tileset += 1
 
-    cases: dict[str, tuple[str, int, str, int]] = {}
+    cases: dict[str, tuple[str, int, str, int, int, int]] = {}
     for header in sorted((ROOT / "data/maps/headers").glob("*.asm")):
         match = re.search(
             r"map_header\s+\w+,\s*(\w+),\s*(\w+)",
@@ -56,11 +63,14 @@ def indoor_maps() -> list[tuple[str, int, str, int]]:
         map_name, tileset = match.groups()
         if tileset in OUTDOOR_TILESETS:
             continue
+        map_id, width, height = map_data[map_name]
         cases[map_name] = (
             map_name,
-            map_ids[map_name],
+            map_id,
             tileset,
             tileset_ids[tileset],
+            width,
+            height,
         )
     return sorted(cases.values(), key=lambda case: case[1])
 
@@ -79,11 +89,11 @@ def test_debug_full_color_indoor_map_atlas(emulator: Emulator) -> None:
     """Load and capture every building/cave floor through the normal map path."""
     cases = indoor_maps()
     assert len(cases) == 184
-    assert len({tileset for _, _, tileset, _ in cases}) == 22
+    assert len({tileset for _, _, tileset, _, _, _ in cases}) == 22
 
     start_debug_game_in_viridian(emulator)
-    for map_name, map_id, tileset, tileset_id in cases:
-        debug_atlas_enter_map(emulator, map_id)
+    for map_name, map_id, tileset, tileset_id, x, y in cases:
+        debug_atlas_enter_map(emulator, map_id, x=x, y=y)
         assert emulator.read("wCurMapTileset") == tileset_id, (
             f"{map_name} loaded tileset {emulator.read('wCurMapTileset')}, "
             f"expected {tileset} ({tileset_id})"

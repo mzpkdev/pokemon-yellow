@@ -1,6 +1,6 @@
 IF DEF(_DEBUG)
 DebugAtlasEnterMap:
-	xor a
+	ld a, $5a
 	ld [wDebugAtlasRequest], a
 	ld a, [wCurMap]
 	ld [wLastMap], a
@@ -65,6 +65,12 @@ IF DEF(_DEBUG)
 	ld a, [wDebugAtlasRequest]
 	cp $a5
 	jp z, DebugAtlasEnterMap
+	cp $5a
+	jr nz, .debugAtlasDone
+	xor a
+	ld [wDebugAtlasRequest], a
+	jp OverworldLoop
+.debugAtlasDone
 ENDC
 	call IsSurfingPikachuInParty
 	call LoadGBPal

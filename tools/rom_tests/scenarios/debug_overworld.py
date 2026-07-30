@@ -52,14 +52,15 @@ def debug_atlas_enter_map(
     emulator.write("wDebugAtlasX", x)
     emulator.write("wDebugAtlasY", y)
     emulator.write("wDebugAtlasRequest", 0xA5)
-    emulator.advance_until(
-        lambda: emulator.read("wDebugAtlasRequest") == 0
-        and emulator.read("wCurMap") == map_id,
-        button="b",
-        max_presses=20,
-        description=f"debug atlas map {map_id:#x}",
-    )
-    emulator.tick(120)
+    for _ in range(600):
+        emulator.tick(1)
+        if (
+            emulator.read("wDebugAtlasRequest") == 0
+            and emulator.read("wCurMap") == map_id
+        ):
+            return
+    emulator.save_screenshot(f"timeout-debug atlas map {map_id:#x}.png")
+    raise AssertionError(f"Timed out waiting for debug atlas map {map_id:#x}")
 
 
 def exercise_viridian_scrolling(emulator: Emulator) -> None:
