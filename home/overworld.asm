@@ -410,7 +410,9 @@ HandlePendingEggHatch:
 	ldh a, [hWY]
 	push af
 	call SaveScreenTilesToBuffer2
-	call EnableAutoTextBoxDrawing
+	hlcoord 0, 12
+	lb bc, 4, 18
+	call TextBoxBorder
 	ld hl, EggHatchingText
 	rst _PrintText
 	ld c, 50

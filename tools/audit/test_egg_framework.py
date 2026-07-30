@@ -88,7 +88,7 @@ class EggFrameworkTests(unittest.TestCase):
         self.assertIn("ld [wEvoNewSpecies], a", handler)
         self.assertIn("ld [wForceEvolution], a", handler)
         self.assertIn("call SaveScreenTilesToBuffer2", handler)
-        self.assertIn("call EnableAutoTextBoxDrawing", handler)
+        self.assertIn("call TextBoxBorder", handler)
         self.assertIn("call ReloadTilesetTilePatterns", handler)
         self.assertIn("call LoadScreenTilesFromBuffer2DisableBGTransfer", handler)
         self.assertIn("call RunDefaultPaletteCommand", handler)
