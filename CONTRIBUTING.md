@@ -10,9 +10,17 @@ Thank you for contributing to Pokémon Yellow.
 
 ## Pull requests
 
-Complete every applicable section of the pull request template. Explain the
-premise of the change, how it works, and include screenshots for visual
-changes. Write `Not applicable` in the screenshots section when appropriate.
+Start every description from the
+[pull request template](.github/pull_request_template.md). Use it to pitch the
+change in natural, human-sounding language: lead with the player or contributor
+experience, explain the behavior concretely, show affected game content when
+useful, and record meaningful design decisions and verification.
+
+Adapt the template in proportion to the change. Tables are encouraged when they
+make locations, odds, or other content easier to review. Remove sections that
+do not apply instead of filling them with boilerplate such as `Not applicable`.
+Keep the pitch accurate and specific; do not hide limitations, oversell the
+feature, or claim checks that have not run.
 
 If you cannot run the build or tests locally, feel free to open the pull
 request as a draft and use the CI results for feedback. Address any failures
