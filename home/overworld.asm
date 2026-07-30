@@ -2220,6 +2220,13 @@ CopyMapViewToVRAM2:
 	dec b
 	jr nz, .vramCopyLoop
 	pop de
+	ldh a, [hGBC]
+	and a
+	ret z
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	ret nz
 	farcall CopyFullColorMapViewAttributes
 	ret
 

@@ -11,6 +11,8 @@ PrepareForSpecialWarp::
 	bit BIT_DEBUG_MODE, [hl]
 	jr z, .setNewGameMatWarp ; apply to StartNewGameDebug only
 	call PrepareNewGameDebug
+	ld a, VIRIDIAN_CITY
+	jr .next
 .setNewGameMatWarp
 	; This is called by OakSpeech during StartNewGame and
 	; loads the first warp event for the specified map index.
@@ -110,6 +112,12 @@ LoadSpecialWarpData:
 	add hl, de
 	jr .copyWarpData2
 .otherDestination
+	ld hl, wStatusFlags6
+	bit BIT_DEBUG_MODE, [hl]
+	jr z, .regularDestination
+	ld a, [wLastMap]
+	jr .usedFlyWarp
+.regularDestination
 	ld a, [wDestinationMap]
 .usedFlyWarp
 	ld b, a

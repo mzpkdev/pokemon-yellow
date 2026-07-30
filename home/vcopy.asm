@@ -44,7 +44,15 @@ RedrawRowOrColumn::
 	and a
 	ret z
 	push af
+	ldh a, [hGBC]
+	and a
+	jr z, .skipFullColor
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .skipFullColor
 	farcall DrawFullColorRowOrColumn
+.skipFullColor
 	pop af
 	ld b, a
 	xor a
