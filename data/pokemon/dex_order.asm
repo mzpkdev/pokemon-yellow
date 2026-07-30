@@ -204,4 +204,5 @@ PokedexOrder:
 	db DEX_IGGLYBUFF
 	db DEX_CROBAT
 	db DEX_BLISSEY
+	db DEX_EGG
 	assert_table_length NUM_POKEMON_INDEXES

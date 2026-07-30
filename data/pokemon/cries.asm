@@ -210,4 +210,5 @@ CryData::
 	mon_cry SFX_CRY_0E, $FF, $35 ; Igglybuff (Jigglypuff family)
 	mon_cry SFX_CRY_1D, $FA, $80 ; Crobat (Golbat family)
 	mon_cry SFX_CRY_14, $0A, $C0 ; Blissey (Chansey family)
+	mon_cry SFX_CRY_0B, $00, $80 ; Egg
 	assert_table_length NUM_POKEMON_INDEXES

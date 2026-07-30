@@ -204,4 +204,5 @@ MonsterNames::
 	db "IGGLYBUFF@"
 	db "CROBAT@@@@"
 	db "BLISSEY@@@"
+	db "EGG@@@@@@@"
 	assert_table_length NUM_POKEMON_INDEXES

@@ -1646,3 +1646,13 @@ _BlisseyDexEntry::
 	next "everyone around"
 	next "them"
 	dex
+
+_EggDexEntry::
+	text "A POKéMON may be"
+	next "growing inside."
+	next "It needs plenty"
+
+	page "of time and steps"
+	next "before it is ready"
+	next "to hatch"
+	dex

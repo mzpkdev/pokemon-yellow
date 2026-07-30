@@ -557,6 +557,8 @@ CrobatPicFront::      INCBIN "gfx/pokemon/front/crobat.pic"
 CrobatPicBack::       INCBIN "gfx/pokemon/back/crobatb.pic"
 BlisseyPicFront::     INCBIN "gfx/pokemon/front/blissey.pic"
 BlisseyPicBack::      INCBIN "gfx/pokemon/back/blisseyb.pic"
+EggPicFront::         INCBIN "gfx/pokemon/front/egg.pic"
+EggPicBack::          INCBIN "gfx/pokemon/back/eggb.pic"
 
 
 SECTION "bank42", ROMX, BANK[$42]

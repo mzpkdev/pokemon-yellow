@@ -166,6 +166,7 @@ MonsterPalettes:
 	db PAL_JIGGLYPUFF ; Igglybuff
 	db PAL_GOLBAT     ; Crobat
 	db PAL_CHANSEY    ; Blissey
+	db PAL_EXEGGCUTE  ; Egg
 	assert_table_length NUM_POKEMON + 1
 
 TrainerPalettes:

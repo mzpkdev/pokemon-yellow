@@ -169,6 +169,7 @@
 	const DEX_IGGLYBUFF  ; 163
 	const DEX_CROBAT     ; 164
 	const DEX_BLISSEY    ; 165
+	const DEX_EGG        ; 166
 
 DEF NUM_POKEMON EQU const_value - 1
 
