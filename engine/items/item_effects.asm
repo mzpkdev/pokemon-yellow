@@ -3242,11 +3242,39 @@ ReadSuperRodData:
 	ret z ; no bite if both bits 6 and 7 are 0
 
 .gotBite
+	ld c, a ; preserve this roll for uniformly weighted groups
+	ld a, b
+	cp 4
+	jr nz, .uniformGroup
+
+	; Preserve the fork's four-slot Super Rod weights: 40%, 30%, 20%, 10%.
+	; These thresholds match its original selector exactly.
+	call Random
+	ld c, 0
+	cp $66
+	jr c, .gotMonIndex
+	inc c
+	cp $b2
+	jr c, .gotMonIndex
+	inc c
+	cp $e5
+	jr c, .gotMonIndex
+	inc c
+	ld a, c
+	jr .getMon
+
+.gotMonIndex
+	ld a, c
+	jr .getMon
+
+.uniformGroup
+	ld a, c
 	and %111 ; changed from 2-bit to 3-bit to have up to 8 different encounters
 	cp b
 	jr nc, .RandomLoop ; if a is greater than the number of mons, regenerate
 
 	; get the mon
+.getMon
 	add a
 	ld c, a
 	ld b, $0

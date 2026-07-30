@@ -42,5 +42,5 @@ GoodRodData:
 
 .Group1:
 	db 2 ; How Many Pokemon
-	db 10, GOLDEEN
-	db 10, HORSEA
+	db 20, HORSEA
+	db 20, KRABBY
