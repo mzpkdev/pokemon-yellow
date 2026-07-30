@@ -832,6 +832,7 @@ SendSGBPackets:
 	call InitGBCPalettes
 	pop hl
 	call InitGBCPalettes
+	farcall ApplyFullColorOverworldPalettes
 	ldh a, [rLCDC]
 	and 1 << rLCDC_ENABLE
 	ret z
