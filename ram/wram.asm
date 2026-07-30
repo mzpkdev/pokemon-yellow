@@ -393,7 +393,7 @@ wMenuCursorLocation:: dw
 
 wMaxLevel:: db	
 
-	ds 1
+wLastPaletteCommand:: db
 
 ; how many times should HandleMenuInput poll the joypad state before it returns?
 wMenuJoypadPollCount:: db

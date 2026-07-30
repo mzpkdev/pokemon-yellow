@@ -69,7 +69,7 @@ ApplyFullColorOverworldPalettes::
 	ldh a, [hGBC]
 	and a
 	ret z
-	ld a, [wDefaultPaletteCommand]
+	ld a, [wLastPaletteCommand]
 	cp SET_PAL_OVERWORLD
 	ret nz
 	ld a, [wIsInBattle]
@@ -113,7 +113,7 @@ DrawFullColorRowOrColumn::
 	and %1100
 	cp 1 << BIT_FULL_COLOR_OVERWORLD
 	jp nz, .done
-	ld a, [wDefaultPaletteCommand]
+	ld a, [wLastPaletteCommand]
 	cp SET_PAL_OVERWORLD
 	jp nz, .done
 	ld a, [wIsInBattle]

@@ -7,7 +7,7 @@ UpdateGBCPal_BGP::
 	and %1100
 	cp 1 << BIT_FULL_COLOR_OVERWORLD
 	jr nz, .useLegacyBGP
-	ld a, [wDefaultPaletteCommand]
+	ld a, [wLastPaletteCommand]
 	cp SET_PAL_OVERWORLD
 	jr nz, .useLegacyBGP
 	ld a, [wIsInBattle]

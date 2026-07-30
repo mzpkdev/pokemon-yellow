@@ -5,6 +5,7 @@ _RunPaletteCommand:
 	jr nz, .not_default
 	ld a, [wDefaultPaletteCommand]
 .not_default
+	ld [wLastPaletteCommand], a
 	cp SET_PAL_PARTY_MENU_HP_BARS
 	jp z, UpdatePartyMenuBlkPacket
 	push af
