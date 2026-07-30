@@ -58,6 +58,7 @@ def debug_atlas_enter_map(
             emulator.read("wDebugAtlasRequest") == 0
             and emulator.read("wCurMap") == map_id
         ):
+            emulator.tick(1)
             return
     emulator.save_screenshot(f"timeout-debug atlas map {map_id:#x}.png")
     raise AssertionError(f"Timed out waiting for debug atlas map {map_id:#x}")
