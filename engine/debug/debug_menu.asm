@@ -71,8 +71,6 @@ IF DEF(_DEBUG)
 	set BIT_DEBUG_MODE, [hl]
 	ld hl, wOptions2
 	set BIT_FULL_COLOR_OVERWORLD, [hl]
-	ld a, VIRIDIAN_CITY
-	ld [wDestinationMap], a
 	ld hl, StartNewGameDebug
 	ret
 
