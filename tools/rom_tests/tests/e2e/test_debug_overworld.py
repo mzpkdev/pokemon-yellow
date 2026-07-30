@@ -33,3 +33,14 @@ def test_debug_full_color_pokecenter(emulator: Emulator) -> None:
         SNAPSHOTS / "debug-viridian-pokecenter.png",
         name="debug-viridian-pokecenter",
     )
+
+
+def test_debug_full_color_survives_start_menu(emulator: Emulator) -> None:
+    start_debug_game_in_viridian(emulator)
+    emulator.press("start")
+    emulator.press("b")
+    emulator.tick(180)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-viridian-spawn.png",
+        name="debug-viridian-after-menu",
+    )

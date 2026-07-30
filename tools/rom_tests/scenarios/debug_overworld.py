@@ -59,4 +59,3 @@ def enter_viridian_pokecenter(emulator: Emulator) -> None:
         "Viridian Pokemon Center",
     )
     emulator.tick(180)
-
