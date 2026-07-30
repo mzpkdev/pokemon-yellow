@@ -165,4 +165,5 @@ INCLUDE "data/pokemon/base_stats/cleffa.asm"
 INCLUDE "data/pokemon/base_stats/igglybuff.asm"
 INCLUDE "data/pokemon/base_stats/crobat.asm"
 INCLUDE "data/pokemon/base_stats/blissey.asm"
+INCLUDE "data/pokemon/base_stats/egg.asm"
 	assert_table_length NUM_POKEMON

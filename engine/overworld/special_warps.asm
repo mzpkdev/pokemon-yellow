@@ -11,6 +11,8 @@ PrepareForSpecialWarp::
 	bit BIT_DEBUG_MODE, [hl]
 	jr z, .setNewGameMatWarp ; apply to StartNewGameDebug only
 	call PrepareNewGameDebug
+	ld a, PEWTER_CITY
+	jr .next
 .setNewGameMatWarp
 	; This is called by OakSpeech during StartNewGame and
 	; loads the first warp event for the specified map index.
@@ -50,7 +52,7 @@ LoadSpecialWarpData:
 .notColosseum
 	ld a, [wStatusFlags6]
 	bit BIT_DEBUG_MODE, a
-	; warp to wLastMap (PALLET_TOWN) for StartNewGameDebug
+	; warp to wDestinationMap for StartNewGameDebug
 	jr nz, .notNewGameWarp
 	bit BIT_FLY_OR_DUNGEON_WARP, a
 	jr nz, .notNewGameWarp

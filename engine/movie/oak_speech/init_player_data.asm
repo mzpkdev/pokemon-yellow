@@ -29,6 +29,7 @@ InitPlayerData2:
 	ld [wSightingFlags], a
 	ld [wSightingStepCounter], a
 	ld [wSightingCooldown], a
+	ld [wEggHatchPending], a
 	ld [wPikachuCompanionQueuedReaction], a
 	ld [wPikachuCompanionIdleCounter], a
 

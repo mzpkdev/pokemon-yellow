@@ -57,6 +57,8 @@ _GivePokemon::
 SetPokedexOwnedFlag:
 	ld a, [wCurPartySpecies]
 	push af
+	cp EGG
+	jr z, .skipPokedex
 	ld [wPokedexNum], a
 	predef IndexToPokedex
 	ld a, [wPokedexNum]
@@ -65,6 +67,7 @@ SetPokedexOwnedFlag:
 	ld hl, wPokedexOwned
 	ld b, FLAG_SET
 	predef FlagActionPredef
+.skipPokedex
 	pop af
 	ld [wNamedObjectIndex], a
 	call GetMonName

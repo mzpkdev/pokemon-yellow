@@ -211,6 +211,7 @@
 	const IGGLYBUFF          ; $CA
 	const CROBAT             ; $CB
 	const BLISSEY            ; $CC
+	const EGG                ; $CD
 
 DEF NUM_POKEMON_INDEXES EQU const_value - 1
 

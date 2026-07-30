@@ -66,6 +66,7 @@ INCLUDE "engine/events/hidden_objects/book_or_sculpture.asm"
 INCLUDE "engine/events/hidden_objects/elevator.asm"
 INCLUDE "engine/events/hidden_objects/town_map.asm"
 INCLUDE "engine/events/hidden_objects/pokemon_stuff.asm"
+INCLUDE "engine/pokemon/eggs.asm"
 
 
 SECTION "bank4", ROMX
@@ -557,6 +558,8 @@ CrobatPicFront::      INCBIN "gfx/pokemon/front/crobat.pic"
 CrobatPicBack::       INCBIN "gfx/pokemon/back/crobatb.pic"
 BlisseyPicFront::     INCBIN "gfx/pokemon/front/blissey.pic"
 BlisseyPicBack::      INCBIN "gfx/pokemon/back/blisseyb.pic"
+EggPicFront::         INCBIN "gfx/pokemon/front/egg.pic"
+EggPicBack::          INCBIN "gfx/pokemon/back/eggb.pic"
 
 
 SECTION "bank42", ROMX, BANK[$42]

@@ -524,6 +524,14 @@ TradeCenter_SelectMon:
 	call PlaceUnfilledArrowMenuCursor
 	pop af
 	ld [wCurrentMenuItem], a
+	ld hl, wPartySpecies
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	cp EGG
+	jr z, .eggCannotBeTraded
+	ld a, [wCurrentMenuItem]
 	ld [wTradingWhichPlayerMon], a
 	ld [wSerialExchangeNybbleSendData], a
 	call Serial_PrintWaitingTextAndSyncAndExchangeNybble
@@ -535,6 +543,10 @@ TradeCenter_SelectMon:
 	ld a, $1 ; TradeCenter_Trade
 	ld [wTradeCenterPointerTableIndex], a
 	jp CallCurrentTradeCenterFunction
+.eggCannotBeTraded
+	farcall HandleCableEggTradeRejection
+	call LoadScreenTilesFromBuffer1
+	jp .playerMonMenu
 .statsTrade
 	db "STATS     TRADE@"
 .selectedCancelMenuItem

@@ -313,6 +313,7 @@ OverworldLoopLessDelay::
 	jp nz, CheckMapConnections ; it seems like this check will never succeed (the other place where CheckMapConnections is run works)
 ; walking animation finished
 	call StepCountCheck
+	call HandlePendingEggHatch
 	CheckEvent EVENT_IN_SAFARI_ZONE
 	jr z, .notSafariZone
 	farcall SafariZoneCheckSteps
@@ -355,10 +356,10 @@ OverworldLoopLessDelay::
 	callfar AnyPartyAlive
 	ld a, d
 	and a
-	jr z, AllPokemonFainted
+	jp z, AllPokemonFainted
 	ld a, [wSurrenderedFromTrainerBattle]
 	and a
-	jr nz, AllPokemonFainted
+	jp nz, AllPokemonFainted
 .noFaintCheck
 	ld c, 10
 	rst _DelayFrames
@@ -372,6 +373,7 @@ StepCountCheck::
 	jr nz, .doneStepCounting ; if button presses are being simulated, don't count steps
 	farcall UpdateWildSightingOnStep
 	farcall UpdatePikachuCompanionOnStep
+	farcall UpdatePartyEggsOnStep
 ; step counting
 	ld hl, wStepCounter
 	dec [hl]
@@ -385,6 +387,118 @@ StepCountCheck::
 	res BIT_WILD_ENCOUNTER_COOLDOWN, [hl] ; indicate that the player has stepped thrice since the last battle
 .doneStepCounting
 	ret
+
+HandlePendingEggHatch:
+	ld a, [wEggHatchPending]
+	and a
+	ret z
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_MOVEMENT_STATE, a
+	ret nz
+	ld a, [wIsInBattle]
+	and a
+	ret nz
+	ld a, [wLinkState]
+	and a
+	ret nz
+	farcall HatchPartyEgg
+	ret nc
+	ldh a, [hTileAnimations]
+	push af
+	ldh a, [hAutoBGTransferDest + 1]
+	push af
+	ldh a, [hWY]
+	push af
+	call SaveScreenTilesToBuffer2
+	hlcoord 0, 12
+	lb bc, 4, 18
+	call TextBoxBorder
+	ld b, $9c
+	call CopyScreenTileBufferToVRAM
+	xor a
+	ldh [hWY], a
+	call LoadFontTilePatterns
+	ld a, 1
+	ldh [hAutoBGTransferEnabled], a
+	ld hl, EggHatchingText
+	rst _PrintText
+	call WaitForTextScrollButtonPress
+	ld c, 50
+	rst _DelayFrames
+	xor a
+	ldh [hAutoBGTransferEnabled], a
+	ld a, $ff
+	ld [wUpdateSpritesEnabled], a
+	call ClearSprites
+	; Evolution normally runs on a full-screen menu. Show Yellow's window
+	; tilemap across the screen so the movie never overwrites the map beneath.
+	xor a
+	ldh [hWY], a
+	call ClearScreen
+	ld a, 1
+	ldh [hAutoBGTransferEnabled], a
+	call Delay3
+	ld a, EGG
+	ld [wEvoOldSpecies], a
+	ld a, [wCurSpecies]
+	ld [wEvoNewSpecies], a
+	ld a, 1
+	ld [wForceEvolution], a
+	callfar EvolveMon
+	xor a
+	ld [wForceEvolution], a
+	hlcoord 0, 12
+	lb bc, 4, 18
+	call TextBoxBorder
+	ld b, $9c
+	call CopyScreenTileBufferToVRAM
+	call LoadFontTilePatterns
+	xor a
+	ldh [hAutoBGTransferDest], a
+	ld a, $9c
+	ldh [hAutoBGTransferDest + 1], a
+	ld a, 1
+	ldh [hAutoBGTransferEnabled], a
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ldh [hJoyHeld], a
+	ldh [hJoyPressed], a
+	ldh [hJoyLast], a
+	ld a, [wEvoNewSpecies]
+	ld [wNamedObjectIndex], a
+	call GetMonName
+	ld hl, wNameBuffer
+	ld de, wStringBuffer
+	ld bc, NAME_LENGTH
+	rst _CopyData
+	ld hl, EggHatchedText
+	rst _PrintText
+	call WaitForTextScrollButtonPress
+	call GBPalWhiteOutWithDelay3
+	call ReloadTilesetTilePatterns
+	call LoadScreenTilesFromBuffer2DisableBGTransfer
+	call RunDefaultPaletteCommand
+	call Delay3
+	call LoadGBPal
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
+	call UpdateSprites
+	pop af
+	ldh [hWY], a
+	pop af
+	ldh [hAutoBGTransferDest + 1], a
+	pop af
+	ldh [hTileAnimations], a
+	call PlayDefaultMusic
+	ret
+
+EggHatchingText:
+	text_far _EggHatchingText
+	text_end
+
+EggHatchedText:
+	text_far _EggHatchedText
+	text_end
 
 AllPokemonFainted::
 	ld a, $ff

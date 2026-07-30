@@ -69,6 +69,8 @@ IF DEF(_DEBUG)
 	; DEBUG
 	ld hl, wStatusFlags6
 	set BIT_DEBUG_MODE, [hl]
+	ld a, PEWTER_CITY
+	ld [wDefaultMap], a
 	ld hl, StartNewGameDebug
 	ret
 

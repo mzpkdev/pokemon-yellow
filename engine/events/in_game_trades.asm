@@ -94,7 +94,13 @@ InGameTrade_DoTrade:
 	jp c, .tradeFailed ; jump if the player didn't select a pokemon
 	ld a, [wInGameTradeGiveMonSpecies]
 	cp NO_MON
-	jr z, .skip_mon_check
+	jr nz, .check_required_mon
+	ld a, [wCurPartySpecies]
+	cp EGG
+	ld a, $2
+	jp z, .tradeFailed
+	jr .skip_mon_check
+.check_required_mon
 	ld b, a
 	ld a, [wCurPartySpecies]
 	cp b
@@ -317,7 +323,7 @@ TradeTextPointers3:
 TradeTextPointers4:
 	dw WannaTrade4Text
 	dw NoTrade4Text
-	dw WrongMon1Text
+	dw InGameEggCannotBeTradedText
 	dw Thanks4Text
 	dw AfterTrade1Text
 
@@ -397,6 +403,10 @@ WannaTrade4Text:
 	
 NoTrade4Text:
 	text_far _NoTrade4Text
+	text_end
+
+InGameEggCannotBeTradedText:
+	text_far _EggCannotBeTradedText
 	text_end
 	
 Thanks4Text:

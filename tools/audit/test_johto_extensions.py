@@ -63,15 +63,59 @@ class JohtoExtensionTests(unittest.TestCase):
             r"(?m)^\s*const\s+(DEX_[A-Z0-9_]+)\b",
             read("constants/pokedex_constants.asm"),
         )
-        self.assertEqual(165, len(constants))
+        self.assertEqual(166, len(constants))
         self.assertEqual(
             [
                 "DEX_MEW",
                 *(f"DEX_{species}" for species in NEW_SPECIES),
                 *(f"DEX_{species}" for species in NEW_BOND_SPECIES),
+                "DEX_EGG",
             ],
             constants[150:],
         )
+
+    def test_egg_species_data_is_appended_and_inert(self) -> None:
+        pokemon_constants = re.findall(
+            r"(?m)^\s*const\s+([A-Z][A-Z0-9_]+)\b",
+            read("constants/pokemon_constants.asm"),
+        )
+        self.assertEqual("EGG", pokemon_constants[-1])
+
+        base_stats = read("data/pokemon/base_stats/egg.asm")
+        self.assertIn("db DEX_EGG ; pokedex id", base_stats)
+        self.assertIn("db NO_MOVE, NO_MOVE, NO_MOVE, NO_MOVE", base_stats)
+        self.assertRegex(base_stats, r"(?m)^\s*tmhm\s*$")
+
+        evos_moves = read("data/pokemon/evos_moves.asm")
+        self.assertRegex(
+            evos_moves,
+            r"(?m)^EggEvosMoves:\s*\n\s*db 0\s*\n\s*db 0\s*$",
+        )
+
+        for path in (
+            ROOT / "gfx/pokemon/front/egg.png",
+            ROOT / "gfx/pokemon/back/eggb.png",
+        ):
+            with self.subTest(sprite=path.relative_to(ROOT).as_posix()):
+                header = path.read_bytes()[:24]
+                self.assertEqual(b"\x89PNG\r\n\x1a\n", header[:8])
+                self.assertEqual((40, 40), struct.unpack(">II", header[16:24]))
+
+    def test_egg_uses_its_dedicated_party_icon(self) -> None:
+        constants = read("constants/icon_constants.asm")
+        self.assertRegex(constants, r"(?m)^\s*const ICON_EGG$")
+        self.assertRegex(
+            read("data/pokemon/menu_icons.asm"),
+            r"(?m)^\s*db ICON_EGG\s+; Egg$",
+        )
+        self.assertIn(
+            'INCBIN "gfx/icons/egg.2bpp"',
+            read("gfx/sprites.asm"),
+        )
+
+        header = (ROOT / "gfx/icons/egg.png").read_bytes()[:24]
+        self.assertEqual(b"\x89PNG\r\n\x1a\n", header[:8])
+        self.assertEqual((16, 32), struct.unpack(">II", header[16:24]))
 
     def test_babies_use_their_gen2_level_evolutions(self) -> None:
         expected = {

@@ -215,6 +215,7 @@ EvosMovesPointerTable:
 	dw IgglybuffEvosMoves
 	dw CrobatEvosMoves
 	dw BlisseyEvosMoves
+	dw EggEvosMoves
 	assert_table_length NUM_POKEMON_INDEXES
 
 RhydonEvosMoves:
@@ -2899,4 +2900,8 @@ BlisseyEvosMoves:
 	db 48, LIGHT_SCREEN
 	db 50, MEGA_PUNCH
 	db 54, DOUBLE_EDGE
+	db 0
+
+EggEvosMoves:
+	db 0
 	db 0

@@ -1,4 +1,4 @@
-EvolveMon:
+EvolveMon::
 	push hl
 	push de
 	push bc

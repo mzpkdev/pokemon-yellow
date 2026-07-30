@@ -1,0 +1,429 @@
+SECTION "Egg Framework", ROMX
+
+IF DEF(_DEBUG)
+SetDebugNewGameBox:
+	xor a ; Box 1
+	ld [wCurrentBoxNum], a
+	ld a, $80 ; player party data, without nickname prompts
+	ld [wMonDataLocation], a
+	ld a, 15
+	ld [wCurEnemyLevel], a
+	ld de, DebugNewGameBoxMons
+.loop
+	ld a, [de]
+	cp -1
+	jr z, .done
+	inc de
+	push de
+	ld [wCurPartySpecies], a
+	call AddPartyMon
+
+	ld a, [wCurPartySpecies]
+	ld [wNamedObjectIndex], a
+	call GetMonName
+	push de
+	ld de, wPartyMonNicks
+	ld bc, NAME_LENGTH
+	pop hl
+	rst _CopyData
+
+	xor a
+	ld [wWhichPokemon], a
+	ld a, PARTY_TO_BOX
+	ld [wMoveMonType], a
+	call MoveMon
+	xor a ; remove the temporary party copy
+	ld [wRemoveMonFromBox], a
+	call RemovePokemon
+	pop de
+	jr .loop
+.done
+	xor a ; PLAYER_PARTY_DATA
+	ld [wMonDataLocation], a
+	ret
+
+DebugNewGameBoxMons:
+	db SMOOCHUM
+	db ELEKID
+	db MAGBY
+	db POLITOED
+	db SLOWKING
+	db STEELIX
+	db KINGDRA
+	db SCIZOR
+	db PORYGON2
+	db PICHU
+	db CLEFFA
+	db IGGLYBUFF
+	db CROBAT
+	db BLISSEY
+	db -1 ; end
+ENDC
+
+; Create a party Egg.
+; Input: c = species that will hatch, de = incubation steps (1-65535).
+; Output: carry set on success, clear if the party is full.
+; Clobbers: af, bc, de, hl.
+CreatePartyEgg::
+	push de
+	push bc
+	ld a, [wMonDataLocation]
+	push af
+	ld a, EGG
+	ld [wCurPartySpecies], a
+	ld a, 1
+	ld [wCurEnemyLevel], a
+	; A nonzero high nybble suppresses naming while still selecting player data.
+	ld a, $10
+	ld [wMonDataLocation], a
+	call AddPartyMon
+	jr nc, .partyFull
+	pop af
+	ld [wMonDataLocation], a
+	pop bc ; c = target species
+	pop de
+
+	ld a, [wPartyCount]
+	dec a
+	push de
+	push bc
+	push af
+	ld hl, wPartyMon1HP
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ld hl, wPartyMon1MaxHP
+	pop af
+	push af
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	xor a
+	ld [hli], a
+	ld [hl], a
+
+	pop af
+	ld hl, wPartyMon1CatchRate
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	pop bc
+	ld [hl], c
+	pop de
+	ld bc, MON_EXP - MON_CATCH_RATE
+	add hl, bc
+	xor a
+	ld [hli], a
+	ld [hl], d
+	inc hl
+	ld [hl], e
+
+	; AddPartyMon already supplied the default species name, but it was written
+	; before naming was suppressed only in older call paths. Set it explicitly.
+	ld a, EGG
+	ld [wNamedObjectIndex], a
+	call GetMonName
+	push de
+	ld hl, wPartyMonNicks
+	ld a, [wPartyCount]
+	dec a
+	call .AddNameOffset
+	ld d, h
+	ld e, l
+	pop hl
+	ld bc, NAME_LENGTH
+	rst _CopyData
+
+.success
+	scf
+	ret
+
+.partyFull
+	pop af
+	ld [wMonDataLocation], a
+	pop bc
+	pop de
+	and a
+	ret
+
+.AddNameOffset
+	and a
+	ret z
+.nameLoop
+	ld bc, NAME_LENGTH
+	add hl, bc
+	dec a
+	jr nz, .nameLoop
+	ret
+
+; Cancel an attempted Cable Club Egg trade without leaving the peer waiting for
+; the selection exchange, then explain why the Egg stayed with its Trainer.
+HandleCableEggTradeRejection::
+	ld a, $f
+	ld [wSerialExchangeNybbleSendData], a
+	farcall Serial_PrintWaitingTextAndSyncAndExchangeNybble
+	ld hl, .Text
+	rst _PrintText
+	ret
+
+.Text:
+	text_far _EggCannotBeTradedText
+	text_end
+
+; Decrement every Egg in the party by one step. Boxed Eggs are not scanned.
+; The first Egg that reaches zero becomes pending; other ready Eggs remain at
+; zero and can be discovered after the pending Egg is hatched.
+UpdatePartyEggsOnStep::
+	ld a, [wPartyCount]
+	and a
+	ret z
+	ld b, a
+	ld c, 0
+	ld hl, wPartyMon1
+.loop
+	ld a, [hl]
+	cp EGG
+	jr nz, .next
+	push hl
+	ld de, MON_EXP
+	add hl, de
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld e, a
+	ld a, [hl]
+	or d
+	or e
+	jr z, .markReady ; already ready and no other Egg may be pending
+
+	; Big-endian 24-bit decrement.
+	ld a, [hl]
+	sub 1
+	ld [hld], a
+	ld a, [hl]
+	sbc 0
+	ld [hld], a
+	ld a, [hl]
+	sbc 0
+	ld [hl], a
+	or [hl]
+	inc hl
+	or [hl]
+	inc hl
+	or [hl]
+	jr nz, .restore
+.markReady
+	ld a, [wEggHatchPending]
+	and a
+	jr nz, .restore
+	ld a, 1
+	ld [wEggHatchPending], a
+	ld a, c
+	ld [wEggHatchPartyIndex], a
+.restore
+	pop hl
+.next
+	ld de, wPartyMon2 - wPartyMon1
+	add hl, de
+	inc c
+	dec b
+	jr nz, .loop
+	ret
+
+; Hatch the pending party Egg.
+; Output: carry set on success, clear if no valid ready Egg is pending.
+; The hatch target is read from MON_CATCH_RATE. OT ID, DVs, and stat experience
+; are retained; species data, moves, PP, level, experience, stats, and HP are
+; initialized for EGG_HATCH_LEVEL.
+HatchPartyEgg::
+	ld a, [wEggHatchPending]
+	and a
+	ret z
+	ld a, [wEggHatchPartyIndex]
+	ld c, a
+	ld a, [wPartyCount]
+	cp c
+	jp z, .invalid
+	jp c, .invalid
+	ld a, c
+	ld hl, wPartyMon1
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	ld a, [hl]
+	cp EGG
+	jp nz, .invalid
+	push hl
+	ld de, MON_EXP
+	add hl, de
+	ld a, [hli]
+	or [hl]
+	inc hl
+	or [hl]
+	pop hl
+	jp nz, .invalid
+
+	push hl
+	ld de, MON_CATCH_RATE
+	add hl, de
+	ld a, [hl]
+	and a
+	jp z, .invalidPop
+	cp EGG
+	jp z, .invalidPop
+	ld [wCurSpecies], a
+	ld [wCurPartySpecies], a
+	ld [wPokedexNum], a
+	call GetMonHeader
+	pop hl
+	ld a, [wCurSpecies]
+	ld [hl], a
+	push hl
+	ld a, [wEggHatchPartyIndex]
+	ld c, a
+	ld b, 0
+	ld hl, wPartySpecies
+	add hl, bc
+	ld a, [wCurSpecies]
+	ld [hl], a
+	pop hl
+
+	push hl
+	ld de, MON_BOX_LEVEL
+	add hl, de
+	xor a
+	ld [hli], a
+	ld [hli], a ; status
+	ld a, [wMonHType1]
+	ld [hli], a
+	ld a, [wMonHType2]
+	ld [hli], a
+	ld a, [wMonHCatchRate]
+	ld [hli], a
+	ld de, wMonHMoves
+	ld b, NUM_MOVES
+.copyMoves
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec b
+	jr nz, .copyMoves
+	ld de, MON_EXP - (MON_MOVES + NUM_MOVES)
+	add hl, de
+	push hl
+	ld d, EGG_HATCH_LEVEL
+	callfar CalcExperience
+	pop hl
+	ldh a, [hExperience]
+	ld [hli], a
+	ldh a, [hExperience + 1]
+	ld [hli], a
+	ldh a, [hExperience + 2]
+	ld [hl], a
+	pop hl
+
+	; Add every natural move available at the shared hatch level.
+	push hl
+	ld de, MON_MOVES
+	add hl, de
+	ld d, h
+	ld e, l
+	xor a
+	ld [wLearningMovesFromDayCare], a
+	ld a, EGG_HATCH_LEVEL
+	ld [wCurEnemyLevel], a
+	predef WriteMonMoves
+	pop hl
+
+	; Generate PP from the completed move list.
+	push hl
+	ld de, MON_MOVES
+	add hl, de
+	push hl
+	ld de, MON_PP - MON_MOVES - 1
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
+	farcall AddPartyMon_WriteMovePP
+	pop hl
+
+	push hl
+	ld de, MON_LEVEL
+	add hl, de
+	ld a, EGG_HATCH_LEVEL
+	ld [hl], a
+	ld [wCurEnemyLevel], a
+	pop hl
+
+	; Calculate stats using the retained stat experience and DVs.
+	push hl
+	push hl
+	ld bc, MON_HP_EXP - 1
+	add hl, bc
+	pop de
+	push hl
+	ld hl, MON_STATS
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
+	ld b, 1
+	farcall CalcStats
+	pop hl
+	push hl
+	ld de, MON_MAXHP
+	add hl, de
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+	pop hl
+	inc hl
+	ld [hl], d
+	inc hl
+	ld [hl], e
+
+	; Use the species name as the hatchling's default nickname.
+	ld a, [wCurSpecies]
+	ld [wNamedObjectIndex], a
+	call GetMonName
+	push de
+	ld hl, wPartyMonNicks
+	ld a, [wEggHatchPartyIndex]
+	call CreatePartyEgg.AddNameOffset
+	ld d, h
+	ld e, l
+	pop hl
+	ld bc, NAME_LENGTH
+	rst _CopyData
+
+	; Register the hatchling, not Egg, as seen and owned.
+	ld a, [wCurSpecies]
+	ld [wPokedexNum], a
+	predef IndexToPokedex
+	ld a, [wPokedexNum]
+	dec a
+	ld c, a
+	ld b, FLAG_SET
+	push bc
+	ld hl, wPokedexOwned
+	farcall FlagAction
+	pop bc
+	ld hl, wPokedexSeen
+	farcall FlagAction
+
+	xor a
+	ld [wEggHatchPending], a
+	ld a, $ff
+	ld [wEggHatchPartyIndex], a
+	scf
+	ret
+
+.invalidPop
+	pop hl
+.invalid
+	xor a
+	ld [wEggHatchPending], a
+	ld a, $ff
+	ld [wEggHatchPartyIndex], a
+	and a
+	ret

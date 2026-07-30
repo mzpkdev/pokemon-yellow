@@ -1879,7 +1879,10 @@ wSavedSpriteScreenX:: db
 wSavedSpriteMapY:: db
 wSavedSpriteMapX:: db
 
-	ds 3
+; Egg incubation state reuses two formerly unused bytes.
+wEggHatchPending:: db
+wEggHatchPartyIndex:: db
+	ds 1
 
 wDexMinSeenMon::
 wDexMinSeenMove:: db

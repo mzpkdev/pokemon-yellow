@@ -204,6 +204,7 @@ PokedexEntryPointers:
 	dw IgglybuffDexEntry
 	dw CrobatDexEntry
 	dw BlisseyDexEntry
+	dw EggDexEntry
 	assert_table_length NUM_POKEMON_INDEXES
 
 ; string: species name
@@ -1364,6 +1365,13 @@ BlisseyDexEntry:
 	db 4,11
 	dw 1032
 	text_far _BlisseyDexEntry
+	text_end
+
+EggDexEntry:
+	db "EGG@"
+	db 1,4
+	dw 33
+	text_far _EggDexEntry
 	text_end
 
 MissingNoDexEntry:
