@@ -35,7 +35,7 @@ def evolution_rows(species: str) -> list[str]:
     data = read("data/pokemon/evos_moves.asm")
     match = re.search(
         rf"(?m)^{species.title().replace('_', '')}EvosMoves:\s*$"
-        rf"(?P<body>.*?)(?=^\s*db\s+0(?:\s*;.*)?$)",
+        rf"(?P<body>.*?)(?=^[ \t]*db[ \t]+0(?:[ \t]*;[^\r\n]*)?$)",
         data,
         re.DOTALL | re.MULTILINE,
     )
@@ -48,8 +48,8 @@ def learnset_rows(species: str) -> list[str]:
     data = read("data/pokemon/evos_moves.asm")
     match = re.search(
         rf"(?ms)^{species.title().replace('_', '')}EvosMoves:\s*$"
-        rf".*?^\s*db\s+0(?:\s*;.*)?$"
-        rf"(?P<body>.*?)(?=^\s*db\s+0(?:\s*;.*)?$)",
+        rf".*?^[ \t]*db[ \t]+0(?:[ \t]*;[^\r\n]*)?$"
+        rf"(?P<body>.*?)(?=^[ \t]*db[ \t]+0(?:[ \t]*;[^\r\n]*)?$)",
         data,
     )
     if match is None:
@@ -145,6 +145,110 @@ class JohtoExtensionTests(unittest.TestCase):
                 "24, BODY_SLAM",
                 "30, MIMIC",
                 "36, DOUBLE_EDGE",
+            ],
+        }
+        for species, rows in expected.items():
+            with self.subTest(species=species):
+                self.assertEqual(rows, learnset_rows(species))
+
+    def test_other_extensions_use_curated_family_learnsets(self) -> None:
+        expected = {
+            "POLITOED": [
+                "6, MIST",
+                "10, DOUBLESLAP",
+                "12, MUD_SHOT",
+                "13, WATER_GUN",
+                "17, HYPNOSIS",
+                "22, WATER_PULSE",
+                "30, BODY_SLAM",
+                "40, AMNESIA",
+                "48, HYDRO_PUMP",
+            ],
+            "SLOWKING": [
+                "6, GROWL",
+                "10, WATER_GUN",
+                "15, CONFUSION",
+                "18, WATER_PULSE",
+                "20, DISABLE",
+                "25, HEADBUTT",
+                "30, PSYBEAM",
+                "36, LIGHT_SCREEN",
+                "40, AMNESIA",
+                "45, PSYCHIC_M",
+            ],
+            "STEELIX": [
+                "12, ROCK_THROW",
+                "15, DRAGONBREATH",
+                "19, DIG",
+                "23, BIND",
+                "25, ROCK_TOMB",
+                "29, HARDEN",
+                "31, SLAM",
+                "34, BODY_PRESS",
+                "37, ROCK_SLIDE",
+                "43, EARTHQUAKE",
+            ],
+            "KINGDRA": [
+                "10, WATER_GUN",
+                "14, SMOKESCREEN",
+                "18, LEER",
+                "20, DRAGONBREATH",
+                "22, WATER_PULSE",
+                "26, DRAGON_RAGE",
+                "30, AURORA_BEAM",
+                "33, WATERFALL",
+                "37, AGILITY",
+                "41, SLAM",
+                "45, HYDRO_PUMP",
+            ],
+            "SCIZOR": [
+                "6, FOCUS_ENERGY",
+                "12, QUICK_ATTACK",
+                "16, CUT",
+                "24, AGILITY",
+                "30, AIR_CUTTER",
+                "36, SLASH",
+                "42, X_SCISSOR",
+                "48, DOUBLE_TEAM",
+                "50, ROOST",
+                "53, SUPERPOWER",
+                "54, SWORDS_DANCE",
+            ],
+            "PORYGON2": [
+                "12, PSYBEAM",
+                "20, RECOVER",
+                "24, SHARPEN",
+                "28, TRI_ATTACK",
+                "32, AGILITY",
+                "40, BARRIER",
+                "50, HYPER_BEAM",
+                "56, MIRROR_COAT",
+            ],
+            "CROBAT": [
+                "5, SUPERSONIC",
+                "13, ABSORB",
+                "17, LEECH_LIFE",
+                "19, WING_ATTACK",
+                "21, CONFUSE_RAY",
+                "24, SWIFT",
+                "29, AIR_CUTTER",
+                "33, MEGA_DRAIN",
+                "38, AGILITY",
+                "41, HAZE",
+                "42, X_SCISSOR",
+                "55, ROOST",
+            ],
+            "BLISSEY": [
+                "12, DOUBLESLAP",
+                "24, SING",
+                "30, GROWL",
+                "35, CHARM",
+                "38, MINIMIZE",
+                "42, WATER_PULSE",
+                "44, DEFENSE_CURL",
+                "48, LIGHT_SCREEN",
+                "50, MEGA_PUNCH",
+                "54, DOUBLE_EDGE",
             ],
         }
         for species, rows in expected.items():

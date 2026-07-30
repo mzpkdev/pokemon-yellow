@@ -2771,7 +2771,7 @@ SlowkingEvosMoves:
 	db 20, DISABLE
 	db 25, HEADBUTT
 	db 30, PSYBEAM
-	db 36, WITHDRAW
+	db 36, LIGHT_SCREEN
 	db 40, AMNESIA
 	db 45, PSYCHIC_M
 	db 0
@@ -2779,6 +2779,7 @@ SlowkingEvosMoves:
 SteelixEvosMoves:
 	db 0 ; no evolutions
 	db 12, ROCK_THROW
+	db 15, DRAGONBREATH
 	db 19, DIG
 	db 23, BIND
 	db 25, ROCK_TOMB
@@ -2828,6 +2829,7 @@ Porygon2EvosMoves:
 	db 32, AGILITY
 	db 40, BARRIER
 	db 50, HYPER_BEAM
+	db 56, MIRROR_COAT
 	db 0
 
 PichuEvosMoves:
@@ -2890,7 +2892,9 @@ BlisseyEvosMoves:
 	db 12, DOUBLESLAP
 	db 24, SING
 	db 30, GROWL
+	db 35, CHARM
 	db 38, MINIMIZE
+	db 42, WATER_PULSE
 	db 44, DEFENSE_CURL
 	db 48, LIGHT_SCREEN
 	db 50, MEGA_PUNCH
