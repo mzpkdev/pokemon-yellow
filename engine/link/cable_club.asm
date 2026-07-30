@@ -544,11 +544,7 @@ TradeCenter_SelectMon:
 	ld [wTradeCenterPointerTableIndex], a
 	jp CallCurrentTradeCenterFunction
 .eggCannotBeTraded
-	ld a, $f
-	ld [wSerialExchangeNybbleSendData], a
-	call Serial_PrintWaitingTextAndSyncAndExchangeNybble
-	ld hl, LinkEggCannotBeTradedText
-	rst _PrintText
+	farcall HandleCableEggTradeRejection
 	call LoadScreenTilesFromBuffer1
 	jp .playerMonMenu
 .statsTrade
@@ -892,10 +888,6 @@ TradeCenter_Trade:
 
 WillBeTradedText:
 	text_far _WillBeTradedText
-	text_end
-
-LinkEggCannotBeTradedText:
-	text_far _EggCannotBeTradedText
 	text_end
 
 TradeCompleted:

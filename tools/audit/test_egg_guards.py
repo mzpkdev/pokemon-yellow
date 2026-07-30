@@ -66,17 +66,21 @@ class EggGuardTests(unittest.TestCase):
         self.assertRegex(chose_trade, r"cp EGG\s+jr z, \.eggCannotBeTraded")
         self.assertLess(
             chose_trade.index("cp EGG"),
-            chose_trade.index("Serial_PrintWaitingTextAndSyncAndExchangeNybble"),
+            chose_trade.index("HandleCableEggTradeRejection"),
         )
-        rejection = chose_trade.index(".eggCannotBeTraded")
-        cancel = chose_trade.index("ld a, $f", rejection)
-        cancel_sync = chose_trade.index(
-            "call Serial_PrintWaitingTextAndSyncAndExchangeNybble", cancel
+        self.assertIn(
+            "farcall HandleCableEggTradeRejection",
+            chose_trade,
         )
-        message = chose_trade.index("ld hl, LinkEggCannotBeTradedText", cancel_sync)
-        self.assertLess(rejection, cancel)
-        self.assertLess(cancel, cancel_sync)
-        self.assertLess(cancel_sync, message)
+        helper = read("engine/pokemon/eggs.asm").split(
+            "HandleCableEggTradeRejection::", 1
+        )[1].split("UpdatePartyEggsOnStep::", 1)[0]
+        self.assertRegex(
+            helper,
+            r"(?s)ld a, \$f.*?"
+            r"farcall Serial_PrintWaitingTextAndSyncAndExchangeNybble.*?"
+            r"text_far _EggCannotBeTradedText",
+        )
 
     def test_trade_rejection_text_is_shared(self) -> None:
         self.assertIn(
@@ -89,7 +93,7 @@ class EggGuardTests(unittest.TestCase):
         )
         self.assertIn(
             "text_far _EggCannotBeTradedText",
-            read("engine/link/cable_club.asm"),
+            read("engine/pokemon/eggs.asm"),
         )
 
 

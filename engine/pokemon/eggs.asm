@@ -94,6 +94,20 @@ CreatePartyEgg::
 	jr nz, .nameLoop
 	ret
 
+; Cancel an attempted Cable Club Egg trade without leaving the peer waiting for
+; the selection exchange, then explain why the Egg stayed with its Trainer.
+HandleCableEggTradeRejection::
+	ld a, $f
+	ld [wSerialExchangeNybbleSendData], a
+	farcall Serial_PrintWaitingTextAndSyncAndExchangeNybble
+	ld hl, .Text
+	rst _PrintText
+	ret
+
+.Text:
+	text_far _EggCannotBeTradedText
+	text_end
+
 ; Decrement every Egg in the party by one step. Boxed Eggs are not scanned.
 ; The first Egg that reaches zero becomes pending; other ready Eggs remain at
 ; zero and can be discovered after the pending Egg is hatched.
