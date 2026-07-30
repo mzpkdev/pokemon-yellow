@@ -132,6 +132,8 @@ InitOptions:
 	ld [wLetterPrintingDelayFlags], a
 	ld a, TEXT_DELAY_FAST
 	ld [wOptions], a
+	ld a, PALETTES_YELLOW
+	ld [wOptions2], a
 	ld a, 64 ; audio?
 	ld [wPrinterSettings], a
 	ret
