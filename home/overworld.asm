@@ -449,6 +449,11 @@ HandlePendingEggHatch:
 	hlcoord 0, 12
 	lb bc, 4, 18
 	call TextBoxBorder
+	ld b, $9c
+	call CopyScreenTileBufferToVRAM
+	call LoadFontTilePatterns
+	ld a, 1
+	ldh [hAutoBGTransferEnabled], a
 	ld hl, EggHatchedText
 	rst _PrintText
 	call GBPalWhiteOutWithDelay3
