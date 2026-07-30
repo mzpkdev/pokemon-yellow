@@ -113,6 +113,7 @@ RedrawMapView:
 	ldh [hRedrawRowOrColumnDest], a
 	ld a, REDRAW_ROW
 	push af
+	ld c, a
 	farcall DrawFullColorRowOrColumn
 	pop af
 	ldh [hRedrawRowOrColumnMode], a
