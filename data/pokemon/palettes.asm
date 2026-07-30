@@ -152,6 +152,9 @@ MonsterPalettes:
 	db PAL_DRAGONITE
 	db PAL_MEWTWO
 	db PAL_MEW
+	db PAL_JYNX       ; Smoochum
+	db PAL_ELECTABUZZ ; Elekid
+	db PAL_MAGMAR     ; Magby
 	assert_table_length NUM_POKEMON + 1
 
 TrainerPalettes:

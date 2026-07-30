@@ -200,6 +200,9 @@ EvosMovesPointerTable:
 	dw BellsproutEvosMoves
 	dw WeepinbellEvosMoves
 	dw VictreebelEvosMoves
+	dw SmoochumEvosMoves
+	dw ElekidEvosMoves
+	dw MagbyEvosMoves
 	assert_table_length NUM_POKEMON_INDEXES
 
 RhydonEvosMoves:
@@ -2682,4 +2685,22 @@ VictreebelEvosMoves:
 	db 36, SLUDGE
 	db 43, SYNTHESIS
 	db 48, SLEEP_POWDER
+	db 0
+
+SmoochumEvosMoves:
+; Evolutions are enabled in a later framework phase.
+	db 0
+; Learnset
+	db 0
+
+ElekidEvosMoves:
+; Evolutions are enabled in a later framework phase.
+	db 0
+; Learnset
+	db 0
+
+MagbyEvosMoves:
+; Evolutions are enabled in a later framework phase.
+	db 0
+; Learnset
 	db 0

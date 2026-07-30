@@ -197,6 +197,9 @@
 	const BELLSPROUT         ; $BC
 	const WEEPINBELL         ; $BD
 	const VICTREEBEL         ; $BE
+	const SMOOCHUM           ; $BF
+	const ELEKID             ; $C0
+	const MAGBY              ; $C1
 
 DEF NUM_POKEMON_INDEXES EQU const_value - 1
 

@@ -190,6 +190,9 @@ PokedexEntryPointers:
 	dw BellsproutDexEntry
 	dw WeepinbellDexEntry
 	dw VictreebelDexEntry
+	dw JynxDexEntry       ; temporary family entry
+	dw ElectabuzzDexEntry ; temporary family entry
+	dw MagmarDexEntry     ; temporary family entry
 	assert_table_length NUM_POKEMON_INDEXES
 
 ; string: species name
