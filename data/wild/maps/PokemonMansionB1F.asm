@@ -5,7 +5,7 @@ PokemonMansionB1FWildMons:
 	db 37, PONYTA
 	db 40, MAGMAR
 	db 41, MUK
-	db 39, VULPIX
+	db 39, RATICATE
 	db 42, MAGMAR
 	db 25, DITTO
 	db 28, DITTO
