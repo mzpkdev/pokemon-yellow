@@ -93,6 +93,7 @@ CopyFullColorDialogueAttributes::
 	push hl
 	ld c, SCREEN_WIDTH
 .terrainColumn
+	call WaitForFullColorVRAM
 	ld a, [hl]
 	call WaitForFullColorVRAM
 	ld [de], a
