@@ -40,7 +40,7 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
     emulator.tick(180)
     emulator.save_screenshot("hatch-02-animation-03s.png")
     tilemap = emulator.symbols["wTileMap"] + 2 * 20 + 7
-    visible_bg = 0x9800 + 2 * 32 + 7
+    visible_bg = 0x9C00 + 2 * 32 + 7
     assert all(
         emulator.pyboy.memory[visible_bg + row * 32 + column]
         == emulator.pyboy.memory[tilemap + row * 20 + column]

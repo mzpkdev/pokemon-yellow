@@ -407,6 +407,8 @@ HandlePendingEggHatch:
 	push af
 	ldh a, [hAutoBGTransferDest + 1]
 	push af
+	ldh a, [hWY]
+	push af
 	call SaveScreenTilesToBuffer2
 	ld hl, EggHatchingText
 	rst _PrintText
@@ -414,10 +416,10 @@ HandlePendingEggHatch:
 	rst _DelayFrames
 	xor a
 	ldh [hAutoBGTransferEnabled], a
-	; Evolution normally runs on a battle screen. Point the automatic tilemap
-	; transfer at the visible overworld background while the hatch movie runs.
-	ld a, HIGH(vBGMap0)
-	ldh [hAutoBGTransferDest + 1], a
+	; Evolution normally runs on a full-screen menu. Show Yellow's window
+	; tilemap across the screen so the movie never overwrites the map beneath.
+	xor a
+	ldh [hWY], a
 	call ClearScreen
 	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
@@ -437,14 +439,16 @@ HandlePendingEggHatch:
 	ld hl, EggHatchedText
 	rst _PrintText
 	call GBPalWhiteOutWithDelay3
-	call RestoreScreenTilesAndReloadTilePatterns
 	call ReloadTilesetTilePatterns
-	call LoadScreenTilesFromBuffer2
+	call LoadScreenTilesFromBuffer2DisableBGTransfer
+	call RunDefaultPaletteCommand
 	call Delay3
 	call LoadGBPal
 	ld a, 1
 	ld [wUpdateSpritesEnabled], a
 	call UpdateSprites
+	pop af
+	ldh [hWY], a
 	pop af
 	ldh [hAutoBGTransferDest + 1], a
 	pop af
