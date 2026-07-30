@@ -22,6 +22,41 @@ from tools.rom_tests.scenarios.debug_indoor_maps import (
 )
 
 SNAPSHOTS = Path(__file__).resolve().parents[2] / "snapshots"
+ROOT = Path(__file__).resolve().parents[4]
+
+
+def assert_visible_outdoor_attributes(emulator: Emulator) -> None:
+    """Match the visible BG attributes to the outdoor tile assignment table."""
+    source = (ROOT / "engine/gfx/full_color_overworld.asm").read_text()
+    table_source = source.split("FullColorOutdoorAttributes:", 1)[1].split(
+        "FullColorForestAttributes:", 1
+    )[0]
+    attributes = [
+        int(value)
+        for line in table_source.splitlines()
+        if line.strip().startswith("db ")
+        for value in line.split("db ", 1)[1].replace(" ", "").split(",")
+    ]
+    assert len(attributes) == 0x60
+
+    tilemap = emulator.symbols["wTileMap"]
+    origin = emulator.read("wMapViewVRAMPointer") | (
+        emulator.pyboy.memory[emulator.symbols["wMapViewVRAMPointer"] + 1] << 8
+    )
+    emulator.pyboy.memory[0xFF4F] = 1
+    try:
+        for y in range(18):
+            for x in range(20):
+                tile = emulator.pyboy.memory[tilemap + y * 20 + x]
+                expected = attributes[tile] if tile < len(attributes) else 7
+                offset = (origin - 0x9800 + y * 32 + x) & 0x3FF
+                actual = emulator.pyboy.memory[0x9800 + offset] & 7
+                assert actual == expected, (
+                    f"attribute mismatch at ({x}, {y}): "
+                    f"tile={tile:#x}, actual={actual}, expected={expected}"
+                )
+    finally:
+        emulator.pyboy.memory[0xFF4F] = 0
 
 
 def test_debug_full_color_overworld_scrolling(emulator: Emulator) -> None:
@@ -107,6 +142,7 @@ def test_debug_full_color_survives_start_menu(emulator: Emulator) -> None:
 def test_debug_full_color_connected_route(emulator: Emulator) -> None:
     start_debug_game_in_viridian(emulator)
     walk_west_to_route_22(emulator)
+    assert_visible_outdoor_attributes(emulator)
     emulator.assert_screen_matches(
         SNAPSHOTS / "debug-route-22.png",
         name="debug-route-22",

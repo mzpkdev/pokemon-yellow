@@ -766,7 +766,10 @@ CheckMapConnections::
 	and %1100
 	cp 1 << BIT_FULL_COLOR_OVERWORLD
 	jr nz, .attributesDone
-	ld de, vBGMap0
+	ld a, [wMapViewVRAMPointer]
+	ld e, a
+	ld a, [wMapViewVRAMPointer + 1]
+	ld d, a
 	farcall CopyFullColorMapViewAttributes
 .attributesDone
 	jp OverworldLoopLessDelay
