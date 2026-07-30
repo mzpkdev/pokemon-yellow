@@ -87,7 +87,8 @@ class EggFrameworkTests(unittest.TestCase):
         self.assertIn("ld [wEvoOldSpecies], a", handler)
         self.assertIn("ld [wEvoNewSpecies], a", handler)
         self.assertIn("ld [wForceEvolution], a", handler)
-        self.assertIn("call ReloadTilesetTilePatterns", handler)
+        self.assertIn("call ReloadMapData", handler)
+        self.assertIn("call UpdateSprites", handler)
         self.assertIn("call PlayDefaultMusic", handler)
 
     def test_hatch_event_announces_the_result_name(self) -> None:

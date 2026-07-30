@@ -429,7 +429,10 @@ HandlePendingEggHatch:
 	ld hl, EggHatchedText
 	rst _PrintText
 	call GBPalWhiteOutWithDelay3
-	call ReloadTilesetTilePatterns
+	call ReloadMapData
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
+	call UpdateSprites
 	call PlayDefaultMusic
 	ret
 
