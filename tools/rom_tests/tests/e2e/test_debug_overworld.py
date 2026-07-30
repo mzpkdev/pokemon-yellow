@@ -4,9 +4,11 @@ from pathlib import Path
 
 from tools.rom_tests.emulator import Emulator
 from tools.rom_tests.scenarios.debug_overworld import (
+    dismount_bicycle_with_select,
     enter_viridian_pokecenter,
     exercise_viridian_scrolling,
     mount_bicycle_with_select,
+    ride_bicycle_in_viridian,
     start_debug_game_in_viridian,
     walk_west_to_route_22,
 )
@@ -44,10 +46,10 @@ def test_debug_full_color_survives_start_menu(emulator: Emulator) -> None:
         SNAPSHOTS / "debug-viridian-start-menu.png",
         name="debug-viridian-start-menu",
     )
-    emulator.press("b")
+    emulator.press("start")
     emulator.tick(180)
     emulator.assert_screen_matches(
-        SNAPSHOTS / "debug-viridian-spawn.png",
+        SNAPSHOTS / "debug-viridian-after-start-menu.png",
         name="debug-viridian-after-menu",
     )
 
@@ -65,6 +67,36 @@ def test_debug_full_color_bicycle_shortcut(emulator: Emulator) -> None:
     start_debug_game_in_viridian(emulator)
     mount_bicycle_with_select(emulator)
     emulator.assert_screen_matches(
-        SNAPSHOTS / "debug-viridian-bicycle.png",
-        name="debug-viridian-bicycle",
+        SNAPSHOTS / "debug-viridian-bicycle-mounted.png",
+        name="debug-viridian-bicycle-mounted",
+    )
+
+    ride_bicycle_in_viridian(emulator)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-viridian-bicycle-ridden.png",
+        name="debug-viridian-bicycle-ridden",
+    )
+
+    dismount_bicycle_with_select(emulator)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-viridian-bicycle-dismounted.png",
+        name="debug-viridian-bicycle-dismounted",
+    )
+
+
+def test_debug_full_color_bicycle_survives_start_menu(emulator: Emulator) -> None:
+    start_debug_game_in_viridian(emulator)
+    mount_bicycle_with_select(emulator)
+    ride_bicycle_in_viridian(emulator)
+
+    emulator.press("start")
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-viridian-bicycle-start-menu.png",
+        name="debug-viridian-bicycle-start-menu",
+    )
+    emulator.press("start")
+    emulator.tick(180)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-viridian-bicycle-after-start-menu.png",
+        name="debug-viridian-bicycle-after-start-menu",
     )

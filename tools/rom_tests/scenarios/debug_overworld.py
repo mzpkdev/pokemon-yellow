@@ -80,3 +80,19 @@ def mount_bicycle_with_select(emulator: Emulator) -> None:
         emulator.press("b")
     emulator.tick(180)
     assert emulator.read("wWalkBikeSurfState") == 1
+
+
+def ride_bicycle_in_viridian(emulator: Emulator) -> None:
+    """Ride west from the debug spawn far enough to stream the scenery."""
+    assert emulator.read("wWalkBikeSurfState") == 1
+    walk_to_value(emulator, "wXCoord", 19, "left", "Viridian bicycle path")
+    emulator.tick(180)
+
+
+def dismount_bicycle_with_select(emulator: Emulator) -> None:
+    """Use the Select shortcut again and wait until the player is walking."""
+    assert emulator.read("wWalkBikeSurfState") == 1
+    emulator.press("select")
+    emulator.press("b")
+    emulator.tick(180)
+    assert emulator.read("wWalkBikeSurfState") == 0

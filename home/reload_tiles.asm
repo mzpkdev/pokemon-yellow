@@ -18,7 +18,10 @@ ReloadMapData::
 	jr nz, .palettesDone
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand
-	ld de, vBGMap0
+	ld a, [wMapViewVRAMPointer]
+	ld e, a
+	ld a, [wMapViewVRAMPointer + 1]
+	ld d, a
 	farcall CopyFullColorMapViewAttributes
 .palettesDone
 	pop af
