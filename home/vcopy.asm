@@ -43,7 +43,9 @@ RedrawRowOrColumn::
 	ldh a, [hRedrawRowOrColumnMode]
 	and a
 	ret z
+	push af
 	farcall DrawFullColorRowOrColumn
+	pop af
 	ld b, a
 	xor a
 	ldh [hRedrawRowOrColumnMode], a

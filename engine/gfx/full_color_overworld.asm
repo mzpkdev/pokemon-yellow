@@ -130,7 +130,7 @@ DrawFullColorRowOrColumn::
 		ld [de], a
 		inc de
 	ENDR
-	ld a, BG_MAP_WIDTH - 1
+	ld a, BG_MAP_WIDTH - 2
 	add e
 	ld e, a
 	jr nc, .columnNoCarry
