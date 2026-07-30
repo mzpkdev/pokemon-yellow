@@ -469,11 +469,12 @@ OverworldColorStrings:
 	dw OverworldOriginalText
 	dw OverworldFullText
 
+; Seven tiles wide: column 19 is the options window's right border.
 OverworldOriginalText:
-	db "CLASSIC @"
+	db "CLASSIC@"
 
 OverworldFullText:
-	db "COLOR   @"
+	db "COLOR  @"
 
 OptionsMenu_Cancel:
 	ldh a, [hJoy5]
