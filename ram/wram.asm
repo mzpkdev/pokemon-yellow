@@ -217,9 +217,21 @@ wAnimatedObjectGlobalXOffset:: db
 wAnimatedObjectsDataEnd::
 
 ; Surfing minigame
+IF DEF(_DEBUG)
+wDebugAtlasRequest::
+ENDC
 wSurfingMinigameData:: db
+IF DEF(_DEBUG)
+wDebugAtlasMap::
+ENDC
 wSurfingMinigameRoutineNumber:: db
+IF DEF(_DEBUG)
+wDebugAtlasX::
+ENDC
 wc5d2:: db
+IF DEF(_DEBUG)
+wDebugAtlasY::
+ENDC
 wSurfingMinigameWaveFunctionNumber:: dw
 wc5d5:: db
 wSurfingMinigamePikachuHP:: dw ; little-endian BCD
@@ -2639,12 +2651,3 @@ SECTION "Stack", WRAM0
 wStack:: db
 
 ENDSECTION
-
-IF DEF(_DEBUG)
-; PyBoy-only aliases. The surfing minigame is inactive during atlas warps, and
-; aliases keep both release and debug WRAM/stack layouts unchanged.
-DEF wDebugAtlasRequest EQU wSurfingMinigameData
-DEF wDebugAtlasMap EQU wSurfingMinigameRoutineNumber
-DEF wDebugAtlasX EQU wc5d2
-DEF wDebugAtlasY EQU wSurfingMinigameWaveFunctionNumber
-ENDC
