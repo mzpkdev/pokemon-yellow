@@ -12,6 +12,7 @@ from tools.rom_tests.scenarios.debug_overworld import (
 
 ROOT = Path(__file__).resolve().parents[4]
 OUTDOOR_TILESETS = {"OVERWORLD", "FOREST", "PLATEAU"}
+LINK_SESSION_MAPS = {"TRADE_CENTER", "COLOSSEUM"}
 TOWN_SPAWNS = (
     ("PALLET_TOWN", 5, 6),
     ("VIRIDIAN_CITY", 23, 26),
@@ -90,9 +91,13 @@ def test_debug_full_color_indoor_map_atlas(emulator: Emulator) -> None:
     cases = indoor_maps()
     assert len(cases) == 184
     assert len({tileset for _, _, tileset, _, _, _ in cases}) == 22
+    renderable_cases = [
+        case for case in cases if case[0] not in LINK_SESSION_MAPS
+    ]
+    assert len(renderable_cases) == 182
 
     start_debug_game_in_viridian(emulator)
-    for map_name, map_id, tileset, tileset_id, x, y in cases:
+    for map_name, map_id, tileset, tileset_id, x, y in renderable_cases:
         debug_atlas_enter_map(
             emulator, map_id, x=x, y=y, destination_warp=0
         )

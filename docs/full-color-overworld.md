@@ -40,8 +40,9 @@ initial outdoor view, horizontal and vertical scrolling, menu and dialogue
 restoration, bicycle transitions, and representative interiors: the Pokemon
 Center, Mart, Viridian School, Red's house, Oak's Lab, and Mt. Moon.
 
-The debug-only atlas additionally loads all 184 non-outdoor map headers through
-the normal `EnterMap` path and captures every building and cave floor. A second
-matrix captures all 13 Fly destinations beside their Pokemon Center or
-equivalent landmark. These hooks and four request bytes do not exist in release
-builds.
+The debug-only atlas inventories all 184 non-outdoor map headers and captures
+the 182 ordinary building, ship, gate, cave, and dungeon floors through the
+normal `EnterMap` path. `TRADE_CENTER` and `COLOSSEUM` are intentionally not
+force-entered because they require an initialized link session. A second matrix
+captures all 13 Fly destinations beside their Pokemon Center or equivalent
+landmark. These hooks and four request bytes do not exist in release builds.
