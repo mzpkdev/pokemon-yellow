@@ -401,17 +401,11 @@ HandlePendingEggHatch:
 	ld a, [wLinkState]
 	and a
 	ret nz
-	ld hl, EggHatchingText
-	rst _PrintText
 	farcall HatchPartyEgg
 	ret nc
 	ld hl, EggHatchedText
 	rst _PrintText
 	ret
-
-EggHatchingText:
-	text_far _EggHatchingText
-	text_end
 
 EggHatchedText:
 	text_far _EggHatchedText

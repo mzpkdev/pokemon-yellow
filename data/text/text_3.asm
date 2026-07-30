@@ -569,12 +569,8 @@ _EggCannotBeTradedText::
 	line "traded."
 	prompt
 
-_EggHatchingText::
-	text "Huh? The EGG is"
-	line "hatching!"
-	prompt
-
 _EggHatchedText::
+	text "Huh? "
 	text_ram wNameBuffer
 	text " hatched"
 	line "from the EGG!"

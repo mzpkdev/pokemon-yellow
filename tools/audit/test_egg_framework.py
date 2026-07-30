@@ -73,15 +73,17 @@ class EggFrameworkTests(unittest.TestCase):
             handler.index("ld hl, EggHatchedText"),
         )
         self.assertIn("ret nc", handler)
+        self.assertNotIn("EggHatchingText", handler)
 
     def test_hatch_event_announces_the_result_name(self) -> None:
         text = read("data/text/text_3.asm")
-        hatch_text = text.split("_EggHatchingText::", 1)[1].split(
+        hatch_text = text.split("_EggHatchedText::", 1)[1].split(
             "_Colosseum3MonsText::", 1
         )[0]
-        self.assertIn('text "Huh? The EGG is"', hatch_text)
+        self.assertIn('text "Huh? "', hatch_text)
         self.assertIn("text_ram wNameBuffer", hatch_text)
         self.assertIn('line "from the EGG!"', hatch_text)
+        self.assertNotIn("prompt", hatch_text)
 
     def test_hatching_reinitializes_runtime_data_and_registers_target(self) -> None:
         hatch = read("engine/pokemon/eggs.asm").split("HatchPartyEgg::", 1)[1]
