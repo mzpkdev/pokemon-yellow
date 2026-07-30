@@ -7,7 +7,7 @@ RedsHouse2F_Script:
 
 RedsHouse2F_ScriptPointers:
 	def_script_pointers
-	dw_const RedsHouse2FDefaultScript,   SCRIPT_REDSHOUSE2F_DEFAULT
+	dw_const DoRet,                      SCRIPT_REDSHOUSE2F_DEFAULT
 	dw_const DoRet,                      SCRIPT_REDSHOUSE2F_NOOP    
 
 RedsHouse2FDefaultScript:
