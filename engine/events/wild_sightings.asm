@@ -467,13 +467,11 @@ RockTunnelSightings:
 	sighting_mon $ff, GOLEM
 	db 0
 PowerPlantSightings:
-	sighting_mon $32, KOFFING
-	sighting_mon $65, MACHOP
-	sighting_mon $8c, DITTO
-	sighting_mon $b2, WEEZING
-	sighting_mon $cc, MACHOKE
-	sighting_mon $e5, GOLEM
-	sighting_mon $f2, MACHAMP
+	sighting_mon $4c, KOFFING
+	sighting_mon $8c, WEEZING
+	sighting_mon $bf, DITTO
+	sighting_mon $e5, MACHOP
+	sighting_mon $f2, MACHOKE
 	sighting_mon $ff, PORYGON
 	db 0
 VictoryRoadSightings:
@@ -542,6 +540,6 @@ SafariLandSightings:
 	sighting_mon $b2, PONYTA
 	sighting_mon $cc, VULPIX
 	sighting_mon $e5, DITTO
-	sighting_mon $f2, PORYGON
+	sighting_mon $f2, PERSIAN
 	sighting_mon $ff, ARCANINE
 	db 0

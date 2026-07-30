@@ -28,6 +28,27 @@ class WildSightingFrameworkTests(unittest.TestCase):
         self.assertEqual([record[2] for record in records], maps)
         self.assertIn("assert_table_length NUM_MAPS", sighting_maps)
 
+    def test_every_declared_sighting_zone_is_used(self) -> None:
+        declared_zones = set(
+            re.findall(
+                r"^\s*const\s+(SIGHTING_ZONE_[A-Z0-9_]+)",
+                _source("constants/sighting_constants.asm"),
+                re.MULTILINE,
+            )
+        )
+        used_zones = set(
+            re.findall(
+                r"^\s*sighting_map\s+(SIGHTING_ZONE_[A-Z0-9_]+),",
+                _source("data/wild/sighting_maps.asm"),
+                re.MULTILINE,
+            )
+        )
+
+        self.assertEqual(
+            declared_zones - {"SIGHTING_ZONE_NONE"},
+            used_zones - {"SIGHTING_ZONE_NONE"},
+        )
+
     def test_sighting_profiles_match_wild_data_and_explicit_exclusions(self) -> None:
         wild_pointers = _source("data/wild/grass_water.asm")
         sighting_maps = _source("data/wild/sighting_maps.asm")
@@ -48,6 +69,10 @@ class WildSightingFrameworkTests(unittest.TestCase):
             "CERULEAN_CAVE_2F",
             "CERULEAN_CAVE_B1F",
         }
+        wild_sources = "\n".join(
+            path.read_text(encoding="utf-8")
+            for path in (ROOT / "data/wild/maps").glob("*.asm")
+        )
 
         self.assertEqual(len(wild_rows), len(sighting_rows))
         for wild_data, (zone, profile, map_name) in zip(
@@ -57,8 +82,28 @@ class WildSightingFrameworkTests(unittest.TestCase):
                 self.assertEqual(zone, "SIGHTING_ZONE_NONE")
                 self.assertEqual(profile, "SIGHTING_PROFILE_NONE")
             else:
-                self.assertNotEqual(zone, "SIGHTING_ZONE_NONE")
-                self.assertNotEqual(profile, "SIGHTING_PROFILE_NONE")
+                wild_table = re.search(
+                    rf"(?ms)^{re.escape(wild_data)}:\r?\n"
+                    rf"(.*?)(?=^[A-Za-z]\w*:\r?$|\Z)",
+                    wild_sources,
+                )
+                self.assertIsNotNone(wild_table, wild_data)
+                encounter_rates = [
+                    int(rate)
+                    for rate in re.findall(
+                        r"^\s*def_(?:grass|water)_wildmons\s+(\d+)",
+                        wild_table.group(1),
+                        re.MULTILINE,
+                    )
+                ]
+                has_encounters = any(encounter_rates)
+                self.assertEqual(
+                    profile != "SIGHTING_PROFILE_NONE",
+                    has_encounters,
+                    map_name,
+                )
+                if has_encounters:
+                    self.assertNotEqual(zone, "SIGHTING_ZONE_NONE")
 
     def test_species_tables_are_weighted_and_end_at_full_probability(self) -> None:
         sightings = _source("engine/events/wild_sightings.asm")
