@@ -217,21 +217,9 @@ wAnimatedObjectGlobalXOffset:: db
 wAnimatedObjectsDataEnd::
 
 ; Surfing minigame
-IF DEF(_DEBUG)
-wDebugAtlasRequest::
-ENDC
 wSurfingMinigameData:: db
-IF DEF(_DEBUG)
-wDebugAtlasMap::
-ENDC
 wSurfingMinigameRoutineNumber:: db
-IF DEF(_DEBUG)
-wDebugAtlasX::
-ENDC
 wc5d2:: db
-IF DEF(_DEBUG)
-wDebugAtlasY::
-ENDC
 wSurfingMinigameWaveFunctionNumber:: dw
 wc5d5:: db
 wSurfingMinigamePikachuHP:: dw ; little-endian BCD
@@ -2643,6 +2631,15 @@ wLastOBP0:: db
 wLastOBP1:: db
 wdef4:: db
 wBGPPalsBuffer:: ds NUM_ACTIVE_PALS + 1 * PALETTE_SIZE
+
+IF DEF(_DEBUG)
+SECTION "Debug Atlas", WRAM0
+
+wDebugAtlasRequest:: db
+wDebugAtlasMap:: db
+wDebugAtlasX:: db
+wDebugAtlasY:: db
+ENDC
 
 SECTION "Stack", WRAM0
 
