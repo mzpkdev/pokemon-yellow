@@ -98,13 +98,13 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
     # Unlike ordinary evolution, hatching cannot be cancelled with B.
     emulator.press("b", wait_frames=10)
     assert emulator.read("wForceEvolution") != 0
-    assert emulator.read("wEvoCancelled") == 0
     for _ in range(1800):
         if emulator.read("wForceEvolution") == 0:
             break
         emulator.tick()
     else:
         raise AssertionError("Egg hatch animation did not finish")
+    assert emulator.read("wEvoCancelled") == 0
 
     # The result remains on screen until the player acknowledges it.
     before = (emulator.read("wXCoord"), emulator.read("wYCoord"))
