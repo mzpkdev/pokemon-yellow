@@ -32,15 +32,16 @@ def _start_debug_game(emulator: Emulator) -> None:
     emulator.pyboy.send_input(WindowEvent.RELEASE_BUTTON_SELECT)
     emulator.tick(5)
     emulator.press("down", wait_frames=5)
-    emulator.press("a")
+    emulator.press("a", wait_frames=30)
     emulator.advance_until(
         lambda: (
             emulator.read("wCurMap") == PEWTER_CITY
             and emulator.read("wPartyCount") == 2
+            and emulator.read("wStatusFlags6") & 1
         ),
         button="a",
-        max_presses=10,
-        description="debug Pewter City game",
+        max_presses=30,
+        description="playable debug Pewter City game",
     )
     emulator.tick(300)
 
@@ -53,22 +54,20 @@ def _walk_one_step(emulator: Emulator, preferred_button: str | None) -> str:
         "down": "up",
     }
     buttons = (
-        [preferred_button] * 3
+        [preferred_button] * 3 + ["down", "left", "right", "up"] * 3
         if preferred_button is not None
         else ["down", "left", "right", "up"] * 3
     )
     for button in buttons:
         coordinate = "wXCoord" if button in ("left", "right") else "wYCoord"
         before = emulator.read(coordinate)
-        emulator.pyboy.button(button, delay=2)
-        for _ in range(120):
-            emulator.tick()
-            if emulator.read(coordinate) != before:
-                return opposites[button]
+        emulator.press(button, wait_frames=40)
+        if emulator.read(coordinate) != before:
+            return opposites[button]
     raise AssertionError("Could not take a player-controlled overworld step")
 
 
-def test_debug_party_contains_initialized_pichu_egg(emulator: Emulator) -> None:
+def test_debug_party_egg_hatches_after_16_counted_steps(emulator: Emulator) -> None:
     _start_debug_game(emulator)
 
     party_species = emulator.symbols["wPartySpecies"]
@@ -82,6 +81,46 @@ def test_debug_party_contains_initialized_pichu_egg(emulator: Emulator) -> None:
     )
     nickname = emulator.symbols["wPartyMonNicks"] + 11
     assert bytes(emulator.pyboy.memory[nickname + i] for i in range(4)) == EGG_NICKNAME
+
+    emulator.press("b", wait_frames=20)
+    next_button = "up"
+    counted_steps = 0
+    for attempt in range(DEBUG_INCUBATION_STEPS + 8):
+        before = int.from_bytes(
+            bytes(emulator.pyboy.memory[countdown + i] for i in range(3)),
+            "big",
+        )
+        try:
+            next_button = _walk_one_step(emulator, next_button)
+        except AssertionError as error:
+            raise AssertionError(f"Failed on debug Egg movement {attempt + 1}") from error
+
+        if emulator.read("wPartyMon2") == PICHU:
+            assert before == 1
+            counted_steps += 1
+            break
+
+        after = int.from_bytes(
+            bytes(emulator.pyboy.memory[countdown + i] for i in range(3)),
+            "big",
+        )
+        assert after in (before, before - 1)
+        if after == before - 1:
+            counted_steps += 1
+    else:
+        raise AssertionError("The real debug Egg did not hatch")
+
+    for _ in range(600):
+        if emulator.read("wEggHatchPending") == 0:
+            break
+        emulator.tick()
+    assert counted_steps == DEBUG_INCUBATION_STEPS
+    assert emulator.read("wPartyMon2") == PICHU
+    assert emulator.pyboy.memory[party_species + 1] == PICHU
+    assert emulator.read("wEggHatchPending") == 0
+
+    emulator.press("a")
+    _walk_one_step(emulator, next_button)
 
 
 def _add_pichu_egg_beside_pikachu(emulator: Emulator) -> None:
