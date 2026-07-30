@@ -206,6 +206,11 @@
 	const KINGDRA            ; $C5
 	const SCIZOR             ; $C6
 	const PORYGON2           ; $C7
+	const PICHU              ; $C8
+	const CLEFFA             ; $C9
+	const IGGLYBUFF          ; $CA
+	const CROBAT             ; $CB
+	const BLISSEY            ; $CC
 
 DEF NUM_POKEMON_INDEXES EQU const_value - 1
 

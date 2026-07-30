@@ -159,3 +159,8 @@ MonPartyData:
 	db ICON_SEADRA        ; Kingdra
 	db ICON_SCYTHER       ; Scizor
 	db ICON_PORYGON       ; Porygon2
+	db ICON_PIKACHU       ; Pichu
+	db ICON_CLEFAIRY      ; Cleffa
+	db ICON_JIGGLYPUFF    ; Igglybuff
+	db ICON_GOLBAT        ; Crobat
+	db ICON_CHANSEY       ; Blissey

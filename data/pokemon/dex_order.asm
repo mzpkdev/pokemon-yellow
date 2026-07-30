@@ -199,4 +199,9 @@ PokedexOrder:
 	db DEX_KINGDRA
 	db DEX_SCIZOR
 	db DEX_PORYGON2
+	db DEX_PICHU
+	db DEX_CLEFFA
+	db DEX_IGGLYBUFF
+	db DEX_CROBAT
+	db DEX_BLISSEY
 	assert_table_length NUM_POKEMON_INDEXES

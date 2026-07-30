@@ -164,6 +164,11 @@
 	const DEX_KINGDRA    ; 158
 	const DEX_SCIZOR     ; 159
 	const DEX_PORYGON2   ; 160
+	const DEX_PICHU      ; 161
+	const DEX_CLEFFA     ; 162
+	const DEX_IGGLYBUFF  ; 163
+	const DEX_CROBAT     ; 164
+	const DEX_BLISSEY    ; 165
 
 DEF NUM_POKEMON EQU const_value - 1
 

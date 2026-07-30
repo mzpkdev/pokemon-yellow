@@ -199,6 +199,11 @@ PokedexEntryPointers:
 	dw KingdraDexEntry
 	dw ScizorDexEntry
 	dw Porygon2DexEntry
+	dw PikachuDexEntry   ; placeholder family entry
+	dw ClefairyDexEntry  ; placeholder family entry
+	dw JigglypuffDexEntry ; placeholder family entry
+	dw GolbatDexEntry    ; placeholder family entry
+	dw ChanseyDexEntry   ; placeholder family entry
 	assert_table_length NUM_POKEMON_INDEXES
 
 ; string: species name

@@ -205,4 +205,9 @@ CryData::
 	mon_cry SFX_CRY_19, $20, $20 ; Kingdra
 	mon_cry SFX_CRY_16, $00, $80 ; Scizor
 	mon_cry SFX_CRY_25, $AA, $80 ; Porygon2
+	mon_cry SFX_CRY_0F, $EE, $01 ; Pichu (Pikachu family)
+	mon_cry SFX_CRY_19, $CC, $01 ; Cleffa (Clefairy family)
+	mon_cry SFX_CRY_0E, $FF, $35 ; Igglybuff (Jigglypuff family)
+	mon_cry SFX_CRY_1D, $FA, $80 ; Crobat (Golbat family)
+	mon_cry SFX_CRY_14, $0A, $C0 ; Blissey (Chansey family)
 	assert_table_length NUM_POKEMON_INDEXES

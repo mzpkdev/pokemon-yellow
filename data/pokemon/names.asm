@@ -199,4 +199,9 @@ MonsterNames::
 	db "KINGDRA@@@"
 	db "SCIZOR@@@@"
 	db "PORYGON2@@"
+	db "PICHU@@@@@"
+	db "CLEFFA@@@@"
+	db "IGGLYBUFF@"
+	db "CROBAT@@@@"
+	db "BLISSEY@@@"
 	assert_table_length NUM_POKEMON_INDEXES

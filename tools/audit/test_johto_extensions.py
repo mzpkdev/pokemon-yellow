@@ -18,6 +18,14 @@ NEW_SPECIES = (
     "PORYGON2",
 )
 
+NEW_BOND_SPECIES = (
+    "PICHU",
+    "CLEFFA",
+    "IGGLYBUFF",
+    "CROBAT",
+    "BLISSEY",
+)
+
 
 def read(path: str) -> str:
     return (ROOT / path).read_text(encoding="utf-8")
@@ -42,9 +50,13 @@ class JohtoExtensionTests(unittest.TestCase):
             r"(?m)^\s*const\s+(DEX_[A-Z0-9_]+)\b",
             read("constants/pokedex_constants.asm"),
         )
-        self.assertEqual(160, len(constants))
+        self.assertEqual(165, len(constants))
         self.assertEqual(
-            ["DEX_MEW", *(f"DEX_{species}" for species in NEW_SPECIES)],
+            [
+                "DEX_MEW",
+                *(f"DEX_{species}" for species in NEW_SPECIES),
+                *(f"DEX_{species}" for species in NEW_BOND_SPECIES),
+            ],
             constants[150:],
         )
 
@@ -98,7 +110,7 @@ class JohtoExtensionTests(unittest.TestCase):
             r"(?s)wPokedexOwned::\s+flag_array\s+NUM_POKEMON\s+"
             r"wPokedexOwnedEnd::\s+"
             r"wPokedexSeen::\s+flag_array\s+NUM_POKEMON\s+"
-            r"wPokedexSeenEnd::.*?\n\s*ds\s+18\b",
+            r"wPokedexSeenEnd::.*?\n\s*ds\s+16\b",
         )
 
     def test_babies_are_not_placed_in_the_world(self) -> None:

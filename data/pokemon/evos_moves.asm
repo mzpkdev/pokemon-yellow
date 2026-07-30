@@ -3,6 +3,7 @@
 ;    * db EVOLVE_LEVEL, level, species
 ;    * db EVOLVE_ITEM, used item, min level (1), species
 ;    * db EVOLVE_TRADE, min level (1), species
+;    * db EVOLVE_BOND, Pikachu happiness threshold, species
 ; - db 0 ; no more evolutions
 ; - Learnset (in increasing level order):
 ;    * db level, move
@@ -209,6 +210,11 @@ EvosMovesPointerTable:
 	dw KingdraEvosMoves
 	dw ScizorEvosMoves
 	dw Porygon2EvosMoves
+	dw PichuEvosMoves
+	dw CleffaEvosMoves
+	dw IgglybuffEvosMoves
+	dw CrobatEvosMoves
+	dw BlisseyEvosMoves
 	assert_table_length NUM_POKEMON_INDEXES
 
 RhydonEvosMoves:
@@ -2821,3 +2827,23 @@ Porygon2EvosMoves:
 	db 40, BARRIER
 	db 50, HYPER_BEAM
 	db 0
+
+PichuEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset
+
+CleffaEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset
+
+IgglybuffEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset
+
+CrobatEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset
+
+BlisseyEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset

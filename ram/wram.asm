@@ -1985,9 +1985,9 @@ wPokedexOwnedEnd::
 wPokedexSeen:: flag_array NUM_POKEMON
 wPokedexSeenEnd::
 
-	; The expanded Pokédex flags consume two bytes of this reserved area.
+	; The expanded Pokédex flags consume four bytes of this reserved area.
 	; Keep all following saved WRAM addresses stable for existing save files.
-	ds 18
+	ds 16
 
 UNION
 

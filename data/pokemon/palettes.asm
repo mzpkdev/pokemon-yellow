@@ -161,6 +161,11 @@ MonsterPalettes:
 	db PAL_SEADRA     ; Kingdra
 	db PAL_SCYTHER    ; Scizor
 	db PAL_PORYGON    ; Porygon2
+	db PAL_PIKACHU    ; Pichu
+	db PAL_CLEFAIRY   ; Cleffa
+	db PAL_JIGGLYPUFF ; Igglybuff
+	db PAL_GOLBAT     ; Crobat
+	db PAL_CHANSEY    ; Blissey
 	assert_table_length NUM_POKEMON + 1
 
 TrainerPalettes:
