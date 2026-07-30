@@ -53,20 +53,23 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
         for column in range(7)
     )
 
-    # Unlike ordinary evolution, hatching cannot be cancelled with B. Keep
-    # pressing through the cry lead-in and the actual cancellation window.
-    for press_index in range(300):
+    # Unlike ordinary evolution, hatching cannot be cancelled with B. Exercise
+    # the cancellation window, then release B before the result prompt appears.
+    for press_index in range(30):
+        assert emulator.read("wForceEvolution") != 0
+        emulator.press("b", wait_frames=5)
+
+    for animation_frame in range(900):
         if emulator.read("wForceEvolution") == 0:
             break
-        emulator.press("b", wait_frames=5)
-        if (press_index + 1) % 15 == 0:
-            elapsed_seconds = 3 + (press_index + 1) // 15 * 2
-            emulator.save_screenshot(
-                f"hatch-animation-{elapsed_seconds:02d}s.png"
-            )
+        emulator.tick()
+        if (animation_frame + 1) % 120 == 0:
+            elapsed_seconds = 6 + (animation_frame + 1) // 60
+            emulator.save_screenshot(f"hatch-animation-{elapsed_seconds:02d}s.png")
     else:
         raise AssertionError("Egg hatch animation did not finish")
     assert emulator.read("wEvoCancelled") == 0
+    emulator.tick(90)
     emulator.save_screenshot("hatch-result.png")
 
     # The result remains on screen until the player acknowledges it.

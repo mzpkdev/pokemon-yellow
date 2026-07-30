@@ -446,6 +446,9 @@ HandlePendingEggHatch:
 	callfar EvolveMon
 	xor a
 	ld [wForceEvolution], a
+	hlcoord 0, 12
+	lb bc, 4, 18
+	call TextBoxBorder
 	ld hl, EggHatchedText
 	rst _PrintText
 	call GBPalWhiteOutWithDelay3
