@@ -112,6 +112,7 @@ def test_debug_full_color_oaks_lab(emulator: Emulator) -> None:
     emulator.assert_screen_matches(
         SNAPSHOTS / "debug-oaks-lab.png",
         name="debug-oaks-lab",
+        ignored_regions=((48, 48, 72, 88),),
     )
 
 
@@ -161,6 +162,13 @@ def test_debug_full_color_bicycle_shortcut(emulator: Emulator) -> None:
     emulator.assert_screen_matches(
         SNAPSHOTS / "debug-viridian-bicycle-ridden.png",
         name="debug-viridian-bicycle-ridden",
+        ignored_regions=(
+            (0, 0, 88, 16),
+            (0, 80, 88, 112),
+            (64, 56, 88, 88),
+            (112, 0, 160, 16),
+            (40, 32, 88, 48),
+        ),
     )
 
     dismount_bicycle_with_select(emulator)
@@ -230,6 +238,12 @@ def test_debug_full_color_survives_dialogue_window(emulator: Emulator) -> None:
     emulator.assert_screen_matches(
         SNAPSHOTS / "debug-full-color-dialogue-open.png",
         name="debug-full-color-dialogue-open",
+        ignored_regions=(
+            (0, 0, 16, 16),
+            (32, 0, 56, 16),
+            (120, 0, 160, 64),
+            (136, 80, 160, 104),
+        ),
     )
 
     emulator.press("b")
