@@ -162,13 +162,3 @@ jobs:
           name: rom-test-failures
           path: test-results/
           if-no-files-found: ignore
-
-      - name: Upload indoor map atlas
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: indoor-map-atlas
-          path: |
-            test-results/**/atlas-*.png
-            test-results/**/town-*.png
-          if-no-files-found: ignore
