@@ -150,7 +150,10 @@ jobs:
         env:
           ROM_TEST_ROM: release/pokemon-yellow-debug.gbc
           ROM_TEST_SYMBOLS: release/pokemon-yellow-debug.sym
-        run: python -m pytest tools/rom_tests/tests/e2e
+        run: >-
+          python -m pytest
+          tools/rom_tests/tests/e2e
+          tools/rom_tests/tests/test_sightings.py
 
       - name: Upload end-to-end test failures
         if: failure()

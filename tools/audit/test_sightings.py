@@ -404,25 +404,128 @@ class WildSightingFrameworkTests(unittest.TestCase):
             "dpikaemotion PikachuEmotion27",
         )
 
-    def test_only_eligible_steps_advance_the_interval_and_rng_preserves_zone(self) -> None:
+    def test_travel_charges_before_activation_eligibility_checks(self) -> None:
         sightings = _source("engine/events/wild_sightings.asm")
         update_start = sightings.index("UpdateWildSightingOnStep::")
-        update_end = sightings.index("\nValidateWildSightingZone::", update_start)
+        update_end = sightings.index(
+            "\nGetCurrentWildSightingStepMethod:",
+            update_start,
+        )
         update = sightings[update_start:update_end]
 
-        eligibility = update.index("call GetCurrentWildSightingZoneAndProfile")
+        cooldown = update.index("ld hl, wSightingCooldown")
+        pokeballs = update.index("CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK")
+        profile = update.index("call GetCurrentWildSightingZoneAndProfile")
         terrain = update.index("call GetCurrentWildSightingStepMethod")
-        counter = update.index("inc [hl]")
-        self.assertLess(eligibility, counter)
-        self.assertLess(terrain, counter)
+        random_roll = update.index("call Random")
+
+        self.assertLess(cooldown, pokeballs)
+        self.assertLess(pokeballs, profile)
+        self.assertLess(profile, terrain)
+        self.assertLess(terrain, random_roll)
+        self.assertIn(
+            "ld hl, wSightingCooldown\n"
+            "\tld a, [hl]\n"
+            "\tand a\n"
+            "\tjr z, .charged\n"
+            "\tdec [hl]\n"
+            "\tret",
+            update,
+        )
+        self.assertIn(
+            "CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK\n\tret z",
+            update,
+        )
+        self.assertNotIn("wRepelRemainingSteps", update)
+
+    def test_charged_activation_roll_is_persistent_and_low_probability(
+        self,
+    ) -> None:
+        sightings = _source("engine/events/wild_sightings.asm")
+        constants = _source("constants/sighting_constants.asm")
+        update_start = sightings.index("UpdateWildSightingOnStep::")
+        update_end = sightings.index(
+            "\nGetCurrentWildSightingStepMethod:",
+            update_start,
+        )
+        update = sightings[update_start:update_end]
+        random_block = re.search(
+            r"(?ms)^\s*IF !DEF\(_DEBUG\)\s*$"
+            r"(.*?)"
+            r"^\s*ENDC\s*$",
+            update,
+        )
+
+        self.assertIsNotNone(random_block)
+        self.assertIn(
+            "call Random\n"
+            "\t\tcp SIGHTING_TRIGGER_CHANCE\n"
+            "\t\tpop bc\n"
+            "\t\tret nc",
+            random_block.group(1),
+        )
+        # A failed roll returns directly while cooldown remains zero. The
+        # compatibility byte from the old interval system must not participate.
+        self.assertNotIn("wSightingCooldown", random_block.group(1))
+        self.assertNotIn("wSightingStepCounter", update)
+        self.assertNotIn("SIGHTING_STEP_INTERVAL", update)
+        self.assertNotIn("SIGHTING_STEP_INTERVAL", constants)
+        self.assertRegex(
+            constants,
+            r"(?m)^DEF SIGHTING_TRIGGER_CHANCE\s+EQU \$04(?:\s|;|$)",
+        )
+        self.assertRegex(
+            constants,
+            r"(?m)^DEF SIGHTING_COOLDOWN_STEPS\s+EQU \$ff(?:\s|;|$)",
+        )
+
+    def test_activation_retains_encounter_terrain_and_profile_method_checks(
+        self,
+    ) -> None:
+        sightings = _source("engine/events/wild_sightings.asm")
+        update_start = sightings.index("UpdateWildSightingOnStep::")
+        update_end = sightings.index(
+            "\nGetCurrentWildSightingStepMethod:",
+            update_start,
+        )
+        update = sightings[update_start:update_end]
         terrain_start = sightings.index("GetCurrentWildSightingStepMethod:")
         terrain_end = sightings.index("\nValidateWildSightingZone::", terrain_start)
         terrain_source = sightings[terrain_start:terrain_end]
+
+        self.assertIn("call GetCurrentWildSightingZoneAndProfile", update)
+        self.assertIn("call GetCurrentWildSightingStepMethod", update)
+        self.assertIn("call GetWildSightingProfile", update)
+        self.assertIn("call GetWildSightingTable", update)
         self.assertIn("callfar IsPlayerStandingOnDoorTileOrWarpTile", terrain_source)
         self.assertIn("callfar IsPlayerJustOutsideMap", terrain_source)
+        self.assertIn("ld a, SIGHTING_METHOD_LAND\n\tret z", terrain_source)
+        self.assertIn("cp $14\n\tld a, SIGHTING_METHOD_WATER", terrain_source)
+        self.assertIn("cp FIRST_INDOOR_MAP", terrain_source)
+        self.assertIn("cp FOREST\n\tjr z, .ineligible", terrain_source)
+
+    def test_clearing_or_abandoning_an_active_sighting_starts_full_cooldown(
+        self,
+    ) -> None:
+        sightings = _source("engine/events/wild_sightings.asm")
+        validate_start = sightings.index("ValidateWildSightingZone::")
+        validate_end = sightings.index(
+            "\nTryReplaceWithWildSighting::",
+            validate_start,
+        )
+        clear_start = sightings.index("ClearWildSighting::")
+        clear_end = sightings.index(
+            "\nQueueWildSightingPikachuHint:",
+            clear_start,
+        )
+        validate = sightings[validate_start:validate_end]
+        clear = sightings[clear_start:clear_end]
+
+        self.assertIn("jr nz, ClearWildSighting", validate)
         self.assertIn(
-            "push bc\n\t\tcall Random\n\t\tcp SIGHTING_TRIGGER_CHANCE\n\t\tpop bc",
-            update,
+            "ld a, SIGHTING_COOLDOWN_STEPS\n"
+            "\tld [wSightingCooldown], a",
+            clear,
         )
 
     def test_warp_and_connected_map_entries_validate_the_active_zone(self) -> None:
