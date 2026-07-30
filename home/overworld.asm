@@ -452,6 +452,10 @@ HandlePendingEggHatch:
 	ld b, $9c
 	call CopyScreenTileBufferToVRAM
 	call LoadFontTilePatterns
+	xor a
+	ldh [hAutoBGTransferDest], a
+	ld a, $9c
+	ldh [hAutoBGTransferDest + 1], a
 	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	xor a
