@@ -313,6 +313,7 @@ OverworldLoopLessDelay::
 	jp nz, CheckMapConnections ; it seems like this check will never succeed (the other place where CheckMapConnections is run works)
 ; walking animation finished
 	call StepCountCheck
+	call HandlePendingEggHatch
 	CheckEvent EVENT_IN_SAFARI_ZONE
 	jr z, .notSafariZone
 	farcall SafariZoneCheckSteps
@@ -386,6 +387,35 @@ StepCountCheck::
 	res BIT_WILD_ENCOUNTER_COOLDOWN, [hl] ; indicate that the player has stepped thrice since the last battle
 .doneStepCounting
 	ret
+
+HandlePendingEggHatch:
+	ld a, [wEggHatchPending]
+	and a
+	ret z
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_MOVEMENT_STATE, a
+	ret nz
+	ld a, [wIsInBattle]
+	and a
+	ret nz
+	ld a, [wLinkState]
+	and a
+	ret nz
+	ld hl, EggHatchingText
+	rst _PrintText
+	farcall HatchPartyEgg
+	ret nc
+	ld hl, EggHatchedText
+	rst _PrintText
+	ret
+
+EggHatchingText:
+	text_far _EggHatchingText
+	text_end
+
+EggHatchedText:
+	text_far _EggHatchedText
+	text_end
 
 AllPokemonFainted::
 	ld a, $ff

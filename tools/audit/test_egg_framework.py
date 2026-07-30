@@ -44,6 +44,45 @@ class EggFrameworkTests(unittest.TestCase):
             ),
         )
 
+    def test_pending_hatch_runs_after_a_completed_step(self) -> None:
+        overworld = read("home/overworld.asm")
+        completed_step = overworld.split("; walking animation finished", 1)[1]
+        self.assertLess(
+            completed_step.index("call StepCountCheck"),
+            completed_step.index("call HandlePendingEggHatch"),
+        )
+        self.assertLess(
+            completed_step.index("call HandlePendingEggHatch"),
+            completed_step.index("SafariZoneCheckSteps"),
+        )
+
+        handler = overworld.split("HandlePendingEggHatch:", 1)[1].split(
+            "AllPokemonFainted::", 1
+        )[0]
+        for guard in (
+            "wEggHatchPending",
+            "BIT_SCRIPTED_MOVEMENT_STATE",
+            "wIsInBattle",
+            "wLinkState",
+        ):
+            with self.subTest(guard=guard):
+                self.assertIn(guard, handler)
+        self.assertIn("farcall HatchPartyEgg", handler)
+        self.assertLess(
+            handler.index("farcall HatchPartyEgg"),
+            handler.index("ld hl, EggHatchedText"),
+        )
+        self.assertIn("ret nc", handler)
+
+    def test_hatch_event_announces_the_result_name(self) -> None:
+        text = read("data/text/text_3.asm")
+        hatch_text = text.split("_EggHatchingText::", 1)[1].split(
+            "_Colosseum3MonsText::", 1
+        )[0]
+        self.assertIn('text "Huh? The EGG is"', hatch_text)
+        self.assertIn("text_ram wNameBuffer", hatch_text)
+        self.assertIn('line "from the EGG!"', hatch_text)
+
     def test_hatching_reinitializes_runtime_data_and_registers_target(self) -> None:
         hatch = read("engine/pokemon/eggs.asm").split("HatchPartyEgg::", 1)[1]
         for token in (
