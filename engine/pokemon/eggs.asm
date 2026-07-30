@@ -16,7 +16,7 @@ CreatePartyEgg::
 	; A nonzero high nybble suppresses naming while still selecting player data.
 	ld a, $10
 	ld [wMonDataLocation], a
-	predef AddPartyMon
+	predef _AddPartyMon
 	jr nc, .partyFull
 	pop af
 	ld [wMonDataLocation], a
@@ -183,15 +183,15 @@ HatchPartyEgg::
 	ld c, a
 	ld a, [wPartyCount]
 	cp c
-	jr z, .invalid
-	jr c, .invalid
+	jp z, .invalid
+	jp c, .invalid
 	ld a, c
 	ld hl, wPartyMon1
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
 	ld a, [hl]
 	cp EGG
-	jr nz, .invalid
+	jp nz, .invalid
 	push hl
 	ld de, MON_EXP
 	add hl, de
@@ -200,16 +200,16 @@ HatchPartyEgg::
 	inc hl
 	or [hl]
 	pop hl
-	jr nz, .invalid
+	jp nz, .invalid
 
 	push hl
 	ld de, MON_CATCH_RATE
 	add hl, de
 	ld a, [hl]
 	and a
-	jr z, .invalidPop
+	jp z, .invalidPop
 	cp EGG
-	jr z, .invalidPop
+	jp z, .invalidPop
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld [wPokedexNum], a
