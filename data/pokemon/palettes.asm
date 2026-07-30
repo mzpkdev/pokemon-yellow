@@ -159,7 +159,7 @@ MonsterPalettes:
 	db PAL_SLOWBRO    ; Slowking
 	db PAL_ONIX       ; Steelix
 	db PAL_SEADRA     ; Kingdra
-	db PAL_SCYTHER    ; Scizor
+	db PAL_FLAREON    ; Scizor
 	db PAL_PORYGON    ; Porygon2
 	db PAL_PIKACHU    ; Pichu
 	db PAL_CLEFAIRY   ; Cleffa

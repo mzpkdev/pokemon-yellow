@@ -269,6 +269,10 @@ class JohtoExtensionTests(unittest.TestCase):
                 self.assertEqual(b"IHDR", header[12:16])
                 self.assertEqual((48, 48), struct.unpack(">II", header[16:24]))
 
+    def test_scizor_uses_a_red_palette(self) -> None:
+        palettes = read("data/pokemon/palettes.asm")
+        self.assertIn("db PAL_FLAREON    ; Scizor", palettes)
+
     def test_expanded_dex_flags_use_the_reserved_save_space(self) -> None:
         wram = read("ram/wram.asm")
         self.assertRegex(
