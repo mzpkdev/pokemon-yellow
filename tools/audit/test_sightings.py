@@ -68,6 +68,10 @@ class WildSightingFrameworkTests(unittest.TestCase):
             "CERULEAN_CAVE_1F",
             "CERULEAN_CAVE_2F",
             "CERULEAN_CAVE_B1F",
+            "SAFARI_ZONE_CENTER",
+            "SAFARI_ZONE_EAST",
+            "SAFARI_ZONE_NORTH",
+            "SAFARI_ZONE_WEST",
         }
         wild_sources = "\n".join(
             path.read_text(encoding="utf-8")

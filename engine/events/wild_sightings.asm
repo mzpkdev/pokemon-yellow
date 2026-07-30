@@ -285,7 +285,6 @@ WildSightingProfiles:
 	sighting_profile SIGHTING_METHOD_LAND | SIGHTING_METHOD_WATER, SeafoamLandSightings, SeafoamWaterSightings
 	sighting_profile SIGHTING_METHOD_LAND, PokemonMansionSightings, NoWildSightings
 	sighting_profile SIGHTING_METHOD_LAND, DiglettsCaveSightings, NoWildSightings
-	sighting_profile SIGHTING_METHOD_LAND, SafariLandSightings, NoWildSightings
 	assert_table_length NUM_SIGHTING_PROFILES
 
 NoWildSightings:
@@ -532,14 +531,4 @@ DiglettsCaveSightings:
 	sighting_mon $d9, CUBONE
 	sighting_mon $f2, MACHOP
 	sighting_mon $ff, RHYHORN
-	db 0
-SafariLandSightings:
-	sighting_mon $32, NIDORAN_F
-	sighting_mon $65, NIDORAN_M
-	sighting_mon $8c, DODUO
-	sighting_mon $b2, PONYTA
-	sighting_mon $cc, VULPIX
-	sighting_mon $e5, DITTO
-	sighting_mon $f2, PERSIAN
-	sighting_mon $ff, ARCANINE
 	db 0
