@@ -7,8 +7,8 @@
 	db 190 ; catch rate
 	db 42 ; base exp
 
-	INCBIN "gfx/pokemon/front/pikachu.pic", 0, 1
-	dw PikachuPicFront, PikachuPicBack
+	INCBIN "gfx/pokemon/front/pichu.pic", 0, 1
+	dw PichuPicFront, PichuPicBack
 
 	db THUNDERSHOCK, CHARM, NO_MOVE, NO_MOVE
 	db GROWTH_MEDIUM_FAST
@@ -18,4 +18,4 @@
 	     MIMIC, DOUBLE_TEAM, REFLECT, BIDE, SWIFT, SKULL_BASH, REST, \
 	     THUNDER_WAVE, SUBSTITUTE, CUT, FLY, SURF, STRENGTH, FLASH
 
-	db BANK(PikachuPicFront)
+	db BANK(PichuPicFront)

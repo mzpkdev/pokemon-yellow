@@ -7,8 +7,8 @@
 	db 150 ; catch rate
 	db 39 ; base exp
 
-	INCBIN "gfx/pokemon/front/jigglypuff.pic", 0, 1
-	dw JigglypuffPicFront, JigglypuffPicBack
+	INCBIN "gfx/pokemon/front/igglybuff.pic", 0, 1
+	dw IgglybuffPicFront, IgglybuffPicBack
 
 	db SING, CHARM, NO_MOVE, NO_MOVE
 	db GROWTH_FAST
@@ -20,4 +20,4 @@
 	     SKULL_BASH, THUNDER_WAVE, PSYWAVE, TRI_ATTACK, SUBSTITUTE, STRENGTH, \
 	     FLASH
 
-	db BANK(JigglypuffPicFront)
+	db BANK(IgglybuffPicFront)

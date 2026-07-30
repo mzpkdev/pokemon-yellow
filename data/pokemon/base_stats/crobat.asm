@@ -7,8 +7,8 @@
 	db 90 ; catch rate
 	db 204 ; base exp
 
-	INCBIN "gfx/pokemon/front/golbat.pic", 0, 1
-	dw GolbatPicFront, GolbatPicBack
+	INCBIN "gfx/pokemon/front/crobat.pic", 0, 1
+	dw CrobatPicFront, CrobatPicBack
 
 	db LEECH_LIFE, SCREECH, BITE, WING_ATTACK
 	db GROWTH_MEDIUM_FAST
@@ -16,4 +16,4 @@
 	tmhm RAZOR_WIND, TOXIC, TAKE_DOWN, DOUBLE_EDGE, HYPER_BEAM, RAGE, \
 	     MEGA_DRAIN, MIMIC, DOUBLE_TEAM, BIDE, SWIFT, REST, SUBSTITUTE, FLY
 
-	db BANK(GolbatPicFront)
+	db BANK(CrobatPicFront)

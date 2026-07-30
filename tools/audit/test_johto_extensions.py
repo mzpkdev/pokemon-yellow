@@ -92,10 +92,10 @@ class JohtoExtensionTests(unittest.TestCase):
     def test_new_sprites_are_48_pixels_square(self) -> None:
         paths = [
             ROOT / "gfx/pokemon" / facing / f"{species.lower()}{suffix}.png"
-            for species in NEW_SPECIES
+            for species in (*NEW_SPECIES, *NEW_BOND_SPECIES)
             for facing, suffix in (("front", ""), ("back", "b"))
         ]
-        self.assertEqual(18, len(paths))
+        self.assertEqual(28, len(paths))
         for path in paths:
             with self.subTest(sprite=path.relative_to(ROOT).as_posix()):
                 header = path.read_bytes()[:24]

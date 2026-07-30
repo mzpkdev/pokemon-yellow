@@ -7,8 +7,8 @@
 	db 150 ; catch rate
 	db 37 ; base exp
 
-	INCBIN "gfx/pokemon/front/clefairy.pic", 0, 1
-	dw ClefairyPicFront, ClefairyPicBack
+	INCBIN "gfx/pokemon/front/cleffa.pic", 0, 1
+	dw CleffaPicFront, CleffaPicBack
 
 	db POUND, CHARM, NO_MOVE, NO_MOVE
 	db GROWTH_FAST
@@ -20,4 +20,4 @@
 	     FIRE_BLAST, SKULL_BASH, REST, THUNDER_WAVE, PSYWAVE, TRI_ATTACK, \
 	     SUBSTITUTE, STRENGTH, FLASH, FLAMETHROWER
 
-	db BANK(ClefairyPicFront)
+	db BANK(CleffaPicFront)

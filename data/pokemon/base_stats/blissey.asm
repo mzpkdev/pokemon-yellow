@@ -7,8 +7,8 @@
 	db 30 ; catch rate
 	db 255 ; base exp
 
-	INCBIN "gfx/pokemon/front/chansey.pic", 0, 1
-	dw ChanseyPicFront, ChanseyPicBack
+	INCBIN "gfx/pokemon/front/blissey.pic", 0, 1
+	dw BlisseyPicFront, BlisseyPicBack
 
 	db POUND, GROWL, SOFTBOILED, MINIMIZE
 	db GROWTH_FAST
@@ -20,4 +20,4 @@
 	     METRONOME, EGG_BOMB, FIRE_BLAST, SKULL_BASH, SOFTBOILED, PSYWAVE, \
 	     THUNDER_WAVE, TRI_ATTACK, SUBSTITUTE, STRENGTH, FLASH, FLAMETHROWER
 
-	db BANK(ChanseyPicFront)
+	db BANK(BlisseyPicFront)

@@ -547,6 +547,16 @@ ScizorPicFront::      INCBIN "gfx/pokemon/front/scizor.pic"
 ScizorPicBack::       INCBIN "gfx/pokemon/back/scizorb.pic"
 Porygon2PicFront::    INCBIN "gfx/pokemon/front/porygon2.pic"
 Porygon2PicBack::     INCBIN "gfx/pokemon/back/porygon2b.pic"
+PichuPicFront::       INCBIN "gfx/pokemon/front/pichu.pic"
+PichuPicBack::        INCBIN "gfx/pokemon/back/pichub.pic"
+CleffaPicFront::      INCBIN "gfx/pokemon/front/cleffa.pic"
+CleffaPicBack::       INCBIN "gfx/pokemon/back/cleffab.pic"
+IgglybuffPicFront::   INCBIN "gfx/pokemon/front/igglybuff.pic"
+IgglybuffPicBack::    INCBIN "gfx/pokemon/back/igglybuffb.pic"
+CrobatPicFront::      INCBIN "gfx/pokemon/front/crobat.pic"
+CrobatPicBack::       INCBIN "gfx/pokemon/back/crobatb.pic"
+BlisseyPicFront::     INCBIN "gfx/pokemon/front/blissey.pic"
+BlisseyPicBack::      INCBIN "gfx/pokemon/back/blisseyb.pic"
 
 
 SECTION "bank42", ROMX, BANK[$42]
