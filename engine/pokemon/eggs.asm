@@ -76,7 +76,7 @@ CreatePartyEgg::
 	; A nonzero high nybble suppresses naming while still selecting player data.
 	ld a, $10
 	ld [wMonDataLocation], a
-	predef _AddPartyMon
+	call AddPartyMon
 	jr nc, .partyFull
 	pop af
 	ld [wMonDataLocation], a

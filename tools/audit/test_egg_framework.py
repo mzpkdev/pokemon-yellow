@@ -14,6 +14,8 @@ class EggFrameworkTests(unittest.TestCase):
     def test_egg_metadata_uses_persistent_box_fields(self) -> None:
         eggs = read("engine/pokemon/eggs.asm")
         constructor = eggs.split("UpdatePartyEggsOnStep::", 1)[0]
+        self.assertIn("call AddPartyMon", constructor)
+        self.assertNotIn("predef _AddPartyMon", constructor)
         self.assertIn("ld hl, wPartyMon1CatchRate", constructor)
         self.assertIn("ld de, MON_EXP - MON_CATCH_RATE", constructor)
         self.assertIn("ld hl, wPartyMon1HP", constructor)
