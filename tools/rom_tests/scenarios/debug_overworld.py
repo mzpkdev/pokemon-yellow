@@ -6,6 +6,8 @@ from tools.rom_tests.scenarios.viridian_city import VIRIDIAN_CITY, walk_to_value
 
 FULL_COLOR_OVERWORLD = 1 << 2
 VIRIDIAN_POKECENTER = 0x29
+VIRIDIAN_MART = 0x2A
+VIRIDIAN_SCHOOL_HOUSE = 0x2B
 ROUTE_22 = 0x21
 
 
@@ -58,6 +60,30 @@ def enter_viridian_pokecenter(emulator: Emulator) -> None:
         VIRIDIAN_POKECENTER,
         "up",
         "Viridian Pokemon Center",
+    )
+    emulator.tick(180)
+
+
+def enter_viridian_mart(emulator: Emulator) -> None:
+    """Enter the Mart from the debug spawn without advancing its parcel script."""
+    walk_to_value(emulator, "wXCoord", 19, "left", "Viridian main path")
+    walk_to_value(emulator, "wYCoord", 20, "up", "Viridian Mart row")
+    walk_to_value(emulator, "wXCoord", 29, "right", "Viridian Mart entrance")
+    walk_to_value(emulator, "wCurMap", VIRIDIAN_MART, "up", "Viridian Mart")
+    emulator.tick(180)
+
+
+def enter_viridian_school(emulator: Emulator) -> None:
+    """Enter a representative small house from the debug spawn."""
+    walk_to_value(emulator, "wXCoord", 19, "left", "Viridian main path")
+    walk_to_value(emulator, "wYCoord", 16, "up", "Viridian school row")
+    walk_to_value(emulator, "wXCoord", 21, "right", "Viridian school column")
+    walk_to_value(
+        emulator,
+        "wCurMap",
+        VIRIDIAN_SCHOOL_HOUSE,
+        "up",
+        "Viridian School",
     )
     emulator.tick(180)
 

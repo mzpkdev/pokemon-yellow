@@ -5,13 +5,20 @@ from pathlib import Path
 from tools.rom_tests.emulator import Emulator
 from tools.rom_tests.scenarios.debug_overworld import (
     dismount_bicycle_with_select,
+    enter_viridian_mart,
     enter_viridian_pokecenter,
+    enter_viridian_school,
     exercise_viridian_scrolling,
     mount_bicycle_with_select,
     open_viridian_pokecenter_sign,
     ride_bicycle_in_viridian,
     start_debug_game_in_viridian,
     walk_west_to_route_22,
+)
+from tools.rom_tests.scenarios.debug_indoor_maps import (
+    enter_mt_moon_with_debug_fly,
+    enter_oaks_lab_before_starter,
+    enter_reds_house_first_floor,
 )
 
 SNAPSHOTS = Path(__file__).resolve().parents[2] / "snapshots"
@@ -37,6 +44,48 @@ def test_debug_full_color_pokecenter(emulator: Emulator) -> None:
     emulator.assert_screen_matches(
         SNAPSHOTS / "debug-viridian-pokecenter.png",
         name="debug-viridian-pokecenter",
+    )
+
+
+def test_debug_full_color_representative_indoor_maps(emulator: Emulator) -> None:
+    start_debug_game_in_viridian(emulator)
+    enter_viridian_mart(emulator)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-viridian-mart.png",
+        name="debug-viridian-mart",
+    )
+
+
+def test_debug_full_color_generic_house(emulator: Emulator) -> None:
+    start_debug_game_in_viridian(emulator)
+    enter_viridian_school(emulator)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-viridian-school.png",
+        name="debug-viridian-school",
+    )
+
+
+def test_debug_full_color_reds_house(emulator: Emulator) -> None:
+    enter_reds_house_first_floor(emulator)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-reds-house-1f.png",
+        name="debug-reds-house-1f",
+    )
+
+
+def test_debug_full_color_oaks_lab(emulator: Emulator) -> None:
+    enter_oaks_lab_before_starter(emulator)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-oaks-lab.png",
+        name="debug-oaks-lab",
+    )
+
+
+def test_debug_full_color_mt_moon(emulator: Emulator) -> None:
+    enter_mt_moon_with_debug_fly(emulator)
+    emulator.assert_screen_matches(
+        SNAPSHOTS / "debug-mt-moon-1f.png",
+        name="debug-mt-moon-1f",
     )
 
 
