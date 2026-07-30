@@ -55,8 +55,6 @@ IF DEF(_DEBUG)
 	ld bc, 16
 	farcall CreatePartyEgg
 
-	call SetDebugNewGameBox
-
 	; Pikachu gets 3 HM moves.
 	ld a, FLY
 	ld hl, wPartyMon1Moves

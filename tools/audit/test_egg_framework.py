@@ -108,7 +108,11 @@ class EggFrameworkTests(unittest.TestCase):
         self.assertIn("db STARTER_PIKACHU, 5", debug_party)
         self.assertIn("ld bc, 16", debug_party)
         self.assertIn("farcall CreatePartyEgg", debug_party)
-        self.assertIn("farcall SetDebugNewGameBox", debug_party)
+        self.assertEqual(debug_party.count("SetDebugNewGameBox"), 1)
+        self.assertLess(
+            debug_party.index("farcall SetDebugNewGameBox"),
+            debug_party.index("call SetDebugNewGameParty"),
+        )
         self.assertIn("ld a, 15", eggs)
         self.assertIn("ld a, PARTY_TO_BOX", eggs)
         self.assertNotIn("\tdb EGG", box_table)
