@@ -1693,6 +1693,8 @@ PrepareFullColorRowOrColumn:
 	and %1100
 	cp 1 << BIT_FULL_COLOR_OVERWORLD
 	jr nz, .done
+	pop af
+	push af
 	farcall DrawFullColorRowOrColumn
 .done
 	pop af
