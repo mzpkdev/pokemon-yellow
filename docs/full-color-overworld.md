@@ -36,5 +36,6 @@ through the original palette path.
 
 The debug ROM's hidden title-screen `SELECT` menu starts `DEBUG` games outside
 the Viridian Pokemon Center with FULL enabled. PyBoy coverage captures the
-initial outdoor view, horizontal and vertical scrolling, and the Pokemon Center
-interior.
+initial outdoor view, horizontal and vertical scrolling, menu and dialogue
+restoration, bicycle transitions, and representative interiors: the Pokemon
+Center, Mart, Viridian School, Red's house, Oak's Lab, and Mt. Moon.

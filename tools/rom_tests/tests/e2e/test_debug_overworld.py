@@ -47,7 +47,7 @@ def test_debug_full_color_pokecenter(emulator: Emulator) -> None:
     )
 
 
-def test_debug_full_color_representative_indoor_maps(emulator: Emulator) -> None:
+def test_debug_full_color_viridian_mart(emulator: Emulator) -> None:
     start_debug_game_in_viridian(emulator)
     enter_viridian_mart(emulator)
     emulator.assert_screen_matches(
