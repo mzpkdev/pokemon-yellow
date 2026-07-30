@@ -2,11 +2,11 @@
 
 The saved `OVERWORLD` option controls only map rendering:
 
-- `ORIGINAL` keeps Pokemon Yellow's existing whole-screen and tinted palettes.
-- `FULL` enables static, per-tile daytime CGB colors on supported overworld
+- `CLASSIC` keeps Pokemon Yellow's existing whole-screen and tinted palettes.
+- `COLOR` enables static, per-tile daytime CGB colors on supported overworld
   tilesets after the next map load or transition.
 
-`ORIGINAL` is the default for a new save. The setting is stored in an unused
+`CLASSIC` is the default for a new save. The setting is stored in an unused
 bit of `wOptions2`, so it follows the existing save path without adding SRAM or
 a migration layer. Existing saves are not supported.
 
@@ -30,12 +30,12 @@ their current palette behavior. DMG remains monochrome.
 
 Initial map attributes and scheduled scrolling rows or columns wait for a
 VRAM-accessible LCD mode. No full-color work is added to the VBlank handler.
-The existing five-palette tint refresh is suppressed only while FULL is active
+The existing five-palette tint refresh is suppressed only while `COLOR` is active
 with the overworld palette command; battle and non-overworld commands continue
 through the original palette path.
 
 The debug ROM's hidden title-screen `SELECT` menu starts `DEBUG` games outside
-the Viridian Pokemon Center with FULL enabled. PyBoy coverage captures the
+the Viridian Pokemon Center with `COLOR` enabled. PyBoy coverage captures the
 initial outdoor view, horizontal and vertical scrolling, menu and dialogue
 restoration, bicycle transitions, and representative interiors: the Pokemon
 Center, Mart, Viridian School, Red's house, Oak's Lab, and Mt. Moon.

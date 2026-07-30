@@ -470,10 +470,10 @@ OverworldColorStrings:
 	dw OverworldFullText
 
 OverworldOriginalText:
-	db "ORIGINAL@"
+	db "CLASSIC @"
 
 OverworldFullText:
-	db "FULL    @"
+	db "COLOR   @"
 
 OptionsMenu_Cancel:
 	ldh a, [hJoy5]
