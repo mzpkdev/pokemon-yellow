@@ -72,7 +72,7 @@ IF DEF(_DEBUG)
 	ld hl, wOptions2
 	set BIT_FULL_COLOR_OVERWORLD, [hl]
 	ld a, VIRIDIAN_CITY
-	ld [wLastMap], a
+	ld [wDestinationMap], a
 	ld hl, StartNewGameDebug
 	ret
 

@@ -733,6 +733,8 @@ CheckMapConnections::
 ; x#SPRITESTATEDATA2_IMAGEBASEOFFSET without loading any tile patterns.
 	call InitMapSprites
 	call LoadTileBlockMap
+	ld de, vBGMap0
+	farcall CopyFullColorMapViewAttributes
 	jp OverworldLoopLessDelay
 
 .didNotEnterConnectedMap

@@ -7,6 +7,7 @@ DisplayStartMenu::
 	rst _PlaySound
 
 RedisplayStartMenu::
+	call RunDefaultPaletteCommand
 	farcall DrawStartMenu
 RedisplayStartMenu_DoNotDrawStartMenu::
 	farcall PrintSafariZoneSteps ; print Safari Zone info, if in Safari Zone

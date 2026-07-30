@@ -133,6 +133,10 @@ CloseTextDisplay::
 	bit BIT_FLY_WARP, a
 	call z, LoadPlayerSpriteGraphics
 	call LoadCurrentMapView
+	ld b, SET_PAL_OVERWORLD
+	call RunPaletteCommand
+	ld de, vBGMap0
+	farcall CopyFullColorMapViewAttributes
 	pop af
 	call BankswitchCommon
 	jp UpdateSprites
