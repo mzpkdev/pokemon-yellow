@@ -217,6 +217,15 @@ HatchPartyEgg::
 	pop hl
 	ld a, [wCurSpecies]
 	ld [hl], a
+	push hl
+	ld a, [wEggHatchPartyIndex]
+	ld c, a
+	ld b, 0
+	ld hl, wPartySpecies
+	add hl, bc
+	ld a, [wCurSpecies]
+	ld [hl], a
+	pop hl
 
 	push hl
 	ld de, MON_BOX_LEVEL
@@ -252,7 +261,20 @@ HatchPartyEgg::
 	ld [hl], a
 	pop hl
 
-	; Generate PP from the newly copied moves.
+	; Add every natural move available at the shared hatch level.
+	push hl
+	ld de, MON_MOVES
+	add hl, de
+	ld d, h
+	ld e, l
+	xor a
+	ld [wLearningMovesFromDayCare], a
+	ld a, EGG_HATCH_LEVEL
+	ld [wCurEnemyLevel], a
+	predef WriteMonMoves
+	pop hl
+
+	; Generate PP from the completed move list.
 	push hl
 	ld de, MON_MOVES
 	add hl, de

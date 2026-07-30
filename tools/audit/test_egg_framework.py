@@ -51,6 +51,8 @@ class EggFrameworkTests(unittest.TestCase):
             "wMonHType2",
             "wMonHCatchRate",
             "wMonHMoves",
+            "wPartySpecies",
+            "WriteMonMoves",
             "CalcExperience",
             "AddPartyMon_WriteMovePP",
             "CalcStats",
@@ -59,6 +61,14 @@ class EggFrameworkTests(unittest.TestCase):
         ):
             with self.subTest(token=token):
                 self.assertIn(token, hatch)
+
+    def test_transient_pending_state_is_cleared(self) -> None:
+        for path in (
+            "engine/overworld/clear_variables.asm",
+            "engine/movie/oak_speech/init_player_data.asm",
+        ):
+            with self.subTest(path=path):
+                self.assertIn("ld [wEggHatchPending], a", read(path))
 
     def test_pending_state_does_not_expand_wram_layout(self) -> None:
         wram = read("ram/wram.asm")

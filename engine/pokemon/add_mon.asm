@@ -512,6 +512,9 @@ _MoveMon::
 	jr z, .done
 	cp PARTY_TO_DAYCARE
 	jr z, .done
+	ld a, [hl]
+	cp EGG
+	jr z, .initializeEggPartyData
 	push hl
 	srl a
 	add $2
@@ -530,6 +533,13 @@ _MoveMon::
 	add hl, bc
 	ld b, $1
 	call CalcStats
+	jr .done
+.initializeEggPartyData
+	ld bc, MON_LEVEL
+	add hl, bc
+	xor a
+	ld bc, PARTYMON_STRUCT_LENGTH - BOXMON_STRUCT_LENGTH
+	call FillMemory
 .done
 	and a
 	ret

@@ -37,6 +37,18 @@ class EggGuardTests(unittest.TestCase):
         set_owned = give_mon[give_mon.index("SetPokedexOwnedFlag:") :]
         self.assertRegex(set_owned, r"cp EGG\s+jr z, \.skipPokedex")
 
+    def test_box_withdrawal_keeps_eggs_unusable(self) -> None:
+        add_mon = read("engine/pokemon/add_mon.asm")
+        move_mon = add_mon[add_mon.index("_MoveMon::") :]
+        guard = move_mon.index("cp EGG")
+        initialize = move_mon.index("\n.initializeEggPartyData")
+        level_calc = move_mon.index("CalcLevelFromExperience")
+        self.assertLess(guard, level_calc)
+        self.assertLess(level_calc, initialize)
+        egg_path = move_mon[initialize : move_mon.index(".done", initialize)]
+        self.assertIn("PARTYMON_STRUCT_LENGTH - BOXMON_STRUCT_LENGTH", egg_path)
+        self.assertIn("call FillMemory", egg_path)
+
     def test_self_trade_rejects_eggs_before_trade_setup(self) -> None:
         trades = read("engine/events/in_game_trades.asm")
         selection = trades[
