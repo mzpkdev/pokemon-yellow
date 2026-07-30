@@ -61,12 +61,11 @@ DEF NUM_SIGHTING_ZONES EQU const_value
 	const SIGHTING_ACTIVE_F
 	const SIGHTING_BATTLE_F
 
-; Check often enough for sightings to be discoverable without making them
-; routine: 12.5% every 16 eligible steps, or 128 steps on average.
-DEF SIGHTING_STEP_INTERVAL       EQU 16
-DEF SIGHTING_TRIGGER_CHANCE      EQU $20 ; 12.5%
+; Travel anywhere charges Pikachu's search. Once charged, valid encounter
+; terrain has a low per-step chance to activate a sighting.
+DEF SIGHTING_TRIGGER_CHANCE      EQU $04 ; 1.5625%
 DEF SIGHTING_ENCOUNTER_CHANCE    EQU 25 percent + 1
-DEF SIGHTING_COOLDOWN_STEPS      EQU 128
+DEF SIGHTING_COOLDOWN_STEPS      EQU $ff ; 255 global movement steps
 
 MACRO sighting_profile
 	db \1
