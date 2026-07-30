@@ -200,6 +200,12 @@
 	const SMOOCHUM           ; $BF
 	const ELEKID             ; $C0
 	const MAGBY              ; $C1
+	const POLITOED           ; $C2
+	const SLOWKING           ; $C3
+	const STEELIX            ; $C4
+	const KINGDRA            ; $C5
+	const SCIZOR             ; $C6
+	const PORYGON2           ; $C7
 
 DEF NUM_POKEMON_INDEXES EQU const_value - 1
 

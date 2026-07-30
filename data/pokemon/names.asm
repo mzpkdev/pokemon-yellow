@@ -193,4 +193,10 @@ MonsterNames::
 	db "SMOOCHUM@@"
 	db "ELEKID@@@@"
 	db "MAGBY@@@@@"
+	db "POLITOED@@"
+	db "SLOWKING@@"
+	db "STEELIX@@@"
+	db "KINGDRA@@@"
+	db "SCIZOR@@@@"
+	db "PORYGON2@@"
 	assert_table_length NUM_POKEMON_INDEXES

@@ -193,6 +193,12 @@ PokedexEntryPointers:
 	dw SmoochumDexEntry
 	dw ElekidDexEntry
 	dw MagbyDexEntry
+	dw PoliwrathDexEntry ; placeholder family entry
+	dw SlowbroDexEntry   ; placeholder family entry
+	dw OnixDexEntry      ; placeholder family entry
+	dw SeadraDexEntry    ; placeholder family entry
+	dw ScytherDexEntry   ; placeholder family entry
+	dw PorygonDexEntry   ; placeholder family entry
 	assert_table_length NUM_POKEMON_INDEXES
 
 ; string: species name

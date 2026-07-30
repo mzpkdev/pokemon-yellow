@@ -203,6 +203,12 @@ EvosMovesPointerTable:
 	dw SmoochumEvosMoves
 	dw ElekidEvosMoves
 	dw MagbyEvosMoves
+	dw PolitoedEvosMoves
+	dw SlowkingEvosMoves
+	dw SteelixEvosMoves
+	dw KingdraEvosMoves
+	dw ScizorEvosMoves
+	dw Porygon2EvosMoves
 	assert_table_length NUM_POKEMON_INDEXES
 
 RhydonEvosMoves:
@@ -2726,3 +2732,27 @@ MagbyEvosMoves:
 	db 31, CONFUSE_RAY
 	db 43, FIRE_BLAST
 	db 0
+
+PolitoedEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset
+
+SlowkingEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset
+
+SteelixEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset
+
+KingdraEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset
+
+ScizorEvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset
+
+Porygon2EvosMoves:
+	db 0 ; no evolutions
+	db 0 ; placeholder learnset

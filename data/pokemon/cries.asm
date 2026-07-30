@@ -199,4 +199,10 @@ CryData::
 	mon_cry SFX_CRY_1D, $FF, $40 ; Smoochum
 	mon_cry SFX_CRY_18, $EE, $40 ; Elekid
 	mon_cry SFX_CRY_1F, $FF, $60 ; Magby
+	mon_cry SFX_CRY_21, $70, $60 ; Politoed
+	mon_cry SFX_CRY_08, $00, $80 ; Slowking
+	mon_cry SFX_CRY_17, $E0, $10 ; Steelix
+	mon_cry SFX_CRY_19, $20, $20 ; Kingdra
+	mon_cry SFX_CRY_16, $00, $80 ; Scizor
+	mon_cry SFX_CRY_25, $AA, $80 ; Porygon2
 	assert_table_length NUM_POKEMON_INDEXES

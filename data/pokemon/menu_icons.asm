@@ -153,3 +153,9 @@ MonPartyData:
 	db ICON_JYNX          ; Smoochum
 	db ICON_ELECTABUZZ    ; Elekid
 	db ICON_MAGMAR        ; Magby
+	db ICON_POLIWRATH     ; Politoed
+	db ICON_SLOWBRO       ; Slowking
+	db ICON_ONIX          ; Steelix
+	db ICON_SEADRA        ; Kingdra
+	db ICON_SCYTHER       ; Scizor
+	db ICON_PORYGON       ; Porygon2

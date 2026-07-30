@@ -155,6 +155,12 @@ MonsterPalettes:
 	db PAL_JYNX       ; Smoochum
 	db PAL_ELECTABUZZ ; Elekid
 	db PAL_MAGMAR     ; Magby
+	db PAL_POLIWRATH  ; Politoed
+	db PAL_SLOWBRO    ; Slowking
+	db PAL_ONIX       ; Steelix
+	db PAL_SEADRA     ; Kingdra
+	db PAL_SCYTHER    ; Scizor
+	db PAL_PORYGON    ; Porygon2
 	assert_table_length NUM_POKEMON + 1
 
 TrainerPalettes:

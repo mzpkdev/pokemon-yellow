@@ -158,6 +158,12 @@
 	const DEX_SMOOCHUM   ; 152
 	const DEX_ELEKID     ; 153
 	const DEX_MAGBY      ; 154
+	const DEX_POLITOED   ; 155
+	const DEX_SLOWKING   ; 156
+	const DEX_STEELIX    ; 157
+	const DEX_KINGDRA    ; 158
+	const DEX_SCIZOR     ; 159
+	const DEX_PORYGON2   ; 160
 
 DEF NUM_POKEMON EQU const_value - 1
 
