@@ -9,10 +9,18 @@ ReloadMapData::
 	call LoadCurrentMapView
 	call LoadTilesetTilePatternData
 	call EnableLCD
+	ldh a, [hGBC]
+	and a
+	jr z, .palettesDone
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .palettesDone
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand
 	ld de, vBGMap0
 	farcall CopyFullColorMapViewAttributes
+.palettesDone
 	pop af
 	call BankswitchCommon
 	ret
