@@ -7,9 +7,8 @@
 	db 45 ; catch rate
 	db 185 ; base exp
 
-	; Use Poliwrath's graphics until Politoed's sprites are integrated.
-	INCBIN "gfx/pokemon/front/poliwrath.pic", 0, 1
-	dw PoliwrathPicFront, PoliwrathPicBack
+	INCBIN "gfx/pokemon/front/politoed.pic", 0, 1
+	dw PolitoedPicFront, PolitoedPicBack
 
 	db WATER_GUN, HYPNOSIS, DOUBLESLAP, NO_MOVE
 	db GROWTH_MEDIUM_SLOW
@@ -19,4 +18,4 @@
 	     SEISMIC_TOSS, RAGE, PSYCHIC_M, MIMIC, DOUBLE_TEAM, BIDE, \
 	     METRONOME, SKULL_BASH, REST, PSYWAVE, SUBSTITUTE, SURF, STRENGTH
 
-	db BANK(PoliwrathPicFront)
+	db BANK(PolitoedPicFront)

@@ -7,9 +7,8 @@
 	db 45 ; catch rate
 	db 180 ; base exp
 
-	; Use Porygon's graphics until Porygon2's sprites are integrated.
-	INCBIN "gfx/pokemon/front/porygon.pic", 0, 1
-	dw PorygonPicFront, PorygonPicBack
+	INCBIN "gfx/pokemon/front/porygon2.pic", 0, 1
+	dw Porygon2PicFront, Porygon2PicBack
 
 	db TACKLE, CONVERSION, NO_MOVE, NO_MOVE
 	db GROWTH_MEDIUM_FAST
@@ -19,4 +18,4 @@
 	     REFLECT, BIDE, SWIFT, SKULL_BASH, REST, THUNDER_WAVE, PSYWAVE, \
 	     TRI_ATTACK, SUBSTITUTE, FLASH
 
-	db BANK(PorygonPicFront)
+	db BANK(Porygon2PicFront)

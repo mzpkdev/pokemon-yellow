@@ -7,9 +7,8 @@
 	db 45 ; catch rate
 	db 207 ; base exp
 
-	; Use Seadra's graphics until Kingdra's sprites are integrated.
-	INCBIN "gfx/pokemon/front/seadra.pic", 0, 1
-	dw SeadraPicFront, SeadraPicBack
+	INCBIN "gfx/pokemon/front/kingdra.pic", 0, 1
+	dw KingdraPicFront, KingdraPicBack
 
 	db BUBBLE, SMOKESCREEN, LEER, WATER_GUN
 	db GROWTH_MEDIUM_FAST
@@ -18,4 +17,4 @@
 	     BLIZZARD, HYPER_BEAM, RAGE, MIMIC, DOUBLE_TEAM, BIDE, SWIFT, \
 	     SKULL_BASH, REST, SUBSTITUTE, SURF
 
-	db BANK(SeadraPicFront)
+	db BANK(KingdraPicFront)

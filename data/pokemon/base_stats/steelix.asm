@@ -7,9 +7,8 @@
 	db 25 ; catch rate
 	db 196 ; base exp
 
-	; Use Onix's graphics until Steelix's sprites are integrated.
-	INCBIN "gfx/pokemon/front/onix.pic", 0, 1
-	dw OnixPicFront, OnixPicBack
+	INCBIN "gfx/pokemon/front/steelix.pic", 0, 1
+	dw SteelixPicFront, SteelixPicBack
 
 	db TACKLE, SCREECH, NO_MOVE, NO_MOVE
 	db GROWTH_MEDIUM_FAST
@@ -18,4 +17,4 @@
 	     EARTHQUAKE, FISSURE, DIG, MIMIC, DOUBLE_TEAM, BIDE, SELFDESTRUCT, \
 	     SKULL_BASH, REST, EXPLOSION, ROCK_SLIDE, SUBSTITUTE, STRENGTH
 
-	db BANK(OnixPicFront)
+	db BANK(SteelixPicFront)

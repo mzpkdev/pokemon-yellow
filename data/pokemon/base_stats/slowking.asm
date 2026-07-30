@@ -7,9 +7,8 @@
 	db 70 ; catch rate
 	db 164 ; base exp
 
-	; Use Slowbro's graphics until Slowking's sprites are integrated.
-	INCBIN "gfx/pokemon/front/slowbro.pic", 0, 1
-	dw SlowbroPicFront, SlowbroPicBack
+	INCBIN "gfx/pokemon/front/slowking.pic", 0, 1
+	dw SlowkingPicFront, SlowkingPicBack
 
 	db TACKLE, DISABLE, HEADBUTT, CONFUSION
 	db GROWTH_MEDIUM_FAST
@@ -21,4 +20,4 @@
 	     SKULL_BASH, REST, THUNDER_WAVE, PSYWAVE, TRI_ATTACK, SUBSTITUTE, \
 	     SURF, STRENGTH, FLASH, FLAMETHROWER
 
-	db BANK(SlowbroPicFront)
+	db BANK(SlowkingPicFront)

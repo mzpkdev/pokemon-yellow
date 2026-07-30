@@ -535,6 +535,18 @@ ElekidPicFront::      INCBIN "gfx/pokemon/front/elekid.pic"
 ElekidPicBack::       INCBIN "gfx/pokemon/back/elekidb.pic"
 MagbyPicFront::       INCBIN "gfx/pokemon/front/magby.pic"
 MagbyPicBack::        INCBIN "gfx/pokemon/back/magbyb.pic"
+PolitoedPicFront::    INCBIN "gfx/pokemon/front/politoed.pic"
+PolitoedPicBack::     INCBIN "gfx/pokemon/back/politoedb.pic"
+SlowkingPicFront::    INCBIN "gfx/pokemon/front/slowking.pic"
+SlowkingPicBack::     INCBIN "gfx/pokemon/back/slowkingb.pic"
+SteelixPicFront::     INCBIN "gfx/pokemon/front/steelix.pic"
+SteelixPicBack::      INCBIN "gfx/pokemon/back/steelixb.pic"
+KingdraPicFront::     INCBIN "gfx/pokemon/front/kingdra.pic"
+KingdraPicBack::      INCBIN "gfx/pokemon/back/kingdrab.pic"
+ScizorPicFront::      INCBIN "gfx/pokemon/front/scizor.pic"
+ScizorPicBack::       INCBIN "gfx/pokemon/back/scizorb.pic"
+Porygon2PicFront::    INCBIN "gfx/pokemon/front/porygon2.pic"
+Porygon2PicBack::     INCBIN "gfx/pokemon/back/porygon2b.pic"
 
 
 SECTION "bank42", ROMX, BANK[$42]
