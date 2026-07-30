@@ -460,6 +460,9 @@ HandlePendingEggHatch:
 	ldh [hAutoBGTransferEnabled], a
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ldh [hJoyHeld], a
+	ldh [hJoyPressed], a
+	ldh [hJoyLast], a
 	ld hl, EggHatchedText
 	rst _PrintText
 	call GBPalWhiteOutWithDelay3
