@@ -123,7 +123,6 @@ def walk_west_to_route_22(emulator: Emulator) -> None:
     walk_to_value(emulator, "wXCoord", 7, "left", "Viridian west exit")
     walk_to_value(emulator, "wYCoord", 16, "up", "Route 22 connection row")
     walk_to_value(emulator, "wCurMap", ROUTE_22, "left", "Route 22")
-    emulator.tick(180)
 
 
 def mount_bicycle_with_select(emulator: Emulator) -> None:

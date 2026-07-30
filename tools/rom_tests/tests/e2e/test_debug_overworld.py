@@ -39,24 +39,23 @@ def assert_visible_outdoor_attributes(emulator: Emulator) -> None:
     ]
     assert len(attributes) == 0x60
 
-    tilemap = emulator.symbols["wTileMap"]
-    origin = emulator.read("wMapViewVRAMPointer") | (
-        emulator.pyboy.memory[emulator.symbols["wMapViewVRAMPointer"] + 1] << 8
-    )
-    emulator.pyboy.memory[0xFF4F] = 1
-    try:
-        for y in range(18):
-            for x in range(20):
-                tile = emulator.pyboy.memory[tilemap + y * 20 + x]
-                expected = attributes[tile] if tile < len(attributes) else 7
-                offset = (origin - 0x9800 + y * 32 + x) & 0x3FF
+    screen_x = emulator.pyboy.memory[0xFF43] // 8
+    screen_y = emulator.pyboy.memory[0xFF42] // 8
+    mismatches = []
+    for y in range(18):
+        for x in range(20):
+            offset = ((screen_y + y) & 31) * 32 + ((screen_x + x) & 31)
+            emulator.pyboy.memory[0xFF4F] = 0
+            tile = emulator.pyboy.memory[0x9800 + offset]
+            expected = attributes[tile] if tile < len(attributes) else 7
+            emulator.pyboy.memory[0xFF4F] = 1
+            try:
                 actual = emulator.pyboy.memory[0x9800 + offset] & 7
-                assert actual == expected, (
-                    f"attribute mismatch at ({x}, {y}): "
-                    f"tile={tile:#x}, actual={actual}, expected={expected}"
-                )
-    finally:
-        emulator.pyboy.memory[0xFF4F] = 0
+            finally:
+                emulator.pyboy.memory[0xFF4F] = 0
+            if actual != expected:
+                mismatches.append((x, y, tile, actual, expected))
+    assert not mismatches, f"visible attribute mismatches: {mismatches}"
 
 
 def test_debug_full_color_overworld_scrolling(emulator: Emulator) -> None:
@@ -143,6 +142,7 @@ def test_debug_full_color_connected_route(emulator: Emulator) -> None:
     start_debug_game_in_viridian(emulator)
     walk_west_to_route_22(emulator)
     assert_visible_outdoor_attributes(emulator)
+    emulator.tick(180)
     emulator.assert_screen_matches(
         SNAPSHOTS / "debug-route-22.png",
         name="debug-route-22",
