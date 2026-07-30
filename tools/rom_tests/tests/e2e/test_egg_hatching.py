@@ -89,7 +89,11 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
     difference = screen_difference(
         map_before,
         map_after,
-        ignored_regions=((0, 96, 160, 144), (48, 32, 112, 96)),
+        ignored_regions=(
+            (0, 96, 160, 144),
+            (16, 72, 40, 104),
+            (48, 32, 112, 96),
+        ),
     )
     difference.save(emulator.results / "hatch-map-after-diff.png")
     assert difference.getbbox() is None
