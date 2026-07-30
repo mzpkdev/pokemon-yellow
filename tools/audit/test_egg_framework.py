@@ -73,13 +73,32 @@ class EggFrameworkTests(unittest.TestCase):
         self.assertIn("farcall HatchPartyEgg", handler)
         self.assertLess(
             handler.index("farcall HatchPartyEgg"),
+            handler.index("ld hl, EggHatchingText"),
+        )
+        self.assertLess(
+            handler.index("ld hl, EggHatchingText"),
+            handler.index("callfar EvolveMon"),
+        )
+        self.assertLess(
+            handler.index("callfar EvolveMon"),
             handler.index("ld hl, EggHatchedText"),
         )
         self.assertIn("ret nc", handler)
-        self.assertNotIn("EggHatchingText", handler)
+        self.assertIn("ld [wEvoOldSpecies], a", handler)
+        self.assertIn("ld [wEvoNewSpecies], a", handler)
+        self.assertIn("ld [wForceEvolution], a", handler)
+        self.assertIn("call ReloadTilesetTilePatterns", handler)
+        self.assertIn("call PlayDefaultMusic", handler)
 
     def test_hatch_event_announces_the_result_name(self) -> None:
         text = read("data/text/text_3.asm")
+        hatching_text = text.split("_EggHatchingText::", 1)[1].split(
+            "_EggHatchedText::", 1
+        )[0]
+        self.assertIn('text "Huh? The EGG is"', hatching_text)
+        self.assertIn('line "hatching!"', hatching_text)
+        self.assertIn("done", hatching_text)
+
         hatch_text = text.split("_EggHatchedText::", 1)[1].split(
             "_Colosseum3MonsText::", 1
         )[0]

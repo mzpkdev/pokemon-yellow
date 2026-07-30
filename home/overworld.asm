@@ -403,9 +403,39 @@ HandlePendingEggHatch:
 	ret nz
 	farcall HatchPartyEgg
 	ret nc
+	ld hl, EggHatchingText
+	rst _PrintText
+	ld c, 50
+	rst _DelayFrames
+	xor a
+	ldh [hAutoBGTransferEnabled], a
+	hlcoord 0, 0
+	lb bc, 12, 20
+	call ClearScreenArea
+	ld a, 1
+	ldh [hAutoBGTransferEnabled], a
+	ld a, $ff
+	ld [wUpdateSpritesEnabled], a
+	call ClearSprites
+	ld a, EGG
+	ld [wEvoOldSpecies], a
+	ld a, [wCurSpecies]
+	ld [wEvoNewSpecies], a
+	ld a, 1
+	ld [wForceEvolution], a
+	callfar EvolveMon
+	xor a
+	ld [wForceEvolution], a
 	ld hl, EggHatchedText
 	rst _PrintText
+	call GBPalWhiteOutWithDelay3
+	call ReloadTilesetTilePatterns
+	call PlayDefaultMusic
 	ret
+
+EggHatchingText:
+	text_far _EggHatchingText
+	text_end
 
 EggHatchedText:
 	text_far _EggHatchedText

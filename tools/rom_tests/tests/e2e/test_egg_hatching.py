@@ -67,6 +67,34 @@ def _walk_one_step(emulator: Emulator, preferred_button: str | None) -> str:
     raise AssertionError("Could not take a player-controlled overworld step")
 
 
+def _complete_hatch_presentation(emulator: Emulator) -> None:
+    """Advance the announcement, non-cancellable animation, and result text."""
+    assert emulator.read("wForceEvolution") == 0
+    emulator.press("a", wait_frames=10)
+    for _ in range(300):
+        if emulator.read("wForceEvolution") != 0:
+            break
+        emulator.tick()
+    else:
+        raise AssertionError("Egg hatch animation did not begin")
+
+    # Unlike ordinary evolution, hatching cannot be cancelled with B.
+    emulator.press("b", wait_frames=10)
+    assert emulator.read("wForceEvolution") != 0
+    for _ in range(1800):
+        if emulator.read("wForceEvolution") == 0:
+            break
+        emulator.tick()
+    else:
+        raise AssertionError("Egg hatch animation did not finish")
+
+    # The result remains on screen until the player acknowledges it.
+    before = (emulator.read("wXCoord"), emulator.read("wYCoord"))
+    emulator.press("left", wait_frames=30)
+    assert (emulator.read("wXCoord"), emulator.read("wYCoord")) == before
+    emulator.press("a", wait_frames=120)
+
+
 def test_debug_party_egg_hatches_after_16_counted_steps(emulator: Emulator) -> None:
     _start_debug_game(emulator)
 
@@ -119,7 +147,7 @@ def test_debug_party_egg_hatches_after_16_counted_steps(emulator: Emulator) -> N
     assert emulator.pyboy.memory[party_species + 1] == PICHU
     assert emulator.read("wEggHatchPending") == 0
 
-    emulator.press("a")
+    _complete_hatch_presentation(emulator)
     _walk_one_step(emulator, next_button)
 
 
@@ -157,5 +185,5 @@ def test_party_egg_hatches_and_returns_control_to_the_overworld(
     assert emulator.pyboy.memory[party_species + 1] == PICHU
     assert emulator.read("wEggHatchPending") == 0
 
-    emulator.press("a")
+    _complete_hatch_presentation(emulator)
     _walk_one_step(emulator, next_button)
