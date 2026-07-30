@@ -70,6 +70,12 @@ def _walk_one_step(emulator: Emulator, preferred_button: str | None) -> str:
 def _complete_hatch_presentation(emulator: Emulator) -> None:
     """Advance the announcement, non-cancellable animation, and result text."""
     assert emulator.read("wForceEvolution") == 0
+    saved_tile_animations = emulator.read("hTileAnimations")
+    transfer_destination = emulator.symbols["hAutoBGTransferDest"]
+    saved_transfer_destination = bytes(
+        emulator.pyboy.memory[transfer_destination + offset] for offset in range(2)
+    )
+    saved_bgp = emulator.pyboy.memory[0xFF47]
     emulator.press("a", wait_frames=10)
     for _ in range(300):
         if emulator.read("wForceEvolution") != 0:
@@ -78,9 +84,21 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
     else:
         raise AssertionError("Egg hatch animation did not begin")
 
+    # Wait past sprite loading, the cry, and the animation's 80-frame lead-in.
+    emulator.tick(180)
+    tilemap = emulator.symbols["wTileMap"] + 2 * 20 + 7
+    visible_bg = 0x9800 + 2 * 32 + 7
+    assert all(
+        emulator.pyboy.memory[visible_bg + row * 32 + column]
+        == emulator.pyboy.memory[tilemap + row * 20 + column]
+        for row in range(7)
+        for column in range(7)
+    )
+
     # Unlike ordinary evolution, hatching cannot be cancelled with B.
     emulator.press("b", wait_frames=10)
     assert emulator.read("wForceEvolution") != 0
+    assert emulator.read("wEvoCancelled") == 0
     for _ in range(1800):
         if emulator.read("wForceEvolution") == 0:
             break
@@ -93,6 +111,12 @@ def _complete_hatch_presentation(emulator: Emulator) -> None:
     emulator.press("left", wait_frames=30)
     assert (emulator.read("wXCoord"), emulator.read("wYCoord")) == before
     emulator.press("a", wait_frames=120)
+    assert emulator.read("hTileAnimations") == saved_tile_animations
+    assert bytes(
+        emulator.pyboy.memory[transfer_destination + offset] for offset in range(2)
+    ) == saved_transfer_destination
+    assert emulator.pyboy.memory[0xFF47] == saved_bgp
+    assert emulator.read("wUpdateSpritesEnabled") == 1
 
 
 def test_debug_party_egg_hatches_after_16_counted_steps(emulator: Emulator) -> None:

@@ -88,6 +88,8 @@ class EggFrameworkTests(unittest.TestCase):
         self.assertIn("ld [wEvoNewSpecies], a", handler)
         self.assertIn("ld [wForceEvolution], a", handler)
         self.assertIn("call ReloadMapData", handler)
+        self.assertIn("call RunDefaultPaletteCommand", handler)
+        self.assertIn("call LoadGBPal", handler)
         self.assertIn("call UpdateSprites", handler)
         self.assertIn("call PlayDefaultMusic", handler)
 
