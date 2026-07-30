@@ -82,6 +82,9 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld a, b
 	cp EVOLVE_LEVEL
 	jr z, .checkLevel
+	cp EVOLVE_BOND
+	jr z, .checkBondEvo
+	jp .nextEvoEntry1 ; safely skip unknown 3-byte evolution methods
 .checkTradeEvo
 	ld a, [wLinkState]
 	cp LINK_STATE_TRADING
@@ -108,6 +111,15 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld a, [wLoadedMonLevel]
 	cp b ; is the mon's level greater than the evolution requirement?
 	jp c, .nextEvoEntry2 ; if so, go the next evolution entry
+	jr .doEvolution
+.checkBondEvo
+	ld a, [hli] ; Pikachu happiness requirement
+	ld b, a
+	ld a, [wPikachuHappiness]
+	cp b
+	jp c, .nextEvoEntry2
+	; Evolution move learning still needs the evolving Pokémon's level.
+	ld a, [wLoadedMonLevel]
 .doEvolution
 	ld [wCurEnemyLevel], a
 	ld a, 1
