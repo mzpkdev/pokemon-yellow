@@ -464,6 +464,9 @@ HandlePendingEggHatch:
 	ldh [hJoyHeld], a
 	ldh [hJoyPressed], a
 	ldh [hJoyLast], a
+	ld a, [wEvoNewSpecies]
+	ld [wNamedObjectIndex], a
+	call GetMonName
 	ld hl, EggHatchedText
 	rst _PrintText
 	call WaitForTextScrollButtonPress
