@@ -42,7 +42,7 @@ def start_debug_game_in_viridian(emulator: Emulator) -> None:
 
 def exercise_viridian_scrolling(emulator: Emulator) -> None:
     """Walk a known-valid route that streams rows and columns into the BG map."""
-    walk_to_value(emulator, "wYCoord", 29, "down", "south Viridian path")
     walk_to_value(emulator, "wXCoord", 19, "left", "Viridian main path")
+    walk_to_value(emulator, "wYCoord", 29, "down", "south Viridian path")
     walk_to_value(emulator, "wYCoord", 20, "up", "Viridian Mart row")
     emulator.tick(180)

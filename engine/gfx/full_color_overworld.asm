@@ -32,6 +32,7 @@ CopyFullColorMapViewAttributes::
 	and $7
 	pop bc
 .write
+	call WaitForFullColorVRAM
 	ld [de], a
 	inc e
 	dec c
@@ -127,6 +128,7 @@ DrawFullColorRowOrColumn::
 		ld a, [bc]
 		and $7
 .columnWrite\@
+		call WaitForFullColorVRAM
 		ld [de], a
 		inc de
 	ENDR
@@ -173,6 +175,7 @@ DrawFullColorRowOrColumn::
 	ld a, [bc]
 	and $7
 .rowWrite
+	call WaitForFullColorVRAM
 	ld [de], a
 	ld a, e
 	inc a
@@ -191,6 +194,15 @@ DrawFullColorRowOrColumn::
 	xor a
 	ldh [rVBK], a
 .done
+	pop af
+	ret
+
+WaitForFullColorVRAM:
+	push af
+.wait
+	ldh a, [rSTAT]
+	and %10
+	jr nz, .wait
 	pop af
 	ret
 
