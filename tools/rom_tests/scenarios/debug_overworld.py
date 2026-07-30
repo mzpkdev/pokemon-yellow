@@ -9,29 +9,31 @@ FULL_COLOR_OVERWORLD = 1 << 2
 
 def start_debug_game_in_viridian(emulator: Emulator) -> None:
     """Use the hidden title-screen menu and wait for the debug Viridian spawn."""
-    emulator.advance_until(
-        lambda: (
-            emulator.read("wTopMenuItemY") == 7
-            and emulator.read("wTopMenuItemX") == 6
-            and emulator.read("wMaxMenuItem") == 1
-        ),
-        button="select",
-        max_presses=12,
-        description="debug menu",
-    )
+    emulator.tick(2400)
+    emulator.save_screenshot("debug-title.png")
+    emulator.press("select")
+    emulator.save_screenshot("debug-menu.png")
+    assert emulator.read("wTopMenuItemY") == 7
+    assert emulator.read("wTopMenuItemX") == 6
+    assert emulator.read("wMaxMenuItem") == 1
     emulator.press("down")
     emulator.press("a", wait_frames=0)
 
-    for _ in range(30):
+    for _ in range(40):
         if (
             emulator.read("wCurMap") == VIRIDIAN_CITY
             and emulator.read("wStatusFlags6") & 1
         ):
             break
-        emulator.tick(60)
+        emulator.press("b", wait_frames=30)
     else:
         emulator.save_screenshot("timeout-debug-viridian-spawn.png")
-        raise AssertionError("Timed out waiting for the debug Viridian spawn")
+        raise AssertionError(
+            "Timed out waiting for the debug Viridian spawn "
+            f"(map={emulator.read('wCurMap'):#x}, "
+            f"flags={emulator.read('wStatusFlags6'):#x}, "
+            f"yx={(emulator.read('wYCoord'), emulator.read('wXCoord'))})"
+        )
 
     emulator.tick(180)
     assert (emulator.read("wYCoord"), emulator.read("wXCoord")) == (26, 23)

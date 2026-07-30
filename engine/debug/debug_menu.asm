@@ -69,6 +69,8 @@ IF DEF(_DEBUG)
 	; DEBUG
 	ld hl, wStatusFlags6
 	set BIT_DEBUG_MODE, [hl]
+	ld hl, wOptions2
+	set BIT_FULL_COLOR_OVERWORLD, [hl]
 	ld hl, StartNewGameDebug
 	ret
 

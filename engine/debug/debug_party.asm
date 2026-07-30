@@ -23,9 +23,6 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
 IF DEF(_DEBUG)
-	ld hl, wOptions2
-	set BIT_FULL_COLOR_OVERWORLD, [hl]
-
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
 

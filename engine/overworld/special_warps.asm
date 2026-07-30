@@ -115,7 +115,7 @@ LoadSpecialWarpData:
 	ld hl, wStatusFlags6
 	bit BIT_DEBUG_MODE, [hl]
 	jr z, .regularDestination
-	ld a, [wLastMap]
+	ld a, VIRIDIAN_CITY
 	jr .usedFlyWarp
 .regularDestination
 	ld a, [wDestinationMap]
