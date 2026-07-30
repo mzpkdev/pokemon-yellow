@@ -547,7 +547,7 @@ TradeCenter_SelectMon:
 	ld a, $f
 	ld [wSerialExchangeNybbleSendData], a
 	call Serial_PrintWaitingTextAndSyncAndExchangeNybble
-	ld hl, EggCannotBeTradedText
+	ld hl, LinkEggCannotBeTradedText
 	rst _PrintText
 	call LoadScreenTilesFromBuffer1
 	jp .playerMonMenu
@@ -894,7 +894,7 @@ WillBeTradedText:
 	text_far _WillBeTradedText
 	text_end
 
-EggCannotBeTradedText:
+LinkEggCannotBeTradedText:
 	text_far _EggCannotBeTradedText
 	text_end
 

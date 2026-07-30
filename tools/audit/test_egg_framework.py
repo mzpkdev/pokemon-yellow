@@ -16,6 +16,9 @@ class EggFrameworkTests(unittest.TestCase):
         constructor = eggs.split("UpdatePartyEggsOnStep::", 1)[0]
         self.assertIn("ld hl, wPartyMon1CatchRate", constructor)
         self.assertIn("ld de, MON_EXP - MON_CATCH_RATE", constructor)
+        self.assertIn("ld hl, wPartyMon1HP", constructor)
+        self.assertIn("ld hl, wPartyMon1MaxHP", constructor)
+        self.assertGreaterEqual(len(re.findall(r"xor a\s+ld \[hli\], a\s+ld \[hl\], a", constructor)), 2)
 
     def test_incubation_is_party_only_and_ignores_scripted_steps(self) -> None:
         overworld = read("home/overworld.asm")

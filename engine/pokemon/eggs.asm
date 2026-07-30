@@ -23,11 +23,31 @@ CreatePartyEgg::
 
 	ld a, [wPartyCount]
 	dec a
+	push bc
+	push de
 	push af
-	ld hl, wPartyMon1CatchRate
-	ld de, wPartyMon2 - wPartyMon1
+	ld hl, wPartyMon1HP
+	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ld hl, wPartyMon1MaxHP
+	pop af
+	push af
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	xor a
+	ld [hli], a
+	ld [hl], a
+
+	pop af
+	ld hl, wPartyMon1CatchRate
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	pop de
 	ld [hl], d
+	pop bc
 	ld de, MON_EXP - MON_CATCH_RATE
 	add hl, de
 	xor a

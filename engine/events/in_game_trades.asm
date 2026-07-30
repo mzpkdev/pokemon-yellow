@@ -323,7 +323,7 @@ TradeTextPointers3:
 TradeTextPointers4:
 	dw WannaTrade4Text
 	dw NoTrade4Text
-	dw EggCannotBeTradedText
+	dw InGameEggCannotBeTradedText
 	dw Thanks4Text
 	dw AfterTrade1Text
 
@@ -405,7 +405,7 @@ NoTrade4Text:
 	text_far _NoTrade4Text
 	text_end
 
-EggCannotBeTradedText:
+InGameEggCannotBeTradedText:
 	text_far _EggCannotBeTradedText
 	text_end
 	

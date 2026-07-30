@@ -11,7 +11,7 @@ def read(path: str) -> str:
 
 
 class EggGuardTests(unittest.TestCase):
-    def test_shared_battle_checks_reject_eggs(self) -> None:
+    def test_zero_hp_eggs_reuse_shared_fainted_checks(self) -> None:
         battle = read("engine/battle/core.asm")
         any_alive = battle[
             battle.index("AnyPartyAlive::") : battle.index(
@@ -21,8 +21,13 @@ class EggGuardTests(unittest.TestCase):
         has_fainted = battle[
             battle.index("HasMonFainted:") : battle.index("NoWillText:")
         ]
-        self.assertRegex(any_alive, r"cp EGG\s+jr z, \.next")
-        self.assertRegex(has_fainted, r"cp EGG\s+jr z, \.fainted")
+        self.assertNotIn("cp EGG", any_alive)
+        self.assertNotIn("cp EGG", has_fainted)
+        constructor = read("engine/pokemon/eggs.asm").split(
+            "UpdatePartyEggsOnStep::", 1
+        )[0]
+        self.assertIn("ld hl, wPartyMon1HP", constructor)
+        self.assertIn("ld hl, wPartyMon1MaxHP", constructor)
 
     def test_party_receipt_paths_skip_egg_pokedex_flags(self) -> None:
         add_mon = read("engine/pokemon/add_mon.asm")
@@ -49,7 +54,7 @@ class EggGuardTests(unittest.TestCase):
         self.assertRegex(
             trades,
             r"(?s)TradeTextPointers4:.*?"
-            r"dw EggCannotBeTradedText",
+            r"dw InGameEggCannotBeTradedText",
         )
 
     def test_cable_trade_rejects_eggs_before_serial_exchange(self) -> None:
@@ -68,7 +73,7 @@ class EggGuardTests(unittest.TestCase):
         cancel_sync = chose_trade.index(
             "call Serial_PrintWaitingTextAndSyncAndExchangeNybble", cancel
         )
-        message = chose_trade.index("ld hl, EggCannotBeTradedText", cancel_sync)
+        message = chose_trade.index("ld hl, LinkEggCannotBeTradedText", cancel_sync)
         self.assertLess(rejection, cancel)
         self.assertLess(cancel, cancel_sync)
         self.assertLess(cancel_sync, message)
