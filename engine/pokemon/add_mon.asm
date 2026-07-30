@@ -88,6 +88,8 @@ _AddPartyMon::
 .playerMon
 ; If the mon is being added to the player's party, update the pokedex.
 	ld a, [wCurPartySpecies]
+	cp EGG
+	jr z, .skipPokedex
 	ld [wPokedexNum], a
 	push de
 	predef IndexToPokedex
@@ -110,6 +112,7 @@ _AddPartyMon::
 	ld hl, wPokedexSeen
 	call FlagAction
 
+.skipPokedex
 	pop hl
 	push hl
 
@@ -336,6 +339,8 @@ _AddEnemyMonToPlayerParty::
 	ld bc, NAME_LENGTH
 	rst _CopyData    ; write new mon's nickname (from an enemy mon)
 	ld a, [wCurPartySpecies]
+	cp EGG
+	jr z, .skipPokedex
 	ld [wPokedexNum], a
 	predef IndexToPokedex
 	ld a, [wPokedexNum]
@@ -348,6 +353,7 @@ _AddEnemyMonToPlayerParty::
 	pop bc
 	ld hl, wPokedexSeen
 	call FlagAction ; add to seen pokemon
+.skipPokedex
 	and a
 	ret                  ; return success
 

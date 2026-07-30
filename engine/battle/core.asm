@@ -1589,29 +1589,47 @@ TrainerSentOutText:
 AnyPartyAlive::
 	ld a, [wPartyCount]
 	ld e, a
-	xor a
-	ld hl, wPartyMon1HP
-	ld bc, wPartyMon2 - wPartyMon1 - 1
+	ld hl, wPartyMons
+	ld bc, wPartyMon2 - wPartyMon1
 .partyMonsLoop
+	ld a, [hl]
+	cp EGG
+	jr z, .next
+	push hl
+	push bc
+	ld bc, wPartyMon1HP - wPartyMon1
+	add hl, bc
+	ld a, [hli]
 	or [hl]
-	inc hl
-	or [hl]
+	pop bc
+	pop hl
+	jr nz, .partyMonAlive
+.next
 	add hl, bc
 	dec e
 	jr nz, .partyMonsLoop
-	ld d, a
+	ld d, 0
+	ret
+.partyMonAlive
+	ld d, 1
 	ret
 
 ; tests if player mon has fainted
 ; stores whether mon has fainted in Z flag
 HasMonFainted:
 	ld a, [wWhichPokemon]
-	ld hl, wPartyMon1HP
+	ld hl, wPartyMons
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
+	ld a, [hl]
+	cp EGG
+	jr z, .fainted
+	ld bc, wPartyMon1HP - wPartyMon1
+	add hl, bc
 	ld a, [hli]
 	or [hl]
 	ret nz
+.fainted
 	ld a, [wFirstMonsNotOutYet]
 	and a
 	jr nz, .done

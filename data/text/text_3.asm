@@ -564,6 +564,11 @@ _WillBeTradedText::
 	cont "be traded."
 	done
 
+_EggCannotBeTradedText::
+	text "An EGG can't be"
+	line "traded."
+	prompt
+
 _Colosseum3MonsText::
 	text "You need 3 #MON"
 	line "to fight!"
