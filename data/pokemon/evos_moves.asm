@@ -2728,8 +2728,9 @@ ElekidEvosMoves:
 ; Learnset
 	db  9, LEER
 	db 17, THUNDERSHOCK
+	db 20, THUNDER_WAVE
 	db 25, SCREECH
-	db 33, THUNDERPUNCH
+	db 31, THUNDERPUNCH
 	db 41, LIGHT_SCREEN
 	db 49, THUNDER
 	db 0

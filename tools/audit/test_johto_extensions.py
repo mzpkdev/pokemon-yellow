@@ -83,6 +83,20 @@ class JohtoExtensionTests(unittest.TestCase):
             with self.subTest(species=species):
                 self.assertEqual([row], evolution_rows(species))
 
+    def test_elekid_trade_learnset_bridges_into_electabuzz(self) -> None:
+        self.assertEqual(
+            [
+                "9, LEER",
+                "17, THUNDERSHOCK",
+                "20, THUNDER_WAVE",
+                "25, SCREECH",
+                "31, THUNDERPUNCH",
+                "41, LIGHT_SCREEN",
+                "49, THUNDER",
+            ],
+            learnset_rows("ELEKID"),
+        )
+
     def test_trade_evolutions_are_first_and_branches_are_preserved(self) -> None:
         expected = {
             "POLIWHIRL": [
@@ -283,7 +297,7 @@ class JohtoExtensionTests(unittest.TestCase):
             r"wPokedexSeenEnd::.*?\n\s*ds\s+16\b",
         )
 
-    def test_babies_are_not_placed_in_the_world(self) -> None:
+    def test_elekid_trade_is_the_only_baby_placement(self) -> None:
         source_roots = (
             "data/wild",
             "data/events",
@@ -294,6 +308,7 @@ class JohtoExtensionTests(unittest.TestCase):
             path.read_text(encoding="utf-8")
             for source_root in source_roots
             for path in (ROOT / source_root).rglob("*.asm")
+            if path != ROOT / "data/events/trades.asm"
         )
         for species in (
             "SMOOCHUM",
@@ -305,6 +320,17 @@ class JohtoExtensionTests(unittest.TestCase):
         ):
             with self.subTest(species=species):
                 self.assertNotRegex(sources, rf"\b{species}\b")
+
+        trades = read("data/events/trades.asm")
+        self.assertEqual(1, len(re.findall(r"\bELEKID\b", trades)))
+        self.assertRegex(
+            trades,
+            r"(?m)^\s*db\s+GRAVELER,\s+ELEKID,\s+"
+            r'TRADE_DIALOGSET_HAPPY,\s+"VOLT@+"\s*$',
+        )
+        for species in ("SMOOCHUM", "MAGBY", "PICHU", "CLEFFA", "IGGLYBUFF"):
+            with self.subTest(traded_species=species):
+                self.assertNotRegex(trades, rf"\b{species}\b")
 
 
 if __name__ == "__main__":

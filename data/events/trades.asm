@@ -13,6 +13,6 @@ TradeMons:
 	db ABRA,       MR_MIME,   TRADE_DIALOGSET_CASUAL,    "MIMEY@@@@@@"
 	db DITTO,      CHANSEY,   TRADE_DIALOGSET_EVOLUTION, "LUCKY@@@@@@"
 	db LICKITUNG,  RHYDON,    TRADE_DIALOGSET_HAPPY,     "TANK@@@@@@@"
-	db GRAVELER,   ELECTABUZZ, TRADE_DIALOGSET_HAPPY,     "VOLT@@@@@@@"
+	db GRAVELER,   ELEKID,     TRADE_DIALOGSET_HAPPY,     "VOLT@@@@@@@"
 	db NO_MON,     NO_MON,   TRADE_DIALOGSET_SELF,      "Unseen@@@@@"
 	assert_table_length NUM_NPC_TRADES
