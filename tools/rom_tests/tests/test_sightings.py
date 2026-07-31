@@ -5,6 +5,7 @@ from tools.rom_tests.scenarios.oaks_lab import (
     PALLET_TOWN,
     complete_oaks_lab_intro,
 )
+from tools.rom_tests.scenarios.parcel_delivery import complete_parcel_delivery
 from tools.rom_tests.scenarios.viridian_city import (
     ROUTE_1,
     VIRIDIAN_CITY,
@@ -18,7 +19,7 @@ PIKACHU_PENDING_SIGHTING = 6
 PIKACHU_PENDING_EMOTION_ALERTED = 0x80
 PIKACOMPANION_REACTION_PORTRAIT_READY = 7
 EXCLAMATION_BUBBLE = 0
-EVENT_GOT_POKEBALLS_FROM_OAK = 0x24
+EVENT_GOT_POKEDEX = 0x25
 SIGHTING_ZONE_PALLET_VIRIDIAN = 1
 SIGHTING_PROFILE_PALLET_GRASSLAND = 1
 SIGHTING_ACTIVE = 1
@@ -28,6 +29,11 @@ SIGHTING_COOLDOWN_STEPS = 0xFF
 def _set_event(emulator: Emulator, event: int) -> None:
     address = emulator.symbols["wEventFlags"] + event // 8
     emulator.pyboy.memory[address] |= 1 << (event % 8)
+
+
+def _event_is_set(emulator: Emulator, event: int) -> bool:
+    address = emulator.symbols["wEventFlags"] + event // 8
+    return bool(emulator.pyboy.memory[address] & (1 << (event % 8)))
 
 
 def _enter_route_1(emulator: Emulator) -> None:
@@ -126,13 +132,13 @@ def test_all_movement_charges_sighting_cooldown_with_repel(
     assert moved_steps > 0
 
 
-def test_charged_state_waits_for_pokeballs_and_valid_terrain(
+def test_charged_state_waits_for_pokedex_and_valid_terrain(
     emulator: Emulator,
 ) -> None:
     complete_oaks_lab_intro(emulator)
 
     # New games begin charged, but Route 1 cannot activate a sighting before
-    # Oak's catching-introduction event is set, even on valid grass.
+    # Oak's Pokedex event is set, even on valid grass.
     assert emulator.read("wSightingCooldown") == 0
     emulator.write("wSightingFlags", 0)
     _enter_route_1(emulator)
@@ -146,7 +152,7 @@ def test_charged_state_waits_for_pokeballs_and_valid_terrain(
 
     # Once catching is available, unsupported city terrain preserves the same
     # charged state rather than consuming or resetting it.
-    _set_event(emulator, EVENT_GOT_POKEBALLS_FROM_OAK)
+    _set_event(emulator, EVENT_GOT_POKEDEX)
     start = (
         emulator.read("wXCoord"),
         emulator.read("wYCoord"),
@@ -161,18 +167,16 @@ def test_charged_state_waits_for_pokeballs_and_valid_terrain(
     assert emulator.read("wSightingCooldown") == 0
 
 
-def test_sighting_hint_and_grouped_zone_cleanup(
+def test_parcel_delivery_unlocks_sighting_hint_and_grouped_zone_cleanup(
     emulator: Emulator,
 ) -> None:
-    complete_oaks_lab_intro(emulator)
-    _set_event(emulator, EVENT_GOT_POKEBALLS_FROM_OAK)
+    complete_parcel_delivery(emulator)
+
+    assert _event_is_set(emulator, EVENT_GOT_POKEDEX)
+    assert emulator.read("wSightingCooldown") == 0
+    assert not (emulator.read("wSightingFlags") & SIGHTING_ACTIVE)
+
     _enter_route_1(emulator)
-
-    emulator.write("wSightingFlags", 0)
-    emulator.write("wd49c", 0)
-    emulator.write("wPikachuCompanionQueuedReaction", 0)
-
-    emulator.write("wSightingCooldown", 0)
     resume_index = _follow_route_1_waypoints(
         emulator,
         stop_on_sighting=True,
@@ -216,7 +220,7 @@ def test_sighting_hint_and_grouped_zone_cleanup(
 
 def test_sighting_activates_without_valid_companion(emulator: Emulator) -> None:
     complete_oaks_lab_intro(emulator)
-    _set_event(emulator, EVENT_GOT_POKEBALLS_FROM_OAK)
+    _set_event(emulator, EVENT_GOT_POKEDEX)
     _enter_route_1(emulator)
 
     # Removing the starter's identity suppresses only the hint, not the world
