@@ -1172,6 +1172,7 @@ OaksLabOakThatWasMyDreamText:
 	text_far _OaksLabOakThatWasMyDreamText
 	sound_get_key_item
 	text_asm
+	SetEvent EVENT_GOT_POKEBALLS_FROM_OAK
 	lb bc, POKE_BALL,5
 	call GiveItem
 	rst TextScriptEnd

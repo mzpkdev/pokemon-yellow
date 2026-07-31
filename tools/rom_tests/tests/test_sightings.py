@@ -5,6 +5,7 @@ from tools.rom_tests.scenarios.oaks_lab import (
     PALLET_TOWN,
     complete_oaks_lab_intro,
 )
+from tools.rom_tests.scenarios.parcel_delivery import complete_parcel_delivery
 from tools.rom_tests.scenarios.viridian_city import (
     ROUTE_1,
     VIRIDIAN_CITY,
@@ -28,6 +29,11 @@ SIGHTING_COOLDOWN_STEPS = 0xFF
 def _set_event(emulator: Emulator, event: int) -> None:
     address = emulator.symbols["wEventFlags"] + event // 8
     emulator.pyboy.memory[address] |= 1 << (event % 8)
+
+
+def _event_is_set(emulator: Emulator, event: int) -> bool:
+    address = emulator.symbols["wEventFlags"] + event // 8
+    return bool(emulator.pyboy.memory[address] & (1 << (event % 8)))
 
 
 def _enter_route_1(emulator: Emulator) -> None:
@@ -159,6 +165,27 @@ def test_charged_state_waits_for_pokeballs_and_valid_terrain(
     assert end != start
     assert not (emulator.read("wSightingFlags") & SIGHTING_ACTIVE)
     assert emulator.read("wSightingCooldown") == 0
+
+
+def test_parcel_delivery_unlocks_first_sighting_without_state_injection(
+    emulator: Emulator,
+) -> None:
+    complete_parcel_delivery(emulator)
+
+    assert _event_is_set(emulator, EVENT_GOT_POKEBALLS_FROM_OAK)
+    assert emulator.read("wSightingCooldown") == 0
+    assert not (emulator.read("wSightingFlags") & SIGHTING_ACTIVE)
+
+    _enter_route_1(emulator)
+    _follow_route_1_waypoints(
+        emulator,
+        stop_on_sighting=True,
+    )
+
+    assert emulator.read("wSightingFlags") & SIGHTING_ACTIVE
+    assert emulator.read("wSightingZone") == SIGHTING_ZONE_PALLET_VIRIDIAN
+    assert emulator.read("wSightingProfile") == SIGHTING_PROFILE_PALLET_GRASSLAND
+    assert (emulator.read("wd49c") & 0x7F) == PIKACHU_PENDING_SIGHTING
 
 
 def test_sighting_hint_and_grouped_zone_cleanup(
