@@ -152,6 +152,20 @@ MonsterPalettes:
 	db PAL_DRAGONITE
 	db PAL_MEWTWO
 	db PAL_MEW
+	db PAL_JYNX       ; Smoochum
+	db PAL_ELECTABUZZ ; Elekid
+	db PAL_MAGMAR     ; Magby
+	db PAL_POLIWRATH  ; Politoed
+	db PAL_SLOWBRO    ; Slowking
+	db PAL_ONIX       ; Steelix
+	db PAL_SEADRA     ; Kingdra
+	db PAL_FLAREON    ; Scizor
+	db PAL_PORYGON    ; Porygon2
+	db PAL_PIKACHU    ; Pichu
+	db PAL_CLEFAIRY   ; Cleffa
+	db PAL_JIGGLYPUFF ; Igglybuff
+	db PAL_GOLBAT     ; Crobat
+	db PAL_CHANSEY    ; Blissey
 	assert_table_length NUM_POKEMON + 1
 
 TrainerPalettes:

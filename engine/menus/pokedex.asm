@@ -1097,6 +1097,8 @@ Pokedex_PrintStatsText:
 	jr z, .printTradeText
 	cp EVOLVE_ITEM
 	jr z, .printItemText
+	cp EVOLVE_BOND
+	jr z, .printBondText
 .printLevelText
 	push de
 	push bc
@@ -1133,6 +1135,21 @@ Pokedex_PrintStatsText:
 	pop bc
 	pop de
 	jr .itemIdByte
+.printBondText
+	push de
+	push bc
+	ld de, EvolveBondText
+	hlcoord 1, 11
+	ldh a, [hEvoCounter]
+	ld bc, SCREEN_WIDTH ; * 3
+	call AddNTimes
+	call PlaceString
+	pop bc
+	pop de
+	; Hide the implementation threshold from the Pokédex.
+	inc de ; normalized item byte
+	inc de ; happiness threshold
+	jr .targetByte
 .itemIdByte
 	inc de
 	ld a, [de]
@@ -1214,6 +1231,9 @@ EvolveTradeText:
 
 EvolveItemText:
 	db "*@"
+
+EvolveBondText:
+	db "*BOND@"
 
 EvolveLVLText:
 	db "<LVL>@"

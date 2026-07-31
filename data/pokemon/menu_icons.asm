@@ -150,3 +150,17 @@ MonPartyData:
 	db ICON_DRAGONITE     ; Dragonite
 	db ICON_MEWTWO        ; Mewtwo
 	db ICON_MEW           ; Mew
+	db ICON_JYNX          ; Smoochum
+	db ICON_ELECTABUZZ    ; Elekid
+	db ICON_MAGMAR        ; Magby
+	db ICON_POLIWRATH     ; Politoed
+	db ICON_SLOWBRO       ; Slowking
+	db ICON_ONIX          ; Steelix
+	db ICON_SEADRA        ; Kingdra
+	db ICON_SCYTHER       ; Scizor
+	db ICON_PORYGON       ; Porygon2
+	db ICON_PIKACHU       ; Pichu
+	db ICON_CLEFAIRY      ; Cleffa
+	db ICON_JIGGLYPUFF    ; Igglybuff
+	db ICON_GOLBAT        ; Crobat
+	db ICON_CHANSEY       ; Blissey

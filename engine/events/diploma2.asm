@@ -101,7 +101,7 @@ DisplayDiplomaBottom:
 	lb bc, LEADING_ZEROES | 1, 2
 	call PrintNumber
 	ld a, [wNumSetBits]
-	cp NUM_POKEMON
+	cp NUM_KANTO_POKEMON
 	ret nz
 	ld de, DiplomaMewTiles
 	hlcoord 2, 0

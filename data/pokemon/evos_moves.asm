@@ -3,6 +3,7 @@
 ;    * db EVOLVE_LEVEL, level, species
 ;    * db EVOLVE_ITEM, used item, min level (1), species
 ;    * db EVOLVE_TRADE, min level (1), species
+;    * db EVOLVE_BOND, Pikachu happiness threshold, species
 ; - db 0 ; no more evolutions
 ; - Learnset (in increasing level order):
 ;    * db level, move
@@ -200,6 +201,20 @@ EvosMovesPointerTable:
 	dw BellsproutEvosMoves
 	dw WeepinbellEvosMoves
 	dw VictreebelEvosMoves
+	dw SmoochumEvosMoves
+	dw ElekidEvosMoves
+	dw MagbyEvosMoves
+	dw PolitoedEvosMoves
+	dw SlowkingEvosMoves
+	dw SteelixEvosMoves
+	dw KingdraEvosMoves
+	dw ScizorEvosMoves
+	dw Porygon2EvosMoves
+	dw PichuEvosMoves
+	dw CleffaEvosMoves
+	dw IgglybuffEvosMoves
+	dw CrobatEvosMoves
+	dw BlisseyEvosMoves
 	assert_table_length NUM_POKEMON_INDEXES
 
 RhydonEvosMoves:
@@ -586,6 +601,7 @@ GastlyEvosMoves:
 
 ScytherEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, SCIZOR
 	db 0
 ; Learnset
 	db 6, FOCUS_ENERGY
@@ -692,6 +708,7 @@ GrowlitheEvosMoves:
 
 OnixEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, STEELIX
 	db 0
 ; Learnset
 	db 12, ROCK_THROW
@@ -739,6 +756,7 @@ PidgeyEvosMoves:
 
 SlowpokeEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, SLOWKING
 	db EVOLVE_LEVEL, 37, SLOWBRO
 	db 0
 ; Learnset
@@ -787,6 +805,7 @@ GravelerEvosMoves:
 
 ChanseyEvosMoves:
 ; Evolutions
+	db EVOLVE_BOND, 200, BLISSEY
 	db 0
 ; Learnset
 	db 12, DOUBLESLAP
@@ -1440,6 +1459,7 @@ HorseaEvosMoves:
 
 SeadraEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, KINGDRA
 	db 0
 ; Learnset
 	db 10, WATER_GUN
@@ -1692,6 +1712,7 @@ ParasEvosMoves:
 
 PoliwhirlEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, POLITOED
 	db EVOLVE_ITEM, WATER_STONE, 1, POLIWRATH
 	db 0
 ; Learnset
@@ -1929,6 +1950,7 @@ HypnoEvosMoves:
 
 GolbatEvosMoves:
 ; Evolutions
+	db EVOLVE_BOND, 200, CROBAT
 	db 0
 ; Learnset
 	db 5, SUPERSONIC
@@ -2417,6 +2439,7 @@ GeodudeEvosMoves:
 
 PorygonEvosMoves:
 ; Evolutions
+	db EVOLVE_TRADE, 1, PORYGON2
 	db 0
 ; Learnset
 	db 12, PSYBEAM
@@ -2682,4 +2705,198 @@ VictreebelEvosMoves:
 	db 36, SLUDGE
 	db 43, SYNTHESIS
 	db 48, SLEEP_POWDER
+	db 0
+
+SmoochumEvosMoves:
+; Evolutions
+	db EVOLVE_LEVEL, 30, JYNX
+	db 0
+; Learnset
+	db  9, LICK
+	db 13, SING
+	db 21, CONFUSION
+	db 25, ICE_PUNCH
+	db 33, LOVELY_KISS
+	db 37, PSYCHIC_M
+	db 49, BLIZZARD
+	db 0
+
+ElekidEvosMoves:
+; Evolutions
+	db EVOLVE_LEVEL, 30, ELECTABUZZ
+	db 0
+; Learnset
+	db  9, LEER
+	db 17, THUNDERSHOCK
+	db 25, SCREECH
+	db 33, THUNDERPUNCH
+	db 41, LIGHT_SCREEN
+	db 49, THUNDER
+	db 0
+
+MagbyEvosMoves:
+; Evolutions
+	db EVOLVE_LEVEL, 30, MAGMAR
+	db 0
+; Learnset
+	db  7, LEER
+	db 13, SMOG
+	db 19, FIRE_PUNCH
+	db 25, SMOKESCREEN
+	db 26, MACH_PUNCH
+	db 29, FLARE_BLITZ
+	db 31, CONFUSE_RAY
+	db 43, FIRE_BLAST
+	db 0
+
+PolitoedEvosMoves:
+	db 0 ; no evolutions
+	db  6, MIST
+	db 10, DOUBLESLAP
+	db 12, MUD_SHOT
+	db 13, WATER_GUN
+	db 17, HYPNOSIS
+	db 22, WATER_PULSE
+	db 30, BODY_SLAM
+	db 40, AMNESIA
+	db 48, HYDRO_PUMP
+	db 0
+
+SlowkingEvosMoves:
+	db 0 ; no evolutions
+	db  6, GROWL
+	db 10, WATER_GUN
+	db 15, CONFUSION
+	db 18, WATER_PULSE
+	db 20, DISABLE
+	db 25, HEADBUTT
+	db 30, PSYBEAM
+	db 36, LIGHT_SCREEN
+	db 40, AMNESIA
+	db 45, PSYCHIC_M
+	db 0
+
+SteelixEvosMoves:
+	db 0 ; no evolutions
+	db 12, ROCK_THROW
+	db 15, DRAGONBREATH
+	db 19, DIG
+	db 23, BIND
+	db 25, ROCK_TOMB
+	db 29, HARDEN
+	db 31, SLAM
+	db 34, BODY_PRESS
+	db 37, ROCK_SLIDE
+	db 43, EARTHQUAKE
+	db 0
+
+KingdraEvosMoves:
+	db 0 ; no evolutions
+	db 10, WATER_GUN
+	db 14, SMOKESCREEN
+	db 18, LEER
+	db 20, DRAGONBREATH
+	db 22, WATER_PULSE
+	db 26, DRAGON_RAGE
+	db 30, AURORA_BEAM
+	db 33, WATERFALL
+	db 37, AGILITY
+	db 41, SLAM
+	db 45, HYDRO_PUMP
+	db 0
+
+ScizorEvosMoves:
+	db 0 ; no evolutions
+	db  6, FOCUS_ENERGY
+	db 12, QUICK_ATTACK
+	db 16, CUT
+	db 24, AGILITY
+	db 30, AIR_CUTTER
+	db 36, SLASH
+	db 42, X_SCISSOR
+	db 48, DOUBLE_TEAM
+	db 50, ROOST
+	db 53, SUPERPOWER
+	db 54, SWORDS_DANCE
+	db 0
+
+Porygon2EvosMoves:
+	db 0 ; no evolutions
+	db 12, PSYBEAM
+	db 20, RECOVER
+	db 24, SHARPEN
+	db 28, TRI_ATTACK
+	db 32, AGILITY
+	db 40, BARRIER
+	db 50, HYPER_BEAM
+	db 56, MIRROR_COAT
+	db 0
+
+PichuEvosMoves:
+	db EVOLVE_BOND, 160, PIKACHU
+	db 0
+	db 5, LEER
+	db 10, QUICK_ATTACK
+	db 15, DOUBLE_KICK
+	db 18, THUNDER_WAVE
+	db 23, DOUBLE_TEAM
+	db 28, SING
+	db 34, THUNDERPUNCH
+	db 40, AGILITY
+	db 45, THUNDERBOLT
+	db 50, LIGHT_SCREEN
+	db 0
+
+CleffaEvosMoves:
+	db EVOLVE_BOND, 160, CLEFAIRY
+	db 0
+	db 4, SING
+	db 8, DEFENSE_CURL
+	db 12, DOUBLESLAP
+	db 16, MINIMIZE
+	db 20, METRONOME
+	db 24, SWIFT
+	db 30, LIGHT_SCREEN
+	db 0
+
+IgglybuffEvosMoves:
+	db EVOLVE_BOND, 160, JIGGLYPUFF
+	db 0
+	db 8, CHARM
+	db 12, DISABLE
+	db 16, DOUBLESLAP
+	db 20, REST
+	db 24, BODY_SLAM
+	db 30, MIMIC
+	db 36, DOUBLE_EDGE
+	db 0
+
+CrobatEvosMoves:
+	db 0
+	db 5, SUPERSONIC
+	db 13, ABSORB
+	db 17, LEECH_LIFE
+	db 19, WING_ATTACK
+	db 21, CONFUSE_RAY
+	db 24, SWIFT
+	db 29, AIR_CUTTER
+	db 33, MEGA_DRAIN
+	db 38, AGILITY
+	db 41, HAZE
+	db 42, X_SCISSOR
+	db 55, ROOST
+	db 0
+
+BlisseyEvosMoves:
+	db 0
+	db 12, DOUBLESLAP
+	db 24, SING
+	db 30, GROWL
+	db 35, CHARM
+	db 38, MINIMIZE
+	db 42, WATER_PULSE
+	db 44, DEFENSE_CURL
+	db 48, LIGHT_SCREEN
+	db 50, MEGA_PUNCH
+	db 54, DOUBLE_EDGE
 	db 0
