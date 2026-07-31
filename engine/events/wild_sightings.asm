@@ -14,8 +14,8 @@ UpdateWildSightingOnStep::
 
 .charged
 	; Start charged on a new game, but do not surface an opportunity before
-	; catching has been introduced and Oak has supplied the first Poke Balls.
-	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
+	; Oak has introduced catching and supplied the Pokedex and first Poke Balls.
+	CheckEvent EVENT_GOT_POKEDEX
 	ret z
 
 	call GetCurrentWildSightingZoneAndProfile

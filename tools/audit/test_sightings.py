@@ -414,13 +414,13 @@ class WildSightingFrameworkTests(unittest.TestCase):
         update = sightings[update_start:update_end]
 
         cooldown = update.index("ld hl, wSightingCooldown")
-        pokeballs = update.index("CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK")
+        pokedex = update.index("CheckEvent EVENT_GOT_POKEDEX")
         profile = update.index("call GetCurrentWildSightingZoneAndProfile")
         terrain = update.index("call GetCurrentWildSightingStepMethod")
         random_roll = update.index("call Random")
 
-        self.assertLess(cooldown, pokeballs)
-        self.assertLess(pokeballs, profile)
+        self.assertLess(cooldown, pokedex)
+        self.assertLess(pokedex, profile)
         self.assertLess(profile, terrain)
         self.assertLess(terrain, random_roll)
         self.assertIn(
@@ -433,7 +433,7 @@ class WildSightingFrameworkTests(unittest.TestCase):
             update,
         )
         self.assertIn(
-            "CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK\n\tret z",
+            "CheckEvent EVENT_GOT_POKEDEX\n\tret z",
             update,
         )
         self.assertNotIn("wRepelRemainingSteps", update)
