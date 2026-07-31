@@ -1,5 +1,8 @@
 """Focused unit coverage for visual-regression masking."""
 
+from types import SimpleNamespace
+from unittest.mock import Mock
+
 from PIL import Image
 
 from tools.rom_tests.emulator import Emulator, screen_difference
@@ -44,3 +47,30 @@ def test_symbol_parser_ignores_exported_numeric_constants() -> None:
         "wExampleValue": 0xC000,
         "ExampleRoutine": 0x4567,
     }
+    assert Emulator._parse_symbol_banks(lines) == {
+        "wExampleValue": 0x00,
+        "ExampleRoutine": 0x0F,
+    }
+
+
+def test_instruction_replacement_sets_register_and_resumes_after_instruction() -> None:
+    emulator = Emulator.__new__(Emulator)
+    emulator.symbols = {"Routine.roll": 0x4567}
+    emulator.symbol_banks = {"Routine.roll": 0x0F}
+    emulator.pyboy = Mock()
+    emulator.pyboy.register_file = SimpleNamespace(A=0xFF, PC=0x4567)
+
+    with emulator.replace_instruction_with_register(
+        "Routine.roll",
+        "A",
+        0,
+        instruction_bytes=3,
+    ):
+        callback, context = emulator.pyboy.hook_register.call_args.args[2:]
+        callback(context)
+        assert emulator.pyboy.register_file.A == 0
+        assert emulator.pyboy.register_file.PC == 0x456A
+        emulator.pyboy.hook_deregister.assert_not_called()
+
+    emulator.pyboy.hook_register.assert_called_once()
+    emulator.pyboy.hook_deregister.assert_called_once_with(0x0F, 0x4567)

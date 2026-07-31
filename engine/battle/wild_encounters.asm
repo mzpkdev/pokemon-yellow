@@ -52,6 +52,7 @@ TryDoWildEncounter:
 .CanEncounter
 ; compare encounter chance with a random number to determine if there will be an encounter
 	ld b, a
+.chanceRoll
 	ldh a, [hRandomAdd]
 	cp b
 	jr nc, .CantEncounter2
@@ -103,9 +104,9 @@ TryDoWildEncounter:
 	hlcoord 8, 9
 	ld a, [hl]
 	cp $14
-	ld a, SIGHTING_METHOD_WATER
+	ld d, SIGHTING_METHOD_WATER
 	jr z, .checkSighting
-	ld a, SIGHTING_METHOD_LAND
+	ld d, SIGHTING_METHOD_LAND
 .checkSighting
 	callfar TryReplaceWithWildSighting
 	xor a

@@ -38,3 +38,27 @@ def emulator(request: pytest.FixtureRequest) -> Emulator:
         yield driver
     finally:
         driver.close()
+
+
+@pytest.fixture
+def normal_emulator(request: pytest.FixtureRequest) -> Emulator:
+    """Create isolated emulator state using the non-debug ROM."""
+    driver = Emulator(
+        rom=Path(
+            os.environ.get(
+                "ROM_TEST_NORMAL_ROM",
+                REPOSITORY_ROOT / "pokeyellow.gbc",
+            )
+        ),
+        symbols=Path(
+            os.environ.get(
+                "ROM_TEST_NORMAL_SYMBOLS",
+                REPOSITORY_ROOT / "pokeyellow.sym",
+            )
+        ),
+        results=result_directory(request.node.nodeid),
+    )
+    try:
+        yield driver
+    finally:
+        driver.close()

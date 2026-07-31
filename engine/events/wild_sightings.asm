@@ -53,6 +53,7 @@ UpdateWildSightingOnStep::
 
 	IF !DEF(_DEBUG)
 		push bc
+.chanceRoll
 		call Random
 		cp SIGHTING_TRIGGER_CHANCE
 		pop bc
@@ -113,9 +114,9 @@ ValidateWildSightingZone::
 
 ; Replace an otherwise valid land/water encounter with a weighted species from
 ; the active profile. The caller's normal encounter level is deliberately kept.
-; Input: a = SIGHTING_METHOD_* bit. The sighting is consumed only on replacement.
+; Input: d = SIGHTING_METHOD_* bit. The sighting is consumed only on replacement.
 TryReplaceWithWildSighting::
-	push af
+	push de
 	ld a, [wSightingFlags]
 	bit SIGHTING_ACTIVE_F, a
 	jr z, .noReplacementPop
@@ -142,6 +143,7 @@ TryReplaceWithWildSighting::
 	ret z
 
 	IF !DEF(_DEBUG)
+.chanceRoll
 		call Random
 		cp SIGHTING_ENCOUNTER_CHANCE
 		ret nc
@@ -170,7 +172,7 @@ TryReplaceWithWildSighting::
 	ret
 
 .noReplacementPop
-	pop af
+	pop de
 	ret
 
 ClearWildSighting::
