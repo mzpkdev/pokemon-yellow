@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable, Iterable
+from collections.abc import Callable, Iterable, Iterator
+from contextlib import contextmanager
 from io import BytesIO
 import os
 from pathlib import Path
@@ -31,7 +32,9 @@ class Emulator:
     def __init__(self, rom: Path, symbols: Path, results: Path) -> None:
         self.results = results
         self.results.mkdir(parents=True, exist_ok=True)
-        self.symbols = self._load_symbols(symbols)
+        symbol_lines = symbols.read_text(encoding="utf-8").splitlines()
+        self.symbols = self._parse_symbols(symbol_lines)
+        self.symbol_banks = self._parse_symbol_banks(symbol_lines)
         self.pyboy = PyBoy(
             str(rom),
             window="null",
@@ -39,10 +42,6 @@ class Emulator:
             ram_file=BytesIO(bytes(0x8000)),
         )
         self.pyboy.set_emulation_speed(0)
-
-    @staticmethod
-    def _load_symbols(path: Path) -> dict[str, int]:
-        return Emulator._parse_symbols(path.read_text(encoding="utf-8").splitlines())
 
     @staticmethod
     def _parse_symbols(lines: Iterable[str]) -> dict[str, int]:
@@ -56,6 +55,55 @@ class Emulator:
             _, address = location.split(":", maxsplit=1)
             symbols[name] = int(address, 16)
         return symbols
+
+    @staticmethod
+    def _parse_symbol_banks(lines: Iterable[str]) -> dict[str, int]:
+        banks: dict[str, int] = {}
+        for line in lines:
+            if not line or line.startswith(";"):
+                continue
+            location, name = line.split(maxsplit=1)
+            if ":" not in location:
+                continue
+            bank, _ = location.split(":", maxsplit=1)
+            banks[name] = int(bank, 16)
+        return banks
+
+    @contextmanager
+    def replace_instruction_with_register(
+        self,
+        symbol: str,
+        register: str,
+        value: int,
+        *,
+        instruction_bytes: int,
+    ) -> Iterator[None]:
+        """Replace a ROM instruction with a deterministic register value."""
+        bank = self.symbol_banks[symbol]
+        address = self.symbols[symbol]
+
+        def override_register(
+            context: tuple[object, str, int, int],
+        ) -> None:
+            register_file, register_name, register_value, resume_address = context
+            setattr(register_file, register_name, register_value)
+            register_file.PC = resume_address
+
+        self.pyboy.hook_register(
+            bank,
+            address,
+            override_register,
+            (
+                self.pyboy.register_file,
+                register,
+                value,
+                address + instruction_bytes,
+            ),
+        )
+        try:
+            yield
+        finally:
+            self.pyboy.hook_deregister(bank, address)
 
     def close(self) -> None:
         self.pyboy.stop()

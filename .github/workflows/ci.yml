@@ -150,6 +150,8 @@ jobs:
         env:
           ROM_TEST_ROM: release/pokemon-yellow-debug.gbc
           ROM_TEST_SYMBOLS: release/pokemon-yellow-debug.sym
+          ROM_TEST_NORMAL_ROM: release/pokemon-yellow.gbc
+          ROM_TEST_NORMAL_SYMBOLS: release/pokemon-yellow.sym
         run: >-
           python -m pytest
           tools/rom_tests/tests/e2e

@@ -24,6 +24,20 @@ SIGHTING_ZONE_PALLET_VIRIDIAN = 1
 SIGHTING_PROFILE_PALLET_GRASSLAND = 1
 SIGHTING_ACTIVE = 1
 SIGHTING_COOLDOWN_STEPS = 0xFF
+ROUTE_1_REGULAR_SPECIES = {0x05, 0x24, 0xA5}
+PALLET_GRASSLAND_SIGHTING_SPECIES = {
+    0x4D,
+    0x60,
+    0x70,
+    0x7B,
+    0x96,
+    0xB9,
+    0xBC,
+}
+
+A_BUTTON = 1 << 0
+D_RIGHT = 1 << 4
+D_LEFT = 1 << 5
 
 
 def _set_event(emulator: Emulator, event: int) -> None:
@@ -85,6 +99,59 @@ def _follow_route_1_waypoints(
     if stop_on_sighting:
         raise AssertionError("Route 1 crossing never reached sighting terrain")
     return len(ROUTE_1_NORTHBOUND_WAYPOINTS)
+
+
+def _follow_route_until_wild_battle(
+    emulator: Emulator,
+    *,
+    start_index: int,
+) -> int:
+    for index in range(start_index, len(ROUTE_1_NORTHBOUND_WAYPOINTS) - 1):
+        symbol, value, button = ROUTE_1_NORTHBOUND_WAYPOINTS[index]
+        for _ in range(160):
+            if emulator.read(symbol) == value:
+                break
+            emulator.press(button)
+            if emulator.is_in_battle():
+                return index
+        else:
+            raise AssertionError(
+                f"Timed out seeking an encounter toward {symbol}={value}"
+            )
+    raise AssertionError("Route 1 ended without a forced wild encounter")
+
+
+def _run_from_wild_battle(emulator: Emulator) -> None:
+    for _ in range(40):
+        battle_menu_ready = (
+            emulator.is_in_battle()
+            and emulator.read("wTopMenuItemY") == 14
+            and emulator.read("wMaxMenuItem") == 1
+            and emulator.read("wMenuWatchedKeys")
+            in (A_BUTTON | D_LEFT, A_BUTTON | D_RIGHT)
+        )
+        if battle_menu_ready:
+            break
+        emulator.press("a", wait_frames=30)
+    else:
+        raise AssertionError("Wild battle never reached its command menu")
+
+    emulator.press("right")
+    emulator.press("down")
+    with emulator.replace_instruction_with_register(
+        "TryRunningFromBattle.wildEscapeRoll",
+        "A",
+        0,
+        instruction_bytes=3,
+    ):
+        emulator.press("a")
+        emulator.advance_until(
+            lambda: not emulator.is_in_battle(),
+            button="a",
+            max_presses=20,
+            description="running from the wild battle",
+        )
+    emulator.tick(300)
 
 
 def test_all_movement_charges_sighting_cooldown_with_repel(
@@ -167,9 +234,10 @@ def test_charged_state_waits_for_pokedex_and_valid_terrain(
     assert emulator.read("wSightingCooldown") == 0
 
 
-def test_parcel_delivery_unlocks_sighting_hint_and_grouped_zone_cleanup(
-    emulator: Emulator,
+def test_parcel_delivery_sighting_survives_regular_battle_until_replacement(
+    normal_emulator: Emulator,
 ) -> None:
+    emulator = normal_emulator
     complete_parcel_delivery(emulator)
 
     assert _event_is_set(emulator, EVENT_GOT_POKEDEX)
@@ -177,10 +245,16 @@ def test_parcel_delivery_unlocks_sighting_hint_and_grouped_zone_cleanup(
     assert not (emulator.read("wSightingFlags") & SIGHTING_ACTIVE)
 
     _enter_route_1(emulator)
-    resume_index = _follow_route_1_waypoints(
-        emulator,
-        stop_on_sighting=True,
-    )
+    with emulator.replace_instruction_with_register(
+        "UpdateWildSightingOnStep.chanceRoll",
+        "A",
+        0,
+        instruction_bytes=3,
+    ):
+        resume_index = _follow_route_1_waypoints(
+            emulator,
+            stop_on_sighting=True,
+        )
 
     assert emulator.read("wSightingFlags") & SIGHTING_ACTIVE
     assert emulator.read("wSightingZone") == SIGHTING_ZONE_PALLET_VIRIDIAN
@@ -205,12 +279,72 @@ def test_parcel_delivery_unlocks_sighting_hint_and_grouped_zone_cleanup(
     )
     assert emulator.read("wWhichEmotionBubble") == EXCLAMATION_BUBBLE
 
-    _follow_route_1_waypoints(
-        emulator,
-        start_index=resume_index,
-        stop_on_sighting=False,
+    active_state = (
+        emulator.read("wSightingFlags"),
+        emulator.read("wSightingCooldown"),
+        emulator.read("wSightingZone"),
+        emulator.read("wSightingProfile"),
     )
-    assert emulator.read("wCurMap") == VIRIDIAN_CITY
+    emulator.write("wRepelRemainingSteps", 0)
+    with (
+        emulator.replace_instruction_with_register(
+            "TryDoWildEncounter.chanceRoll",
+            "A",
+            0,
+            instruction_bytes=2,
+        ),
+        emulator.replace_instruction_with_register(
+            "TryReplaceWithWildSighting.chanceRoll",
+            "A",
+            0xFF,
+            instruction_bytes=3,
+        ),
+    ):
+        encounter_resume_index = _follow_route_until_wild_battle(
+            emulator,
+            start_index=resume_index,
+        )
+
+    assert emulator.read("wEnemyMonSpecies2") in ROUTE_1_REGULAR_SPECIES
+    assert (
+        emulator.read("wEnemyMonSpecies2")
+        not in PALLET_GRASSLAND_SIGHTING_SPECIES
+    )
+    assert (
+        emulator.read("wSightingFlags"),
+        emulator.read("wSightingCooldown"),
+        emulator.read("wSightingZone"),
+        emulator.read("wSightingProfile"),
+    ) == active_state
+
+    _run_from_wild_battle(emulator)
+    assert (
+        emulator.read("wSightingFlags"),
+        emulator.read("wSightingCooldown"),
+        emulator.read("wSightingZone"),
+        emulator.read("wSightingProfile"),
+    ) == active_state
+
+    with (
+        emulator.replace_instruction_with_register(
+            "TryDoWildEncounter.chanceRoll",
+            "A",
+            0,
+            instruction_bytes=2,
+        ),
+        emulator.replace_instruction_with_register(
+            "TryReplaceWithWildSighting.chanceRoll",
+            "A",
+            0,
+            instruction_bytes=3,
+        ),
+    ):
+        _follow_route_until_wild_battle(
+            emulator,
+            start_index=encounter_resume_index,
+        )
+
+    assert emulator.read("wEnemyMonSpecies2") in PALLET_GRASSLAND_SIGHTING_SPECIES
     assert not (emulator.read("wSightingFlags") & SIGHTING_ACTIVE)
     assert emulator.read("wSightingZone") == 0
     assert emulator.read("wSightingProfile") == 0

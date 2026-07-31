@@ -1702,6 +1702,7 @@ TryRunningFromBattle:
 	jr c, .canEscape
 	jr .loop
 .compareWithRandomValue
+.wildEscapeRoll
 	call BattleRandom
 	ld b, a
 	ldh a, [hQuotient + 3]
