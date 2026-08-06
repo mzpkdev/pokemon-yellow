@@ -585,3 +585,8 @@ SECTION "Move Descriptions", ROMX
 
 INCLUDE "engine/pokemon/move_descriptions.asm"
 INCLUDE "engine/pokemon/evos_moves.asm" ; Moved from Battle Engine 6
+
+
+SECTION "Full Color Overworld", ROMX, BANK[$44]
+
+INCLUDE "engine/gfx/full_color_overworld.asm"

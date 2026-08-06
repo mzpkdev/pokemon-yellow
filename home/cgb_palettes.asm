@@ -3,6 +3,17 @@ UpdateGBCPal_BGP::
 	ldh a, [hGBC]
 	and a
 	jr z, .notGBC
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .useLegacyBGP
+	ld a, [wLastPaletteCommand]
+	cp SET_PAL_OVERWORLD
+	jr nz, .useLegacyBGP
+	ld a, [wIsInBattle]
+	and a
+	jr z, .notGBC
+.useLegacyBGP
 	push bc
 	push de
 	push hl

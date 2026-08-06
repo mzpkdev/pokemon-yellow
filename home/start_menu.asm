@@ -7,6 +7,15 @@ DisplayStartMenu::
 	rst _PlaySound
 
 RedisplayStartMenu::
+	ldh a, [hGBC]
+	and a
+	jr z, .draw
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .draw
+	call RunDefaultPaletteCommand
+.draw
 	farcall DrawStartMenu
 RedisplayStartMenu_DoNotDrawStartMenu::
 	farcall PrintSafariZoneSteps ; print Safari Zone info, if in Safari Zone

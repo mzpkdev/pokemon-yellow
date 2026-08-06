@@ -393,7 +393,7 @@ wMenuCursorLocation:: dw
 
 wMaxLevel:: db	
 
-	ds 1
+wLastPaletteCommand:: db
 
 ; how many times should HandleMenuInput poll the joypad state before it returns?
 wMenuJoypadPollCount:: db
@@ -2634,6 +2634,14 @@ wLastOBP1:: db
 wdef4:: db
 wBGPPalsBuffer:: ds NUM_ACTIVE_PALS + 1 * PALETTE_SIZE
 
+IF DEF(_DEBUG)
+SECTION "Debug Atlas", WRAM0
+
+wDebugAtlasRequest:: db
+wDebugAtlasMap:: db
+wDebugAtlasX:: db
+wDebugAtlasY:: db
+ENDC
 
 SECTION "Stack", WRAM0
 

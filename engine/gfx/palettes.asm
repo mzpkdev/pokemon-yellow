@@ -5,8 +5,10 @@ _RunPaletteCommand:
 	jr nz, .not_default
 	ld a, [wDefaultPaletteCommand]
 .not_default
+	ld [wLastPaletteCommand], a
 	cp SET_PAL_PARTY_MENU_HP_BARS
 	jp z, UpdatePartyMenuBlkPacket
+	push af
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -15,7 +17,12 @@ _RunPaletteCommand:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	pop af
 	ld de, SendSGBPackets
+	cp SET_PAL_OVERWORLD
+	jr nz, .continuationReady
+	ld de, SendSGBPacketsFullColorOverworld
+.continuationReady
 	push de
 	jp hl
 
@@ -824,6 +831,17 @@ Wait7000:
 	jr nz, .loop
 	ret
 
+SendSGBPacketsFullColorOverworld:
+	ldh a, [hGBC]
+	and a
+	jr z, SendSGBPackets.notGBC
+	push de
+	call InitGBCPalettes
+	pop hl
+	call InitGBCPalettes
+	farcall ApplyFullColorOverworldPalettes
+	jr SendSGBPackets.finishGBC
+
 SendSGBPackets:
 	ldh a, [hGBC]
 	and a
@@ -832,6 +850,7 @@ SendSGBPackets:
 	call InitGBCPalettes
 	pop hl
 	call InitGBCPalettes
+.finishGBC
 	ldh a, [rLCDC]
 	and 1 << rLCDC_ENABLE
 	ret z

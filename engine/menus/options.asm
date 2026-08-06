@@ -40,7 +40,7 @@ OptionMenuJumpTable:
 	dw OptionsMenu_SpeakerSettings
 	dw OptionsMenu_GBPrinterBrightness
 	dw OptionsMenu_Color
-	dw OptionsMenu_Dummy
+	dw OptionsMenu_OverworldColor
 	dw OptionsMenu_Cancel
 
 OptionsMenu_TextSpeed:
@@ -435,9 +435,46 @@ ColorYText:
 ColorSGBText:
 	db "SGB@"
 
-OptionsMenu_Dummy:
+OptionsMenu_OverworldColor:
+	ld a, [wOptions2]
+	ld c, 0
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .checkInput
+	inc c
+.checkInput
+	ldh a, [hJoy5]
+	and D_LEFT | D_RIGHT
+	jr z, .print
+	ld a, [wOptions2]
+	xor 1 << BIT_FULL_COLOR_OVERWORLD
+	ld [wOptions2], a
+	ld a, c
+	xor 1
+	ld c, a
+.print
+	ld b, 0
+	ld hl, OverworldColorStrings
+	add hl, bc
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	hlcoord 12, 14
+	call PlaceString
 	and a
 	ret
+
+OverworldColorStrings:
+	dw OverworldOriginalText
+	dw OverworldFullText
+
+; Seven tiles wide: column 19 is the options window's right border.
+OverworldOriginalText:
+	db "CLASSIC@"
+
+OverworldFullText:
+	db "COLOR  @"
 
 OptionsMenu_Cancel:
 	ldh a, [hJoy5]
@@ -466,9 +503,6 @@ OptionsControl:
 	scf
 	ret
 .doNotWrapAround
-	cp $5
-	jr c, .regularIncrement
-	ld [hl], $6
 .regularIncrement
 	inc [hl]
 	scf
@@ -476,11 +510,11 @@ OptionsControl:
 .pressedUp
 	ld a, [hl]
 	cp $7
-	jr nz, .doNotMoveCursorToColorOption
-	ld [hl], $5
+	jr nz, .doNotMoveCursorToOverworldColorOption
+	ld [hl], $6
 	scf
 	ret
-.doNotMoveCursorToColorOption
+.doNotMoveCursorToOverworldColorOption
 	and a
 	jr nz, .regularDecrement
 	ld [hl], $8
@@ -517,7 +551,7 @@ InitOptionsMenu:
 	call PlaceString
 	xor a
 	ld [wOptionsCursorLocation], a
-	ld c, 6
+	ld c, 7
 .loop
 	push bc
 	call GetOptionPointer
@@ -539,7 +573,8 @@ AllOptionsText:
 	next "BATTLESTYLE:"
 	next "SOUND:"
 	next "PRINT:"
-	next "COLOR:@"
+	next "COLOR:"
+	next "OVERWORLD:@"
 
 OptionMenuCancelText:
 	db "CANCEL     SELECT@"

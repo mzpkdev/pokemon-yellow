@@ -1,3 +1,18 @@
+IF DEF(_DEBUG)
+DebugAtlasEnterMap:
+	ld a, $5a
+	ld [wDebugAtlasRequest], a
+	ld a, [wCurMap]
+	ld [wLastMap], a
+	ld a, [wDebugAtlasMap]
+	ld [wCurMap], a
+	ld a, [wDebugAtlasX]
+	ld [wXCoord], a
+	ld a, [wDebugAtlasY]
+	ld [wYCoord], a
+	jp EnterMap
+ENDC
+
 EnterMap::
 ; Load a new map.
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
@@ -44,6 +59,17 @@ OverworldLoop::
 	rst _DelayFrame
 OverworldLoopLessDelay::
 	rst _DelayFrame
+IF DEF(_DEBUG)
+	ld a, [wDebugAtlasRequest]
+	cp $a5
+	jp z, DebugAtlasEnterMap
+	cp $5a
+	jr nz, .debugAtlasDone
+	xor a
+	ld [wDebugAtlasRequest], a
+	jp OverworldLoop
+.debugAtlasDone
+ENDC
 	call IsSurfingPikachuInParty
 	call LoadGBPal
 	call HandleMidJump
@@ -733,6 +759,19 @@ CheckMapConnections::
 ; x#SPRITESTATEDATA2_IMAGEBASEOFFSET without loading any tile patterns.
 	call InitMapSprites
 	call LoadTileBlockMap
+	ldh a, [hGBC]
+	and a
+	jr z, .attributesDone
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .attributesDone
+	ld a, [wMapViewVRAMPointer]
+	ld e, a
+	ld a, [wMapViewVRAMPointer + 1]
+	ld d, a
+	farcall CopyFullColorMapViewAttributes
+.attributesDone
 	jp OverworldLoopLessDelay
 
 .didNotEnterConnectedMap
@@ -1567,8 +1606,7 @@ ScheduleNorthRowRedraw::
 	ld a, [wMapViewVRAMPointer + 1]
 	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_ROW
-	ldh [hRedrawRowOrColumnMode], a
-	ret
+	jp PrepareFullColorRowOrColumn
 
 CopyToRedrawRowOrColumnSrcTiles::
 	ld de, wRedrawRowOrColumnSrcTiles
@@ -1597,8 +1635,7 @@ ScheduleSouthRowRedraw::
 	ld a, l
 	ldh [hRedrawRowOrColumnDest], a
 	ld a, REDRAW_ROW
-	ldh [hRedrawRowOrColumnMode], a
-	ret
+	jp PrepareFullColorRowOrColumn
 
 ScheduleEastColumnRedraw::
 	hlcoord 18, 0
@@ -1615,8 +1652,7 @@ ScheduleEastColumnRedraw::
 	ld a, [wMapViewVRAMPointer + 1]
 	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_COL
-	ldh [hRedrawRowOrColumnMode], a
-	ret
+	jp PrepareFullColorRowOrColumn
 
 ScheduleColumnRedrawHelper::
 	ld de, wRedrawRowOrColumnSrcTiles
@@ -1646,6 +1682,21 @@ ScheduleWestColumnRedraw::
 	ld a, [wMapViewVRAMPointer + 1]
 	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_COL
+	jp PrepareFullColorRowOrColumn
+
+PrepareFullColorRowOrColumn:
+	push af
+	ldh a, [hGBC]
+	and a
+	jr z, .done
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .done
+	ld c, a
+	farcall DrawFullColorRowOrColumn
+.done
+	pop af
 	ldh [hRedrawRowOrColumnMode], a
 	ret
 
@@ -2134,6 +2185,18 @@ LoadMapData::
 	call EnableLCD
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand
+	; RunPaletteCommand initializes the CGB attribute map, so restore the
+	; per-tile attributes after it has finished.
+	ldh a, [hGBC]
+	and a
+	jr z, .attributesDone
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	jr nz, .attributesDone
+	ld de, vBGMap0
+	farcall CopyFullColorMapViewAttributes
+.attributesDone
 	call LoadPlayerSpriteGraphics
 	ld a, [wStatusFlags6]
 	and 1 << BIT_DUNGEON_WARP | 1 << BIT_FLY_WARP
@@ -2200,6 +2263,7 @@ CopyMapViewToVRAM::
 ; copy current map view to VRAM
 	ld de, vBGMap0
 CopyMapViewToVRAM2:
+	push de
 	ld hl, wTileMap
 	ld b, SCREEN_HEIGHT
 .vramCopyLoop
@@ -2218,6 +2282,18 @@ CopyMapViewToVRAM2:
 .noCarry
 	dec b
 	jr nz, .vramCopyLoop
+	pop de
+	ld a, d
+	cp HIGH(vBGMap0)
+	ret nz
+	ldh a, [hGBC]
+	and a
+	ret z
+	ld a, [wOptions2]
+	and %1100
+	cp 1 << BIT_FULL_COLOR_OVERWORLD
+	ret nz
+	farcall CopyFullColorMapViewAttributes
 	ret
 
 ; function to switch to the ROM bank that a map is stored in
